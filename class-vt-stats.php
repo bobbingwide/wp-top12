@@ -81,7 +81,7 @@
 	/**
 	 * Populate rows for the given date
 	 */
-	function load_file( $date, $host="oik-plugins.com" ) {
+	function load_file( $date, $host="../play/oik-plugins.com" ) {
 		$file = "$host/$date.vt";
 		$contents = file( $file );
 		echo "Date: $date Count: " . count( $contents ) . PHP_EOL;
