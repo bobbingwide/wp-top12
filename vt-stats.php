@@ -21,7 +21,7 @@ oik_require( "class-CSV-merger.php", $plugin );
 $stats = new VT_stats();
 
 $stats->from_date( "2015-10-01" ); 
-$stats->from_date( "2015-12-29" );
+//$stats->from_date( "2015-12-29" );
 $stats->populate();
 
 $stats->count_things();
