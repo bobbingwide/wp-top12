@@ -1,4 +1,4 @@
-<?php // (C) Copyright Bobbingwide 2015
+<?php // (C) Copyright Bobbingwide 2015, 2016
 /**
  * Syntax: oikwp vt-stats.php process
  * 
@@ -6,20 +6,13 @@
  */
 ini_set('memory_limit','1572M');
 
-//require_once( ABSPATH . "wp-admin/includes/plugin-install.php" );
-//oik_require( "includes/oik-remote.inc" );
-
-//oik_require( "class-wp-org-downloads.php", "play" );
-
-oik_require( "class-vt-stats.php", "play" );
-
-oik_require( "class-vt-row-basic.php", "play" );
-
-oik_require( "class-object-sorter.php", "play" );
-oik_require( "class-object.php", "play" );
-oik_require( "class-object-grouper.php", "play" );
-
-oik_require( "class-CSV-merger.php", "play" );
+$plugin = "wp-top12";
+oik_require( "class-vt-stats.php", $plugin );
+oik_require( "class-vt-row-basic.php", $plugin );
+oik_require( "class-object-sorter.php", $plugin );
+oik_require( "class-object.php", $plugin );
+oik_require( "class-object-grouper.php", $plugin );
+oik_require( "class-CSV-merger.php", $plugin );
 
 
 //query_my_plugins();
