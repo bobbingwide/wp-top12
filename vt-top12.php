@@ -11,16 +11,18 @@ ini_set('memory_limit','1024M');
 
 //oik_require( "class-wp-org-downloads.php", "play" );
 
-oik_require( "class-vt-stats.php", "play" );
-oik_require( "class-vt-stats-top12.php", "play" );
+$plugin = "wp-top12";
 
-oik_require( "class-vt-row.php", "play" );
+oik_require( "class-vt-stats.php", $plugin );
+oik_require( "class-vt-stats-top12.php", $plugin );
 
-oik_require( "class-object-sorter.php", "play" );
-oik_require( "class-object.php", "play" );
-oik_require( "class-object-grouper.php", "play" );
+oik_require( "class-vt-row.php", $plugin );
 
-oik_require( "class-CSV-merger.php", "play" );
+oik_require( "class-object-sorter.php", $plugin );
+oik_require( "class-object.php", $plugin );
+oik_require( "class-object-grouper.php", $plugin );
+
+oik_require( "class-CSV-merger.php", $plugin );
 
 
 //query_my_plugins();
@@ -51,6 +53,10 @@ $files = array( "vanilla", "vanilla02", "vanilla03", "vanilla-essence", "vanilla
 $files = array( "vanilla7", "vanilla76", "vanilla4361", "vanilla4362" );
 
 $files = array( "vanilla7", "ssuper", "csuper", "ssuper2", "csuper2", "scacheuk7", "scache7com", "scache71com", "ccache71com"  );
+
+$files = array( "vanilla", "vanilla5" );
+
+$files = array( "vanilla", "akismet", "cf7", "ai1seo", "yoastseo", "jetpack", "sitemaps", "nextgen", "importer", "woocommerce", "wordfence", "analytics", "ssuper", "csuper" );
 
 																											 
 $merger = new CSV_merger();
