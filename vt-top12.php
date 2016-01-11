@@ -56,25 +56,34 @@ $files = array( "vanilla7", "ssuper", "csuper", "ssuper2", "csuper2", "scacheuk7
 
 $files = array( "vanilla", "vanilla5" );
 
-$files = array( "vanilla", "akismet", "cf7", "ai1seo", "yoastseo", "jetpack", "sitemaps", "nextgen", "importer", "woocommerce", "wordfence", "analytics", "ssuper", "csuper" );
+process_files( $files );
 
+$files = array( "vanilla", "akismet", "cf7", "ai1seo", "yoastseo", "jetpack", "sitemaps", "nextgen", "importer", "woocommerce", "analytics" );
+
+process_files( $files );
+
+$files = array( "vanilla", "sfence2", "cfence2", "ssuper", "csuper" );
+
+process_files( $files );
+
+
+
+function process_files( $files ) { 
 																											 
-$merger = new CSV_merger();
+	$merger = new CSV_merger();
 
-foreach ( $files as $file ) {
-  $stats = new VT_stats_top12();
-	$stats->load_file( $file );
-	$grouper = $stats->count_things();
-	//$merger->append( $grouper->groups );
-	$grouper->report_total();
-	$merger->append( $grouper->percentages );
-	//$merger->append( $grouper->groups );
+	foreach ( $files as $file ) {
+	 $stats = new VT_stats_top12();
+		$stats->load_file( $file );
+		$grouper = $stats->count_things();
+		//$merger->append( $grouper->groups );
+		$grouper->report_total();
+		$merger->append( $grouper->percentages );
+		//$merger->append( $grouper->groups );
+	}
+	echo "Elapsed," . implode( $files, "," ) . PHP_EOL;
+	$merger->report(); 
 }
-echo "Elapsed," . implode( $files, "," ) . PHP_EOL;
-
-
-$merger->report(); 
-
 
 
 //$stats->count_things();
