@@ -1,4 +1,4 @@
-<?php // (C) Copyright Bobbing Wide 2015
+<?php // (C) Copyright Bobbing Wide 2015, 2016
 
 /**
  * VT_stats_top12 
@@ -9,8 +9,9 @@ class VT_stats_top12 extends VT_stats {
 	/**
 	 * Populate rows for the given plugin
 	 */
-	function load_file( $plugin, $host="oikcom" ) {
-		$file = "$host/$plugin.vt";
+	function load_file( $plugin, $host="2016" ) {
+		$file = "$host/$plugin.csv";
+		echo $file;
 		$contents = file( $file );
 		echo "Plugin: $plugin Count: " . count( $contents ) . PHP_EOL;
 		foreach ( $contents as $line ) {
