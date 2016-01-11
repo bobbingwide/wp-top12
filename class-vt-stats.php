@@ -82,6 +82,7 @@
 	 * Populate rows for the given date
 	 */
 	function load_file( $date, $host="../play/oik-plugins.com" ) {
+		gob();
 		$file = "$host/$date.vt";
 		$contents = file( $file );
 		echo "Date: $date Count: " . count( $contents ) . PHP_EOL;
@@ -119,7 +120,6 @@
 		$grouper->having( array( $this, "having_filter_value_ge" ) );
 		$grouper->report_groups();
 		
-		$grouper->having();
 		
 		
 		// The 'tl' part of suritl stands for top level not term last! 
@@ -133,6 +133,11 @@
 		//$grouper->report_percentages();
 		// Also there's a bug in report_percentages when mixed with time_field
 		// it calculates the average from the percentage figure not the count.
+		$grouper->having( array( $this, "having_filter_value_ge" ) );
+		$this->having = count( $this->rows) / 100;
+		$grouper->report_groups();
+		
+		$this->having = 0.05;
 		$grouper->report_percentages();
 		
 		
@@ -154,6 +159,7 @@
 		$grouper->report_groups();
 		
 		*/
+		$grouper->having();
 		$grouper->time_field();
 		$grouper->groupby( "elapsed", array( $this, "elapsed" ) );
 		$grouper->ksort();
