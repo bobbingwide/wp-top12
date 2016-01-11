@@ -301,7 +301,16 @@ class Object_Grouper extends Object {
 		//print_r( $this->groups );
 		echo "Groups: " . $this->key . PHP_EOL;
 		foreach ( $this->percentages as $key => $field ) {
-			$this->report_percentage( $key, $field );
+			
+			if ( $this->having ) { 
+				$having = call_user_func( $this->having, $key, $field );
+			} else {
+				$having = true;
+			}
+			if ( $having ) {
+				//$this->report_field( $key, $field );
+				$this->report_percentage( $key, $field );
+			}
 		}
 		//$this->end_report();
 	}
