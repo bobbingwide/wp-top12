@@ -84,10 +84,11 @@ class VT_driver {
 	public $cache_time;
 	
 	public function __construct() {
-		$this->file = file( "gtsc.csv" );
-		$this->file = file( "gt100.csv" );
+		//$this->file = file( "gtsc.csv" );
+		//$this->file = file( "gt100.csv" );
+		$this->file = file( "gt100s.csv" );
 		$this->total = count( $this->file );
-		$this->loops = 2;
+		$this->loops = 2;					// was 10 for vanilla5
 		$this->lines = $this->total;
 		
 	}
