@@ -19,10 +19,15 @@ class CSV_merger {
 	public $merged;
 	
 	public $array_index;
+	
+	public $order;
+	
+	public $accum;
 
 	function __construct() {
 		$this->merged = array();
-		$this->array_index = 0;
+		$this->array_index = 0;	 
+		$this->order = 'asc';
 	}
 	
 	function append( $appendages ) {
@@ -33,9 +38,12 @@ class CSV_merger {
 		$this->array_index++;
 	}
 	
-	function report() {
-		echo "Merged:" . count( $this->merged ) . PHP_EOL;
-		foreach ( $this->merged as $key => $appendages ) {
+	function report_count() {
+   echo "Merged:" . count( $this->merged ) . PHP_EOL;
+	}
+	
+	function report_csv( $array ) {
+		foreach ( $array as $key => $appendages ) {
 			$oline = array();
 			$oline[] = $key;
 			for ( $ai = 0; $ai < $this->array_index; $ai++ ) {
@@ -49,9 +57,57 @@ class CSV_merger {
 			$line = implode( $oline, "," );
 			echo $line . PHP_EOL;
 		}
+	
 	}
-			
-
+	
+	function report() {
+		$this->report_csv( $this->merged );
+	}
+	
+	function report_accum() {
+		$this->report_csv( $this->accum );
+	}
+	
+	function sort() {
+		uksort( $this->merged, array( $this, "natural_key_sort" ) );
+	}
+	
+	/**
+	 *
+	 * 
+	 * Similar to sort_objects_by_code
+	 */
+	function natural_key_sort( $a, $b ) {
+		if ( is_numeric( $a ) && is_numeric( $b ) ) {
+			$result = $b < $a;
+		} else {
+			$result = strnatcmp( $a, $b );
+		}
+		if ( $this->order == "desc" ) {
+			$result = -$result;
+		}
+		return( $result );
+	}
+	
+	/**
+	 * Accumulate values from $merged into $accum
+	 
+	 */
+	function accum() {
+		$accum = array();
+		$totalsofar = array_fill( 0, $this->array_index, 0 );
+		foreach ( $this->merged as $key => $appendages ) {
+			for ( $ai = 0; $ai < $this->array_index; $ai++ ) {
+				if ( isset( $appendages[ $ai ] ) ) {
+				 	$totalsofar[ $ai ] += $appendages[ $ai ];
+				}
+			}
+			$accum[ $key ] = $totalsofar;
+		}
+		$this->accum = $accum;
+		//print_r( $accum );
+		return( $accum );
+	}
 
 
 }
