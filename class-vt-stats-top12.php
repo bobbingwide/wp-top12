@@ -59,11 +59,16 @@ class VT_stats_top12 extends VT_stats {
 	 */ 
 	function elapsed( $elapsed ) {
 		$elapsed = $elapsed * 1.0;
-		$elapsed_range = number_format( $elapsed, 1 );
-		if ( $elapsed_range > 6.0 ) {
-			$elapsed_range = ">>>";
-		}   elseif ( $elapsed_range > 2.5 ) {
+		if ( $elapsed < 0.1 ) {
+			$elapsed_range = number_format( $elapsed, 1 );
+		} elseif ( $elapsed < 0.8 ) { 
+			$elapsed_range = number_format( $elapsed, 2 );
+		} elseif ( $elapsed < 2.6 ) {
+			$elapsed_range = number_format( $elapsed, 1 );
+		} elseif ( $elapsed < 6.0 ) {
 			$elapsed_range = "2.6+";
+		} else {
+			$elapsed_range = ">>>";
 		}
 		
 		/* 
