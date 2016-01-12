@@ -24,6 +24,8 @@ oik_require( "class-object-grouper.php", $plugin );
 
 oik_require( "class-CSV-merger.php", $plugin );
 
+oik_require( "class-group-summary.php", $plugin );
+
 
 //query_my_plugins();
 
@@ -54,15 +56,15 @@ $files = array( "vanilla7", "vanilla76", "vanilla4361", "vanilla4362" );
 
 $files = array( "vanilla7", "ssuper", "csuper", "ssuper2", "csuper2", "scacheuk7", "scache7com", "scache71com", "ccache71com"  );
 
-$files = array( "vanilla", "vanilla5" );
+$files = array( "vanilla", "vanilla5", "akismet", "sitemaps", "importer" );
 
 process_files( $files );
 
-$files = array( "vanilla", "akismet", "cf7", "ai1seo", "yoastseo", "jetpack", "sitemaps", "nextgen", "importer", "woocommerce", "analytics" );
+$files = array( "vanilla5", "cf7", "ai1seo", "yoastseo", "jetpack", "nextgen", "woocommerce", "wordfence", "analytics" );
 
 process_files( $files );
 
-$files = array( "vanilla", "sfence2", "cfence2", "ssuper", "csuper" );
+$files = array( "vanilla5", "sfence2", "cfence2", "ssuper", "csuper" );
 
 process_files( $files );
 
@@ -71,18 +73,30 @@ process_files( $files );
 function process_files( $files ) { 
 																											 
 	$merger = new CSV_merger();
+	$summary = new Group_Summary();
 
 	foreach ( $files as $file ) {
-	 $stats = new VT_stats_top12();
+		$stats = new VT_stats_top12();
 		$stats->load_file( $file );
 		$grouper = $stats->count_things();
 		//$merger->append( $grouper->groups );
 		$grouper->report_total();
+		$summary->add_group( $file, $grouper->total, $grouper->total_time ); 
+		
 		$merger->append( $grouper->percentages );
 		//$merger->append( $grouper->groups );
 	}
+	$merger->report_count();
 	echo "Elapsed," . implode( $files, "," ) . PHP_EOL;
+	$merger->sort();
+	
 	$merger->report(); 
+	$merger->accum();
+	
+	echo "Accum," . implode( $files, "," ) . PHP_EOL;
+	$merger->report_accum();
+	
+	$summary->report();
 }
 
 
