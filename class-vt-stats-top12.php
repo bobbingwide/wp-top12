@@ -1,7 +1,20 @@
 <?php // (C) Copyright Bobbing Wide 2015, 2016
 
 /**
- * VT_stats_top12 
+ * VT_stats_top12
+ * 
+ * Compare performance when each of the top 12 WordPress plugins have been activated
+ * Having produced an oik-bwtrace summary log for a whole range of transactions
+ * we group them by the final time counting the number of results in the selected
+ * range and outputting the information in a CSV file that can be shown visually.
+ * 
+ * For some plugins this clearly shows that the whole shooting match takes longer.
+ * For the really bad ones it's pretty obvious that it's taking longer.
+ * But these results alone don't indicate what's causing the problem.
+ 
+ * For others plugins the results might appear that the system is running faster.
+ * My gut feel is that this is just background variation.
+ * 
  */
  
 class VT_stats_top12 extends VT_stats {
@@ -21,6 +34,7 @@ class VT_stats_top12 extends VT_stats {
 	}
 	
 	/**
+	 * Count by grouping on the final time
 	 * 
 	 */
 	function count_things() {
@@ -36,6 +50,10 @@ class VT_stats_top12 extends VT_stats {
 		$grouper->percentages();
 		return( $grouper );
 	}
+	
+	/**
+	 * Ignore results exceeding 6 seconds
+	 */
 	
 	function lt6secs( $object ) {
 		$group = $object->final <= 6.0;
@@ -89,6 +107,33 @@ class VT_stats_top12 extends VT_stats {
 		//gob();
 		*/
 		return( $elapsed_range );
+	}
+	
+	
+	
+	/**
+	 * Count by grouping on the suritl 
+	 * 
+	 */
+	function count_things_differently() {
+		$grouper = new Object_Grouper();
+		echo "Grouping: " . count( $this->rows ) . PHP_EOL;
+		$grouper->populate( $this->rows );
+		$grouper->time_field( "final" );
+		$grouper->where( array( $this, "lt6secs" ) );
+		$grouper->groupby( "surisl", array( $this, "surisl" ) );
+		
+		$this->having = 6.0;
+		$grouper->having( array( $this, "having_filter_value_le" ) );
+		//$grouper->percentages();
+		//$grouper->averages();
+		return( $grouper );
+	}
+	
+	function surisl( $surisl ) {
+		//echo $surisl . PHP_EOL;
+		return( $surisl );
+	
 	}
 
 
