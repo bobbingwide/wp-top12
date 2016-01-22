@@ -108,6 +108,7 @@ class VT_row {
 	public $suritl; // Top level part of stripped URI
 	public $suril;  // Last part of stripped URI
   public $qparms; // Query parameters
+	public $surisl; // Second level part of stripped URI - when run in a subdirectory install
 	
 	/**
 	 *
@@ -195,7 +196,12 @@ class VT_row {
     list( $this->suri, $this->qparms, $blah ) = explode( "?", $this->uri . "???" , 3 );
 		$suri = trim( $this->suri, "/" ); 
     $blah = explode( "/", $suri ); 
-	  $this->suritl = $blah[0];
+		if ( isset( $blah[0] ) ) { 
+			$this->suritl = $blah[0];
+		} 
+		if ( isset( $blah[1] ) ) {
+      $this->surisl = $blah[1];
+		}
 		$this->suril = end( $blah );
 		//echo $this->suritl . PHP_EOL;
 		//echo $this->suril . PHP_EOL;
