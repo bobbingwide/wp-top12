@@ -78,12 +78,12 @@ function process_files( $files ) {
 	foreach ( $files as $file ) {
 		$stats = new VT_stats_top12();
 		$stats->load_file( $file );
-		$grouper = $stats->count_things();
-		//$merger->append( $grouper->groups );
+		// $grouper = $stats->count_things();
+		$grouper = $stats->count_things_differently();
 		$grouper->report_total();
 		$summary->add_group( $file, $grouper->total, $grouper->total_time ); 
 		
-		$merger->append( $grouper->percentages );
+		$merger->append( $grouper->elapsed );
 		//$merger->append( $grouper->groups );
 	}
 	$merger->report_count();
