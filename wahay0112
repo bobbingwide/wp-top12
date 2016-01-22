@@ -1,0 +1,1957 @@
+
+C:\apache\htdocs\wordpress\wp-content\plugins\wp-top12>rem Run oik-wp in batch mode so that you can test some code outwith the browser 
+
+C:\apache\htdocs\wordpress\wp-content\plugins\wp-top12>rem
+
+C:\apache\htdocs\wordpress\wp-content\plugins\wp-top12>rem php c:\apache\htdocs\wordpress\wp-content\plugins\oik-batch\oik-wp.php ../play/terms.php vt-top12.php 
+
+C:\apache\htdocs\wordpress\wp-content\plugins\wp-top12>rem php c:\apache\htdocs\oikcouk\wp-content\plugins\oik-batch\oik-wp.php vt-top12.php 
+
+C:\apache\htdocs\wordpress\wp-content\plugins\wp-top12>php c:\apache\htdocs\wordpress\wp-content\plugins\oik-batch\oik-wp.php vt-top12.php 
+wp-config in: C:\apache\htdocs\wordpress/
+cli
+Array
+(
+    [SERVER_SOFTWARE] => 
+    [REQUEST_URI] => 
+    [ALLUSERSPROFILE] => C:\ProgramData
+    [APPDATA] => C:\Users\Herb\AppData\Roaming
+    [CommonProgramFiles] => C:\Program Files\Common Files
+    [CommonProgramFiles(x86)] => C:\Program Files (x86)\Common Files
+    [CommonProgramW6432] => C:\Program Files\Common Files
+    [COMPUTERNAME] => QW
+    [ComSpec] => C:\WINDOWS\system32\cmd.exe
+    [FP_NO_HOST_CHECK] => NO
+    [HOMEDRIVE] => C:
+    [HOMEPATH] => \Users\Herb
+    [LOCALAPPDATA] => C:\Users\Herb\AppData\Local
+    [LOGONSERVER] => \\MicrosoftAccount
+    [NUMBER_OF_PROCESSORS] => 4
+    [OS] => Windows_NT
+    [Path] => C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\ATI Technologies\ATI.ACE\Core-Static;C:\Program Files (x86)\Common Files\Acronis\SnapAPI\;C:\Program Files\TortoiseSVN\bin;C:\ProgramData\ComposerSetup\bin;c:\php;C:\Program Files (x86)\Skype\Phone\;c:\mysql\bin;c:\cygwin\bin;c:\d_drive\dos;c:\php;c:\vslick\win
+    [PATHEXT] => .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PHP;
+    [PROCESSOR_ARCHITECTURE] => AMD64
+    [PROCESSOR_IDENTIFIER] => AMD64 Family 22 Model 0 Stepping 1, AuthenticAMD
+    [PROCESSOR_LEVEL] => 22
+    [PROCESSOR_REVISION] => 0001
+    [ProgramData] => C:\ProgramData
+    [ProgramFiles] => C:\Program Files
+    [ProgramFiles(x86)] => C:\Program Files (x86)
+    [ProgramW6432] => C:\Program Files
+    [PROMPT] => $P$G
+    [PSModulePath] => C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules\
+    [PUBLIC] => C:\Users\Public
+    [SESSIONNAME] => Console
+    [SystemDrive] => C:
+    [SystemRoot] => C:\WINDOWS
+    [TEMP] => C:\Users\Herb\AppData\Local\Temp
+    [TMP] => C:\Users\Herb\AppData\Local\Temp
+    [USERDOMAIN] => QW
+    [USERDOMAIN_ROAMINGPROFILE] => QW
+    [USERNAME] => Herb
+    [USERPROFILE] => C:\Users\Herb
+    [windir] => C:\WINDOWS
+    [PHP_SELF] => c:\apache\htdocs\wordpress\wp-content\plugins\oik-batch\oik-wp.php
+    [SCRIPT_NAME] => c:\apache\htdocs\wordpress\wp-content\plugins\oik-batch\oik-wp.php
+    [SCRIPT_FILENAME] => c:\apache\htdocs\wordpress\wp-content\plugins\oik-batch\oik-wp.php
+    [PATH_TRANSLATED] => c:\apache\htdocs\wordpress\wp-content\plugins\oik-batch\oik-wp.php
+    [DOCUMENT_ROOT] => 
+    [REQUEST_TIME_FLOAT] => 1452632409.6304
+    [REQUEST_TIME] => 1452632409
+    [argv] => Array
+        (
+            [0] => c:\apache\htdocs\wordpress\wp-content\plugins\oik-batch\oik-wp.php
+            [1] => vt-top12.php
+        )
+
+    [argc] => 2
+)
+I got here
+cli
+Shifting argv
+2016/vanilla.csvPlugin: vanilla Count: 1595
+Grouping: 1595
+/oikcom/shortcode_example/bw_plug-optionsactive_plugins/:10.925209
+/oikcom/oik_api/:7.469354
+/oikcom/shortcode_example/table-of-active-plugins/:6.323413
+/oikcom/shortcode_example/bw_plug-optionsactive_plugins/:8.541627
+/oikcom/oik_api/:7.378397
+/oikcom/shortcode_example/table-of-active-plugins/:7.876434
+Total: 1595
+Total time: 1097.318624
+Average: 0.68797405893417
+Appendages: 65
+2016/vanilla5.csvPlugin: vanilla5 Count: 7967
+Grouping: 7967
+/oikcom/shortcode_example/bw_plug-optionsactive_plugins/:7.005963
+/oikcom/oik_api/:7.383667
+/oikcom/shortcode_example/table-of-active-plugins/:7.114040
+/oikcom/shortcode_example/bw_plug-optionsactive_plugins/:6.273562
+/oikcom/oik_api/:7.393995
+/oikcom/shortcode_example/table-of-active-plugins/:6.459839
+/oikcom/shortcode_example/bw_plug-optionsactive_plugins/:16.648368
+/oikcom/oik_api/:6.728305
+/oikcom/shortcode_example/fix-height-nivo-slider-default-theme/:9.579091
+/oikcom/shortcode_example/table-of-active-plugins/:9.497719
+/oikcom/shortcode_example/bw_plug-optionsactive_plugins/:10.441245
+/oikcom/shortcode_example/fix-height-nivo-slider-oik-theme/:9.166048
+/oikcom/oik_api/:6.842010
+/oikcom/shortcode_example/fix-height-nivo-slider-default-theme/:6.656889
+/oikcom/shortcode_example/table-of-active-plugins/:9.233396
+/oikcom/oik-plugins/oik/:7.001714
+:7.0.2RC1
+/oikcom/shortcode_example/bw_plug-optionsactive_plugins/:9.879038
+/oikcom/oik_api/:7.015727
+/oikcom/shortcode_example/fix-height-nivo-slider-default-theme/:6.333988
+/oikcom/shortcode_example/table-of-active-plugins/:24.257484
+/oikcom/oik-plugins/oik/:7.170547
+/oikcom/shortcode_example/bw_plug-optionsactive_plugins/:10.408975
+/oikcom/shortcode_example/fix-height-nivo-slider-oik-theme/:7.081249
+/oikcom/oik_api/:6.766972
+/oikcom/shortcode_example/table-of-active-plugins/:9.143947
+/oikcom/shortcode_example/bw_plug-optionsactive_plugins/:10.476809
+/oikcom/shortcode_example/fix-height-nivo-slider-oik-theme/:7.070486
+/oikcom/oik_api/:6.731850
+/oikcom/shortcode_example/table-of-active-plugins/:12.779863
+/oikcom/shortcode_example/bw_plug-optionsactive_plugins/:8.115086
+/oikcom/oik_api/:6.740719
+/oikcom/shortcode_example/table-of-active-plugins/:10.615993
+/oikcom/shortcode_example/bw_plug-optionsactive_plugins/:10.354241
+/oikcom/shortcode_example/fix-height-nivo-slider-oik-theme/:6.102461
+/oikcom/oik_api/:6.763551
+/oikcom/shortcode_example/table-of-active-plugins/:13.058599
+/oikcom/shortcode_example/bw_plug-optionsactive_plugins/:12.289528
+/oikcom/shortcode_example/fix-height-nivo-slider-oik-theme/:6.566190
+/oikcom/oik_api/:6.744322
+/oikcom/shortcode_example/fix-height-nivo-slider-default-theme/:9.109612
+/oikcom/shortcode_example/table-of-active-plugins/:11.868668
+Total: 7967
+Total time: 5572.534067
+Average: 0.6994519978662
+Appendages: 64
+2016/akismet.csvPlugin: akismet Count: 1593
+Grouping: 1593
+/oikcom/shortcode_example/bw_plug-optionsactive_plugins/:7.272311
+/oikcom/shortcode_example/bw_block-and-bw_eblock/:8.765142
+/oikcom/oik_api/:7.471011
+/oikcom/shortcode_example/table-of-active-plugins/:8.711606
+/oikcom/oik-plugins/oik/:10.541380
+/oikcom/shortcode_example/bw_plug-optionsactive_plugins/:15.392820
+/oikcom/oik_api/:7.473958
+/oikcom/shortcode_example/table-of-active-plugins/:7.613835
+Total: 1593
+Total time: 1089.240992
+Average: 0.68376710106717
+Appendages: 64
+2016/sitemaps.csvPlugin: sitemaps Count: 1588
+Grouping: 1588
+/oikcom/shortcode_example/bw_plug-optionsactive_plugins/:8.195522
+/oikcom/oik_api/:6.930400
+/oikcom/shortcode_example/fix-height-nivo-slider-default-theme/:6.237208
+/oikcom/shortcode_example/table-of-active-plugins/:7.822352
+/oikcom/shortcode_example/bw_plug-optionsactive_plugins/:6.660315
+/oikcom/oik_api/:7.460491
+Total: 1588
+Total time: 1068.823598
+Average: 0.67306271914358
+Appendages: 64
+2016/importer.csvPlugin: importer Count: 1589
+Grouping: 1589
+/oikcom/oik-plugins/oik/:10.175784
+/oikcom/shortcode_example/bw_plug-optionsactive_plugins/:13.048036
+/oikcom/oik_api/:7.394349
+/oikcom/shortcode_example/fix-height-nivo-slider-default-theme/:10.171355
+/oikcom/shortcode_example/table-of-active-plugins/:6.105782
+/oikcom/shortcode_example/bw_plug-optionsactive_plugins/:6.488515
+/oikcom/oik_api/:7.425580
+/oikcom/shortcode_example/table-of-active-plugins/:6.974031
+Total: 1589
+Total time: 1101.656057
+Average: 0.69330148332284
+Appendages: 65
+Merged:65
+Elapsed,vanilla,vanilla5,akismet,sitemaps,importer
+,1.227258,3.155334,0.601702,0.705855,0.571655
+ ,5.32564,33.602812,5.152048,2.763296,2.749376
+301-redirected-pages,0.901555,5.069348,1.010265,0.971443,0.944476
+2011,4.213598,21.369108,3.922791,4.029353,4.472681
+2012,6.033797,27.634744,5.449436,5.493535,6.071234
+2013,11.026192,61.660512,12.797561,11.780957,11.201228
+2014,21.247697,100.099221,23.355747,20.076678,22.1789
+2015,11.14447,49.940806,9.826485,9.758186,10.600374
+about-oik-plugins-lazy-smart-shortcodes,2.624752,12.334349,2.882115,3.000969,2.945229
+apis,95.533315,464.836816,88.0992,85.829715,96.758218
+apple-touch-icon-precomposed.png,0.572276,3.206734,0.576429,0.566132,0.556508
+apple-touch-icon.png,0.635211,3.255425,0.57492,0.575126,0.580012
+archived-pages,4.780931,25.359677,5.242025,4.906349,4.707797
+author,4.855201,23.013485,4.577974,4.70679,4.250438
+blog,1.892218,9.924041,2.028025,2.06234,2.03903
+checkout,0.703478,3.503732,0.72955,0.624821,0.637866
+comments,0.489293,2.561249,0.446034,0.455062,0.453809
+contact,1.269243,6.89694,1.411401,1.402134,1.468999
+downloads,7.64411,43.623073,8.870187,7.65835,7.312821
+examples,20.621422,95.34418,18.444726,18.532442,18.871204
+getting-started-with-oik-plugins,0.326471,1.484557,0.337989,0.333976,0.277564
+home,0.677553,3.526451,0.687182,0.74668,0.709705
+home-2,1.373554,6.841625,1.510823,1.530564,1.584021
+hover-selectors-oik-external-link-warning-jquery-plugin,0.853114,4.676776,0.854448,0.916403,0.854546
+index.php,0.313339,1.703375,0.329233,0.334765,0.29626
+latest,1.177346,6.352575,1.129091,1.166461,1.148945
+mad-mimi-landing,1.352619,5.550664,1.072954,1.064565,1.036046
+new-home,1.531709,8.747535,1.623801,1.560471,1.541251
+oik,19.181671,101.374548,19.735187,19.444402,18.829739
+oik-clone,1.547515,8.875926,1.668697,1.6766,1.740301
+oik-faq,7.433634,19.105688,3.563959,3.646055,7.534443
+oik-installation,0.342938,1.707477,0.290505,0.298333,0.292057
+oik-plugins,88.785851,432.399667,99.460833,93.254858,100.368063
+oik-shortcodes,1.131579,5.63785,0.896286,1.187558,1.313261
+oik-themes,5.218879,28.287175,5.186155,5.315742,5.647006
+oik-weightcountry-shipping-basic-user-guide,1.246682,5.172959,0.989411,1.001095,0.967831
+oik_api,141.320781,717.395478,143.458736,144.830255,139.340501
+oik_file,7.220108,36.481907,7.174954,7.463294,7.304689
+oik_hook,43.469628,234.303261,42.896972,44.345198,48.426867
+oik_hook-sitemap.xml,0.26973,1.470217,0.286025,0.58766,0.608836
+oik_parsed_source-sitemap4.xml,0.340841,1.559272,0.313854,0.790254,0.896059
+oik_pluginversion,66.593088,341.242554,65.584187,66.820473,64.45401
+oik_premiumversion,6.862379,34.508114,6.585372,6.532217,6.255392
+oik_shortcodes,110.715195,584.437116,108.144131,112.175498,109.405821
+oik_themeversion,0.858195,4.946787,0.91454,0.883208,0.916387
+old,0.65436,3.034769,0.622561,0.57435,0.609347
+pages-plugin,1.361585,6.465565,1.297476,1.341064,1.14741
+premium-plugins,0.963403,5.544819,1.001387,1.010784,1.229976
+privacy-policy,0.312415,1.553143,0.313009,0.298996,0.293908
+purchase-confirmation,0.605016,3.454231,0.714267,0.637904,0.623949
+request-an-api-key,0.310834,1.668725,0.299221,0.302489,0.282448
+shortcode_example,124.043492,723.452259,134.913129,120.898253,128.200922
+shortcodes,21.958113,77.561408,14.597882,14.965087,19.273591
+sitemap_index.xml,0.304813,1.550311,0.337483,0.574834,0.560978
+support,9.132871,45.815985,9.286717,9.291714,9.3125
+tag.lp,0.816964,4.110844,0.721135,1.110949,0.830185
+test,0.826288,3.116418,0.633361,0.667292,0.724445
+thankyou,0.827511,4.57784,0.837506,0.867012,1.143364
+tutorials,8.019976,39.660884,8.250827,8.000933,7.13557
+wordpress,0.809838,3.162459,0.591624,0.603863,0.736801
+wordpress-plugins-from-oik-plugins,205.319111,1013.816348,196.036724,196.192224,198.49166
+wordpress-themes-oik-plugins,3.22829,17.478748,3.561166,3.33573,3.15939
+wp,0.569968,3.206539,0.632621,0.618299,0.594638
+wp-content,4.127393,19.121632,3.89895,3.725703,6.014354
+wp-cron.php,0.240327,0,0,0,0.169165
+Accum,vanilla,vanilla5,akismet,sitemaps,importer
+,1.227258,3.155334,0.601702,0.705855,0.571655
+ ,6.552898,36.758146,5.75375,3.469151,3.321031
+301-redirected-pages,7.454453,41.827494,6.764015,4.440594,4.265507
+2011,11.668051,63.196602,10.686806,8.469947,8.738188
+2012,17.701848,90.831346,16.136242,13.963482,14.809422
+2013,28.72804,152.491858,28.933803,25.744439,26.01065
+2014,49.975737,252.591079,52.28955,45.821117,48.18955
+2015,61.120207,302.531885,62.116035,55.579303,58.789924
+about-oik-plugins-lazy-smart-shortcodes,63.744959,314.866234,64.99815,58.580272,61.735153
+apis,159.278274,779.70305,153.09735,144.409987,158.493371
+apple-touch-icon-precomposed.png,159.85055,782.909784,153.673779,144.976119,159.049879
+apple-touch-icon.png,160.485761,786.165209,154.248699,145.551245,159.629891
+archived-pages,165.266692,811.524886,159.490724,150.457594,164.337688
+author,170.121893,834.538371,164.068698,155.164384,168.588126
+blog,172.014111,844.462412,166.096723,157.226724,170.627156
+checkout,172.717589,847.966144,166.826273,157.851545,171.265022
+comments,173.206882,850.527393,167.272307,158.306607,171.718831
+contact,174.476125,857.424333,168.683708,159.708741,173.18783
+downloads,182.120235,901.047406,177.553895,167.367091,180.500651
+examples,202.741657,996.391586,195.998621,185.899533,199.371855
+getting-started-with-oik-plugins,203.068128,997.876143,196.33661,186.233509,199.649419
+home,203.745681,1001.402594,197.023792,186.980189,200.359124
+home-2,205.119235,1008.244219,198.534615,188.510753,201.943145
+hover-selectors-oik-external-link-warning-jquery-plugin,205.972349,1012.920995,199.389063,189.427156,202.797691
+index.php,206.285688,1014.62437,199.718296,189.761921,203.093951
+latest,207.463034,1020.976945,200.847387,190.928382,204.242896
+mad-mimi-landing,208.815653,1026.527609,201.920341,191.992947,205.278942
+new-home,210.347362,1035.275144,203.544142,193.553418,206.820193
+oik,229.529033,1136.649692,223.279329,212.99782,225.649932
+oik-clone,231.076548,1145.525618,224.948026,214.67442,227.390233
+oik-faq,238.510182,1164.631306,228.511985,218.320475,234.924676
+oik-installation,238.85312,1166.338783,228.80249,218.618808,235.216733
+oik-plugins,327.638971,1598.73845,328.263323,311.873666,335.584796
+oik-shortcodes,328.77055,1604.3763,329.159609,313.061224,336.898057
+oik-themes,333.989429,1632.663475,334.345764,318.376966,342.545063
+oik-weightcountry-shipping-basic-user-guide,335.236111,1637.836434,335.335175,319.378061,343.512894
+oik_api,476.556892,2355.231912,478.793911,464.208316,482.853395
+oik_file,483.777,2391.713819,485.968865,471.67161,490.158084
+oik_hook,527.246628,2626.01708,528.865837,516.016808,538.584951
+oik_hook-sitemap.xml,527.516358,2627.487297,529.151862,516.604468,539.193787
+oik_parsed_source-sitemap4.xml,527.857199,2629.046569,529.465716,517.394722,540.089846
+oik_pluginversion,594.450287,2970.289123,595.049903,584.215195,604.543856
+oik_premiumversion,601.312666,3004.797237,601.635275,590.747412,610.799248
+oik_shortcodes,712.027861,3589.234353,709.779406,702.92291,720.205069
+oik_themeversion,712.886056,3594.18114,710.693946,703.806118,721.121456
+old,713.540416,3597.215909,711.316507,704.380468,721.730803
+pages-plugin,714.902001,3603.681474,712.613983,705.721532,722.878213
+premium-plugins,715.865404,3609.226293,713.61537,706.732316,724.108189
+privacy-policy,716.177819,3610.779436,713.928379,707.031312,724.402097
+purchase-confirmation,716.782835,3614.233667,714.642646,707.669216,725.026046
+request-an-api-key,717.093669,3615.902392,714.941867,707.971705,725.308494
+shortcode_example,841.137161,4339.354651,849.854996,828.869958,853.509416
+shortcodes,863.095274,4416.916059,864.452878,843.835045,872.783007
+sitemap_index.xml,863.400087,4418.46637,864.790361,844.409879,873.343985
+support,872.532958,4464.282355,874.077078,853.701593,882.656485
+tag.lp,873.349922,4468.393199,874.798213,854.812542,883.48667
+test,874.17621,4471.509617,875.431574,855.479834,884.211115
+thankyou,875.003721,4476.087457,876.26908,856.346846,885.354479
+tutorials,883.023697,4515.748341,884.519907,864.347779,892.490049
+wordpress,883.833535,4518.9108,885.111531,864.951642,893.22685
+wordpress-plugins-from-oik-plugins,1089.152646,5532.727148,1081.148255,1061.143866,1091.71851
+wordpress-themes-oik-plugins,1092.380936,5550.205896,1084.709421,1064.479596,1094.8779
+wp,1092.950904,5553.412435,1085.342042,1065.097895,1095.472538
+wp-content,1097.078297,5572.534067,1089.240992,1068.823598,1101.486892
+wp-cron.php,1097.318624,5572.534067,1089.240992,1068.823598,1101.656057
+Summary report: 
+name,count,total,average,plusorminus,percentage
+vanilla,1595,1097.318624,0.68797405893417,0,0
+vanilla5,7967,5572.534067,0.6994519978662,0.011477938932027,1.6683679832069
+akismet,1593,1089.240992,0.68376710106717,-0.0042069578670023,-0.61149949076857
+sitemaps,1588,1068.823598,0.67306271914358,-0.014911339790594,-2.1674276227355
+importer,1589,1101.656057,0.69330148332284,0.0053274243886735,0.77436413764305
+2016/vanilla5.csvPlugin: vanilla5 Count: 7967
+Grouping: 7967
+/oikcom/shortcode_example/bw_plug-optionsactive_plugins/:7.005963
+/oikcom/oik_api/:7.383667
+/oikcom/shortcode_example/table-of-active-plugins/:7.114040
+/oikcom/shortcode_example/bw_plug-optionsactive_plugins/:6.273562
+/oikcom/oik_api/:7.393995
+/oikcom/shortcode_example/table-of-active-plugins/:6.459839
+/oikcom/shortcode_example/bw_plug-optionsactive_plugins/:16.648368
+/oikcom/oik_api/:6.728305
+/oikcom/shortcode_example/fix-height-nivo-slider-default-theme/:9.579091
+/oikcom/shortcode_example/table-of-active-plugins/:9.497719
+/oikcom/shortcode_example/bw_plug-optionsactive_plugins/:10.441245
+/oikcom/shortcode_example/fix-height-nivo-slider-oik-theme/:9.166048
+/oikcom/oik_api/:6.842010
+/oikcom/shortcode_example/fix-height-nivo-slider-default-theme/:6.656889
+/oikcom/shortcode_example/table-of-active-plugins/:9.233396
+/oikcom/oik-plugins/oik/:7.001714
+:7.0.2RC1
+/oikcom/shortcode_example/bw_plug-optionsactive_plugins/:9.879038
+/oikcom/oik_api/:7.015727
+/oikcom/shortcode_example/fix-height-nivo-slider-default-theme/:6.333988
+/oikcom/shortcode_example/table-of-active-plugins/:24.257484
+/oikcom/oik-plugins/oik/:7.170547
+/oikcom/shortcode_example/bw_plug-optionsactive_plugins/:10.408975
+/oikcom/shortcode_example/fix-height-nivo-slider-oik-theme/:7.081249
+/oikcom/oik_api/:6.766972
+/oikcom/shortcode_example/table-of-active-plugins/:9.143947
+/oikcom/shortcode_example/bw_plug-optionsactive_plugins/:10.476809
+/oikcom/shortcode_example/fix-height-nivo-slider-oik-theme/:7.070486
+/oikcom/oik_api/:6.731850
+/oikcom/shortcode_example/table-of-active-plugins/:12.779863
+/oikcom/shortcode_example/bw_plug-optionsactive_plugins/:8.115086
+/oikcom/oik_api/:6.740719
+/oikcom/shortcode_example/table-of-active-plugins/:10.615993
+/oikcom/shortcode_example/bw_plug-optionsactive_plugins/:10.354241
+/oikcom/shortcode_example/fix-height-nivo-slider-oik-theme/:6.102461
+/oikcom/oik_api/:6.763551
+/oikcom/shortcode_example/table-of-active-plugins/:13.058599
+/oikcom/shortcode_example/bw_plug-optionsactive_plugins/:12.289528
+/oikcom/shortcode_example/fix-height-nivo-slider-oik-theme/:6.566190
+/oikcom/oik_api/:6.744322
+/oikcom/shortcode_example/fix-height-nivo-slider-default-theme/:9.109612
+/oikcom/shortcode_example/table-of-active-plugins/:11.868668
+Total: 7967
+Total time: 5572.534067
+Average: 0.6994519978662
+Appendages: 64
+2016/cf7.csvPlugin: cf7 Count: 1594
+Grouping: 1594
+/oikcom/shortcode_example/bw_plug-optionsactive_plugins/:6.178348
+/oikcom/oik_api/:6.448754
+/oikcom/shortcode_example/table-of-active-plugins/:6.363015
+/oikcom/shortcode_example/bw_plug-optionsactive_plugins/:6.909851
+/oikcom/oik_api/:6.423044
+/oikcom/shortcode_example/table-of-active-plugins/:6.580228
+Total: 1594
+Total time: 1049.841162
+Average: 0.65862055332497
+Appendages: 64
+2016/ai1seo.csvPlugin: ai1seo Count: 1594
+Grouping: 1594
+/oikcom/shortcode_example/bw_plug-optionsactive_plugins/:8.132890
+/oikcom/oik_api/:7.436545
+/oikcom/shortcode_example/table-of-active-plugins/:7.073227
+/oikcom/shortcode_example/bw_plug-optionsactive_plugins/:6.412480
+/oikcom/oik_api/:7.409753
+/oikcom/shortcode_example/table-of-active-plugins/:6.267078
+Total: 1594
+Total time: 1037.962949
+Average: 0.65116872584693
+Appendages: 64
+2016/yoastseo.csvPlugin: yoastseo Count: 1588
+Grouping: 1588
+/oikcom/shortcode_example/bw_plug-optionsactive_plugins/:7.133224
+/oikcom/oik_api/:6.992031
+/oikcom/shortcode_example/bw_plug-optionsactive_plugins/:6.357211
+/oikcom/oik_api/:6.469077
+Total: 1588
+Total time: 1112.84209
+Average: 0.70078217254408
+Appendages: 64
+2016/jetpack.csvPlugin: jetpack Count: 1594
+Grouping: 1594
+/oikcom/shortcode_example/bw_plug-optionsactive_plugins/:6.318570
+/oikcom/oik_api/:6.441449
+/oikcom/shortcode_example/table-of-active-plugins/:6.164102
+/oikcom/shortcode_example/bw_plug-optionsactive_plugins/:6.559443
+/oikcom/oik_api/:6.502975
+/oikcom/shortcode_example/table-of-active-plugins/:6.625348
+Total: 1594
+Total time: 1084.651558
+Average: 0.68045894479297
+Appendages: 64
+2016/nextgen.csvPlugin: nextgen Count: 1588
+Grouping: 1588
+/oikcom/oik-plugins/oik/:13.914362
+/oikcom/oik_shortcodes/bw_api/:6.311020
+/oikcom/shortcode_example/bw_plug-optionsactive_plugins/:12.644784
+/oikcom/oik_api/:11.301103
+/oikcom/shortcode_example/table-of-active-plugins/:8.522156
+/oikcom/oik-plugins/oik/:6.139495
+/oikcom/oik-plugins/oik/:10.740926
+/oikcom/oik_shortcodes/playlist/:17.716671
+/oikcom/downloads/infusionsoft-sign-up-form-wordpress-plugin/:15.195197
+/oikcom/oik_hook/activated_plugin/:6.242711
+/oikcom/oik_shortcodes/bw_blogs/:10.877506
+/oikcom/oik_shortcodes/artisteer/:17.002406
+/oikcom/wordpress-plugins-from-oik-plugins/free-oik-plugins/oik-trace-plugin/oik-bwtrace-action-and-filter-trace-file-bwaction-loh/:8.030210
+/oikcom/oik_shortcodes/ad/:14.493770
+/oikcom/oik_pluginversion/oik-v2-6-alpha-0724/:17.638245
+/oikcom/oik_shortcodes/bw_crumbs/:12.893194
+/oikcom/oik_shortcodes/bw_tabs/:21.123435
+/oikcom/2015/09/clone-the-time-as-well/:18.001212
+/oikcom/oik_premiumversion/oik-weightcountry-shipping-pro-v1-4-1/:20.519287
+/oikcom/oik_hook/admin_notices/:7.422192
+/oikcom/tutorials/upgrade-to-a-new-version-of-oik-from-oik-plugins/:11.939997
+/oikcom/oik_api/oik_require_lib/:10.750598
+/oikcom/blog/wp-admin/:9.754499
+/oikcom/oik_shortcodes/bw_api/:46.414504
+/oikcom/oik_pluginversion/oik-v3-0-0-alpha-0806/:23.123327
+/oikcom/wordpress-plugins-from-oik-plugins/oik-base-plugin/oik-jquery-library/jquery-fancybox/jquery-fancybox-with-nivo-slider/RS=ADA67MxJML5ROXZXATc4TRkKuc3us8-:16.725089
+/oikcom/shortcodes/not-oiks-shortcodes/the-youtube-video-shortcode-from-jetpack/:16.391495
+/oikcom/shortcode_example/bw_css-add-custom-gradient-background-drop-shadow-opacity/:10.239617
+/oikcom/2015/09/shortcodes-requirements-for-input-editing-and-formatting/:15.461391
+/oikcom/wordpress-plugins-from-oik-plugins/free-oik-plugins/oik-header-plugin/how-to-change-your-custom-header-image/:16.292885
+/oikcom/oik_shortcodes/bob-3/:16.008294
+/oikcom/oik_api/bw_as_array/:10.088220
+/oikcom/shortcode_example/bw_contact_button-contact-button/:19.211782
+/oikcom/oik_shortcodes/bw_eblock/:7.007300
+/oikcom/oik_pluginversion/oik-v3-0-0-alpha-0820/:15.276275
+/oikcom/shortcode_example/bw_tides-shortcode-chichester-harbour-tide-times-heights/:20.316048
+/oikcom/oik-themes/oik20120-twenty-twelve-child-theme/:18.320236
+/oikcom/oik_shortcodes/bw_images/:9.278482
+/oikcom/oik_shortcodes/xhtml/:25.186829
+/oikcom/shortcode_example/nivo-classw50pc-half-width-nivo-slider/:10.282975
+/oikcom/shortcode_example/bw_plug-optionsactive_plugins/:25.695261
+/oikcom/oik_api/:13.740655
+/oikcom/oik_pluginversion/oik-clone-v0-8/:8.335378
+/oikcom/2011/02/new-shortcode-for-bobfob-bingbong-widehide-and-wow/:10.750055
+/oikcom/2011/02/212/:8.747794
+/oikcom/2013/12/oik-v2-1-alpha-1204-now-available/:22.037344
+/oikcom/oik_pluginversion/oik-bwtrace-v2-0-1/:16.567207
+/oikcom/oik_pluginversion/oik-v2-3/:17.111456
+/oikcom/oik_hook/option/:8.082445
+/oikcom/wordpress-plugins-from-oik-plugins/premium-oik-plugins/diy-oik-shortcodes/oik-options-diy-shortcodes/oik-options-diy-shortcodes-delete/:24.239346
+/oikcom/shortcode_example/fix-height-nivo-slider-default-theme/:22.356467
+/oikcom/wordpress-plugins-from-oik-plugins/free-oik-plugins/oik-clone/oik-clone-requirements-summary/oik-clone-technical-requirements/:17.246568
+/oikcom/wordpress-plugins-from-oik-plugins/free-oik-plugins/oik-video-plugin/standard-wp-options-displaying-videos/:10.820055
+/oikcom/oik_file/shortcodesoik-api-importer-php/:12.532825
+/oikcom/oik_pluginversion/oik-batchmove-v2-4/:11.462111
+/oikcom/apis/oik-bp-signup-email-apis/:14.939992
+/oikcom/oik_hook/after_plugin_row_oik-typesoik-types-php/:10.393195
+/oikcom/shortcode_example/set-height-nivo-slider-default-theme/:19.390578
+/oikcom/apis/uk-tides-apis/:11.210612
+/oikcom/oik_shortcodes/bw_address-2/:26.509798
+/oikcom/oik_shortcodes/codes/:13.966976
+/oikcom/shortcodes/trying-the-div-end-div-shortcodes/:10.466370
+/oikcom/oik_hook/bw_nav_tabs_page_tab/:12.842434
+/oikcom/oik_hook/cookies/:8.940727
+/oikcom/oik_api/oik_path/:9.148190
+/oikcom/archived-pages/bw_pages-shortcode/example-bw_pages-using-the-format-parameter/:27.765069
+/oikcom/2014/01/oik-v2-1-beta-0106-now-wordpress-org/:10.689134
+/oikcom/oik_hook/bw_nav_tabs_page/:10.297619
+/oikcom/wordpress-plugins-from-oik-plugins/wordpress-plugins/oik-nivo-slider/nivo-settings/nivo-slider-transition-effects/nivo-slider-effectsliceupleft/:25.386932
+/oikcom/oik_hook/bw_field_validation_rating/:15.346582
+/oikcom/oik_hook/after_plugin_row_oik-batchmoveoik-batchmove-php/:15.253718
+/oikcom/oik_shortcodes/file/:15.238549
+/oikcom/shortcode_example/display-cycling-list-latest-plugins/:15.927615
+/oikcom/oik_parsed_source-sitemap4.xml:10.662294
+/oikcom/wordpress-plugins-from-oik-plugins/free-oik-plugins/oik-video-plugin/:21.039398
+/oikcom/apis/oik-email-signature-apis/:20.539466
+/oikcom/wordpress-plugins-from-oik-plugins/free-oik-plugins/oik-sidebar/:16.833154
+/oikcom/oik_pluginversion/oik-bwtrace-v2-0-0/:15.096468
+/oikcom/oik_pluginversion/oik-v2-4-beta-1223/:15.261456
+/oikcom/oik_pluginversion/oik-bwtrace-v1-24/:11.956874
+/oikcom/archived-pages/bw_pages-shortcode/:11.012261
+/oikcom/oik_shortcodes/bw_graphviz/:9.259183
+/oikcom/shortcode_example/table-of-active-plugins/:30.086888
+/oikcom/oik_pluginversion/oik-v2-4-beta-1218/:17.197411
+/oikcom/apis/oik-header-apis/:10.792695
+/oikcom/wordpress-plugins-from-oik-plugins/wordpress-plugins/oik-nivo-slider/nivo-settings/nivo-slider-transition-effects/nivo-slider-effectsliceupright/:22.931467
+/oikcom/oik_shortcodes/bw_loginout/:18.183568
+/oikcom/oik_hook/activate_plugin/:9.423064
+/oikcom/oik_pluginversion/oik-clone-v0-9/:12.017047
+/oikcom/downloads/oik-shortcode-and-api-server/:32.425914
+/oikcom/oik_shortcodes/bing-2/:12.316367
+/oikcom/oik_shortcodes/bw_company/:25.727731
+/oikcom/wordpress-plugins-from-oik-plugins/premium-oik-plugins/oik-shortcode-and-api-server/oik_api-custom-post-type/:16.064934
+/oikcom/wordpress-plugins-from-oik-plugins/free-oik-plugins/oik-header-plugin/:15.705906
+/oikcom/wordpress-plugins-from-oik-plugins/free-oik-plugins/oik-clone/oik-clone-requirements-summary/oik-clone-technical-requirements/support-pushing-of-media-files-using-multipart-forms/:11.777364
+/oikcom/oik_pluginversion/oik-v2-3-alpha-0728/:20.673803
+/oikcom/oik_shortcodes/bw_business/:17.487166
+/oikcom/hover-selectors-oik-external-link-warning-jquery-plugin/:11.686637
+/oikcom/oik_shortcodes/bw_iframe/:15.186005
+/oikcom/oik_api/bw_register_field/:12.712615
+/oikcom/:36.303972
+/oikcom/oik_api/epan/:63.770568
+/oikcom/archived-pages/:105.955765
+Total: 1588
+Total time: 3022.2506
+Average: 1.9031804785894
+Appendages: 65
+2016/woocommerce.csvPlugin: woocommerce Count: 1586
+Grouping: 1586
+/oikcom/oik_api/:6.496755
+/oikcom/shortcode_example/table-of-active-plugins/:7.826773
+/oikcom/oik_api/:6.611133
+/oikcom/shortcode_example/fix-height-nivo-slider-default-theme/:6.711584
+/oikcom/shortcode_example/table-of-active-plugins/:6.705631
+Total: 1586
+Total time: 1223.738004
+Average: 0.7715876443884
+Appendages: 64
+2016/wordfence.csvPlugin: wordfence Count: 1588
+Grouping: 1588
+/oikcom/shortcode_example/bw_plug-optionsactive_plugins/:8.092869
+/oikcom/oik_api/:6.444068
+/oikcom/shortcode_example/table-of-active-plugins/:6.165524
+/oikcom/shortcode_example/bw_plug-optionsactive_plugins/:7.352518
+/oikcom/oik_api/:6.525300
+/oikcom/shortcode_example/set-height-nivo-slider-default-theme/:6.242661
+/oikcom/shortcode_example/table-of-active-plugins/:9.989416
+Total: 1588
+Total time: 1241.992431
+Average: 0.78211110264484
+Appendages: 64
+2016/analytics.csvPlugin: analytics Count: 1599
+Grouping: 1599
+/oikcom/shortcode_example/bw_plug-optionsactive_plugins/:8.917544
+/oikcom/oik_api/:6.407179
+/oikcom/shortcode_example/table-of-active-plugins/:6.665821
+/oikcom/shortcode_example/bw_plug-optionsactive_plugins/:6.054402
+/oikcom/oik_api/:6.435526
+/oikcom/shortcode_example/table-of-active-plugins/:6.177834
+Total: 1599
+Total time: 1114.248707
+Average: 0.69684096747968
+Appendages: 66
+Merged:66
+Elapsed,vanilla5,cf7,ai1seo,yoastseo,jetpack,nextgen,woocommerce,wordfence,analytics
+,3.155334,0.705213,0.664196,0.747833,0.835407,0.859663,0.956919,0.898872,0.78265
+ ,33.602812,5.268003,5.275819,3.032082,5.57234,39.113952,5.980574,3.574431,3.006091
+301-redirected-pages,5.069348,1.017244,0.976478,1.070074,1.078707,1.211175,1.204866,1.764884,1.045777
+2011,21.369108,4.144606,4.428717,4.462541,4.820643,24.411545,5.58343,5.707294,4.976356
+2012,27.634744,5.583624,5.50536,5.934795,6.000892,11.80603,7.005556,7.204067,6.251213
+2013,61.660512,12.136354,11.7853,11.836587,12.736348,37.170423,13.18268,12.943433,13.602579
+2014,100.099221,20.044631,20.105924,20.654276,20.717829,39.381712,24.082809,24.134184,21.452569
+2015,49.940806,9.783136,9.607079,10.179357,9.96188,54.257646,11.497859,11.673783,10.105939
+about-oik-plugins-lazy-smart-shortcodes,12.334349,3.005793,2.871205,3.195982,2.647853,3.1572,3.633287,3.713832,3.142185
+apis,464.836816,87.407703,83.366116,89.709606,87.061119,171.358418,96.003473,97.102101,89.872829
+apple-touch-icon-precomposed.png,3.206734,0.602516,0.625152,0.686068,0.646235,0.708797,0.794034,0.779818,0.665604
+apple-touch-icon.png,3.255425,0.596172,0.693335,0.688339,0.730432,0.703074,0.823063,0.910254,0.732646
+archived-pages,25.359677,4.874014,4.779998,5.116534,5.108954,148.57801,5.901217,6.099187,4.93754
+author,23.013485,4.397803,4.327068,4.827199,4.929009,6.908174,5.34925,5.318078,4.555752
+blog,9.924041,2.114075,1.977634,2.115518,2.117455,11.604628,2.666403,2.441527,2.230296
+checkout,3.503732,0.645025,0.677112,0.776337,0.720864,0.787842,0.848905,0.85656,0.723074
+comments,2.561249,0.488439,0.541889,0.496687,0.587777,0.64886,0.628909,0.709423,0.55154
+contact,6.89694,1.58458,1.401771,1.515236,1.553806,1.839399,2.065945,1.86045,1.834613
+downloads,43.623073,7.776147,7.495305,8.413101,8.203255,55.987477,9.328957,10.553002,8.103078
+examples,95.34418,18.39695,18.091881,20.076447,19.417543,32.408851,22.659385,22.166419,19.615122
+getting-started-with-oik-plugins,1.484557,0.348642,0.289791,0.434331,0.33374,0.71032,0.544719,0.387362,0.417384
+home,3.526451,0.698447,0.641264,0.72771,0.714568,0.880003,0.971533,0.884623,0.864261
+home-2,6.841625,1.55869,1.542815,1.637325,1.370322,1.56549,1.763256,1.866035,1.56631
+hover-selectors-oik-external-link-warning-jquery-plugin,4.676776,0.886044,0.884814,1.029682,0.960147,12.214533,1.167854,1.224683,1.014216
+index.php,1.703375,0.314968,0.347943,0.423831,0.415189,0.394913,0.433164,0.412475,0.361003
+latest,6.352575,1.23009,1.16463,1.234721,1.240795,1.41303,1.386522,1.993007,1.259611
+mad-mimi-landing,5.550664,1.049014,1.083766,1.209016,1.1529,1.217259,1.267474,1.305116,1.120947
+new-home,8.747535,1.61891,1.641381,1.631587,1.766266,1.87509,1.776161,1.785363,1.720049
+oik,101.374548,19.546987,19.368976,21.100623,20.387906,22.856502,23.466829,24.008245,21.14805
+oik-clone,8.875926,1.808825,1.620281,1.624409,1.897275,2.683218,2.497473,2.251154,2.060857
+oik-faq,19.105688,3.680508,3.721463,3.948257,3.872091,17.81132,4.70528,4.662065,4.100339
+oik-installation,1.707477,0.318733,0.363237,0.441878,0.444915,0.41619,0.497424,0.451025,0.383538
+oik-plugins,432.399667,92.697495,88.23169,96.925718,87.097606,133.277758,107.641086,108.08856,95.700179
+oik-shortcodes,5.63785,0.946693,0.881957,0.935829,1.030559,5.948518,1.4487,1.289351,1.097099
+oik-themes,28.287175,5.398678,5.256297,5.885917,6.051058,24.806021,6.848194,6.793302,5.96888
+oik-weightcountry-shipping-basic-user-guide,5.172959,1.065922,1.080888,1.17398,1.100065,1.121646,1.204737,1.205416,1.06256
+oik_api,717.395478,139.628503,140.804928,147.447812,142.589468,267.564527,151.984448,151.954346,143.433198
+oik_file,36.481907,6.994584,6.876076,7.667186,7.178605,19.493672,8.324031,8.408701,7.398648
+oik_hook,234.303261,44.108434,45.717188,47.75698,46.990409,177.124655,59.287485,60.267025,53.250762
+oik_hook-sitemap.xml,1.470217,0.304464,0.314021,0.406648,0.337817,2.501949,0.806907,0.912083,0.670973
+oik_parsed_source-sitemap4.xml,1.559272,0.32051,0.301035,0.408655,0.351649,11.015346,1.100591,0.92115,0.673394
+oik_pluginversion,341.242554,64.880441,64.025513,70.311171,68.805411,276.954818,76.380611,75.966085,67.961902
+oik_premiumversion,34.508114,6.67849,6.364519,6.879312,7.079406,27.937877,7.816304,8.007611,7.028361
+oik_shortcodes,584.437116,110.437044,109.037252,116.883984,116.098033,497.131582,131.378443,130.587368,116.061479
+oik_themeversion,4.946787,0.953442,0.953686,1.02115,1.081824,1.290976,1.153438,1.199345,0.978792
+old,3.034769,0.687307,0.639161,0.640414,0.645084,0.782451,0.862429,0.885134,0.672037
+pages-plugin,6.465565,1.33192,1.158445,1.478032,1.285287,1.405819,1.41847,1.446453,1.268015
+premium-plugins,5.544819,1.022636,1.024601,1.115757,1.089834,1.162805,1.254443,1.232575,1.20366
+privacy-policy,1.553143,0.318215,0.291779,0.345219,0.361196,0.487561,0.541118,0.444281,0.37838
+purchase-confirmation,3.454231,0.657161,0.722285,0.728686,0.708485,0.848437,0.972068,1.151213,0.763302
+request-an-api-key,1.668725,0.322321,0.328321,0.336991,0.382005,0.430608,0.442945,0.458191,0.384562
+shortcode_example,723.452259,112.794744,110.911863,114.185407,115.807458,307.621859,121.4004,134.731921,120.249754
+shortcodes,77.561408,15.034973,15.098655,16.180601,16.090568,49.697323,18.924328,18.533979,16.278326
+sitemap_index.xml,1.550311,0.301902,0.330068,0.527032,0.359396,0.706666,0.816647,0.905365,0.660543
+support,45.815985,9.399076,9.143583,9.868221,9.013649,13.155079,10.839844,10.778317,9.985986
+tag.lp,4.110844,0.949561,0.921053,0.838838,1.029262,1.181881,1.184423,1.115376,0.946624
+test,3.116418,0.627818,0.671932,0.651223,1.714559,0.764754,0.815072,0.864334,0.679638
+thankyou,4.57784,0.882707,0.854782,0.986337,1.073361,1.037294,1.057697,1.138823,1.037539
+tutorials,39.660884,7.342783,7.253401,9.766637,7.686855,19.555618,8.645475,9.143429,7.925674
+wordpress,3.162459,0.611465,0.591719,0.659012,0.72801,0.8086,0.865173,0.881358,0.661319
+wordpress-plugins-from-oik-plugins,1013.816348,191.726942,192.457819,211.165282,202.287765,456.925384,227.182238,230.848739,203.530896
+wordpress-themes-oik-plugins,17.478748,3.330956,3.393053,3.766402,3.628363,4.085759,4.223343,4.32795,3.889419
+wp,3.206539,0.606705,0.631779,0.745546,0.7575,0.809431,0.852417,0.800415,0.661547
+wp-admin,0,0,0,0,0,0,0,0,2.891089
+wp-content,19.121632,3.845384,3.8259,4.174142,4.206549,4.69386,5.389289,5.061483,4.453636
+wp-cron.php,0,0,0,0,0,2.979322,0,0,0.236516
+Accum,vanilla5,cf7,ai1seo,yoastseo,jetpack,nextgen,woocommerce,wordfence,analytics
+,3.155334,0.705213,0.664196,0.747833,0.835407,0.859663,0.956919,0.898872,0.78265
+ ,36.758146,5.973216,5.940015,3.779915,6.407747,39.973615,6.937493,4.473303,3.788741
+301-redirected-pages,41.827494,6.99046,6.916493,4.849989,7.486454,41.18479,8.142359,6.238187,4.834518
+2011,63.196602,11.135066,11.34521,9.31253,12.307097,65.596335,13.725789,11.945481,9.810874
+2012,90.831346,16.71869,16.85057,15.247325,18.307989,77.402365,20.731345,19.149548,16.062087
+2013,152.491858,28.855044,28.63587,27.083912,31.044337,114.572788,33.914025,32.092981,29.664666
+2014,252.591079,48.899675,48.741794,47.738188,51.762166,153.9545,57.996834,56.227165,51.117235
+2015,302.531885,58.682811,58.348873,57.917545,61.724046,208.212146,69.494693,67.900948,61.223174
+about-oik-plugins-lazy-smart-shortcodes,314.866234,61.688604,61.220078,61.113527,64.371899,211.369346,73.12798,71.61478,64.365359
+apis,779.70305,149.096307,144.586194,150.823133,151.433018,382.727764,169.131453,168.716881,154.238188
+apple-touch-icon-precomposed.png,782.909784,149.698823,145.211346,151.509201,152.079253,383.436561,169.925487,169.496699,154.903792
+apple-touch-icon.png,786.165209,150.294995,145.904681,152.19754,152.809685,384.139635,170.74855,170.406953,155.636438
+archived-pages,811.524886,155.169009,150.684679,157.314074,157.918639,532.717645,176.649767,176.50614,160.573978
+author,834.538371,159.566812,155.011747,162.141273,162.847648,539.625819,181.999017,181.824218,165.12973
+blog,844.462412,161.680887,156.989381,164.256791,164.965103,551.230447,184.66542,184.265745,167.360026
+checkout,847.966144,162.325912,157.666493,165.033128,165.685967,552.018289,185.514325,185.122305,168.0831
+comments,850.527393,162.814351,158.208382,165.529815,166.273744,552.667149,186.143234,185.831728,168.63464
+contact,857.424333,164.398931,159.610153,167.045051,167.82755,554.506548,188.209179,187.692178,170.469253
+downloads,901.047406,172.175078,167.105458,175.458152,176.030805,610.494025,197.538136,198.24518,178.572331
+examples,996.391586,190.572028,185.197339,195.534599,195.448348,642.902876,220.197521,220.411599,198.187453
+getting-started-with-oik-plugins,997.876143,190.92067,185.48713,195.96893,195.782088,643.613196,220.74224,220.798961,198.604837
+home,1001.402594,191.619117,186.128394,196.69664,196.496656,644.493199,221.713773,221.683584,199.469098
+home-2,1008.244219,193.177807,187.671209,198.333965,197.866978,646.058689,223.477029,223.549619,201.035408
+hover-selectors-oik-external-link-warning-jquery-plugin,1012.920995,194.063851,188.556023,199.363647,198.827125,658.273222,224.644883,224.774302,202.049624
+index.php,1014.62437,194.378819,188.903966,199.787478,199.242314,658.668135,225.078047,225.186777,202.410627
+latest,1020.976945,195.608909,190.068596,201.022199,200.483109,660.081165,226.464569,227.179784,203.670238
+mad-mimi-landing,1026.527609,196.657923,191.152362,202.231215,201.636009,661.298424,227.732043,228.4849,204.791185
+new-home,1035.275144,198.276833,192.793743,203.862802,203.402275,663.173514,229.508204,230.270263,206.511234
+oik,1136.649692,217.82382,212.162719,224.963425,223.790181,686.030016,252.975033,254.278508,227.659284
+oik-clone,1145.525618,219.632645,213.783,226.587834,225.687456,688.713234,255.472506,256.529662,229.720141
+oik-faq,1164.631306,223.313153,217.504463,230.536091,229.559547,706.524554,260.177786,261.191727,233.82048
+oik-installation,1166.338783,223.631886,217.8677,230.977969,230.004462,706.940744,260.67521,261.642752,234.204018
+oik-plugins,1598.73845,316.329381,306.09939,327.903687,317.102068,840.218502,368.316296,369.731312,329.904197
+oik-shortcodes,1604.3763,317.276074,306.981347,328.839516,318.132627,846.16702,369.764996,371.020663,331.001296
+oik-themes,1632.663475,322.674752,312.237644,334.725433,324.183685,870.973041,376.61319,377.813965,336.970176
+oik-weightcountry-shipping-basic-user-guide,1637.836434,323.740674,313.318532,335.899413,325.28375,872.094687,377.817927,379.019381,338.032736
+oik_api,2355.231912,463.369177,454.12346,483.347225,467.873218,1139.659214,529.802375,530.973727,481.465934
+oik_file,2391.713819,470.363761,460.999536,491.014411,475.051823,1159.152886,538.126406,539.382428,488.864582
+oik_hook,2626.01708,514.472195,506.716724,538.771391,522.042232,1336.277541,597.413891,599.649453,542.115344
+oik_hook-sitemap.xml,2627.487297,514.776659,507.030745,539.178039,522.380049,1338.77949,598.220798,600.561536,542.786317
+oik_parsed_source-sitemap4.xml,2629.046569,515.097169,507.33178,539.586694,522.731698,1349.794836,599.321389,601.482686,543.459711
+oik_pluginversion,2970.289123,579.97761,571.357293,609.897865,591.537109,1626.749654,675.702,677.448771,611.421613
+oik_premiumversion,3004.797237,586.6561,577.721812,616.777177,598.616515,1654.687531,683.518304,685.456382,618.449974
+oik_shortcodes,3589.234353,697.093144,686.759064,733.661161,714.714548,2151.819113,814.896747,816.04375,734.511453
+oik_themeversion,3594.18114,698.046586,687.71275,734.682311,715.796372,2153.110089,816.050185,817.243095,735.490245
+old,3597.215909,698.733893,688.351911,735.322725,716.441456,2153.89254,816.912614,818.128229,736.162282
+pages-plugin,3603.681474,700.065813,689.510356,736.800757,717.726743,2155.298359,818.331084,819.574682,737.430297
+premium-plugins,3609.226293,701.088449,690.534957,737.916514,718.816577,2156.461164,819.585527,820.807257,738.633957
+privacy-policy,3610.779436,701.406664,690.826736,738.261733,719.177773,2156.948725,820.126645,821.251538,739.012337
+purchase-confirmation,3614.233667,702.063825,691.549021,738.990419,719.886258,2157.797162,821.098713,822.402751,739.775639
+request-an-api-key,3615.902392,702.386146,691.877342,739.32741,720.268263,2158.22777,821.541658,822.860942,740.160201
+shortcode_example,4339.354651,815.18089,802.789205,853.512817,836.075721,2465.849629,942.942058,957.592863,860.409955
+shortcodes,4416.916059,830.215863,817.88786,869.693418,852.166289,2515.546952,961.866386,976.126842,876.688281
+sitemap_index.xml,4418.46637,830.517765,818.217928,870.22045,852.525685,2516.253618,962.683033,977.032207,877.348824
+support,4464.282355,839.916841,827.361511,880.088671,861.539334,2529.408697,973.522877,987.810524,887.33481
+tag.lp,4468.393199,840.866402,828.282564,880.927509,862.568596,2530.590578,974.7073,988.9259,888.281434
+test,4471.509617,841.49422,828.954496,881.578732,864.283155,2531.355332,975.522372,989.790234,888.961072
+thankyou,4476.087457,842.376927,829.809278,882.565069,865.356516,2532.392626,976.580069,990.929057,889.998611
+tutorials,4515.748341,849.71971,837.062679,892.331706,873.043371,2551.948244,985.225544,1000.072486,897.924285
+wordpress,4518.9108,850.331175,837.654398,892.990718,873.771381,2552.756844,986.090717,1000.953844,898.585604
+wordpress-plugins-from-oik-plugins,5532.727148,1042.058117,1030.112217,1104.156,1076.059146,3009.682228,1213.272955,1231.802583,1102.1165
+wordpress-themes-oik-plugins,5550.205896,1045.389073,1033.50527,1107.922402,1079.687509,3013.767987,1217.496298,1236.130533,1106.005919
+wp,5553.412435,1045.995778,1034.137049,1108.667948,1080.445009,3014.577418,1218.348715,1236.930948,1106.667466
+wp-admin,5553.412435,1045.995778,1034.137049,1108.667948,1080.445009,3014.577418,1218.348715,1236.930948,1109.558555
+wp-content,5572.534067,1049.841162,1037.962949,1112.84209,1084.651558,3019.271278,1223.738004,1241.992431,1114.012191
+wp-cron.php,5572.534067,1049.841162,1037.962949,1112.84209,1084.651558,3022.2506,1223.738004,1241.992431,1114.248707
+Summary report: 
+name,count,total,average,plusorminus,percentage
+vanilla5,7967,5572.534067,0.6994519978662,0,0
+cf7,1594,1049.841162,0.65862055332497,-0.040831444541228,-5.8376335568118
+ai1seo,1594,1037.962949,0.65116872584693,-0.048283272019272,-6.9030143836272
+yoastseo,1588,1112.84209,0.70078217254408,0.0013301746778827,0.19017383350689
+jetpack,1594,1084.651558,0.68045894479297,-0.018993053073224,-2.7154190896824
+nextgen,1588,3022.2506,1.9031804785894,1.2037284807232,172.09593859127
+woocommerce,1586,1223.738004,0.7715876443884,0.072135646522201,10.31316612752
+wordfence,1588,1241.992431,0.78211110264484,0.082659104778639,11.817695142884
+analytics,1599,1114.248707,0.69684096747968,-0.0026110303865218,-0.37329657996363
+2016/vanilla5.csvPlugin: vanilla5 Count: 7967
+Grouping: 7967
+/oikcom/shortcode_example/bw_plug-optionsactive_plugins/:7.005963
+/oikcom/oik_api/:7.383667
+/oikcom/shortcode_example/table-of-active-plugins/:7.114040
+/oikcom/shortcode_example/bw_plug-optionsactive_plugins/:6.273562
+/oikcom/oik_api/:7.393995
+/oikcom/shortcode_example/table-of-active-plugins/:6.459839
+/oikcom/shortcode_example/bw_plug-optionsactive_plugins/:16.648368
+/oikcom/oik_api/:6.728305
+/oikcom/shortcode_example/fix-height-nivo-slider-default-theme/:9.579091
+/oikcom/shortcode_example/table-of-active-plugins/:9.497719
+/oikcom/shortcode_example/bw_plug-optionsactive_plugins/:10.441245
+/oikcom/shortcode_example/fix-height-nivo-slider-oik-theme/:9.166048
+/oikcom/oik_api/:6.842010
+/oikcom/shortcode_example/fix-height-nivo-slider-default-theme/:6.656889
+/oikcom/shortcode_example/table-of-active-plugins/:9.233396
+/oikcom/oik-plugins/oik/:7.001714
+:7.0.2RC1
+/oikcom/shortcode_example/bw_plug-optionsactive_plugins/:9.879038
+/oikcom/oik_api/:7.015727
+/oikcom/shortcode_example/fix-height-nivo-slider-default-theme/:6.333988
+/oikcom/shortcode_example/table-of-active-plugins/:24.257484
+/oikcom/oik-plugins/oik/:7.170547
+/oikcom/shortcode_example/bw_plug-optionsactive_plugins/:10.408975
+/oikcom/shortcode_example/fix-height-nivo-slider-oik-theme/:7.081249
+/oikcom/oik_api/:6.766972
+/oikcom/shortcode_example/table-of-active-plugins/:9.143947
+/oikcom/shortcode_example/bw_plug-optionsactive_plugins/:10.476809
+/oikcom/shortcode_example/fix-height-nivo-slider-oik-theme/:7.070486
+/oikcom/oik_api/:6.731850
+/oikcom/shortcode_example/table-of-active-plugins/:12.779863
+/oikcom/shortcode_example/bw_plug-optionsactive_plugins/:8.115086
+/oikcom/oik_api/:6.740719
+/oikcom/shortcode_example/table-of-active-plugins/:10.615993
+/oikcom/shortcode_example/bw_plug-optionsactive_plugins/:10.354241
+/oikcom/shortcode_example/fix-height-nivo-slider-oik-theme/:6.102461
+/oikcom/oik_api/:6.763551
+/oikcom/shortcode_example/table-of-active-plugins/:13.058599
+/oikcom/shortcode_example/bw_plug-optionsactive_plugins/:12.289528
+/oikcom/shortcode_example/fix-height-nivo-slider-oik-theme/:6.566190
+/oikcom/oik_api/:6.744322
+/oikcom/shortcode_example/fix-height-nivo-slider-default-theme/:9.109612
+/oikcom/shortcode_example/table-of-active-plugins/:11.868668
+Total: 7967
+Total time: 5572.534067
+Average: 0.6994519978662
+Appendages: 64
+2016/sfence2.csvPlugin: sfence2 Count: 1589
+Grouping: 1589
+/oikcom/oik-plugins/oik/:8.995845
+/oikcom/wordpress-plugins-from-oik-plugins/free-oik-plugins/oik-trace-plugin/wordpress-plugins-for-debugging-or-problem-determination/:6.056011
+/oikcom/shortcode_example/bw_plug-optionsactive_plugins/:8.987418
+/oikcom/oik_api/:12.186947
+/oikcom/shortcode_example/table-of-active-plugins/:6.234229
+Total: 1589
+Total time: 744.372135
+Average: 0.46845320012587
+Appendages: 65
+2016/cfence2.csvPlugin: cfence2 Count: 1524
+Grouping: 1524
+Total: 1524
+Total time: 783.81416893005
+Average: 0.51431375914046
+Appendages: 520
+2016/ssuper.csvPlugin: ssuper Count: 842
+Grouping: 842
+Total: 842
+Total time: 637.555216
+Average: 0.75719146793349
+Appendages: 65
+2016/csuper.csvPlugin: csuper Count: 1524
+Grouping: 1524
+Total: 1524
+Total time: 721.32966995239
+Average: 0.47331343172729
+Appendages: 520
+Merged:578
+Elapsed,vanilla5,sfence2,cfence2,ssuper,csuper
+,3.155334,0.870174,0,0.904882,0
+ ,33.602812,1.66569,41.520699501038,0.709455,40.295468568802
+01,0,0,2.7855126857757,0,2.6187508106232
+02,0,0,5.2056195735931,0,4.1191532611847
+03,0,0,1.4326491355896,0,1.5288290977478
+04,0,0,4.472277879715,0,3.5429320335388
+05,0,0,0.67949414253235,0,0.67540192604065
+06,0,0,2.0912549495697,0,1.2498061656952
+07,0,0,2.7847399711609,0,2.9438486099243
+08,0,0,6.308797121048,0,4.3594653606415
+09,0,0,2.734007358551,0,2.6380083560944
+10,0,0,3.2519629001618,0,2.7336432933807
+11,0,0,2.3606722354889,0,1.7738292217255
+12,0,0,8.4870853424073,0,7.6280219554901
+140,0,0,0.69815611839294,0,0.65776205062866
+258,0,0,0.69766902923584,0,0.69271993637085
+301-redirected-pages,5.069348,0.658138,0,0.634208,0
+2011,21.369108,3.235554,0,2.958242,0
+2012,27.634744,4.85522,0,3.754731,0
+2013,61.660512,8.252802,0,7.78492,0
+2014,100.099221,13.971161,0,11.185742,0
+2015,49.940806,8.692633,0,6.551609,0
+about-oik-plugins-lazy-smart-shortcodes,12.334349,1.745968,0,1.591701,0
+action,0,0,0.59139108657837,0,0.56872200965881
+activate_file,0,0,0.62752485275268,0,0.68546891212463
+activate_plugin,0,0,0.63295006752014,0,0.69637989997864
+activated_plugin,0,0,0.58624386787414,0,0.69409322738648
+ad,0,0,0.7338900566101,0,0.7052550315857
+add_action,0,0,1.726156949997,0,1.6238589286804
+add_attachment,0,0,0.58827400207519,0,0.55009889602661
+add_filter,0,0,1.5972239971161,0,2.0130536556244
+admin-ajax.php,0,0,0.48387289047241,0,0.48337101936341
+admin_bar_menu,0,0,0.64276289939881,0,0.58053994178772
+admin_enqueue_scripts,0,0,0.59058403968811,0,0.7479190826416
+admin_footer,0,0,0.57704305648804,0,0.57162213325501
+admin_head-hook,0,0,0.61961698532105,0,0.60251307487488
+admin_init,0,0,0.60011577606201,0,0.69489407539367
+admin_menu,0,0,0.60617995262146,0,1.7603871822357
+admin_notices,0,0,0.61999201774597,0,0.60084009170532
+adminoik-activation-php,0,0,0.57190895080566,0,0.5530378818512
+adminoik-user-php,0,0,1.1926708221436,0,1.0514929294586
+after_plugin_row_bbboingbbboing-php,0,0,0.64809393882752,0,0.64538812637329
+after_plugin_row_cookie-catcookie-cat-php,0,0,0.57462811470032,0,0.69047570228577
+after_plugin_row_diy-oikdiy-oik-php,0,0,0.61242294311524,0,0.56441998481751
+after_plugin_row_oik-batchmoveoik-batchmove-php,0,0,0.57712292671204,0,0.55945992469787
+after_plugin_row_oik-batchoik-batch-php,0,0,0.59021067619324,0,0.56490111351013
+after_plugin_row_oik-mshotoik-mshot-php,0,0,0.57125663757324,0,0.54794907569886
+after_plugin_row_oik-nivo-slideroik-nivo-slider-php,0,0,0.56002593040466,0,0.57078218460083
+after_plugin_row_oik-pluginsoik-plugins-php,0,0,0.56456899642944,0,0.55166721343995
+after_plugin_row_oik-popupoik-popup-php,0,0,0.61488914489746,0,0.5478458404541
+after_plugin_row_oik-read-moreoik-read-more-php,0,0,0.61900806427002,0,1.7162201404572
+after_plugin_row_oik-sc-helpoik-sc-help-php,0,0,0.57963514328003,0,0.55723404884339
+after_plugin_row_oik-themesoik-themes-php,0,0,0.61032605171204,0,0.5880377292633
+after_plugin_row_oik-typesoik-types-php,0,0,0.60605788230896,0,0.71551895141601
+after_plugin_row_oik-useroik-user-php,0,0,0.58481025695801,0,0.56222295761108
+after_plugin_row_plugin_basename,0,0,0.58527088165283,0,0.61685991287231
+alink,0,0,1.9285280704499,0,1.7944710254669
+apiref-display-the-api-reference,0,0,0.78218936920166,0,0.85035705566406
+apis,464.836816,69.295119,0.90648198127746,52.478351,0.87734413146973
+apple-touch-icon-precomposed.png,3.206734,0.71515,0,1.017605,0
+apple-touch-icon.png,3.255425,0.754771,0,0.982929,0
+apply_filters,0,0,1.5730190277099,0,1.435546875
+archived-pages,25.359677,3.248001,0,2.875371,0
+artisteer,0,0,0.7705910205841,0,0.75082993507385
+artisteer-template,0,0,0.94032502174378,0,0.81381893157959
+attachment_fields_to_edit,0,0,0.58258605003357,0,0.56782007217408
+attachment_fields_to_save,0,0,0.65805101394654,0,0.72899198532105
+audio,0,0,0.98269605636597,0,0.70431113243103
+author,23.013485,3.193246,0,2.50423,0
+barfoo,0,0,0.64729619026185,0,0.69962906837463
+bbboing,0,0,0.71740889549256,0,0.91967797279358
+bbboing-apis,0,0,2.3976898193359,0,1.0985121726989
+bbboing-common-wordpress-phrases,0,0,0.78787302970887,0,0.78012323379517
+bbboing-example-display-form-user-input,0,0,0.70012211799622,0,0.68986296653747
+bbboing-text-form-parameters,0,0,0.78489804267884,0,0.64312291145325
+bbboing-v1-8,0,0,0.71614027023316,0,0.66859793663025
+bbboing_loaded,0,0,0.63052606582642,0,0.57819104194642
+bbp_get_forum_title,0,0,0.59076070785522,0,0.57104992866516
+bespoke-themes,0,0,0.65649795532227,0,0.59391713142395
+bing-2,0,0,0.74542498588562,0,0.70739722251892
+blog,9.924041,1.556087,0,1.820769,0
+blog_title,0,0,0.74881410598755,0,0.71697998046875
+blogger-to-wordpress-redirection,0,0,0.82155585289001,0,0.58987998962402
+bloginfo_url,0,0,0.66261720657348,0,0.5664050579071
+bob-3,0,0,0.7403039932251,0,0.70531892776489
+bobbingwide,0,0,1.8270511627197,0,1.6109807491302
+bong,0,0,0.85811805725098,0,0.7026686668396
+bp,0,0,0.81170511245728,0,0.73467326164246
+br,0,0,1.6480801105499,0,1.5445120334625
+button,0,0,1.0100250244141,0,0.90793180465699
+bw,0,0,0.75806093215942,0,0.70627808570861
+bw-with-cph-parameter,0,0,0.66257309913635,0,0.63778281211853
+bw_abbr,0,0,0.72472691535949,0,0.70152997970581
+bw_accordion,0,0,0.90903091430664,0,0.87669801712036
+bw_action,0,0,0.95936393737793,0,0.90434598922729
+bw_address-2,0,0,0.72981786727905,0,0.72555422782898
+bw_address-displayed-single-line,0,0,1.2157390117645,0,1.6264748573303
+bw_address-styled-address-label,0,0,1.2609159946441,0,1.1608629226685
+bw_api,0,0,5.0126819610596,0,4.6837823390961
+bw_array_get,0,0,1.6555299758911,0,1.5597567558288
+bw_array_get_dcb,0,0,1.0028669834137,0,0.94807577133179
+bw_as_array,0,0,1.1530470848084,0,1.1902089118958
+bw_autop,0,0,0.8393361568451,0,0.88818097114563
+bw_backtrace,0,0,1.0056412220001,0,1.0757212638855
+bw_better_autop,0,0,1.0296790599823,0,1.0796592235565
+bw_block,0,0,0.98262000083923,0,0.74154472351075
+bw_block-and-bw_eblock,0,0,2.3115890026093,0,2.8435890674591
+bw_blockquote,0,0,1.0608060359955,0,0.89861679077148
+bw_blog,0,0,0.78617024421692,0,0.83324909210206
+bw_blogs,0,0,1.8005211353302,0,1.9724669456482
+bw_bookmarks,0,0,0.79459619522094,0,0.73191595077514
+bw_bookmarks-shortcode,0,0,0.78731894493103,0,0.68068838119507
+bw_bookmarks-shortcode-2,0,0,0.76704406738281,0,0.70943689346313
+bw_bookmarks-shortcode-for-listing-bookmarks,0,0,0.96331882476807,0,0.93602013587952
+bw_build_url,0,0,1.0273768901825,0,0.89837217330933
+bw_business,0,0,0.71715807914734,0,0.80309891700745
+bw_button-link-top-middle-bottom-page,0,0,0.78240990638732,0,0.80673098564148
+bw_button-shortcode-display-inline-call-action-link,0,0,0.79806804656982,0,0.66578817367554
+bw_cite,0,0,0.98900294303894,0,0.89185214042664
+bw_codes,0,0,1.5492279529571,0,1.7605669498444
+bw_codes-ordered-shortcode-name,0,0,1.9797489643097,0,1.6763970851899
+bw_company,0,0,0.8355040550232,0,0.71344089508057
+bw_contact_button,0,0,0.73558497428894,0,0.71188712120057
+bw_contact_button-contact-button,0,0,0.74695706367492,0,0.71565890312195
+bw_contact_form,0,0,0.98257994651794,0,0.73487210273742
+bw_copyright-2,0,0,0.7874128818512,0,0.74506688117981
+bw_count,0,0,0.82637691497803,0,0.86506485939025
+bw_countdown,0,0,0.75480890274047,0,0.85058188438415
+bw_countdown-wordpress-3-9,0,0,0.648588180542,0,0.79251122474671
+bw_crumbs,0,0,0.80070590972901,0,0.70477676391602
+bw_css,0,0,0.94434404373169,0,0.77388501167298
+bw_css-add-custom-gradient-background-drop-shadow-opacity,0,0,0.69746494293213,0,0.78730607032776
+bw_csv,0,0,0.75571393966675,0,0.85282707214355
+bw_csv-to-create-a-table-with-nested-shortcodes,0,0,0.76836800575256,0,0.67806506156921
+bw_cycle,0,0,1.3721339702607,0,1.1685998439788
+bw_cycle-attached-images,0,0,0.78990507125854,0,0.69891333580017
+bw_cycle-example-child-pages,0,0,0.79404902458191,0,0.85926604270935
+bw_cycle-fxscrollvert,0,0,0.71365809440612,0,0.73065400123596
+bw_cycle-vertical-scrolling-css-arrows-2,0,0,0.77670788764953,0,0.74180316925049
+bw_dash,0,0,1.0095808506012,0,0.88592028617859
+bw_directions-shortcode-to-get-google-directions,0,0,0.92156195640564,0,0.69127607345581
+bw_eblock,0,0,0.76001572608948,0,0.86071300506592
+bw_echo,0,0,1.3700430393219,0,1.3881340026856
+bw_editcss-edit-your-custom-css-file,0,0,1.3288629055023,0,1.1759922504425
+bw_facebook,0,0,0.77276277542114,0,0.71606183052063
+bw_facebook-follow-me-on-facebook,0,0,0.7433009147644,0,0.83307600021362
+bw_field_validation_date,0,0,0.61248302459716,0,0.55257320404052
+bw_field_validation_rating,0,0,0.56998801231384,0,0.54423403739929
+bw_file_to_url,0,0,1.7955877780914,0,1.45765376091
+bw_flush,0,0,1.5083129405975,0,1.3687570095063
+bw_follow_me,0,0,0.9346628189087,0,0.91675901412964
+bw_follow_me-alt1,0,0,0.73787379264832,0,0.83401489257813
+bw_form,0,0,0.94554805755615,0,0.99498176574707
+bw_form_functions,0,0,0.63317084312439,0,0.5538341999054
+bw_format_nivo_nggallery,0,0,0.78293299674988,0,1.1965951919556
+bw_get_option,0,0,1.2070698738098,0,0.93149399757385
+bw_get_posts,0,0,5.1770009994506,0,5.0344371795654
+bw_graphviz,0,0,1.2812900543213,0,0.93577194213867
+bw_graphviz-oik-plugin-dependencies-plugins-powering-wp-a2z-org,0,0,0.91433501243591,0,1.0922927856445
+bw_graphviz-plugins-theme-shortcodes-relationships,0,0,0.71152782440185,0,0.67248201370239
+bw_graphviz-shortcodes-relationships,0,0,0.6966598033905,0,0.67480897903443
+bw_iframe,0,0,0.75056481361389,0,0.74777603149414
+bw_images,0,0,0.85344386100769,0,0.89207887649536
+bw_jq,0,0,0.95935726165772,0,0.75488400459289
+bw_jq-and-bw_list-to-implement-the-flex-slider-to-display-attached-images,0,0,0.77712488174438,0,0.73780393600464
+bw_jq-bw_pages-cycling-display,0,0,0.80175971984863,0,0.79075884819031
+bw_jquery_script_url,0,0,0.61143994331359,0,0.57222318649292
+bw_link-src-url,0,0,0.79084396362305,0,0.78293800354003
+bw_link-url,0,0,0.69563007354736,0,0.65526604652405
+bw_link_url,0,0,1.0410327911377,0,0.89382600784302
+bw_linkedin-follow-linkedin,0,0,0.72275876998902,0,0.67560482025147
+bw_list-shortcode-list-posts-multiple-post-types,0,0,0.99083900451661,0,0.87083697319031
+bw_list-shortcode-simple-list-of-links,0,0,0.8912410736084,0,0.86296200752258
+bw_list_table,0,0,0.58344006538391,0,0.69964718818664
+bw_login,0,0,0.87236785888672,0,0.71636104583741
+bw_loginout,0,0,0.7254159450531,0,0.71860814094544
+bw_logo,0,0,1.5688061714172,0,1.5901300907135
+bw_mailto-and-bw_email,0,0,0.72417426109314,0,0.69166207313538
+bw_metadata,0,0,0.58572196960449,0,0.57221007347107
+bw_more,0,0,0.91095185279846,0,0.71803402900696
+bw_nav_tabs_oik_clone_servers,0,0,0.57577800750733,0,0.69747591018677
+bw_nav_tabs_page,0,0,0.58787512779236,0,0.69417786598206
+bw_nav_tabs_page_tab,0,0,0.5678939819336,0,0.56545686721802
+bw_navi,0,0,0.81872987747192,0,0.76753997802734
+bw_new,0,0,1.6055872440338,0,1.2937881946564
+bw_option,0,0,0.79179382324219,0,0.75004386901855
+bw_page,0,0,0.75035691261291,0,0.86610889434814
+bw_pages,0,0,1.0914583206177,0,0.80264806747437
+bw_pages-example-using-format-parameter,0,0,0.78495287895203,0,0.72506594657898
+bw_pages-shortcode,0,0,1.6548368930817,0,1.591071844101
+bw_parent,0,0,1.7959408760071,0,1.6139469146729
+bw_pdf-list-attached-pdfs-withwithout-icons,0,0,0.82535004615784,0,0.877357006073
+bw_plug-optionsactive_plugins,0,0,5.1837999820709,0,5.0350408554077
+bw_post,0,0,0.73673105239869,0,0.71959018707275
+bw_posts-list-posts,0,0,0.85429906845093,0,0.77202582359314
+bw_power,0,0,0.73101091384888,0,0.70479702949524
+bw_pp_shortcodes,0,0,1.1160459518433,0,1.0033111572266
+bw_qrcode-2,0,0,0.78897190093994,0,0.69891500473022
+bw_register,0,0,0.7636399269104,0,0.85869884490967
+bw_register_field,0,0,1.1579740047455,0,1.3120441436768
+bw_related,0,0,0.83107495307923,0,0.94697284698487
+bw_related-format-parameter,0,0,0.90163397789001,0,0.93156814575195
+bw_ret,0,0,1.241770029068,0,1.1538827419281
+bw_rpt,0,0,1.88613986969,0,1.7009260654449
+bw_sc_link,0,0,0.60368299484253,0,0.57338309288025
+bw_sc_syntax,0,0,0.5893018245697,0,0.71595311164856
+bw_show_googlemap,0,0,1.4994418621063,0,1.6113619804382
+bw_skv,0,0,1.098207950592,0,1.0298209190369
+bw_skype-shortcode-display-skype-name,0,0,0.7135841846466,0,0.81592798233033
+bw_table,0,0,0.77939009666443,0,0.77912902832032
+bw_table-showing-non-oik-plugins,0,0,0.79947900772095,0,0.75014781951905
+bw_tablerow,0,0,1.0221276283264,0,0.94211292266846
+bw_tabs,0,0,0.83187484741211,0,0.7914891242981
+bw_textfield,0,0,1.0007441043854,0,1.0795109272003
+bw_tides-sandown,0,0,0.91313815116882,0,0.65323400497436
+bw_tides-shortcode-chichester-harbour-tide-times-heights,0,0,1.3781468868255,0,0.68632078170777
+bw_trace,0,0,1.0099999904633,0,0.94863104820251
+bw_trace2,0,0,1.0956311225891,0,0.98665499687195
+bw_trace_included_files,0,0,2.4974958896637,0,2.310240983963
+bw_users,0,0,0.75882077217102,0,0.76198291778565
+caption,0,0,0.85574412345886,0,0.71671080589295
+checkout,3.503732,0.780112,0,1.050717,0
+clear-embed-a-cleared-div,0,0,0.73555517196655,0,0.67766094207764
+cloned,0,0,0.88078808784485,0,0.73295092582703
+codes,0,0,0.75690913200379,0,0.88618016242981
+collage,0,0,0.72791290283204,0,0.70722579956055
+comments,2.561249,0.434208,0,0.440625,0
+contact,6.89694,1.721708,0.35416889190674,1.758653,0.077107906341553
+contact-us,0,0,1.2591488361359,0,1.1883738040924
+cookie-cat-apis,0,0,1.9464042186737,0,0.96538209915161
+cookie-cat-tabulate-your-website-cookies,0,0,1.2371821403504,0,0.73140120506287
+cookies,0,0,1.4072432518005,0,1.394373178482
+create-date-history-shortcode,0,0,0.56432390213012,0,0.53584122657775
+css,0,0,0.88738894462586,0,0.70653891563416
+deprecated_argument_run,0,0,0.59479594230651,0,0.84502005577087
+deprecated_argument_trigger_error,0,0,0.59885907173156,0,0.57755994796752
+deprecated_constructor_run,0,0,0.60130381584168,0,0.69017696380615
+deprecated_constructor_trigger_error,0,0,0.80504488945007,0,0.55835771560669
+deprecated_file_included,0,0,0.57136797904968,0,0.55442786216736
+deprecated_file_trigger_error,0,0,0.61451411247253,0,0.70488095283509
+deprecated_function_run,0,0,0.58136796951294,0,0.68949317932128
+display-cycling-list-latest-plugins,0,0,0.76894998550415,0,0.75957202911377
+diy-oik,0,0,2.5034492015838,0,2.2545037269592
+diy-oik-apis,0,0,1.2569501399994,0,1.1909739971161
+diy-shortcode-affects-jetpack-sharing,0,0,0.70638489723206,0,0.67198514938355
+do-it-yourself-diy-shortcodes,0,0,0.62940096855164,0,0.58708906173706
+do_action,0,0,1.5345039367676,0,1.5901601314545
+doing_it_wrong_run,0,0,0.67250323295593,0,0.72124791145325
+doing_it_wrong_trigger_error,0,0,0.60805892944335,0,0.55454206466675
+downloads,43.623073,5.553876,0,5.036014,0
+e,0,0,1.3826348781585,0,1.4211158752441
+easy-digital-downloads-edd,0,0,2.6263439655304,0,0.72358989715576
+edit_attachment,0,0,0.61320996284485,0,0.5516209602356
+email-signature-using-oik,0,0,0.93366193771362,0,0.69838309288025
+embed,0,0,0.86965084075928,0,0.73398113250732
+epan,0,0,1.182862997055,0,1.1821558475494
+etag,0,0,2.0260002613067,0,1.9358561038971
+example-bw_pages,0,0,0.86495709419251,0,0.7356960773468
+example-bw_pages-with-thumbnail85x0,0,0,0.79159903526306,0,0.76005911827088
+example-bw_table-to-tabulate-all-oik-plugins,0,0,0.95643401145935,0,0.7216808795929
+example-bw_wtf-wht-the,0,0,0.72598671913147,0,0.68061709403992
+example-nivo-displaying-full-size-featured-images,0,0,0.81597995758057,0,0.77045392990112
+example-nivo-using-the-id-parameter-to-select-multiple-posts,0,0,0.87757015228272,0,0.73803615570068
+example-using-bw_copyright-shortcode,0,0,0.73492908477783,0,0.84115886688232
+example-using-bw_jq-and-bw_pages,0,0,1.8097472190857,0,1.7368540763855
+example-using-bw_jq-to-cycle-through-some-posts,0,0,0.97874212265015,0,0.98228907585144
+examples,95.34418,13.120899,0,11.235203,0
+external-link-warning-jquery,0,0,3.2494637966156,0,1.4693639278412
+feed,0,0,0.5093240737915,0,0.5072820186615
+feedoik-banner-feed-php,0,0,0.98962593078613,0,0.89868307113647
+file,0,0,0.75205492973328,0,0.71240901947021
+fix-height-nivo-slider-default-theme,0,0,3.1437768936157,0,3.6708419322968
+fix-height-nivo-slider-oik-theme,0,0,4.0877311229706,0,3.7275960445404
+fix-shipping-methods-found-message,0,0,0.68814897537231,0,0.7404670715332
+foobar,0,0,0.60419297218323,0,0.57191300392151
+foobar-apis,0,0,1.4176919460297,0,1.3545162677765
+foobar-least-amazing-plugin-world,0,0,0.71387696266174,0,0.7075138092041
+format-shipping-rates-text-area,0,0,0.82253217697143,0,0.71946597099304
+free-oik-plugins,0,0,38.99054312706,0,33.249269962311
+free-themes,0,0,0.67514085769653,0,0.62123823165894
+gallery,0,0,0.78013491630554,0,0.74864530563355
+genesis-oik,0,0,0.63993215560913,0,0.62339901924134
+genesis-oik-v1-0-2,0,0,0.68100428581238,0,0.68239998817444
+get_the_excerpt,0,0,0.6510100364685,0,0.56916117668152
+getting-started-with-oik-plugins,1.484557,0.421935,0.62133502960205,0.407121,0.82936286926269
+github,0,0,0.86980104446411,0,0.84395575523376
+googleplus-shortcode-bw_googleplus,0,0,2.5489330291748,0,0.71343803405762
+gpslides,0,0,0.73834705352783,0,0.67430281639099
+heartbeat_settings,0,0,0.56062221527099,0,0.56527185440063
+herb,0,0,0.85518312454223,0,0.7262020111084
+home,3.526451,0.84038,0,0.894023,0
+home-2,6.841625,0.826964,0,0.791872,0
+hook,0,0,0.72389507293701,0,0.84557175636292
+hover-selectors-oik-external-link-warning-jquery-plugin,4.676776,0.618833,0,0.636233,0
+how-do-i-set-multiple-rates-per-weightcountry,0,0,0.70934391021729,0,0.69159293174743
+how-to-create-a-contact-page-using-oik-and-jetpack,0,0,1.4837980270386,0,1.574588060379
+how-to-create-a-simple-contact-me-page-using-oik,0,0,1.5252931118011,0,0.8214111328125
+improved-bw_plug-shortcode,0,0,0.74615406990051,0,0.68780708312988
+index.php,1.703375,0.411501,0,0.413862,0
+infusionsoft-sign-up-form-wordpress-plugin,0,0,0.67755818367004,0,0.58806586265564
+init,0,0,0.72001004219055,0,0.57770895957946
+isubmit,0,0,1.2455449104309,0,0.9393138885498
+kv,0,0,1.4020600318909,0,1.3871808052063
+latest,6.352575,0.775187,0,0.878075,0
+lazy-shortcodes,0,0,0.59505891799927,0,0.55835509300232
+login_link,0,0,0.73915696144104,0,0.70288896560669
+mad-mimi-landing,5.550664,0.715568,0,0.686658,0
+most-recent-work,0,0,1.4100699424744,0,0.8122341632843
+multi-rate-weightcountry-shipping-for-woocommerce,0,0,0.67763495445252,0,0.6082878112793
+new-home,8.747535,0.980782,0,0.943064,0
+ngslideshow,0,0,1.2461521625519,0,1.1249542236328
+ngslideshow-and-gpslideshow-peaceful-co-existence-for-slideshow-shortcodes,0,0,2.3776550292969,0,0.70662903785706
+nivo,0,0,0.88346290588379,0,0.7863941192627
+nivo-classw50pc-half-width-nivo-slider,0,0,0.99848389625549,0,0.76788496971131
+nivo-slider-displaying-images-captions,0,0,0.72858905792237,0,0.69579219818115
+nivo2011,0,0,0.66528773307801,0,0.64020895957947
+not-oiks-shortcodes,0,0,1.4962186813354,0,1.5810368061066
+oik,101.374548,9.424769,6.0433669090271,6.48117,4.019828081131
+oik-apis,0,0,0.64757680892944,0,0.69301700592041
+oik-base-plugin,0,0,39.440935850144,0,33.293966054916
+oik-base-plugin-2,0,0,7.7601909637451,0,6.0896761417389
+oik-batch,0,0,0.73970198631287,0,0.71860027313232
+oik-batch-apis,0,0,1.5321700572967,0,1.0233969688416
+oik-batchmove,0,0,1.5383851528168,0,1.5734992027283
+oik-batchmove-apis,0,0,1.5799419879913,0,0.9933340549469
+oik-batchmove-v2-4,0,0,0.71369290351868,0,0.79834508895874
+oik-bbpress-apis,0,0,1.8169529438019,0,0.94857788085938
+oik-bbpress-strip-tags-from-bbpress-forum-title-tooltips,0,0,1.2074437141419,0,0.90768194198608
+oik-blogger-redirect,0,0,0.70274209976196,0,0.70926475524903
+oik-bob-bing-wide-apis,0,0,1.6513900756836,0,1.4494340419769
+oik-bob-bing-wide-more-lazy-smart-shortcodes,0,0,0.68912196159363,0,0.88911604881287
+oik-bob-bing-wide-v1-30-2,0,0,0.6734299659729,0,0.64261102676391
+oik-bp-signup-email-apis,0,0,1.2423238754272,0,1.2398459911346
+oik-buddypress-signup-email,0,0,0.69497680664062,0,0.70134282112122
+oik-button-shortcodes-bw_button,0,0,0.78230500221253,0,0.82820796966552
+oik-bwtrace,0,0,1.1460161209106,0,1.0240290164947
+oik-bwtrace-debug-trace-for-wordpress,0,0,1.7933700084686,0,1.9163470268249
+oik-bwtrace-v1-24,0,0,0.74401497840882,0,0.66579222679138
+oik-bwtrace-v1-25,0,0,1.416179895401,0,1.3427500724793
+oik-bwtrace-v1-26,0,0,1.2382991313934,0,1.2491888999939
+oik-bwtrace-v1-27,0,0,0.79869985580444,0,0.92134690284729
+oik-bwtrace-v2-0-0,0,0,0.67813992500305,0,0.6767098903656
+oik-bwtrace-v2-0-1,0,0,0.85408115386963,0,0.81996512413025
+oik-bwtrace-v2-0-3,0,0,1.0920808315277,0,0.98456478118896
+oik-bwtrace-v2-0-4,0,0,0.82263517379761,0,0.75560092926025
+oik-bwtrace-v2-0-5,0,0,0.80232286453247,0,0.67525100708007
+oik-bwtrace-v2-0-6,0,0,0.75625205039978,0,0.67359876632691
+oik-bwtrace-v2-0-7,0,0,1.1629588603974,0,1.0961327552795
+oik-bwtrace-v2-0-8,0,0,1.0250389575958,0,0.76969885826111
+oik-changelog,0,0,0.34614205360413,0,0.075120210647583
+oik-clone,8.875926,2.22997,0,2.311394,0
+oik-clone-clone-your-wordpress-content,0,0,1.6165030002594,0,1.551126241684
+oik-clone-requirements-summary,0,0,5.3640599250793,0,7.9924275875091
+oik-clone-v0-8,0,0,1.0558021068573,0,1.0706851482391
+oik-clone-v0-9,0,0,0.9284679889679,0,0.88779091835022
+oik-clone-v1-0-0-beta-0919,0,0,0.89532089233398,0,0.64314007759094
+oik-clone-v1-0-0-beta-1013,0,0,1.3144848346711,0,1.2764420509338
+oik-css,0,0,0.71183395385742,0,0.7382619380951
+oik-css-apis,0,0,1.5191869735718,0,1.6515769958496
+oik-css-v0-8-0,0,0,0.82684874534607,0,0.7858612537384
+oik-dates-apis,0,0,0.99779200553894,0,0.95764780044556
+oik-dates-custom-date-fields,0,0,0.78499007225036,0,0.83718514442444
+oik-debug-filters,0,0,0.76984715461731,0,0.72498297691345
+oik-debug-filters-apis,0,0,0.9317319393158,0,0.79795598983764
+oik-donate,0,0,0.74631810188293,0,0.70325088500977
+oik-edd,0,0,0.76821303367615,0,0.91399693489075
+oik-email-signature,0,0,0.75058674812317,0,0.72429823875427
+oik-email-signature-apis,0,0,1.9072480201721,0,0.97464609146118
+oik-external-link-warning-apis,0,0,1.0091259479523,0,0.94733595848084
+oik-faq,19.105688,6.412658,1.5604863166809,2.542472,1.5527040958405
+oik-fields-apis,0,0,1.1016309261322,0,0.98406314849854
+oik-fields-custom-post-type-field-apis,0,0,1.3879981040955,0,0.97604513168335
+oik-fields-v1-40,0,0,0.84637975692749,0,0.76474022865295
+oik-fields-v1-40-1,0,0,0.90059399604797,0,0.6636381149292
+oik-follow-me-buttons,0,0,0.75407719612121,0,0.83612799644471
+oik-fum-flexible-update-manager,0,0,0.72378587722778,0,0.75847506523132
+oik-header-apis,0,0,1.3868999481201,0,1.0085859298706
+oik-header-custom-header-image,0,0,0.7093780040741,0,0.71137523651123
+oik-infusionsoft-apis,0,0,1.3655748367309,0,0.81132006645202
+oik-infusionsoft-sign-up-form,0,0,0.7053279876709,0,0.71092414855958
+oik-installation,1.707477,0.467209,0.33650612831116,0.457273,0.087442874908447
+oik-lib-shared-library-management,0,0,0.70462489128112,0,0.73042225837708
+oik-libs-shared-library-repository,0,0,0.69130921363831,0,0.87371277809143
+oik-ms-apis,0,0,5.1674771308899,0,1.3731300830842
+oik-ms-oik-multisite-shortcodes,0,0,0.68656778335572,0,0.71743130683899
+oik-ms-v0-2-1,0,0,0.71860194206238,0,0.69426512718201
+oik-mshot,0,0,0.73153018951416,0,0.71244478225708
+oik-mshot-apis,0,0,0.86450695991516,0,0.97245526313782
+oik-nivo-slider,0,0,0.87378597259521,0,0.60703110694885
+oik-nivo-slider-apis,0,0,1.2604262828826,0,1.0890498161316
+oik-nivo-slider-jquery-nivo-slider,0,0,0.9543650150299,0,0.94203305244446
+oik-paypal-buttons,0,0,0.37566089630127,0,0.070977210998535
+oik-plugins,432.399667,59.711698,0,47.975807,0
+oik-plugins-an-introduction,0,0,1.0592439174652,0,0.84245705604553
+oik-plugins-apis,0,0,1.2854700088501,0,0.98283314704895
+oik-plugins-github,0,0,0.78362798690796,0,0.70667099952698
+oik-plugins-v1-15-3,0,0,0.73641586303711,0,0.69066214561462
+oik-plugins-v1-15-4,0,0,0.68498373031616,0,0.65014004707336
+oik-plugins-wordpress-plugins-server,0,0,0.90584206581115,0,1.0328388214111
+oik-popup-time-delayed-slide-content,0,0,1.3582339286804,0,1.4864099025726
+oik-post-type-support,0,0,0.71344900131225,0,0.72868204116822
+oik-post-type-support-apis,0,0,0.97293615341186,0,0.93044805526733
+oik-presentation,0,0,0.69438099861145,0,0.87566614151001
+oik-presentation-apis,0,0,1.2480790615082,0,1.3737261295319
+oik-privacy-policy-and-cookie-cat-tutorial,0,0,0.82458305358887,0,0.70465898513794
+oik-privacy-policy-apis,0,0,1.3245160579681,0,1.0696630477905
+oik-qr-code-sticker,0,0,0.97228574752807,0,0.71050500869751
+oik-rating,0,0,0.74688911437988,0,0.8876211643219
+oik-rating-apis,0,0,0.89655613899231,0,0.83162903785705
+oik-read-apis,0,0,1.4481148719787,0,0.82164216041565
+oik-read-progressively-reveal-content,0,0,0.75932264328003,0,0.92025399208068
+oik-responsive-menu-apis,0,0,1.6194291114807,0,1.0827789306641
+oik-responsive-menu-jquery-responsive-menu,0,0,0.68460607528687,0,0.87566280364991
+oik-rwd,0,0,1.2426841259003,0,1.2827029228211
+oik-rwd-apis,0,0,2.4699041843414,0,2.8144330978394
+oik-sc-help-apis,0,0,1.5055401325226,0,2.4871430397034
+oik-sc-help-shortcode-help-shortcodes,0,0,0.71063303947448,0,0.75528192520142
+oik-shortcode-and-api-server,0,0,1.3413319587708,0,1.2669961452484
+oik-shortcode-server,0,0,2.237163066864,0,0.79113912582398
+oik-shortcodes,5.63785,0.904704,0,0.879054,0
+oik-shortcodes-apis,0,0,2.1568648815155,0,1.0347068309784
+oik-shortcodes-by-plugin,0,0,0.75307202339172,0,0.68914985656738
+oik-shortcodes-v1-26,0,0,0.7642469406128,0,0.80888080596924
+oik-shortcodes-v1-27-1,0,0,1.0324170589447,0,1.0265448093414
+oik-shortcodes-v1-27-2,0,0,0.8252489566803,0,0.76348280906677
+oik-sidebar-apis,0,0,1.3062069416046,0,1.2261221408844
+oik-sidebar-widget-wrangler-for-artisteer-themes,0,0,0.68672227859497,0,0.69746708869934
+oik-site-php,0,0,0.94709420204163,0,1.0272779464722
+oik-spells-out-the-oik-backronym,0,0,1.0091087818146,0,0.91880178451538
+oik-squeeze,0,0,0.76855611801148,0,0.70897006988525
+oik-squeeze-apis,0,0,1.3537902832031,0,1.3246908187866
+oik-svn,0,0,0.84581398963928,0,0.76863288879395
+oik-testimonials,0,0,1.2156639099121,0,0.75869607925415
+oik-testimonials-apis,0,0,1.0752005577087,0,0.95630621910096
+oik-themes,28.287175,4.034236,0,3.691263,0
+oik-themes-apis,0,0,1.1881401538848,0,0.90629482269287
+oik-themes-wordpress-themes-server,0,0,0.73937010765075,0,0.76051306724548
+oik-tides-shortcode-bw_tides,0,0,1.1966218948365,0,0.85762619972229
+oik-todo-todo-list,0,0,0.73914098739624,0,0.71124410629272
+oik-trace-apis,0,0,2.6786167621613,0,0.87488508224488
+oik-tunes,0,0,0.67962408065796,0,0.69457530975342
+oik-tunes-apis,0,0,1.5826029777527,0,0.86108589172363
+oik-types,0,0,0.74775171279908,0,0.74177289009094
+oik-types-apis,0,0,1.04856300354,0,0.95623779296875
+oik-types-v1-9-0,0,0,0.70913290977478,0,0.8866810798645
+oik-user,0,0,0.70453500747681,0,0.89185810089111
+oik-user-apis,0,0,0.95149803161621,0,0.90110301971436
+oik-user-v0-5-1,0,0,0.87334799766541,0,0.63371872901916
+oik-v2-1-beta-0106,0,0,0.65814900398254,0,0.73296403884888
+oik-v2-3,0,0,0.78434824943542,0,0.7139151096344
+oik-v2-3-alpha-0728,0,0,1.3986520767212,0,1.9519650936127
+oik-v2-4,0,0,1.4137749671937,0,1.1461079120636
+oik-v2-4-alpha-1012,0,0,0.68206691741944,0,0.67234015464783
+oik-v2-4-alpha-1112,0,0,0.69987392425537,0,0.67795896530152
+oik-v2-4-beta-1218,0,0,1.1523220539093,0,1.2811250686646
+oik-v2-4-beta-1222,0,0,0.71425604820252,0,0.65468621253968
+oik-v2-4-beta-1223,0,0,0.88044714927674,0,0.99770498275757
+oik-v2-5,0,0,1.9729189872742,0,1.5648140907287
+oik-v2-5-alpha-0130,0,0,0.89473199844361,0,0.70527505874634
+oik-v2-5-beta-0409,0,0,1.6299579143524,0,1.3413491249085
+oik-v2-6-alpha-0525,0,0,1.6967370510101,0,1.6133708953858
+oik-v2-6-alpha-0722,0,0,2.9993500709534,0,2.6038830280304
+oik-v2-6-alpha-0724,0,0,0.69056105613709,0,0.7800600528717
+oik-v3-0-0-alpha-0806,0,0,1.2920651435852,0,1.5119500160217
+oik-v3-0-0-alpha-0820,0,0,1.2929947376251,0,1.2185389995575
+oik-v3-0-0-alpha-0917,0,0,1.7561550140381,0,0.98803400993347
+oik-video-apis,0,0,0.82127213478088,0,0.96993803977967
+oik-video-bw_video-shortcode,0,0,0.72250628471374,0,0.7306809425354
+oik-weight-countryshipping-v1-3-1,0,0,0.87908101081848,0,0.65676903724671
+oik-weightcountry-shipping,0,0,0.84865283966065,0,0.60005593299866
+oik-weightcountry-shipping-apis,0,0,1.0309879779816,0,0.96113014221191
+oik-weightcountry-shipping-basic-user-guide,5.172959,0.704995,0,0.660670,0
+oik-weightcountry-shipping-faqs,0,0,1.6448340415955,0,1.387885093689
+oik-weightcountry-shipping-pro,0,0,0.72102117538452,0,0.91242074966431
+oik-weightcountry-shipping-pro-v1-4-1,0,0,0.6746711730957,0,0.65771484375
+oik-weightcountry-shipping-v1-3,0,0,0.66715526580811,0,0.65209698677063
+oik-weightcountry-shipping-woocommerce-extension,0,0,0.74536228179931,0,0.70983600616455
+oik-window-width,0,0,0.68446302413941,0,0.70089197158814
+oik-window-width-apis,0,0,1.0774500370026,0,1.0124769210815
+oik-window-width-v0-1-1,0,0,0.8570590019226,0,0.63095998764038
+oik-woo,0,0,0.70629096031189,0,0.86334180831909
+oik-working-feedback-apis,0,0,0.83624982833862,0,0.93647813796997
+oik-workingfeedback-testimonials,0,0,0.73165798187256,0,0.73377513885498
+oik2012,0,0,0.85006690025329,0,0.66858911514282
+oik20120-twenty-twelve-child-theme,0,0,0.69374084472656,0,0.64082217216491
+oik_api,717.395478,88.884014,0,66.283816,0
+oik_attachment_fields_to_save,0,0,1.4513459205628,0,1.4846539497375
+oik_box,0,0,1.0208747386932,0,0.95221900939942
+oik_cpt_edit_type_fields,0,0,3.0136189460754,0,2.6223530769348
+oik_file,36.481907,4.636242,0,4.365002,0
+oik_hook,234.303261,33.324239,0,35.457076,0
+oik_hook-sitemap.xml,1.470217,0.781078,0,1.112058,0
+oik_parsed_source-sitemap4.xml,1.559272,0.790064,0,0.978337,0
+oik_path,0,0,1.2492690086364,0,1.2627239227295
+oik_plugin_lazy_activation,0,0,1.0745022296906,0,0.90081405639648
+oik_pluginversion,341.242554,44.381976,0,40.183551,0
+oik_premiumversion,34.508114,4.319713,0,4.180522,0
+oik_register_plugin_server,0,0,1.5187921524047,0,1.4265451431274
+oik_require,0,0,1.2986140251159,0,1.1953680515289
+oik_require_lib,0,0,2.3784399032592,0,2.2119488716125
+oik_shortcodes,584.437116,75.016758,0,69.492728,0
+oik_shortcodes_activation,0,0,1.7570571899414,0,1.5943150520325
+oik_themeversion,4.946787,0.615262,0,0.610188,0
+oik_url,0,0,1.5249178409577,0,1.4227559566498
+oikai_format_description,0,0,1.022362947464,0,1.0569248199462
+old,3.034769,0.695041,0,0.986389,0
+option,0,0,0.61125278472901,0,0.70474910736084
+other-shortcode-plugins,0,0,4.9353609085083,0,1.152585029602
+p,0,0,1.9743030071259,0,1.8668730258942
+pages-plugin,6.465565,0.984198,0,0.727638,0
+paypal,0,0,1.0090801715851,0,0.73832082748413
+pin,0,0,0.84959292411804,0,0.59327888488769
+playlist,0,0,0.76870083808899,0,0.76607823371887
+plugin_basename,0,0,1.7050788402558,0,1.728641986847
+plugins,0,0,5.6795043945313,0,6.1508238315583
+post_link,0,0,0.74331116676331,0,0.80099606513977
+pre_set_site_transient_update_themes,0,0,0.61371612548828,0,0.56335878372193
+premium-oik-plugins,0,0,10.244163513184,0,10.707432031631
+premium-plugins,5.544819,0.691214,0,0.661954,0
+premium-themes,0,0,0.60926675796508,0,0.55884599685669
+privacy-policy,1.553143,0.421966,0,0.421191,0
+privacy-policy-page-generator,0,0,0.70281314849854,0,0.72049498558044
+purchase-confirmation,3.454231,0.972506,0,1.02502,0
+recover-from-a-wordpress-fatal-error-using-your-sites-control-panel-cpanel,0,0,0.96788907051086,0,1.1439311504364
+recover-from-a-wordpress-fatal-error-using-your-wesites-control-panel-cpanel,0,0,0.93263697624207,0,0.68668985366822
+register,0,0,0.28894400596619,0,0.26255512237549
+request-an-api-key,1.668725,0.446646,0,0.422857,0
+retlink,0,0,2.3848149776459,0,2.0316090583802
+rss-2,0,0,0.85280895233155,0,0.69523000717163
+rss_title,0,0,0.8009729385376,0,0.69989109039306
+rss_url,0,0,0.852952003479,0,0.83202600479126
+sdiv,0,0,1.8272850513459,0,1.5623438358307
+search,0,0,0.7853798866272,0,0.69810104370117
+set-height-nivo-slider-default-theme,0,0,2.2039408683777,0,4.0022609233856
+shortcode_example,723.452259,71.557805,0,54.810774,0
+shortcodes,77.561408,14.385287,0,10.89582,0
+shortcodesoik-api-importer-php,0,0,0.90420603752136,0,0.90037083625793
+shortcodesoik-user-php,0,0,0.95078420639038,0,0.88298296928406
+simple-example-wp-shortcode,0,0,0.69835019111633,0,0.64431214332581
+sitemap,0,0,2.8054902553559,0,2.7407121658325
+sitemap_index.xml,1.550311,0.721409,0,1.107677,0
+smart-shortcodes,0,0,0.59014105796814,0,0.55445408821106
+span,0,0,1.4676427841187,0,1.3746881484986
+stag,0,0,1.7245600223541,0,1.7359228134155
+stay-informed,0,0,1.0823659896851,0,1.0880496501923
+support,45.815985,5.360371,0,4.771369,0
+table-of-active-plugins,0,0,5.1809709072113,0,5.0434181690216
+tag.lp,4.110844,0.802675,0,1.139477,0
+template_url,0,0,0.73953080177307,0,0.83912682533264
+test,3.116418,0.699821,0,1.016353,0
+thankyou,4.57784,0.602499,0,0.582916,0
+themes,0,0,4.8166315555572,0,6.8429794311524
+third-contact-plugin,0,0,0.7340440750122,0,0.88459610939026
+to-link-or-not-to-link,0,0,0.72073197364807,0,0.82987666130066
+top,0,0,0.84813284873962,0,0.84386229515076
+trying-the-div-end-div-shortcodes,0,0,0.73489308357239,0,0.70199704170227
+tutorials,39.660884,5.852665,0,5.404464,0
+twenty-twelve,0,0,0.66938495635986,0,0.73361110687256
+uk-tides-apis,0,0,0.83618116378784,0,0.82926487922668
+upgrade-to-a-new-version-of-oik-from-oik-plugins,0,0,1.63112783432,0,1.6291799545288
+us-saltwater-tide-times-and-heights,0,0,0.68204593658447,0,0.62322092056275
+us-tides,0,0,0.83328104019165,0,0.84280991554261
+us-tides-apis,0,0,1.006156206131,0,1.0035357475281
+using-bw_pages-display-pdf-files-excerpts,0,0,0.74927520751953,0,0.76991415023804
+vsgloik,0,0,0.84089899063111,0,0.81026411056519
+wordpress,3.162459,0.716017,0,1.111579,0
+wordpress-core-functionality,0,0,0.90125703811645,0,0.71196699142456
+wordpress-plugins,0,0,53.823027849197,0,50.641799688339
+wordpress-plugins-from-oik-plugins,1013.816348,145.140025,0,130.637136,0
+wordpress-themes-oik-plugins,17.478748,2.471232,0,2.251133,0
+wp,3.206539,0.727632,0,1.146675,0
+wp-admin,0,0,4.8323082923889,0,7.3215124607086
+wp-content,19.121632,4.358096,0,6.154746,0
+wp-cron.php,0,0.213778,0,1.690802,0
+wp_caption,0,0,0.82020902633667,0,0.7354781627655
+wtf,0,0,0.74765229225158,0,0.78111696243286
+xhtml,0,0,0.78779482841492,0,0.70705199241639
+year,0,0,0.78560614585877,0,0.70388388633728
+Accum,vanilla5,sfence2,cfence2,ssuper,csuper
+,3.155334,0.870174,0,0.904882,0
+ ,36.758146,2.535864,41.520699501038,1.614337,40.295468568802
+01,36.758146,2.535864,44.306212186813,1.614337,42.914219379425
+02,36.758146,2.535864,49.511831760407,1.614337,47.03337264061
+03,36.758146,2.535864,50.944480895996,1.614337,48.562201738358
+04,36.758146,2.535864,55.416758775711,1.614337,52.105133771896
+05,36.758146,2.535864,56.096252918243,1.614337,52.780535697937
+06,36.758146,2.535864,58.187507867813,1.614337,54.030341863632
+07,36.758146,2.535864,60.972247838974,1.614337,56.974190473557
+08,36.758146,2.535864,67.281044960022,1.614337,61.333655834198
+09,36.758146,2.535864,70.015052318573,1.614337,63.971664190292
+10,36.758146,2.535864,73.267015218735,1.614337,66.705307483673
+11,36.758146,2.535864,75.627687454224,1.614337,68.479136705399
+12,36.758146,2.535864,84.114772796631,1.614337,76.107158660889
+140,36.758146,2.535864,84.812928915024,1.614337,76.764920711517
+258,36.758146,2.535864,85.51059794426,1.614337,77.457640647888
+301-redirected-pages,41.827494,3.194002,85.51059794426,2.248545,77.457640647888
+2011,63.196602,6.429556,85.51059794426,5.206787,77.457640647888
+2012,90.831346,11.284776,85.51059794426,8.961518,77.457640647888
+2013,152.491858,19.537578,85.51059794426,16.746438,77.457640647888
+2014,252.591079,33.508739,85.51059794426,27.93218,77.457640647888
+2015,302.531885,42.201372,85.51059794426,34.483789,77.457640647888
+about-oik-plugins-lazy-smart-shortcodes,314.866234,43.94734,85.51059794426,36.07549,77.457640647888
+action,314.866234,43.94734,86.101989030838,36.07549,78.026362657547
+activate_file,314.866234,43.94734,86.729513883591,36.07549,78.711831569672
+activate_plugin,314.866234,43.94734,87.362463951111,36.07549,79.40821146965
+activated_plugin,314.866234,43.94734,87.948707818985,36.07549,80.102304697037
+ad,314.866234,43.94734,88.682597875595,36.07549,80.807559728623
+add_action,314.866234,43.94734,90.408754825592,36.07549,82.431418657303
+add_attachment,314.866234,43.94734,90.997028827667,36.07549,82.98151755333
+add_filter,314.866234,43.94734,92.594252824783,36.07549,84.994571208954
+admin-ajax.php,314.866234,43.94734,93.078125715256,36.07549,85.477942228317
+admin_bar_menu,314.866234,43.94734,93.720888614655,36.07549,86.058482170105
+admin_enqueue_scripts,314.866234,43.94734,94.311472654343,36.07549,86.806401252747
+admin_footer,314.866234,43.94734,94.888515710831,36.07549,87.378023386002
+admin_head-hook,314.866234,43.94734,95.508132696152,36.07549,87.980536460877
+admin_init,314.866234,43.94734,96.108248472214,36.07549,88.67543053627
+admin_menu,314.866234,43.94734,96.714428424835,36.07549,90.435817718506
+admin_notices,314.866234,43.94734,97.334420442581,36.07549,91.036657810211
+adminoik-activation-php,314.866234,43.94734,97.906329393387,36.07549,91.589695692063
+adminoik-user-php,314.866234,43.94734,99.099000215531,36.07549,92.641188621521
+after_plugin_row_bbboingbbboing-php,314.866234,43.94734,99.747094154358,36.07549,93.286576747894
+after_plugin_row_cookie-catcookie-cat-php,314.866234,43.94734,100.32172226906,36.07549,93.97705245018
+after_plugin_row_diy-oikdiy-oik-php,314.866234,43.94734,100.93414521217,36.07549,94.541472434998
+after_plugin_row_oik-batchmoveoik-batchmove-php,314.866234,43.94734,101.51126813889,36.07549,95.100932359696
+after_plugin_row_oik-batchoik-batch-php,314.866234,43.94734,102.10147881508,36.07549,95.665833473206
+after_plugin_row_oik-mshotoik-mshot-php,314.866234,43.94734,102.67273545265,36.07549,96.213782548905
+after_plugin_row_oik-nivo-slideroik-nivo-slider-php,314.866234,43.94734,103.23276138306,36.07549,96.784564733505
+after_plugin_row_oik-pluginsoik-plugins-php,314.866234,43.94734,103.79733037949,36.07549,97.336231946945
+after_plugin_row_oik-popupoik-popup-php,314.866234,43.94734,104.41221952438,36.07549,97.884077787399
+after_plugin_row_oik-read-moreoik-read-more-php,314.866234,43.94734,105.03122758865,36.07549,99.600297927857
+after_plugin_row_oik-sc-helpoik-sc-help-php,314.866234,43.94734,105.61086273193,36.07549,100.1575319767
+after_plugin_row_oik-themesoik-themes-php,314.866234,43.94734,106.22118878365,36.07549,100.74556970596
+after_plugin_row_oik-typesoik-types-php,314.866234,43.94734,106.82724666595,36.07549,101.46108865738
+after_plugin_row_oik-useroik-user-php,314.866234,43.94734,107.41205692291,36.07549,102.02331161499
+after_plugin_row_plugin_basename,314.866234,43.94734,107.99732780457,36.07549,102.64017152786
+alink,314.866234,43.94734,109.92585587502,36.07549,104.43464255333
+apiref-display-the-api-reference,314.866234,43.94734,110.70804524422,36.07549,105.28499960899
+apis,779.70305,113.242459,111.61452722549,88.553841,106.16234374046
+apple-touch-icon-precomposed.png,782.909784,113.957609,111.61452722549,89.571446,106.16234374046
+apple-touch-icon.png,786.165209,114.71238,111.61452722549,90.554375,106.16234374046
+apply_filters,786.165209,114.71238,113.1875462532,90.554375,107.59789061546
+archived-pages,811.524886,117.960381,113.1875462532,93.429746,107.59789061546
+artisteer,811.524886,117.960381,113.95813727379,93.429746,108.34872055054
+artisteer-template,811.524886,117.960381,114.89846229553,93.429746,109.16253948212
+attachment_fields_to_edit,811.524886,117.960381,115.48104834557,93.429746,109.73035955429
+attachment_fields_to_save,811.524886,117.960381,116.13909935951,93.429746,110.45935153961
+audio,811.524886,117.960381,117.12179541588,93.429746,111.16366267204
+author,834.538371,121.153627,117.12179541588,95.933976,111.16366267204
+barfoo,834.538371,121.153627,117.76909160614,95.933976,111.86329174042
+bbboing,834.538371,121.153627,118.48650050163,95.933976,112.78296971321
+bbboing-apis,834.538371,121.153627,120.88419032097,95.933976,113.88148188591
+bbboing-common-wordpress-phrases,834.538371,121.153627,121.67206335068,95.933976,114.66160511971
+bbboing-example-display-form-user-input,834.538371,121.153627,122.37218546867,95.933976,115.35146808624
+bbboing-text-form-parameters,834.538371,121.153627,123.15708351135,95.933976,115.9945909977
+bbboing-v1-8,834.538371,121.153627,123.87322378159,95.933976,116.66318893433
+bbboing_loaded,834.538371,121.153627,124.50374984741,95.933976,117.24137997627
+bbp_get_forum_title,834.538371,121.153627,125.09451055527,95.933976,117.81242990494
+bespoke-themes,834.538371,121.153627,125.75100851059,95.933976,118.40634703636
+bing-2,834.538371,121.153627,126.49643349648,95.933976,119.11374425888
+blog,844.462412,122.709714,126.49643349648,97.754745,119.11374425888
+blog_title,844.462412,122.709714,127.24524760246,97.754745,119.83072423935
+blogger-to-wordpress-redirection,844.462412,122.709714,128.06680345535,97.754745,120.42060422897
+bloginfo_url,844.462412,122.709714,128.72942066193,97.754745,120.98700928688
+bob-3,844.462412,122.709714,129.46972465515,97.754745,121.69232821465
+bobbingwide,844.462412,122.709714,131.29677581787,97.754745,123.30330896378
+bong,844.462412,122.709714,132.15489387512,97.754745,124.00597763062
+bp,844.462412,122.709714,132.96659898758,97.754745,124.74065089226
+br,844.462412,122.709714,134.61467909813,97.754745,126.28516292572
+button,844.462412,122.709714,135.62470412254,97.754745,127.19309473038
+bw,844.462412,122.709714,136.3827650547,97.754745,127.89937281609
+bw-with-cph-parameter,844.462412,122.709714,137.04533815384,97.754745,128.5371556282
+bw_abbr,844.462412,122.709714,137.7700650692,97.754745,129.23868560791
+bw_accordion,844.462412,122.709714,138.67909598351,97.754745,130.11538362503
+bw_action,844.462412,122.709714,139.63845992088,97.754745,131.01972961426
+bw_address-2,844.462412,122.709714,140.36827778816,97.754745,131.74528384209
+bw_address-displayed-single-line,844.462412,122.709714,141.58401679993,97.754745,133.37175869942
+bw_address-styled-address-label,844.462412,122.709714,142.84493279457,97.754745,134.53262162209
+bw_api,844.462412,122.709714,147.85761475563,97.754745,139.21640396118
+bw_array_get,844.462412,122.709714,149.51314473152,97.754745,140.77616071701
+bw_array_get_dcb,844.462412,122.709714,150.51601171494,97.754745,141.72423648834
+bw_as_array,844.462412,122.709714,151.66905879974,97.754745,142.91444540024
+bw_autop,844.462412,122.709714,152.50839495659,97.754745,143.80262637138
+bw_backtrace,844.462412,122.709714,153.51403617859,97.754745,144.87834763527
+bw_better_autop,844.462412,122.709714,154.54371523857,97.754745,145.95800685883
+bw_block,844.462412,122.709714,155.52633523941,97.754745,146.69955158234
+bw_block-and-bw_eblock,844.462412,122.709714,157.83792424202,97.754745,149.5431406498
+bw_blockquote,844.462412,122.709714,158.89873027802,97.754745,150.44175744057
+bw_blog,844.462412,122.709714,159.68490052223,97.754745,151.27500653267
+bw_blogs,844.462412,122.709714,161.48542165756,97.754745,153.24747347832
+bw_bookmarks,844.462412,122.709714,162.28001785278,97.754745,153.97938942909
+bw_bookmarks-shortcode,844.462412,122.709714,163.06733679771,97.754745,154.66007781029
+bw_bookmarks-shortcode-2,844.462412,122.709714,163.8343808651,97.754745,155.36951470375
+bw_bookmarks-shortcode-for-listing-bookmarks,844.462412,122.709714,164.79769968987,97.754745,156.30553483963
+bw_build_url,844.462412,122.709714,165.82507658005,97.754745,157.20390701294
+bw_business,844.462412,122.709714,166.5422346592,97.754745,158.00700592995
+bw_button-link-top-middle-bottom-page,844.462412,122.709714,167.32464456558,97.754745,158.81373691559
+bw_button-shortcode-display-inline-call-action-link,844.462412,122.709714,168.12271261215,97.754745,159.47952508926
+bw_cite,844.462412,122.709714,169.11171555519,97.754745,160.37137722969
+bw_codes,844.462412,122.709714,170.66094350815,97.754745,162.13194417954
+bw_codes-ordered-shortcode-name,844.462412,122.709714,172.64069247246,97.754745,163.80834126472
+bw_company,844.462412,122.709714,173.47619652748,97.754745,164.52178215981
+bw_contact_button,844.462412,122.709714,174.21178150177,97.754745,165.23366928101
+bw_contact_button-contact-button,844.462412,122.709714,174.95873856545,97.754745,165.94932818413
+bw_contact_form,844.462412,122.709714,175.94131851196,97.754745,166.68420028687
+bw_copyright-2,844.462412,122.709714,176.72873139381,97.754745,167.42926716805
+bw_count,844.462412,122.709714,177.55510830879,97.754745,168.29433202744
+bw_countdown,844.462412,122.709714,178.30991721153,97.754745,169.14491391182
+bw_countdown-wordpress-3-9,844.462412,122.709714,178.95850539207,97.754745,169.93742513657
+bw_crumbs,844.462412,122.709714,179.7592113018,97.754745,170.64220190048
+bw_css,844.462412,122.709714,180.70355534554,97.754745,171.41608691216
+bw_css-add-custom-gradient-background-drop-shadow-opacity,844.462412,122.709714,181.40102028847,97.754745,172.20339298248
+bw_csv,844.462412,122.709714,182.15673422813,97.754745,173.05622005463
+bw_csv-to-create-a-table-with-nested-shortcodes,844.462412,122.709714,182.92510223389,97.754745,173.7342851162
+bw_cycle,844.462412,122.709714,184.29723620415,97.754745,174.90288496017
+bw_cycle-attached-images,844.462412,122.709714,185.08714127541,97.754745,175.60179829597
+bw_cycle-example-child-pages,844.462412,122.709714,185.88119029999,97.754745,176.46106433868
+bw_cycle-fxscrollvert,844.462412,122.709714,186.59484839439,97.754745,177.19171833992
+bw_cycle-vertical-scrolling-css-arrows-2,844.462412,122.709714,187.37155628204,97.754745,177.93352150917
+bw_dash,844.462412,122.709714,188.38113713264,97.754745,178.81944179535
+bw_directions-shortcode-to-get-google-directions,844.462412,122.709714,189.30269908905,97.754745,179.51071786881
+bw_eblock,844.462412,122.709714,190.06271481514,97.754745,180.37143087387
+bw_echo,844.462412,122.709714,191.43275785446,97.754745,181.75956487656
+bw_editcss-edit-your-custom-css-file,844.462412,122.709714,192.76162075996,97.754745,182.935557127
+bw_facebook,844.462412,122.709714,193.53438353539,97.754745,183.65161895752
+bw_facebook-follow-me-on-facebook,844.462412,122.709714,194.27768445015,97.754745,184.48469495773
+bw_field_validation_date,844.462412,122.709714,194.89016747475,97.754745,185.03726816177
+bw_field_validation_rating,844.462412,122.709714,195.46015548706,97.754745,185.58150219917
+bw_file_to_url,844.462412,122.709714,197.25574326515,97.754745,187.03915596008
+bw_flush,844.462412,122.709714,198.76405620575,97.754745,188.40791296959
+bw_follow_me,844.462412,122.709714,199.69871902466,97.754745,189.32467198372
+bw_follow_me-alt1,844.462412,122.709714,200.43659281731,97.754745,190.1586868763
+bw_form,844.462412,122.709714,201.38214087486,97.754745,191.15366864204
+bw_form_functions,844.462412,122.709714,202.01531171799,97.754745,191.70750284195
+bw_format_nivo_nggallery,844.462412,122.709714,202.79824471474,97.754745,192.90409803391
+bw_get_option,844.462412,122.709714,204.00531458855,97.754745,193.83559203148
+bw_get_posts,844.462412,122.709714,209.182315588,97.754745,198.87002921104
+bw_graphviz,844.462412,122.709714,210.46360564232,97.754745,199.80580115318
+bw_graphviz-oik-plugin-dependencies-plugins-powering-wp-a2z-org,844.462412,122.709714,211.37794065475,97.754745,200.89809393883
+bw_graphviz-plugins-theme-shortcodes-relationships,844.462412,122.709714,212.08946847916,97.754745,201.57057595253
+bw_graphviz-shortcodes-relationships,844.462412,122.709714,212.78612828255,97.754745,202.24538493156
+bw_iframe,844.462412,122.709714,213.53669309616,97.754745,202.99316096306
+bw_images,844.462412,122.709714,214.39013695717,97.754745,203.88523983955
+bw_jq,844.462412,122.709714,215.34949421883,97.754745,204.64012384415
+bw_jq-and-bw_list-to-implement-the-flex-slider-to-display-attached-images,844.462412,122.709714,216.12661910057,97.754745,205.37792778015
+bw_jq-bw_pages-cycling-display,844.462412,122.709714,216.92837882042,97.754745,206.16868662834
+bw_jquery_script_url,844.462412,122.709714,217.53981876373,97.754745,206.74090981483
+bw_link-src-url,844.462412,122.709714,218.33066272736,97.754745,207.52384781837
+bw_link-url,844.462412,122.709714,219.0262928009,97.754745,208.1791138649
+bw_link_url,844.462412,122.709714,220.06732559204,97.754745,209.07293987274
+bw_linkedin-follow-linkedin,844.462412,122.709714,220.79008436203,97.754745,209.74854469299
+bw_list-shortcode-list-posts-multiple-post-types,844.462412,122.709714,221.78092336655,97.754745,210.61938166618
+bw_list-shortcode-simple-list-of-links,844.462412,122.709714,222.67216444016,97.754745,211.48234367371
+bw_list_table,844.462412,122.709714,223.25560450554,97.754745,212.18199086189
+bw_login,844.462412,122.709714,224.12797236443,97.754745,212.89835190773
+bw_loginout,844.462412,122.709714,224.85338830948,97.754745,213.61696004868
+bw_logo,844.462412,122.709714,226.4221944809,97.754745,215.20709013939
+bw_mailto-and-bw_email,844.462412,122.709714,227.14636874199,97.754745,215.89875221252
+bw_metadata,844.462412,122.709714,227.73209071159,97.754745,216.470962286
+bw_more,844.462412,122.709714,228.64304256439,97.754745,217.188996315
+bw_nav_tabs_oik_clone_servers,844.462412,122.709714,229.2188205719,97.754745,217.88647222519
+bw_nav_tabs_page,844.462412,122.709714,229.80669569969,97.754745,218.58065009117
+bw_nav_tabs_page_tab,844.462412,122.709714,230.37458968163,97.754745,219.14610695839
+bw_navi,844.462412,122.709714,231.1933195591,97.754745,219.91364693642
+bw_new,844.462412,122.709714,232.79890680313,97.754745,221.20743513107
+bw_option,844.462412,122.709714,233.59070062637,97.754745,221.95747900009
+bw_page,844.462412,122.709714,234.34105753899,97.754745,222.82358789444
+bw_pages,844.462412,122.709714,235.4325158596,97.754745,223.62623596191
+bw_pages-example-using-format-parameter,844.462412,122.709714,236.21746873856,97.754745,224.35130190849
+bw_pages-shortcode,844.462412,122.709714,237.87230563164,97.754745,225.94237375259
+bw_parent,844.462412,122.709714,239.66824650764,97.754745,227.55632066727
+bw_pdf-list-attached-pdfs-withwithout-icons,844.462412,122.709714,240.4935965538,97.754745,228.43367767334
+bw_plug-optionsactive_plugins,844.462412,122.709714,245.67739653587,97.754745,233.46871852875
+bw_post,844.462412,122.709714,246.41412758827,97.754745,234.18830871582
+bw_posts-list-posts,844.462412,122.709714,247.26842665672,97.754745,234.96033453941
+bw_power,844.462412,122.709714,247.99943757057,97.754745,235.66513156891
+bw_pp_shortcodes,844.462412,122.709714,249.11548352242,97.754745,236.66844272614
+bw_qrcode-2,844.462412,122.709714,249.90445542336,97.754745,237.36735773087
+bw_register,844.462412,122.709714,250.66809535027,97.754745,238.22605657578
+bw_register_field,844.462412,122.709714,251.82606935501,97.754745,239.53810071945
+bw_related,844.462412,122.709714,252.65714430809,97.754745,240.48507356644
+bw_related-format-parameter,844.462412,122.709714,253.55877828598,97.754745,241.41664171219
+bw_ret,844.462412,122.709714,254.80054831505,97.754745,242.57052445412
+bw_rpt,844.462412,122.709714,256.68668818474,97.754745,244.27145051956
+bw_sc_link,844.462412,122.709714,257.29037117958,97.754745,244.84483361244
+bw_sc_syntax,844.462412,122.709714,257.87967300415,97.754745,245.56078672409
+bw_show_googlemap,844.462412,122.709714,259.37911486626,97.754745,247.17214870453
+bw_skv,844.462412,122.709714,260.47732281685,97.754745,248.20196962357
+bw_skype-shortcode-display-skype-name,844.462412,122.709714,261.1909070015,97.754745,249.0178976059
+bw_table,844.462412,122.709714,261.97029709816,97.754745,249.79702663422
+bw_table-showing-non-oik-plugins,844.462412,122.709714,262.76977610588,97.754745,250.54717445374
+bw_tablerow,844.462412,122.709714,263.79190373421,97.754745,251.4892873764
+bw_tabs,844.462412,122.709714,264.62377858162,97.754745,252.2807765007
+bw_textfield,844.462412,122.709714,265.624522686,97.754745,253.3602874279
+bw_tides-sandown,844.462412,122.709714,266.53766083717,97.754745,254.01352143288
+bw_tides-shortcode-chichester-harbour-tide-times-heights,844.462412,122.709714,267.915807724,97.754745,254.69984221458
+bw_trace,844.462412,122.709714,268.92580771446,97.754745,255.64847326279
+bw_trace2,844.462412,122.709714,270.02143883705,97.754745,256.63512825966
+bw_trace_included_files,844.462412,122.709714,272.51893472672,97.754745,258.94536924362
+bw_users,844.462412,122.709714,273.27775549889,97.754745,259.70735216141
+caption,844.462412,122.709714,274.13349962235,97.754745,260.4240629673
+checkout,847.966144,123.489826,274.13349962235,98.805462,260.4240629673
+clear-embed-a-cleared-div,847.966144,123.489826,274.86905479431,98.805462,261.10172390938
+cloned,847.966144,123.489826,275.74984288216,98.805462,261.83467483521
+codes,847.966144,123.489826,276.50675201416,98.805462,262.72085499764
+collage,847.966144,123.489826,277.23466491699,98.805462,263.4280807972
+comments,850.527393,123.924034,277.23466491699,99.246087,263.4280807972
+contact,857.424333,125.645742,277.5888338089,101.00474,263.50518870354
+contact-us,857.424333,125.645742,278.84798264503,101.00474,264.69356250763
+cookie-cat-apis,857.424333,125.645742,280.79438686371,101.00474,265.65894460678
+cookie-cat-tabulate-your-website-cookies,857.424333,125.645742,282.03156900406,101.00474,266.39034581184
+cookies,857.424333,125.645742,283.43881225586,101.00474,267.78471899033
+create-date-history-shortcode,857.424333,125.645742,284.00313615799,101.00474,268.3205602169
+css,857.424333,125.645742,284.89052510262,101.00474,269.02709913254
+deprecated_argument_run,857.424333,125.645742,285.48532104492,101.00474,269.87211918831
+deprecated_argument_trigger_error,857.424333,125.645742,286.08418011665,101.00474,270.44967913628
+deprecated_constructor_run,857.424333,125.645742,286.6854839325,101.00474,271.13985610008
+deprecated_constructor_trigger_error,857.424333,125.645742,287.49052882195,101.00474,271.69821381569
+deprecated_file_included,857.424333,125.645742,288.06189680099,101.00474,272.25264167786
+deprecated_file_trigger_error,857.424333,125.645742,288.67641091347,101.00474,272.95752263069
+deprecated_function_run,857.424333,125.645742,289.25777888298,101.00474,273.64701581001
+display-cycling-list-latest-plugins,857.424333,125.645742,290.02672886848,101.00474,274.40658783913
+diy-oik,857.424333,125.645742,292.53017807007,101.00474,276.66109156609
+diy-oik-apis,857.424333,125.645742,293.78712821007,101.00474,277.8520655632
+diy-shortcode-affects-jetpack-sharing,857.424333,125.645742,294.4935131073,101.00474,278.52405071259
+do-it-yourself-diy-shortcodes,857.424333,125.645742,295.12291407585,101.00474,279.11113977432
+do_action,857.424333,125.645742,296.65741801262,101.00474,280.70129990578
+doing_it_wrong_run,857.424333,125.645742,297.32992124558,101.00474,281.42254781723
+doing_it_wrong_trigger_error,857.424333,125.645742,297.93798017502,101.00474,281.9770898819
+downloads,901.047406,131.199618,297.93798017502,106.040754,281.9770898819
+e,901.047406,131.199618,299.32061505318,106.040754,283.39820575714
+easy-digital-downloads-edd,901.047406,131.199618,301.94695901871,106.040754,284.1217956543
+edit_attachment,901.047406,131.199618,302.56016898155,106.040754,284.67341661453
+email-signature-using-oik,901.047406,131.199618,303.49383091927,106.040754,285.37179970741
+embed,901.047406,131.199618,304.36348176003,106.040754,286.10578083992
+epan,901.047406,131.199618,305.54634475708,106.040754,287.28793668747
+etag,901.047406,131.199618,307.57234501839,106.040754,289.22379279137
+example-bw_pages,901.047406,131.199618,308.43730211258,106.040754,289.95948886871
+example-bw_pages-with-thumbnail85x0,901.047406,131.199618,309.22890114784,106.040754,290.71954798698
+example-bw_table-to-tabulate-all-oik-plugins,901.047406,131.199618,310.1853351593,106.040754,291.44122886658
+example-bw_wtf-wht-the,901.047406,131.199618,310.91132187843,106.040754,292.12184596062
+example-nivo-displaying-full-size-featured-images,901.047406,131.199618,311.72730183601,106.040754,292.89229989052
+example-nivo-using-the-id-parameter-to-select-multiple-posts,901.047406,131.199618,312.6048719883,106.040754,293.63033604622
+example-using-bw_copyright-shortcode,901.047406,131.199618,313.33980107307,106.040754,294.4714949131
+example-using-bw_jq-and-bw_pages,901.047406,131.199618,315.14954829216,106.040754,296.20834898949
+example-using-bw_jq-to-cycle-through-some-posts,901.047406,131.199618,316.12829041481,106.040754,297.19063806534
+examples,996.391586,144.320517,316.12829041481,117.275957,297.19063806534
+external-link-warning-jquery,996.391586,144.320517,319.37775421143,117.275957,298.66000199318
+feed,996.391586,144.320517,319.88707828522,117.275957,299.16728401184
+feedoik-banner-feed-php,996.391586,144.320517,320.876704216,117.275957,300.06596708298
+file,996.391586,144.320517,321.62875914574,117.275957,300.77837610245
+fix-height-nivo-slider-default-theme,996.391586,144.320517,324.77253603935,117.275957,304.44921803474
+fix-height-nivo-slider-oik-theme,996.391586,144.320517,328.86026716232,117.275957,308.17681407928
+fix-shipping-methods-found-message,996.391586,144.320517,329.5484161377,117.275957,308.91728115082
+foobar,996.391586,144.320517,330.15260910988,117.275957,309.48919415474
+foobar-apis,996.391586,144.320517,331.57030105591,117.275957,310.84371042252
+foobar-least-amazing-plugin-world,996.391586,144.320517,332.28417801857,117.275957,311.55122423172
+format-shipping-rates-text-area,996.391586,144.320517,333.10671019554,117.275957,312.27069020271
+free-oik-plugins,996.391586,144.320517,372.0972533226,117.275957,345.51996016502
+free-themes,996.391586,144.320517,372.7723941803,117.275957,346.14119839668
+gallery,996.391586,144.320517,373.5525290966,117.275957,346.88984370232
+genesis-oik,996.391586,144.320517,374.19246125221,117.275957,347.51324272156
+genesis-oik-v1-0-2,996.391586,144.320517,374.87346553803,117.275957,348.19564270973
+get_the_excerpt,996.391586,144.320517,375.52447557449,117.275957,348.76480388641
+getting-started-with-oik-plugins,997.876143,144.742452,376.1458106041,117.683078,349.59416675568
+github,997.876143,144.742452,377.01561164856,117.683078,350.43812251091
+googleplus-shortcode-bw_googleplus,997.876143,144.742452,379.56454467773,117.683078,351.15156054497
+gpslides,997.876143,144.742452,380.30289173126,117.683078,351.82586336136
+heartbeat_settings,997.876143,144.742452,380.86351394653,117.683078,352.39113521576
+herb,997.876143,144.742452,381.71869707108,117.683078,353.11733722687
+home,1001.402594,145.582832,381.71869707108,118.577101,353.11733722687
+home-2,1008.244219,146.409796,381.71869707108,119.368973,353.11733722687
+hook,1008.244219,146.409796,382.44259214401,119.368973,353.96290898323
+hover-selectors-oik-external-link-warning-jquery-plugin,1012.920995,147.028629,382.44259214401,120.005206,353.96290898323
+how-do-i-set-multiple-rates-per-weightcountry,1012.920995,147.028629,383.15193605423,120.005206,354.65450191498
+how-to-create-a-contact-page-using-oik-and-jetpack,1012.920995,147.028629,384.63573408127,120.005206,356.22908997536
+how-to-create-a-simple-contact-me-page-using-oik,1012.920995,147.028629,386.16102719307,120.005206,357.05050110817
+improved-bw_plug-shortcode,1012.920995,147.028629,386.90718126297,120.005206,357.7383081913
+index.php,1014.62437,147.44013,386.90718126297,120.419068,357.7383081913
+infusionsoft-sign-up-form-wordpress-plugin,1014.62437,147.44013,387.58473944664,120.419068,358.32637405396
+init,1014.62437,147.44013,388.30474948883,120.419068,358.90408301353
+isubmit,1014.62437,147.44013,389.55029439926,120.419068,359.84339690208
+kv,1014.62437,147.44013,390.95235443115,120.419068,361.23057770729
+latest,1020.976945,148.215317,390.95235443115,121.297143,361.23057770729
+lazy-shortcodes,1020.976945,148.215317,391.54741334915,121.297143,361.78893280029
+login_link,1020.976945,148.215317,392.28657031059,121.297143,362.4918217659
+mad-mimi-landing,1026.527609,148.930885,392.28657031059,121.983801,362.4918217659
+most-recent-work,1026.527609,148.930885,393.69664025307,121.983801,363.30405592918
+multi-rate-weightcountry-shipping-for-woocommerce,1026.527609,148.930885,394.37427520752,121.983801,363.91234374046
+new-home,1035.275144,149.911667,394.37427520752,122.926865,363.91234374046
+ngslideshow,1035.275144,149.911667,395.62042737007,122.926865,365.0372979641
+ngslideshow-and-gpslideshow-peaceful-co-existence-for-slideshow-shortcodes,1035.275144,149.911667,397.99808239937,122.926865,365.74392700195
+nivo,1035.275144,149.911667,398.88154530525,122.926865,366.53032112122
+nivo-classw50pc-half-width-nivo-slider,1035.275144,149.911667,399.88002920151,122.926865,367.29820609093
+nivo-slider-displaying-images-captions,1035.275144,149.911667,400.60861825943,122.926865,367.99399828911
+nivo2011,1035.275144,149.911667,401.27390599251,122.926865,368.63420724869
+not-oiks-shortcodes,1035.275144,149.911667,402.77012467384,122.926865,370.21524405479
+oik,1136.649692,159.336436,408.81349158287,129.408035,374.23507213593
+oik-apis,1136.649692,159.336436,409.4610683918,129.408035,374.92808914185
+oik-base-plugin,1136.649692,159.336436,448.90200424194,129.408035,408.22205519676
+oik-base-plugin-2,1136.649692,159.336436,456.66219520569,129.408035,414.3117313385
+oik-batch,1136.649692,159.336436,457.401897192,129.408035,415.03033161163
+oik-batch-apis,1136.649692,159.336436,458.9340672493,129.408035,416.05372858048
+oik-batchmove,1136.649692,159.336436,460.47245240212,129.408035,417.6272277832
+oik-batchmove-apis,1136.649692,159.336436,462.05239439011,129.408035,418.62056183815
+oik-batchmove-v2-4,1136.649692,159.336436,462.76608729363,129.408035,419.41890692711
+oik-bbpress-apis,1136.649692,159.336436,464.58304023743,129.408035,420.36748480797
+oik-bbpress-strip-tags-from-bbpress-forum-title-tooltips,1136.649692,159.336436,465.79048395157,129.408035,421.27516674995
+oik-blogger-redirect,1136.649692,159.336436,466.49322605133,129.408035,421.9844315052
+oik-bob-bing-wide-apis,1136.649692,159.336436,468.14461612701,129.408035,423.43386554718
+oik-bob-bing-wide-more-lazy-smart-shortcodes,1136.649692,159.336436,468.83373808861,129.408035,424.32298159599
+oik-bob-bing-wide-v1-30-2,1136.649692,159.336436,469.50716805458,129.408035,424.96559262276
+oik-bp-signup-email-apis,1136.649692,159.336436,470.74949193001,129.408035,426.20543861389
+oik-buddypress-signup-email,1136.649692,159.336436,471.44446873665,129.408035,426.90678143501
+oik-button-shortcodes-bw_button,1136.649692,159.336436,472.22677373886,129.408035,427.73498940468
+oik-bwtrace,1136.649692,159.336436,473.37278985977,129.408035,428.75901842117
+oik-bwtrace-debug-trace-for-wordpress,1136.649692,159.336436,475.16615986824,129.408035,430.675365448
+oik-bwtrace-v1-24,1136.649692,159.336436,475.91017484665,129.408035,431.34115767479
+oik-bwtrace-v1-25,1136.649692,159.336436,477.32635474205,129.408035,432.68390774727
+oik-bwtrace-v1-26,1136.649692,159.336436,478.56465387344,129.408035,433.93309664726
+oik-bwtrace-v1-27,1136.649692,159.336436,479.36335372925,129.408035,434.85444355011
+oik-bwtrace-v2-0-0,1136.649692,159.336436,480.04149365425,129.408035,435.53115344048
+oik-bwtrace-v2-0-1,1136.649692,159.336436,480.89557480812,129.408035,436.35111856461
+oik-bwtrace-v2-0-3,1136.649692,159.336436,481.98765563965,129.408035,437.33568334579
+oik-bwtrace-v2-0-4,1136.649692,159.336436,482.81029081345,129.408035,438.09128427506
+oik-bwtrace-v2-0-5,1136.649692,159.336436,483.61261367798,129.408035,438.76653528214
+oik-bwtrace-v2-0-6,1136.649692,159.336436,484.36886572838,129.408035,439.44013404846
+oik-bwtrace-v2-0-7,1136.649692,159.336436,485.53182458878,129.408035,440.53626680374
+oik-bwtrace-v2-0-8,1136.649692,159.336436,486.55686354637,129.408035,441.305965662
+oik-changelog,1136.649692,159.336436,486.90300559998,129.408035,441.38108587265
+oik-clone,1145.525618,161.566406,486.90300559998,131.719429,441.38108587265
+oik-clone-clone-your-wordpress-content,1145.525618,161.566406,488.51950860024,131.719429,442.93221211433
+oik-clone-requirements-summary,1145.525618,161.566406,493.88356852531,131.719429,450.92463970184
+oik-clone-v0-8,1145.525618,161.566406,494.93937063217,131.719429,451.99532485008
+oik-clone-v0-9,1145.525618,161.566406,495.86783862114,131.719429,452.88311576843
+oik-clone-v1-0-0-beta-0919,1145.525618,161.566406,496.76315951347,131.719429,453.52625584602
+oik-clone-v1-0-0-beta-1013,1145.525618,161.566406,498.07764434815,131.719429,454.80269789696
+oik-css,1145.525618,161.566406,498.789478302,131.719429,455.54095983505
+oik-css-apis,1145.525618,161.566406,500.30866527557,131.719429,457.1925368309
+oik-css-v0-8-0,1145.525618,161.566406,501.13551402092,131.719429,457.97839808464
+oik-dates-apis,1145.525618,161.566406,502.13330602646,131.719429,458.93604588509
+oik-dates-custom-date-fields,1145.525618,161.566406,502.91829609871,131.719429,459.77323102951
+oik-debug-filters,1145.525618,161.566406,503.68814325333,131.719429,460.49821400642
+oik-debug-filters-apis,1145.525618,161.566406,504.61987519264,131.719429,461.29616999626
+oik-donate,1145.525618,161.566406,505.36619329453,131.719429,461.99942088127
+oik-edd,1145.525618,161.566406,506.1344063282,131.719429,462.91341781616
+oik-email-signature,1145.525618,161.566406,506.88499307633,131.719429,463.63771605492
+oik-email-signature-apis,1145.525618,161.566406,508.7922410965,131.719429,464.61236214638
+oik-external-link-warning-apis,1145.525618,161.566406,509.80136704445,131.719429,465.55969810486
+oik-faq,1164.631306,167.979064,511.36185336113,134.261901,467.1124022007
+oik-fields-apis,1164.631306,167.979064,512.46348428726,134.261901,468.0964653492
+oik-fields-custom-post-type-field-apis,1164.631306,167.979064,513.85148239136,134.261901,469.07251048088
+oik-fields-v1-40,1164.631306,167.979064,514.69786214829,134.261901,469.83725070953
+oik-fields-v1-40-1,1164.631306,167.979064,515.59845614433,134.261901,470.50088882446
+oik-follow-me-buttons,1164.631306,167.979064,516.35253334045,134.261901,471.33701682091
+oik-fum-flexible-update-manager,1164.631306,167.979064,517.07631921768,134.261901,472.09549188614
+oik-header-apis,1164.631306,167.979064,518.4632191658,134.261901,473.10407781601
+oik-header-custom-header-image,1164.631306,167.979064,519.17259716988,134.261901,473.81545305252
+oik-infusionsoft-apis,1164.631306,167.979064,520.53817200661,134.261901,474.62677311897
+oik-infusionsoft-sign-up-form,1164.631306,167.979064,521.24349999428,134.261901,475.33769726753
+oik-installation,1166.338783,168.446273,521.58000612259,134.719174,475.42514014244
+oik-lib-shared-library-management,1166.338783,168.446273,522.28463101387,134.719174,476.15556240082
+oik-libs-shared-library-repository,1166.338783,168.446273,522.97594022751,134.719174,477.02927517891
+oik-ms-apis,1166.338783,168.446273,528.1434173584,134.719174,478.40240526199
+oik-ms-oik-multisite-shortcodes,1166.338783,168.446273,528.82998514175,134.719174,479.11983656883
+oik-ms-v0-2-1,1166.338783,168.446273,529.54858708382,134.719174,479.81410169601
+oik-mshot,1166.338783,168.446273,530.28011727333,134.719174,480.52654647827
+oik-mshot-apis,1166.338783,168.446273,531.14462423325,134.719174,481.49900174141
+oik-nivo-slider,1166.338783,168.446273,532.01841020584,134.719174,482.10603284836
+oik-nivo-slider-apis,1166.338783,168.446273,533.27883648872,134.719174,483.19508266449
+oik-nivo-slider-jquery-nivo-slider,1166.338783,168.446273,534.23320150375,134.719174,484.13711571693
+oik-paypal-buttons,1166.338783,168.446273,534.60886240006,134.719174,484.20809292793
+oik-plugins,1598.73845,228.157971,534.60886240006,182.694981,484.20809292793
+oik-plugins-an-introduction,1598.73845,228.157971,535.66810631752,182.694981,485.05054998398
+oik-plugins-apis,1598.73845,228.157971,536.95357632637,182.694981,486.03338313103
+oik-plugins-github,1598.73845,228.157971,537.73720431328,182.694981,486.74005413055
+oik-plugins-v1-15-3,1598.73845,228.157971,538.47362017632,182.694981,487.43071627617
+oik-plugins-v1-15-4,1598.73845,228.157971,539.15860390663,182.694981,488.08085632324
+oik-plugins-wordpress-plugins-server,1598.73845,228.157971,540.06444597244,182.694981,489.11369514465
+oik-popup-time-delayed-slide-content,1598.73845,228.157971,541.42267990112,182.694981,490.60010504723
+oik-post-type-support,1598.73845,228.157971,542.13612890244,182.694981,491.32878708839
+oik-post-type-support-apis,1598.73845,228.157971,543.10906505585,182.694981,492.25923514366
+oik-presentation,1598.73845,228.157971,543.80344605446,182.694981,493.13490128517
+oik-presentation-apis,1598.73845,228.157971,545.05152511597,182.694981,494.5086274147
+oik-privacy-policy-and-cookie-cat-tutorial,1598.73845,228.157971,545.87610816956,182.694981,495.21328639984
+oik-privacy-policy-apis,1598.73845,228.157971,547.20062422752,182.694981,496.28294944763
+oik-qr-code-sticker,1598.73845,228.157971,548.17290997505,182.694981,496.99345445633
+oik-rating,1598.73845,228.157971,548.91979908943,182.694981,497.88107562065
+oik-rating-apis,1598.73845,228.157971,549.81635522842,182.694981,498.71270465851
+oik-read-apis,1598.73845,228.157971,551.2644701004,182.694981,499.53434681892
+oik-read-progressively-reveal-content,1598.73845,228.157971,552.02379274368,182.694981,500.454600811
+oik-responsive-menu-apis,1598.73845,228.157971,553.64322185516,182.694981,501.53737974167
+oik-responsive-menu-jquery-responsive-menu,1598.73845,228.157971,554.32782793045,182.694981,502.41304254532
+oik-rwd,1598.73845,228.157971,555.57051205635,182.694981,503.69574546814
+oik-rwd-apis,1598.73845,228.157971,558.04041624069,182.694981,506.51017856598
+oik-sc-help-apis,1598.73845,228.157971,559.54595637322,182.694981,508.99732160568
+oik-sc-help-shortcode-help-shortcodes,1598.73845,228.157971,560.25658941269,182.694981,509.75260353088
+oik-shortcode-and-api-server,1598.73845,228.157971,561.59792137146,182.694981,511.01959967613
+oik-shortcode-server,1598.73845,228.157971,563.83508443832,182.694981,511.81073880196
+oik-shortcodes,1604.3763,229.062675,563.83508443832,183.574035,511.81073880196
+oik-shortcodes-apis,1604.3763,229.062675,565.99194931984,183.574035,512.84544563293
+oik-shortcodes-by-plugin,1604.3763,229.062675,566.74502134323,183.574035,513.5345954895
+oik-shortcodes-v1-26,1604.3763,229.062675,567.50926828384,183.574035,514.34347629547
+oik-shortcodes-v1-27-1,1604.3763,229.062675,568.54168534279,183.574035,515.37002110481
+oik-shortcodes-v1-27-2,1604.3763,229.062675,569.36693429947,183.574035,516.13350391388
+oik-sidebar-apis,1604.3763,229.062675,570.67314124107,183.574035,517.35962605476
+oik-sidebar-widget-wrangler-for-artisteer-themes,1604.3763,229.062675,571.35986351967,183.574035,518.05709314346
+oik-site-php,1604.3763,229.062675,572.30695772171,183.574035,519.08437108994
+oik-spells-out-the-oik-backronym,1604.3763,229.062675,573.31606650353,183.574035,520.00317287445
+oik-squeeze,1604.3763,229.062675,574.08462262154,183.574035,520.71214294434
+oik-squeeze-apis,1604.3763,229.062675,575.43841290474,183.574035,522.03683376312
+oik-svn,1604.3763,229.062675,576.28422689438,183.574035,522.80546665192
+oik-testimonials,1604.3763,229.062675,577.49989080429,183.574035,523.56416273117
+oik-testimonials-apis,1604.3763,229.062675,578.575091362,183.574035,524.52046895027
+oik-themes,1632.663475,233.096911,578.575091362,187.265298,524.52046895027
+oik-themes-apis,1632.663475,233.096911,579.76323151588,187.265298,525.42676377296
+oik-themes-wordpress-themes-server,1632.663475,233.096911,580.50260162354,187.265298,526.18727684021
+oik-tides-shortcode-bw_tides,1632.663475,233.096911,581.69922351837,187.265298,527.04490303993
+oik-todo-todo-list,1632.663475,233.096911,582.43836450577,187.265298,527.75614714623
+oik-trace-apis,1632.663475,233.096911,585.11698126793,187.265298,528.63103222847
+oik-tunes,1632.663475,233.096911,585.79660534859,187.265298,529.32560753822
+oik-tunes-apis,1632.663475,233.096911,587.37920832634,187.265298,530.18669342995
+oik-types,1632.663475,233.096911,588.12696003914,187.265298,530.92846632004
+oik-types-apis,1632.663475,233.096911,589.17552304268,187.265298,531.88470411301
+oik-types-v1-9-0,1632.663475,233.096911,589.88465595245,187.265298,532.77138519287
+oik-user,1632.663475,233.096911,590.58919095993,187.265298,533.66324329376
+oik-user-apis,1632.663475,233.096911,591.54068899155,187.265298,534.56434631348
+oik-user-v0-5-1,1632.663475,233.096911,592.41403698921,187.265298,535.1980650425
+oik-v2-1-beta-0106,1632.663475,233.096911,593.0721859932,187.265298,535.93102908134
+oik-v2-3,1632.663475,233.096911,593.85653424263,187.265298,536.64494419098
+oik-v2-3-alpha-0728,1632.663475,233.096911,595.25518631935,187.265298,538.59690928459
+oik-v2-4,1632.663475,233.096911,596.66896128655,187.265298,539.74301719666
+oik-v2-4-alpha-1012,1632.663475,233.096911,597.35102820396,187.265298,540.4153573513
+oik-v2-4-alpha-1112,1632.663475,233.096911,598.05090212822,187.265298,541.0933163166
+oik-v2-4-beta-1218,1632.663475,233.096911,599.20322418213,187.265298,542.37444138527
+oik-v2-4-beta-1222,1632.663475,233.096911,599.91748023033,187.265298,543.02912759781
+oik-v2-4-beta-1223,1632.663475,233.096911,600.79792737961,187.265298,544.02683258057
+oik-v2-5,1632.663475,233.096911,602.77084636688,187.265298,545.5916466713
+oik-v2-5-alpha-0130,1632.663475,233.096911,603.66557836533,187.265298,546.29692173004
+oik-v2-5-beta-0409,1632.663475,233.096911,605.29553627968,187.265298,547.63827085495
+oik-v2-6-alpha-0525,1632.663475,233.096911,606.99227333069,187.265298,549.25164175034
+oik-v2-6-alpha-0722,1632.663475,233.096911,609.99162340164,187.265298,551.85552477837
+oik-v2-6-alpha-0724,1632.663475,233.096911,610.68218445778,187.265298,552.63558483124
+oik-v3-0-0-alpha-0806,1632.663475,233.096911,611.97424960136,187.265298,554.14753484726
+oik-v3-0-0-alpha-0820,1632.663475,233.096911,613.26724433899,187.265298,555.36607384682
+oik-v3-0-0-alpha-0917,1632.663475,233.096911,615.02339935303,187.265298,556.35410785675
+oik-video-apis,1632.663475,233.096911,615.84467148781,187.265298,557.32404589653
+oik-video-bw_video-shortcode,1632.663475,233.096911,616.56717777252,187.265298,558.05472683907
+oik-weight-countryshipping-v1-3-1,1632.663475,233.096911,617.44625878334,187.265298,558.71149587631
+oik-weightcountry-shipping,1632.663475,233.096911,618.294911623,187.265298,559.31155180931
+oik-weightcountry-shipping-apis,1632.663475,233.096911,619.32589960098,187.265298,560.27268195152
+oik-weightcountry-shipping-basic-user-guide,1637.836434,233.801906,619.32589960098,187.925968,560.27268195152
+oik-weightcountry-shipping-faqs,1637.836434,233.801906,620.97073364258,187.925968,561.66056704521
+oik-weightcountry-shipping-pro,1637.836434,233.801906,621.69175481796,187.925968,562.57298779488
+oik-weightcountry-shipping-pro-v1-4-1,1637.836434,233.801906,622.36642599106,187.925968,563.23070263863
+oik-weightcountry-shipping-v1-3,1637.836434,233.801906,623.03358125687,187.925968,563.8827996254
+oik-weightcountry-shipping-woocommerce-extension,1637.836434,233.801906,623.77894353867,187.925968,564.59263563156
+oik-window-width,1637.836434,233.801906,624.46340656281,187.925968,565.29352760315
+oik-window-width-apis,1637.836434,233.801906,625.54085659981,187.925968,566.30600452423
+oik-window-width-v0-1-1,1637.836434,233.801906,626.39791560173,187.925968,566.93696451187
+oik-woo,1637.836434,233.801906,627.10420656204,187.925968,567.80030632019
+oik-working-feedback-apis,1637.836434,233.801906,627.94045639038,187.925968,568.73678445816
+oik-workingfeedback-testimonials,1637.836434,233.801906,628.67211437225,187.925968,569.47055959702
+oik2012,1637.836434,233.801906,629.52218127251,187.925968,570.13914871216
+oik20120-twenty-twelve-child-theme,1637.836434,233.801906,630.21592211723,187.925968,570.77997088432
+oik_api,2355.231912,322.68592,630.21592211723,254.209784,570.77997088432
+oik_attachment_fields_to_save,2355.231912,322.68592,631.6672680378,254.209784,572.26462483406
+oik_box,2355.231912,322.68592,632.68814277649,254.209784,573.21684384346
+oik_cpt_edit_type_fields,2355.231912,322.68592,635.70176172257,254.209784,575.8391969204
+oik_file,2391.713819,327.322162,635.70176172257,258.574786,575.8391969204
+oik_hook,2626.01708,360.646401,635.70176172257,294.031862,575.8391969204
+oik_hook-sitemap.xml,2627.487297,361.427479,635.70176172257,295.14392,575.8391969204
+oik_parsed_source-sitemap4.xml,2629.046569,362.217543,635.70176172257,296.122257,575.8391969204
+oik_path,2629.046569,362.217543,636.9510307312,296.122257,577.10192084312
+oik_plugin_lazy_activation,2629.046569,362.217543,638.02553296089,296.122257,578.00273489952
+oik_pluginversion,2970.289123,406.599519,638.02553296089,336.305808,578.00273489952
+oik_premiumversion,3004.797237,410.919232,638.02553296089,340.48633,578.00273489952
+oik_register_plugin_server,3004.797237,410.919232,639.5443251133,340.48633,579.42928004265
+oik_require,3004.797237,410.919232,640.84293913841,340.48633,580.62464809418
+oik_require_lib,3004.797237,410.919232,643.22137904167,340.48633,582.83659696579
+oik_shortcodes,3589.234353,485.93599,643.22137904167,409.979058,582.83659696579
+oik_shortcodes_activation,3589.234353,485.93599,644.97843623161,409.979058,584.43091201782
+oik_themeversion,3594.18114,486.551252,644.97843623161,410.589246,584.43091201782
+oik_url,3594.18114,486.551252,646.50335407257,410.589246,585.85366797447
+oikai_format_description,3594.18114,486.551252,647.52571702004,410.589246,586.91059279442
+old,3597.215909,487.246293,647.52571702004,411.575635,586.91059279442
+option,3597.215909,487.246293,648.13696980476,411.575635,587.61534190178
+other-shortcode-plugins,3597.215909,487.246293,653.07233071327,411.575635,588.76792693138
+p,3597.215909,487.246293,655.0466337204,411.575635,590.63479995728
+pages-plugin,3603.681474,488.230491,655.0466337204,412.303273,590.63479995728
+paypal,3603.681474,488.230491,656.05571389198,412.303273,591.37312078476
+pin,3603.681474,488.230491,656.9053068161,412.303273,591.96639966965
+playlist,3603.681474,488.230491,657.67400765419,412.303273,592.73247790337
+plugin_basename,3603.681474,488.230491,659.37908649445,412.303273,594.46111989021
+plugins,3603.681474,488.230491,665.05859088898,412.303273,600.61194372177
+post_link,3603.681474,488.230491,665.80190205574,412.303273,601.41293978691
+pre_set_site_transient_update_themes,3603.681474,488.230491,666.41561818123,412.303273,601.97629857063
+premium-oik-plugins,3603.681474,488.230491,676.65978169441,412.303273,612.68373060226
+premium-plugins,3609.226293,488.921705,676.65978169441,412.965227,612.68373060226
+premium-themes,3609.226293,488.921705,677.26904845238,412.965227,613.24257659912
+privacy-policy,3610.779436,489.343671,677.26904845238,413.386418,613.24257659912
+privacy-policy-page-generator,3610.779436,489.343671,677.97186160088,413.386418,613.9630715847
+purchase-confirmation,3614.233667,490.316177,677.97186160088,414.411438,613.9630715847
+recover-from-a-wordpress-fatal-error-using-your-sites-control-panel-cpanel,3614.233667,490.316177,678.93975067139,414.411438,615.10700273514
+recover-from-a-wordpress-fatal-error-using-your-wesites-control-panel-cpanel,3614.233667,490.316177,679.87238764763,414.411438,615.79369258881
+register,3614.233667,490.316177,680.1613316536,414.411438,616.05624771118
+request-an-api-key,3615.902392,490.762823,680.1613316536,414.834295,616.05624771118
+retlink,3615.902392,490.762823,682.54614663124,414.834295,618.08785676956
+rss-2,3615.902392,490.762823,683.39895558357,414.834295,618.78308677673
+rss_title,3615.902392,490.762823,684.19992852211,414.834295,619.48297786713
+rss_url,3615.902392,490.762823,685.05288052559,414.834295,620.31500387192
+sdiv,3615.902392,490.762823,686.88016557694,414.834295,621.87734770775
+search,3615.902392,490.762823,687.66554546356,414.834295,622.57544875145
+set-height-nivo-slider-default-theme,3615.902392,490.762823,689.86948633194,414.834295,626.57770967484
+shortcode_example,4339.354651,562.320628,689.86948633194,469.645069,626.57770967484
+shortcodes,4416.916059,576.705915,689.86948633194,480.540889,626.57770967484
+shortcodesoik-api-importer-php,4416.916059,576.705915,690.77369236946,480.540889,627.47808051109
+shortcodesoik-user-php,4416.916059,576.705915,691.72447657585,480.540889,628.36106348038
+simple-example-wp-shortcode,4416.916059,576.705915,692.42282676697,480.540889,629.0053756237
+sitemap,4416.916059,576.705915,695.22831702232,480.540889,631.74608778954
+sitemap_index.xml,4418.46637,577.427324,695.22831702232,481.648566,631.74608778954
+smart-shortcodes,4418.46637,577.427324,695.81845808029,481.648566,632.30054187775
+span,4418.46637,577.427324,697.28610086441,481.648566,633.67523002625
+stag,4418.46637,577.427324,699.01066088676,481.648566,635.41115283966
+stay-informed,4418.46637,577.427324,700.09302687645,481.648566,636.49920248985
+support,4464.282355,582.787695,700.09302687645,486.419935,636.49920248985
+table-of-active-plugins,4464.282355,582.787695,705.27399778366,486.419935,641.54262065887
+tag.lp,4468.393199,583.59037,705.27399778366,487.559412,641.54262065887
+template_url,4468.393199,583.59037,706.01352858543,487.559412,642.38174748421
+test,4471.509617,584.290191,706.01352858543,488.575765,642.38174748421
+thankyou,4476.087457,584.89269,706.01352858543,489.158681,642.38174748421
+themes,4476.087457,584.89269,710.83016014099,489.158681,649.22472691536
+third-contact-plugin,4476.087457,584.89269,711.564204216,489.158681,650.10932302475
+to-link-or-not-to-link,4476.087457,584.89269,712.28493618965,489.158681,650.93919968605
+top,4476.087457,584.89269,713.13306903839,489.158681,651.7830619812
+trying-the-div-end-div-shortcodes,4476.087457,584.89269,713.86796212196,489.158681,652.4850590229
+tutorials,4515.748341,590.745355,713.86796212196,494.563145,652.4850590229
+twenty-twelve,4515.748341,590.745355,714.53734707832,494.563145,653.21867012978
+uk-tides-apis,4515.748341,590.745355,715.37352824211,494.563145,654.047935009
+upgrade-to-a-new-version-of-oik-from-oik-plugins,4515.748341,590.745355,717.00465607643,494.563145,655.67711496353
+us-saltwater-tide-times-and-heights,4515.748341,590.745355,717.68670201302,494.563145,656.30033588409
+us-tides,4515.748341,590.745355,718.51998305321,494.563145,657.14314579964
+us-tides-apis,4515.748341,590.745355,719.52613925934,494.563145,658.14668154717
+using-bw_pages-display-pdf-files-excerpts,4515.748341,590.745355,720.27541446686,494.563145,658.9165956974
+vsgloik,4515.748341,590.745355,721.11631345749,494.563145,659.72685980797
+wordpress,4518.9108,591.461372,721.11631345749,495.674724,659.72685980797
+wordpress-core-functionality,4518.9108,591.461372,722.01757049561,495.674724,660.43882679939
+wordpress-plugins,4518.9108,591.461372,775.8405983448,495.674724,711.08062648773
+wordpress-plugins-from-oik-plugins,5532.727148,736.601397,775.8405983448,626.31186,711.08062648773
+wordpress-themes-oik-plugins,5550.205896,739.072629,775.8405983448,628.562993,711.08062648773
+wp,5553.412435,739.800261,775.8405983448,629.709668,711.08062648773
+wp-admin,5553.412435,739.800261,780.67290663719,629.709668,718.40213894844
+wp-content,5572.534067,744.158357,780.67290663719,635.864414,718.40213894844
+wp-cron.php,5572.534067,744.372135,780.67290663719,637.555216,718.40213894844
+wp_caption,5572.534067,744.372135,781.49311566353,637.555216,719.13761711121
+wtf,5572.534067,744.372135,782.24076795578,637.555216,719.91873407364
+xhtml,5572.534067,744.372135,783.0285627842,637.555216,720.62578606606
+year,5572.534067,744.372135,783.81416893005,637.555216,721.32966995239
+Summary report: 
+name,count,total,average,plusorminus,percentage
+vanilla5,7967,5572.534067,0.6994519978662,0,0
+sfence2,1589,744.372135,0.46845320012587,-0.23099879774033,-33.025682740922
+cfence2,1524,783.81416893005,0.51431375914046,-0.18513823872574,-26.469041376755
+ssuper,842,637.555216,0.75719146793349,0.057739470067294,8.2549582020551
+csuper,1524,721.32966995239,0.47331343172729,-0.22613856613891,-32.330819960309
+Script required once
+who's in charge?
+<!--PHP version:7.0.2RC1
+--><!--PHP functions:1267
+--><!--User functions:3416
+--><!--Classes:272
+--><!--Plugins:48
+--><!--Files:272
+--><!--Registered widgets:114
+--><!--Post types:40
+--><!--Taxonomies:22
+--><!--Queries:3
+--><!--Query time:0.036103963851929
+--><!--Trace file:C:/apache/htdocs/wordpress/bwtraces.loh
+--><!--Trace records:418
+--><!--Remote addr:
+--><!--Elapsed (secs):8nubmer_fmroat_diaemcl_pinot991227
+-->
