@@ -58,6 +58,7 @@ $files = array( "vanilla7", "ssuper", "csuper", "ssuper2", "csuper2", "scacheuk7
 
 $files = array( "vanilla", "vanilla5", "akismet", "sitemaps", "importer" );
 
+/*
 process_files( $files );
 
 $files = array( "vanilla5", "cf7", "ai1seo", "yoastseo", "jetpack", "nextgen", "woocommerce", "wordfence", "analytics" );
@@ -69,21 +70,35 @@ $files = array( "vanilla5", "sfence2", "cfence2", "ssuper", "csuper" );
 process_files( $files );
 
 
+$files = array( "vanilla", "nofooter", "gfw", "yoastseo", "genesistant", "oik-widget-cache", "noclone" );
 
-function process_files( $files ) { 
+process_files( $files, "201602" );
+*/
+
+
+
+$files = array( "vanilla", "gfw", "fewerdbs", "noclone" );
+
+process_files( $files, "20160224" );
+
+
+
+
+function process_files( $files, $host="2016" ) { 
 																											 
 	$merger = new CSV_merger();
 	$summary = new Group_Summary();
 
 	foreach ( $files as $file ) {
 		$stats = new VT_stats_top12();
-		$stats->load_file( $file );
-		// $grouper = $stats->count_things();
-		$grouper = $stats->count_things_differently();
+		$stats->load_file( $file, $host );
+		$grouper = $stats->count_things();
+		//$grouper = $stats->count_things_differently();
 		$grouper->report_total();
 		$summary->add_group( $file, $grouper->total, $grouper->total_time ); 
 		
-		$merger->append( $grouper->elapsed );
+		//$merger->append( $grouper->elapsed );
+		$merger->append( $grouper->percentages );
 		//$merger->append( $grouper->groups );
 	}
 	$merger->report_count();
