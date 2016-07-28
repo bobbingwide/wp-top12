@@ -3,8 +3,8 @@ Contributors: bobbingwide, vsgloik
 Donate link: http://www.oik-plugins.com/oik/oik-donate/
 Tags: shortcodes, smart, lazy
 Requires at least: 4.4
-Tested up to: 4.4
-Stable tag: 0.0.0
+Tested up to: 4.6-beta4
+Stable tag: 0.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -28,12 +28,13 @@ wp-top12 provides mechanisms to post process daily trace summary report files
 
 = What is provided? = 
 
-In version 0.0.0 there are 4 routines:
+In version 0.0.1 there are 5 routines:
 
 vt.php -
 vt-stats.php -
 vt-top12.php - 
-vt-driver.php - 
+vt-driver.php -
+vt-ip.php - Summarises requests by IP address 
 
 Note: vt comes from the bwtrace.vt.mmdd filename which is so named since it records
 value text pairs ( see bw_trace_vt() ).
@@ -65,22 +66,20 @@ slog will be implemented initially using oik-batch but will eventually be compat
 There may be an admin interface, but unlikely to be a front-end.
 
 
- 
-
-
-
-
-
-
-
 == Screenshots ==
-1. wp-top12 in action
+1. wp-top12 in action - no not really
 
 == Upgrade Notice ==
+= 0.0.1 =
+Now supports initial analysis by IP address
+
 = 0.0.0 =
 New sample plugin, available from GitHub
 
-== Changelog == 
+== Changelog ==
+= 0.0.1 = 
+* Added: vt-ip.php to summarise requests by IP, showing total requests and elapsed time for high using IP addresses
+
 = 0.0.0 =
 * Added: New plugin
 
