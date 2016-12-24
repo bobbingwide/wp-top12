@@ -2,10 +2,13 @@
 
 /**
  * Syntax: oikwp vt-driver.php bwtrace.vt.1224
- * 
+ *
+ * Input: file e.g. gt100s.csv
+ * Output: bwtrace.ct.mmdd - client trace report
+ *
  * Purpose: To run a set of sample requests to a website in order
- * to get it to use oik-bwtrace to produce a summary of the 
- * transactions run on the server. 
+ * to get it to use oik-bwtrace to produce a summary of the transactions run on the server. 
+ * Note: oik-bwtrace should not be active on the server, only the functionality to produce the daily trace summary report.
  * 
  * The requests can be run against the current site
  * but it's more likely that they should be directed to
