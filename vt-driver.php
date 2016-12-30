@@ -86,12 +86,22 @@ class VT_driver {
 	
 	public $cache_time;
 	
+	/**
+	 * Constructor for VT_driver
+	 * 
+	 * Load the URLs to process
+	 *
+	 */
 	public function __construct() {
 		//$this->file = file( "gtsc.csv" );
 		//$this->file = file( "gt100.csv" );
 		$this->file = file( "gt100s.csv" );
+		
+		$this->file = file( "gt100-2016.csv" );
+		
 		$this->total = count( $this->file );
 		$this->loops = 2;					// was 10 for vanilla5
+		$this->loops = 1;
 		$this->lines = $this->total;
 		
 	}

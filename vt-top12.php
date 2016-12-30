@@ -2,6 +2,7 @@
 /**
  * Syntax: oikwp vt-top12.php process
  * 
+ * @TODO Support invocation using parameters
  * 
  */
 ini_set('memory_limit','1024M');
@@ -73,16 +74,37 @@ process_files( $files );
 $files = array( "vanilla", "nofooter", "gfw", "yoastseo", "genesistant", "oik-widget-cache", "noclone" );
 
 process_files( $files, "201602" );
-*/
 
 
 
 $files = array( "vanilla", "gfw", "fewerdbs", "noclone" );
 
 process_files( $files, "20160224" );
+*/
+
+$files = array( "vanilla", "wp46-initial", "vanilla-34" );
+
+// vanilla-34-kd = Kaspersky Disabled after restarting apache server 
+//	"vanilla"
+// "vanilla-34", "vanilla-34-kd", "vanilla-34-kd-2", "vanilla-35-owc",   
+// "vanilla-wp44-owc", "vanilla-wp44", "vanilla-wp44-owc-2", "vanilla-wp44-issue-15-2", 
+// "vanilla-wp47",
+
+$files = array( 
+	"vanilla-wp44-issue-15-5", "vanilla-wp44-1", "vanilla-wp44-2", "vanilla-wp44-3", "vanilla-wp44-4"
+, "vanilla-wp453", "vanilla-wp453-1", "vanilla-wp453-2", "vanilla-wp453-3", "vanilla-wp453-4"
+, "vanilla-wp461", "vanilla-wp461-1", "vanilla-wp461-2", "vanilla-wp461-3", "vanilla-wp461-4" 
+, "vanilla-wp47", "vanilla-wp47-1", "vanilla-wp47-2", "vanilla-wp47-3", "vanilla-wp47-4" );
+
+process_files( $files, "20161224" );
 
 
-
+/**
+ * Process the selected set of files
+ * 
+ * @param array $files - array of file names ( excluding the .csv extension )
+ * @param string $host - directory for files
+ */
 
 function process_files( $files, $host="2016" ) { 
 																											 

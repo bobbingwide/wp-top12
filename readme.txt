@@ -3,7 +3,7 @@ Contributors: bobbingwide, vsgloik
 Donate link: http://www.oik-plugins.com/oik/oik-donate/
 Tags: shortcodes, smart, lazy
 Requires at least: 4.4
-Tested up to: 4.6-beta4
+Tested up to: 4.7
 Stable tag: 0.0.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
@@ -30,16 +30,20 @@ wp-top12 provides mechanisms to post process daily trace summary report files
 
 In version 0.0.1 there are 5 routines:
 
-vt.php -
-vt-stats.php -
-vt-top12.php - 
-vt-driver.php -
-vt-ip.php - Summarises requests by IP address 
+- vt.php -
+- vt-stats.php - Count the requests over a period of time ( from 2015/10/01 to ... )
+- vt-top12.php - Generate summary report comparing different test runs
+- vt-driver.php - Run a set of sample requests to a website
+- vt-ip.php - Summarises requests by IP address 
+
 
 Note: vt comes from the bwtrace.vt.mmdd filename which is so named since it records
 value text pairs ( see bw_trace_vt() ).
 
+Other routines:
 
+merger.php - Merge two simple CSV files into one
+reducer.php - Routine to help find queries that result on more than one server transaction
 
 
 = What else do I need? =
