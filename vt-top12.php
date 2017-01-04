@@ -89,15 +89,57 @@ $files = array( "vanilla", "wp46-initial", "vanilla-34" );
 // "vanilla-34", "vanilla-34-kd", "vanilla-34-kd-2", "vanilla-35-owc",   
 // "vanilla-wp44-owc", "vanilla-wp44", "vanilla-wp44-owc-2", "vanilla-wp44-issue-15-2", 
 // "vanilla-wp47",
+//process_files( $files, "20161224" );
 
-$files = array( 
-	"vanilla-wp44-issue-15-5", "vanilla-wp44-1", "vanilla-wp44-2", "vanilla-wp44-3", "vanilla-wp44-4"
-, "vanilla-wp453", "vanilla-wp453-1", "vanilla-wp453-2", "vanilla-wp453-3", "vanilla-wp453-4"
-, "vanilla-wp461", "vanilla-wp461-1", "vanilla-wp461-2", "vanilla-wp461-3", "vanilla-wp461-4" 
-, "vanilla-wp47", "vanilla-wp47-1", "vanilla-wp47-2", "vanilla-wp47-3", "vanilla-wp47-4" );
 
-process_files( $files, "20161224" );
+$groups = array( "wp44" => array( "vanilla-wp44-issue-15-5", "vanilla-wp44-1", "vanilla-wp44-2", "vanilla-wp44-3", "vanilla-wp44-4" )
+							, "wp45" => array( "vanilla-wp453", "vanilla-wp453-1", "vanilla-wp453-2", "vanilla-wp453-3", "vanilla-wp453-4" )
+							, "wp46" => array( "vanilla-wp461", "vanilla-wp461-1", "vanilla-wp461-2", "vanilla-wp461-3", "vanilla-wp461-4" )
+							, "wp47" => array( "vanilla-wp47", "vanilla-wp47-1", "vanilla-wp47-2", "vanilla-wp47-3", "vanilla-wp47-4" )
+							, "wpnr" => array( "vanilla-nr-1", "vanilla-nr-2" )
+							, "wpnc" => array( "vanilla-nc-1" )
+							);
 
+process_groups( $groups, "20161224" );
+
+
+/**
+ * Process the selected set of groups
+ * 
+ * @param array $groups - array of file sets ( excluding the .csv extension )
+ * @param string $host - directory for files
+ */
+
+function process_groups( $groups, $host="2016" ) { 
+																											 
+	$merger = new CSV_merger();
+	$summary = new Group_Summary();
+
+	foreach ( $groups as $key => $group ) {
+		$stats = new VT_stats_top12();
+		$stats->load_group( $group, $host );
+		$grouper = $stats->count_things();
+		//$grouper = $stats->count_things_by_queries();
+		
+		$grouper->report_total();
+		$summary->add_group( $key, $grouper->total, $grouper->total_time ); 
+		
+		//$merger->append( $grouper->elapsed );
+		$merger->append( $grouper->percentages );
+		//$merger->append( $grouper->groups );
+	}
+	$merger->report_count();
+	echo "Elapsed," . implode( array_keys( $groups ), "," ) . PHP_EOL;
+	$merger->sort();
+	
+	$merger->report(); 
+	$merger->accum();
+	
+	echo "Accum," . implode( array_keys( $groups ), "," ) . PHP_EOL;
+	$merger->report_accum();
+	
+	$summary->report();
+}
 
 /**
  * Process the selected set of files
@@ -105,9 +147,7 @@ process_files( $files, "20161224" );
  * @param array $files - array of file names ( excluding the .csv extension )
  * @param string $host - directory for files
  */
-
 function process_files( $files, $host="2016" ) { 
-																											 
 	$merger = new CSV_merger();
 	$summary = new Group_Summary();
 

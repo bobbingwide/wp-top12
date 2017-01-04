@@ -1,4 +1,4 @@
-<?php // (C) Copyright Bobbing Wide 2015, 2016
+<?php // (C) Copyright Bobbing Wide 2015-2017
 
 /**
  * VT_stats_top12
@@ -18,6 +18,16 @@
  */
  
 class VT_stats_top12 extends VT_stats {
+
+	/**
+	 * Populuate rows for a given group of files 
+	 */
+	function load_group( $group, $host="2016" ) {
+		$files = bw_as_array( $group );
+		foreach ( $files as $file ) {
+			$this->load_file( $file, $host );
+		}	
+	}
 
 	/**
 	 * Populate rows for the given plugin
@@ -54,7 +64,6 @@ class VT_stats_top12 extends VT_stats {
 	/**
 	 * Ignore results exceeding 6 seconds
 	 */
-	
 	function lt6secs( $object ) {
 		$group = $object->final <= 6.0;
 		if ( !$group ) {
@@ -130,10 +139,44 @@ class VT_stats_top12 extends VT_stats {
 		return( $grouper );
 	}
 	
+	
+	
+	/**
+	 * Count by grouping on the number of queries
+	 * 
+	 */
+	function count_things_by_queries() {
+		$grouper = new Object_Grouper();
+		echo "Grouping: " . count( $this->rows ) . PHP_EOL;
+		$grouper->populate( $this->rows );
+		$grouper->time_field( "final" );
+		$grouper->where( array( $this, "lt6secs" ) );
+		$grouper->groupby( "queries", array( $this, "queries" ) );
+		
+		$this->having = 6.0;
+		$grouper->having( array( $this, "having_filter_value_le" ) );
+		//$grouper->percentages();
+		return( $grouper );
+	}
+	
 	function surisl( $surisl ) {
 		//echo $surisl . PHP_EOL;
 		return( $surisl );
 	
+	}
+	
+	/**
+	 * 
+	 */
+	
+	function queries( $queries ) {
+		$qs = $queries;
+		if ( $queries < 100 ) 
+			return( "<100" );
+		if ( $queries < 200 ) 
+			return( "<200" );
+		return( "<max" );
+		return( $queries );
 	}
 
 
