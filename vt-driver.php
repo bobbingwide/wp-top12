@@ -29,6 +29,16 @@
 oik_require( "includes/oik-remote.inc" );
  
 $driver = new VT_driver();
+
+$file = oik_batch_query_value_from_argv( 1, null );
+if ( $file ) {
+	$loops = oik_batch_query_value_from_argv( 2, 1 );
+} else {
+	$file = "gt100-2016.csv";
+	$loops = 1;
+}
+
+$driver->prepare( $file, $loops );
 $driver->loop();
 
 /**
@@ -89,22 +99,27 @@ class VT_driver {
 	/**
 	 * Constructor for VT_driver
 	 * 
-	 * Load the URLs to process
 	 *
 	 */
 	public function __construct() {
 		//$this->file = file( "gtsc.csv" );
 		//$this->file = file( "gt100.csv" );
-		$this->file = file( "gt100s.csv" );
+		//$this->file = file( "gt100s.csv" );
 		
-		$this->file = file( "gt100-2016.csv" );
+		//$this->file = file( "gt100-2016.csv" );
 		
-		$this->total = count( $this->file );
-		$this->loops = 2;					// was 10 for vanilla5
-		$this->loops = 1;
-		$this->lines = $this->total;
 		
 	}
+	/**
+	 * Load the URLs to process
+	 */
+	public function prepare( $file, $loops ) {
+		$this->file = file( $file );
+		$this->total = count( $this->file );
+		$this->loops = $loops;		
+		$this->lines = $this->total;
+	}
+	
 	
 	public function loop() {
 		static $count = 0;
