@@ -92,6 +92,11 @@ $files = array( "vanilla", "wp46-initial", "vanilla-34" );
 //process_files( $files, "20161224" );
 
 
+$files = array( "gta-44", "gta-453", "gta-461", "gta-47", "gta-nc", "gta-nc-1000" );
+process_files( $files, "20170104" );
+exit();
+
+
 $groups = array( "wp44" => array( "vanilla-wp44-issue-15-5", "vanilla-wp44-1", "vanilla-wp44-2", "vanilla-wp44-3", "vanilla-wp44-4" )
 							, "wp45" => array( "vanilla-wp453", "vanilla-wp453-1", "vanilla-wp453-2", "vanilla-wp453-3", "vanilla-wp453-4" )
 							, "wp46" => array( "vanilla-wp461", "vanilla-wp461-1", "vanilla-wp461-2", "vanilla-wp461-3", "vanilla-wp461-4" )
@@ -101,6 +106,7 @@ $groups = array( "wp44" => array( "vanilla-wp44-issue-15-5", "vanilla-wp44-1", "
 							);
 
 process_groups( $groups, "20161224" );
+
 
 
 /**
