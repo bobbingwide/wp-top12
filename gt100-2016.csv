@@ -1,5 +1,4 @@
 /,23061
-/oik-plugins/oik/,20351
 /apis/oik-apis/,11842
 /oik-plugins/oik-shortcode-server/,2014
 /wordpress-plugins-from-oik-plugins/,1878
@@ -12,7 +11,6 @@
 /oik-plugins/oik-clone-clone-your-wordpress-content/,975
 /home/,768
 /oik-plugins/oik-weightcountry-shipping-woocommerce-extension/,752
-/oik-plugins/oik-fields-custom-post-type-field-apis/,751
 /oik-plugins/oik-types/,750
 /oik-plugins/privacy-policy-page-generator/,664
 /wordpress-plugins-from-oik-plugins/wordpress-plugins/oik-nivo-slider/oik-nivo-slider-faq/oik-custom-image-link-url/,661
@@ -54,7 +52,6 @@
 /oik-plugins/oik/,436
 /oik-plugins/oik-testimonials/,433
 /about-oik-plugins-lazy-smart-shortcodes/smart-shortcodes/,430
-/apis/oik-trace-apis/,428
 /oik-plugins/oik-edd/,426
 /about-oik-plugins-lazy-smart-shortcodes/lazy-shortcodes/,423
 /support/sitemap/,416
@@ -123,7 +120,6 @@
 /download/do-it-yourself-diy-shortcodes/,290
 /apis/plugins/api-list/,285
 /wordpress-plugins-from-oik-plugins/oik-base-plugin-2/oik-svn/,273
-/shortcode_example/most-recent-work/,273
 /wordpress-plugins-from-oik-plugins/oik-base-plugin/oik-css/,272
 /oik-installation/,271
 /wordpress-plugins-from-oik-plugins/oik-base-plugin-2/oik-donate/,271
@@ -156,7 +152,6 @@
 /oik_api/add_action/,230
 /wordpress-plugins-from-oik-plugins/oik-base-plugin-2/oik-svn/,230
 /oik_api/bw_format_nivo_nggallery/wp-admin/admin-ajax.php,229
-/apis/oik-batch-apis/,229
 /oik_premiumversion/oik-plugins-v1-15-4/,229
 /oik_api/alink/,226
 /oik-faq/fix-shipping-methods-found-message/,222
@@ -272,7 +267,6 @@
 /apis/oik-nivo-slider-apis/,154
 /wordpress-plugins-from-oik-plugins/wordpress-plugins/oik-nivo-slider/oik-nivo-slider-faq/oik-nivo-slider-with-links-opening-in-new-window/,154
 /oik_pluginversion/oik-clone-v1-0-0-beta-1013/,154
-/2015/08/how-i-would-solve-plugin-dependencies/,154
 /wordpress-plugins-from-oik-plugins/wordpress-plugins/oik-nivo-slider/oik-nivo-slider-faq/oik-nivo-slider-thumbnail-parameter/,153
 /wordpress-plugins-from-oik-plugins/free-oik-plugins/oik-trace-plugin/an-introduction-to-problem-determination-with-oik-bwtrace-debug-trace-for-wordpress/,153
 /oik_api/bw_file_to_url/,153
@@ -345,7 +339,6 @@
 /oik-plugins/oik-weightcountry-shipping-pro/,138
 /oik_shortcodes/bw_users/,138
 /oik_shortcodes/bw_api/,138
-/tutorials/upgrade-to-a-new-version-of-oik-from-oik-plugins/,138
 /oik_hook/admin_notices/,137
 /oik_api/oik_require_lib/,137
 /oik_shortcodes/post_link/,137
@@ -499,7 +492,6 @@
 /oik_hook/attachment_fields_to_save/,117
 /oik_shortcodes/bw_related/,117
 /shortcodes/ngslideshow-and-gpslideshow-peaceful-co-existence-for-slideshow-shortcodes/,117
-/apis/oik-tunes-apis/,117
 /oik_hook/bbboing_loaded/,117
 /shortcode_example/bw_list-shortcode-simple-list-of-links/,117
 /oik_shortcodes/bw_csv/,117
@@ -597,7 +589,6 @@
 /oik-themes/genesis-oik/,109
 /oik_shortcodes/bw_post/,109
 /oik_hook/activate_file/,109
-/apis/oik-infusionsoft-apis/,109
 /oik_api/bw_array_get_dcb/,109
 /shortcodes/clear-embed-a-cleared-div/,109
 /shortcodes/oik-follow-me-buttons/,109
