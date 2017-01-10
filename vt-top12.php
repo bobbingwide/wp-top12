@@ -82,7 +82,13 @@ $files = array( "vanilla", "gfw", "fewerdbs", "noclone" );
 process_files( $files, "20160224" );
 */
 
-$files = array( "vanilla", "wp46-initial", "vanilla-34" );
+$files = array( "vanilla" => "vanilla-nc-1,vanilla-nc-2,vanilla-nc-3,vanilla-nc-4,vanilla-nc-5" 
+              , "akismet" => "akismet-1,akismet-2,akismet-3"
+							);
+
+process_groups( $files, "20170108" );
+exit();
+
 
 // vanilla-34-kd = Kaspersky Disabled after restarting apache server 
 //	"vanilla"
@@ -90,6 +96,14 @@ $files = array( "vanilla", "wp46-initial", "vanilla-34" );
 // "vanilla-wp44-owc", "vanilla-wp44", "vanilla-wp44-owc-2", "vanilla-wp44-issue-15-2", 
 // "vanilla-wp47",
 //process_files( $files, "20161224" );
+
+
+$files = array( "nc" => array( "gtb-nc", "gtb-nc-1000" )
+							, "issue6" => array( "gtb-oik-types-issue-6", "gtb-oik-types-issue-6-500" )
+							, "issue6e" => array(  "gtb-oik-types-issue-6-100" )
+							); 
+process_groups( $files, "20170107" );
+exit();
 
 
 $files = array( "gta-44", "gta-453", "gta-461", "gta-47", "gta-nc", "gta-nc-1000" );
