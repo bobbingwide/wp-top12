@@ -1,4 +1,4 @@
-<?php // (C) Copyright Bobbing Wide 2015
+<?php // (C) Copyright Bobbing Wide 2015-2017
 
 /**
  * Class: Object_Grouper
@@ -23,7 +23,7 @@
  * 
  * 
  */
-class Object_Grouper extends Object {
+class Object_Grouper extends Object_base {
 
 	public $groups;
 	

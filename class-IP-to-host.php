@@ -1,4 +1,4 @@
-<?php // (C) Copyright Bobbing Wide 2016
+<?php // (C) Copyright Bobbing Wide 2016-2017
 
 /**
  * Map IP addresses to host name using a cached file for previously discovered IPs
@@ -21,7 +21,7 @@
  * 
  */
  
-class IP_to_host extends Object {
+class IP_to_host extends Object_base {
 
 	/**
 	 * File name for saving intermediate files

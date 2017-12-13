@@ -1,7 +1,7 @@
-<?php // (C) Copyright Bobbing Wide 2015
+<?php // (C) Copyright Bobbing Wide 2015-2017
 
 /**
- * Class Object 
+ * Class Object_base 
  * 
  * Implements a serialized array that can be loaded from a file
  * and saved back to a file
@@ -14,7 +14,7 @@
  * 
  */
  
-class Object {
+class Object_base {
 
 	/** 
 	 * This is the array of objects that we're sorting
