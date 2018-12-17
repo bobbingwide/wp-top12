@@ -30,12 +30,13 @@ class Tests_translate extends BW_UnitTestCase {
 	}
 	
 	/**
-	 * This test will pass until #41257 is fixed
-	 * This test is expected to fail were a fix for #41257 delivered
+	 * Confirms that "0" is not in the default domain 
+	 *
+	 * Should continue to pass even when #41257 is fixed
 	 */
 	function test_translate_null_default() {
 		$actual = translate( null, "default" );
-		$expected = "0";
+		$expected = "";
 		$this->assertEquals( $expected, $actual );
 	}
 	

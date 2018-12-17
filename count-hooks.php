@@ -88,6 +88,7 @@ function run_tests() {
 	time_actions( "do_action 4.6", 100000, "do_action46" );
 	time_actions( "chl_out", 100000, "chl_out" );
 	time_actions( "bw_trace_count_only", 100000, "bw_trace_count_only" );
+	time_actions( "bw_trace_count_all", 100000, "bw_trace_count_all" );
 	
 }
 

@@ -82,6 +82,31 @@ $files = array( "vanilla", "gfw", "fewerdbs", "noclone" );
 process_files( $files, "20160224" );
 */
 
+$groups = array( "wp44" => array( "vanilla-wp44-issue-15-5", "vanilla-wp44-1", "vanilla-wp44-2", "vanilla-wp44-3", "vanilla-wp44-4" )
+							, "wp45" => array( "vanilla-wp453", "vanilla-wp453-1", "vanilla-wp453-2", "vanilla-wp453-3", "vanilla-wp453-4" )
+							, "wp46" => array( "vanilla-wp461", "vanilla-wp461-1", "vanilla-wp461-2", "vanilla-wp461-3", "vanilla-wp461-4" )
+							, "wp47" => array( "vanilla-wp47", "vanilla-wp47-1", "vanilla-wp47-2", "vanilla-wp47-3", "vanilla-wp47-4" )
+							, "wpnr" => array( "vanilla-nr-1", "vanilla-nr-2" )
+							, "wpnc" => array( "vanilla-nc-1" )
+							, "wp471" => array( "vanilla-471-1", "vanilla-471-2", "vanilla-471-3" )
+							, "nwc" => array( "vanilla-471-nwc" )
+							);
+
+process_groups( $groups, "20161224" );
+
+exit();
+
+
+$files = array( "461" => "oikwp-461"
+              , "47" => "oikwp-47"
+							, "norest" => "oikwp-norest"
+							, "niw" => "oikwp-niw"
+							, "ngen" => "oikwp-ngen"
+							, "nwoo" => "oikwp-nwoo"
+							);
+process_groups( $files, "2017/oikwp" );
+exit();						
+
 $files = array( "vanilla" => "vanilla-nc-1,vanilla-nc-2,vanilla-nc-3,vanilla-nc-4,vanilla-nc-5" 
               , "akismet" => "akismet-1,akismet-2,akismet-3"
 							);
@@ -109,18 +134,6 @@ exit();
 $files = array( "gta-44", "gta-453", "gta-461", "gta-47", "gta-nc", "gta-nc-1000" );
 process_files( $files, "20170104" );
 exit();
-
-
-$groups = array( "wp44" => array( "vanilla-wp44-issue-15-5", "vanilla-wp44-1", "vanilla-wp44-2", "vanilla-wp44-3", "vanilla-wp44-4" )
-							, "wp45" => array( "vanilla-wp453", "vanilla-wp453-1", "vanilla-wp453-2", "vanilla-wp453-3", "vanilla-wp453-4" )
-							, "wp46" => array( "vanilla-wp461", "vanilla-wp461-1", "vanilla-wp461-2", "vanilla-wp461-3", "vanilla-wp461-4" )
-							, "wp47" => array( "vanilla-wp47", "vanilla-wp47-1", "vanilla-wp47-2", "vanilla-wp47-3", "vanilla-wp47-4" )
-							, "wpnr" => array( "vanilla-nr-1", "vanilla-nr-2" )
-							, "wpnc" => array( "vanilla-nc-1" )
-							);
-
-process_groups( $groups, "20161224" );
-
 
 
 /**
