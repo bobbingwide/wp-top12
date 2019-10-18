@@ -1,4 +1,4 @@
-<?php // (C) Copyright Bobbing Wide 2015-2017
+<?php // (C) Copyright Bobbing Wide 2015-2017, 2019
 
 
 /**
@@ -45,12 +45,20 @@ class WP_org_downloads {
 	 * Turns out that the above information was incorrect
 
 
-	Essentially, you're using an endpoint which is not officially supported (and one which I've never actually seen before). If you eliminate that weird .info thing, then you'll get the 1.0 endpoint proper, which gives serialized PHP data.
+	Essentially, you're using an endpoint which is not officially supported (and one which I've never actually seen before).
+	If you eliminate that weird .info thing, then you'll get the 1.0 endpoint proper, which gives serialized PHP data.
 
 	If you want json, then the correct endpoint would be more like this:
 	https://api.wordpress.org/plugins/info/1.1/?action=plugin_information&request[slug]=oik
 
 	The .info is likely some kind of side-effect that was never intended to be used as any form of official endpoint.
+	 *
+	 * Here's the link to the API: https://codex.wordpress.org/WordPress.org_API
+	 *
+	 * there's a 1.2 request as well
+	 *
+	 * https://api.wordpress.org/plugins/info/1.2/?action=query_plugins&request
+	 *
 	 *
 	 * @param string $plugin_slug
 	 *
@@ -87,7 +95,7 @@ class WP_org_downloads {
 	}
 
 	/**
-	 * query information about all 4x,xxx plugins
+	 * query information about all 5x,xxx plugins
 	 *
 	 * We work our way backwards through the list
 	 * having first requested page 1 to find out how many pages there should be
@@ -129,6 +137,7 @@ class WP_org_downloads {
 
 	/**
 	 * Load the information from a local cache - serialized version
+	 * Note the each plugin is now stored as an array not an object.
 	 */
 	function load_plugins( $page ) {
 		$loaded = file_exists( "wporg_saved.plugins.$page" );
@@ -139,7 +148,7 @@ class WP_org_downloads {
 			} else {
 				$plugins = unserialize( $plugins_string );
 				$loaded = count( $plugins );
-				//echo "Count: " . $loaded . PHP_EOL;
+				echo "Count: " . $loaded . PHP_EOL;
 				$this->add_plugins( $plugins );
 				//$this->plugins = $plugins;
 			}
@@ -150,11 +159,11 @@ class WP_org_downloads {
 	/**
 	 * Load all the plugins from the serialized results
 	 *
-	 * @TODO Will only do 50,000 plugins
+	 * @TODO Will do 55,000 plugins
 	 */
 	function load_all_plugins() {
 		$max_pages=2;
-		$max_pages = 500;
+		$max_pages = 620;
 		for ( $page = 1; $page <= $max_pages; $page++ ) {
 			echo "Loading page: $page " . PHP_EOL;
 			$loaded = $this->load_plugins( $page );
@@ -165,6 +174,7 @@ class WP_org_downloads {
 	 * Add the latest set to the total list
 	 */
 	function add_plugins( $plugins ) {
+		//print_r( $this->plugins );
 		$this->plugins += $plugins;
 		$count = count( $this->plugins );
 		echo "Loaded: " . $count . PHP_EOL;
@@ -226,6 +236,9 @@ class WP_org_downloads {
 	 *
 	 *  [plugins] => Array
 	 *
+	 * Freaky. Today (17th October 2019) the results are:
+	 * pages 618, results 61778
+	 *
 	 * `
 	 *
 	 * We can control the fields in the plugins array using the "fields" parameter.
@@ -275,10 +288,14 @@ class WP_org_downloads {
 	/**
 	 * Store a single result
 	 *
+	 * $param plugin this is now an array. We used to treat is as an object!
 	 */
-	function store( $plugin ) {
+	function store( array $plugin ) {
+		//print_r( $plugin );
+
 		static $count = 0;
-		$slug = $plugin->slug;
+		$slug = $plugin['slug'];
+		//gob();
 		$this->plugins[ $slug ] = $plugin;
 		$count++;
 		//echo "Storing: $count $slug" . PHP_EOL;
@@ -292,8 +309,10 @@ class WP_org_downloads {
 			echo "Info: ";
 			echo "Page: ";
 			echo $this->response->info['page'];
+			echo PHP_EOL;
 			echo "Pages: ";
 			echo $this->response->info['pages'];
+			echo PHP_EOL;
 			echo "Results: ";
 			echo $this->response->info['results'];
 			echo PHP_EOL;
@@ -307,6 +326,10 @@ class WP_org_downloads {
 	 *
 	 */
 	function display( $plugin ) {
+		//print_r( $plugin );
+
+		//print_r( $plugin );
+		//gob();
 		$slug = $plugin->slug;
 		$name = str_replace( ",", "",  $plugin->name );
 		$rating = $plugin->rating;
@@ -329,11 +352,15 @@ class WP_org_downloads {
 		$this->csv = "Slug,Name,Rating,Downloaded,Tested" . PHP_EOL;
 
 		foreach ( $this->plugins as $slug => $plugin ) {
+
+			$plugin = ( object ) $plugin;
+			//print_r( $plugin );
+			//gob();
 			$downloaded = $this->display( $plugin );
 			$this->downloaded( $downloaded );
 		}
 		file_put_contents( $file, $this->csv );
-		echo "Total downloaded" . $this->downloaded . PHP_EOL;
+		echo "Total downloaded: " . $this->downloaded . PHP_EOL;
 
 	}
 
@@ -364,6 +391,8 @@ class WP_org_downloads {
 		 * Graph, Chart, Backup, SEO, Security, Shortcode, Tooltip, User, Map, Slideshow, Audio, Pop, Chat, Contact, commerce, Ad, Learning
 		 */
 		$this->preselect( "Chart,Graph,Backup,SEO,Security,Shortcode,Tooltip,User,Map,Slideshow,Audio,Pop,Chat,Contact,Commerce,Advert,Learning" );
+
+		$this->preselect( "block,SEO,shortcode,security,backup");
 		$grouper->groupby( "name", array( $this, "preselected" ) );
 		$grouper->ksort();
 		$grouper->report_groups();
@@ -452,7 +481,7 @@ class WP_org_downloads {
 				$ver = "0.70 to 2.9";
 			} elseif ( $ver3 <= 3.9 ) {
 				$ver = "3.0 to 3.9";
-			} elseif ( $ver3 >= 4.9 )	{
+			} elseif ( $ver3 > 5.3 )	{
 				$ver = "Other+" ;
 			} else {
 				$ver = $ver3;
@@ -484,6 +513,9 @@ class WP_org_downloads {
 	 * 100%   | Perfect!	5 stars
 	 */
 	function stars( $rating ) {
+		//echo $rating;
+		//echo "£";
+
 		$rating = $rating / 20;
 		$rating = number_format( $rating, 0 );
 		return( $rating );
@@ -586,6 +618,7 @@ class WP_org_downloads {
 	function report_top1000( $top1000 ) {
 		echo "Displaying: " . count( $top1000 ) . PHP_EOL;
 		foreach ( $top1000 as $plugin ) {
+			$plugin = (object) $plugin;
 			echo $plugin->slug;
 			echo ",";
 			echo $plugin->downloaded;

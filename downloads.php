@@ -1,4 +1,4 @@
-<?php // (C) Copyright Bobbing Wide 2015, 2016
+<?php // (C) Copyright Bobbing Wide 2015, 2016, 2019
 
 /**
  * Syntax: oikwp downloads.php process
@@ -18,14 +18,21 @@ ini_set('memory_limit','512M');
 require_once( ABSPATH . "wp-admin/includes/plugin-install.php" );
 oik_require( "includes/oik-remote.inc" );
 
-oik_require( "class-wp-org-downloads.php", "play" );
-oik_require( "class-object-sorter.php", "play" );
-oik_require( "class-object.php", "play" );
-oik_require( "class-object-grouper.php", "play" );
+oik_require( "class-wp-org-downloads.php", "wp-top12" );
+oik_require( "class-object-sorter.php", "wp-top12" );
+oik_require( "class-object.php", "wp-top12" );
+oik_require( "class-object-grouper.php", "wp-top12" );
 
+
+/**
+ * Comment out the logic you don't want to run and uncomment that which you do.
+ * Downloads takes a long time. So normally it's commented out and we just run reports
+ * from the downloaded files.
+ */
 //query_my_plugins();
 
 //downloads();
+
 reports();
 
 
@@ -53,9 +60,10 @@ function reports() {
 
 	$wpod = new WP_org_downloads();
 	$loaded = $wpod->load_all_plugins();
-	$wpod->count_things();
+
 	$wpod->summarise();
 	$wpod->top1000();
+	$wpod->count_things();
 }
 
 

@@ -185,6 +185,11 @@ class Object_Sorter {
 	 */
 	function sort_objects_by_code( $a, $b ) {
 		$property_name = $this->orderby;
+		//print_r( $a );
+		$a = ( object ) $a;
+		$b = ( object ) $b;
+		//print_r( $b );
+		//gob();
 		if ( $a->{$property_name} == $b->{$property_name} )  { 
 			$result = 0; 
 		} elseif ( $a->{$property_name} < $b->{$property_name} ) {

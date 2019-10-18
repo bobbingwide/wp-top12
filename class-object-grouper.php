@@ -126,6 +126,7 @@ class Object_Grouper extends Object_base {
 			$this->subset( $subset );
 		}
 		foreach ( $this->objects as $slug => $object ) {
+			$object = ( object ) $object;
 			if ( $this->where ) {
 				$group = call_user_func( $this->where, $object ); 
 			} else {
