@@ -1,6 +1,4 @@
-
-<?php // (C) Copyright Bobbing Wide 2017
-
+<?php // (C) Copyright Bobbing Wide 2017, 2019
 
 class Tests_translate extends BW_UnitTestCase {
 
@@ -9,7 +7,7 @@ class Tests_translate extends BW_UnitTestCase {
 	 * 
 	 * - ensure any database updates are rolled back
 	 */
-	function setUp() {
+	function setUp(): void {
 		parent::setUp();
 		//bobbcomp::bw_get_option( "fred" );
 		//oik_require_lib( "class-BW-" );
