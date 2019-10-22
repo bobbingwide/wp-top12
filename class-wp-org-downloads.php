@@ -20,6 +20,10 @@ class WP_org_downloads {
 	public $preselection;
 
 	/**
+	 * File name of saved plugins excluding the file extension, which is a number
+	 */
+	public $wporg_saved_plugins;
+	/**
 	 * Constructor for the WP_org_downloads class
 	 *
 	 * The constructor doesn't really need to do anything except load the required files?
@@ -29,6 +33,7 @@ class WP_org_downloads {
 		$this->reset();
 		$this->response = null;
 		$this->downloaded = 0;
+		$this->wporg_saved_plugins();
 	}
 
 	/**
@@ -121,6 +126,9 @@ class WP_org_downloads {
 		}
 	}
 
+	function wporg_saved_plugins( $wporg_saved_plugins="cache/wporg_saved.plugins." ) {
+		$this->wporg_saved_plugins = $wporg_saved_plugins;
+	}
 	/**
 	 * Load the information from a local cache
 	 *
@@ -140,9 +148,11 @@ class WP_org_downloads {
 	 * Note the each plugin is now stored as an array not an object.
 	 */
 	function load_plugins( $page ) {
-		$loaded = file_exists( "wporg_saved.plugins.$page" );
+		$file = $this->wporg_saved_plugins . $page;
+		echo "Loading file: $file " . PHP_EOL;
+		$loaded = file_exists( $file );
 		if ( $loaded ) {
-			$plugins_string = file_get_contents( "wporg_saved.plugins.$page" );
+			$plugins_string = file_get_contents( $file );
 			if ( false === $plugins_string ) {
 				$loaded = false;
 			} else {
@@ -162,9 +172,9 @@ class WP_org_downloads {
 	 * @TODO Will do 55,000 plugins
 	 */
 	function load_all_plugins() {
-		$max_pages=2;
-		$max_pages = 620;
-		for ( $page = 1; $page <= $max_pages; $page++ ) {
+		$start = 1;
+		$max_pages = 9;
+		for ( $page = $start ; $page <= $max_pages; $page++ ) {
 			echo "Loading page: $page " . PHP_EOL;
 			$loaded = $this->load_plugins( $page );
 		}
@@ -206,7 +216,8 @@ class WP_org_downloads {
 	function save_plugins( $page ) {
 		bw_trace2();
 		$string = serialize( $this->plugins );
-		$saved = file_put_contents( "wporg_saved.plugins.$page", $string );
+		$file = $this->wporg_saved_plugins . $page;
+		$saved = file_put_contents( $file, $string );
 		$this->reset();
 		bw_trace2();
 	}
@@ -248,6 +259,10 @@ class WP_org_downloads {
 	 * We know we can handle 100 plugins per page, and 1000 is too many for 15 seconds
 	 * so lets stick with 100 for the time being.
 	 *
+	 * OK. There was a problem with 100, we were'nt getting 100 returned
+	 * But it we ask for fewer than 60 something and we're limited to 999 pages
+	 * then we don't get all of them.
+	 *
 	 * The plugins are returned on most recently updated order
 	 *
 	 */
@@ -263,13 +278,28 @@ class WP_org_downloads {
 		, 'homepage' => true
 		, 'tags' => false
 		);
-		$args = array( "per_page" => 100
+		$args = array( "per_page" => 60
 		, "page" => $page
 		, "fields" => $fields
 		);
+		echo "Requesting: " . $page . PHP_EOL;
 		$this->response = plugins_api( "query_plugins", $args );
+		//print_r( $this->response );
+		//gob();
 		$this->store_plugins();
 	}
+
+	/**
+	Hey :slightly_smiling_face: Since it’s public data.. here’s an export from the plugin directory:
+	https://docs.google.com/spreadsheets/d/1Sfp3UzMAkXO_vTC1-7yvrrTdRdO9jeeSg8x0Ngqe9vI/edit#gid=0
+	0 Active Installs = Less than 10
+	I’d kind of like you not to share it, because I don’t want to have to provide the data reguarly to a bunch of people.
+	You can also hit this API - It’s not rate limited.. yet, please don’t hit it too hard otherwise we’ll have to block access entirely.
+	https://wordpress.org/plugins/wp-json/wp/v2/plugin/
+	https://wordpress.org/plugins/wp-json/wp/v2/plugin/110913
+
+https://wordpress.org/plugins/wp-json/wp/v2/plugin/?page=2
+	 */
 
 	/**
 	 * Store the results
@@ -334,6 +364,8 @@ class WP_org_downloads {
 		$name = str_replace( ",", "",  $plugin->name );
 		$rating = $plugin->rating;
 		$downloaded = $plugin->downloaded;
+		$installed = $plugin->installed;
+		gob();
 		if ( isset( $plugin->tested ) ) {
 			$tested = $plugin->tested;
 		} else {
@@ -341,7 +373,7 @@ class WP_org_downloads {
 			$plugin->tested = null;
 		}
 
-		$this->csv .= "$slug,$name,$rating,$downloaded,$tested" . PHP_EOL;
+		$this->csv .= "$slug,$name,$rating,$downloaded,$tested,$installed" . PHP_EOL;
 		return( $downloaded );
 	}
 
@@ -349,13 +381,13 @@ class WP_org_downloads {
 	 *
 	 */
 	function summarise( $file="wporg_plugins.csv" ) {
-		$this->csv = "Slug,Name,Rating,Downloaded,Tested" . PHP_EOL;
+		$this->csv = "Slug,Name,Rating,Downloaded,Tested,Installed" . PHP_EOL;
 
 		foreach ( $this->plugins as $slug => $plugin ) {
 
 			$plugin = ( object ) $plugin;
-			//print_r( $plugin );
-			//gob();
+			print_r( $plugin );
+			gob();
 			$downloaded = $this->display( $plugin );
 			$this->downloaded( $downloaded );
 		}
@@ -434,6 +466,29 @@ class WP_org_downloads {
 
 	}
 
+	function list_block_plugins() {
+		$block_plugins = array();
+		foreach ( $this->plugins as $key => $plugin ) {
+			echo $key . PHP_EOL;
+			print_r( $plugin );
+			//if ( $plugin->keyword)
+			gob();
+
+		}
+
+		$grouper = new Object_Grouper();
+		echo "Grouping: " . count( $this->plugins ) . PHP_EOL;
+		$grouper->populate( $this->plugins );
+		$this->preselect( "block,blocks");
+		$grouper->groupby( "keyword", array( $this, "preselected_keyword" ) );
+		$grouper->report_groups();
+	}
+
+	function preselected_keyword( $value ) {
+		print_r( $value );
+		gob();
+	}
+
 	/**
 	 * Select the items we're interested in
 	 *
@@ -481,6 +536,8 @@ class WP_org_downloads {
 				$ver = "0.70 to 2.9";
 			} elseif ( $ver3 <= 3.9 ) {
 				$ver = "3.0 to 3.9";
+			} elseif ( $ver3 <= 4.9 ) {
+				$ver = "4.0 to 4.9";
 			} elseif ( $ver3 > 5.3 )	{
 				$ver = "Other+" ;
 			} else {
@@ -596,7 +653,7 @@ class WP_org_downloads {
 		echo "Sorting: " . count( $this->plugins ) . PHP_EOL;
 		$sorted = $sorter->sortby( $this->plugins, "downloaded", "desc" );
 
-		$top1000 = $sorter->results( 50 );
+		$top1000 = $sorter->results( 1000 );
 		//echo $this->csv;
 		$this->report_top1000( $top1000 );
 
