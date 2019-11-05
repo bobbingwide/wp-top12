@@ -23,6 +23,12 @@ class WP_org_downloads {
 	 * File name of saved plugins excluding the file extension, which is a number
 	 */
 	public $wporg_saved_plugins;
+
+	/**
+	 * File name of saved plugins v2
+	 *
+	 */
+	public $wporg_saved_plugins_v2;
 	/**
 	 * Constructor for the WP_org_downloads class
 	 *
@@ -34,6 +40,7 @@ class WP_org_downloads {
 		$this->response = null;
 		$this->downloaded = 0;
 		$this->wporg_saved_plugins();
+		$this->wporg_saved_plugins_v2();
 	}
 
 	/**
@@ -69,6 +76,7 @@ class WP_org_downloads {
 	 *
 	 */
 	function get_download( $plugin_slug ) {
+		gob(); // Deprecated - i.e. intentionally broken
 		$request_url = "http://api.wordpress.org/plugins/info/1.0/$plugin_slug";
 		$this->response = bw_remote_get2( $request_url ); //, null );
 		//print_r( $response_xml );
@@ -126,8 +134,67 @@ class WP_org_downloads {
 		}
 	}
 
+	/**
+	Hey :slightly_smiling_face: Since it’s public data.. here’s an export from the plugin directory:
+	https://docs.google.com/spreadsheets/d/1Sfp3UzMAkXO_vTC1-7yvrrTdRdO9jeeSg8x0Ngqe9vI/edit#gid=0
+	0 Active Installs = Less than 10
+	I’d kind of like you not to share it, because I don’t want to have to provide the data reguarly to a bunch of people.
+	You can also hit this API - It’s not rate limited.. yet, please don’t hit it too hard otherwise we’ll have to block access entirely.
+	https://wordpress.org/plugins/wp-json/wp/v2/plugin/
+	https://wordpress.org/plugins/wp-json/wp/v2/plugin/110913
+
+	https://wordpress.org/plugins/wp-json/wp/v2/plugin/?page=2
+	 */
+	function query_all_plugins_v2( $page=1, $per_page=100) {
+		$this->query_plugins_v2( $page, $per_page );
+
+		//if ( 1 === $page) {
+			$headers    = wp_remote_retrieve_headers( $this->response[0] );
+			$headers    = new Requests_Response_Headers( $headers->getAll() );
+			$x_wp_total = $headers->getValues( 'x-wp-total' );
+			echo "Total plugins: ";
+			echo $x_wp_total[0];
+			echo PHP_EOL;
+			$x_wp_totalpages = $headers->getValues( 'x-wp-totalpages' );
+			$total_pages     = $x_wp_totalpages[0];
+			echo "Total pages: ";
+			echo $total_pages;
+			echo PHP_EOL;
+		//}
+
+		$this->save_plugins_v2( $page );
+
+		for ( $page = 2; $page <= $total_pages; $page++  ) {
+			$this->query_plugins_v2( $page, $per_page );
+			$this->save_plugins_v2( $page );
+		}
+	}
+
+	function query_plugins_v2( $page, $per_page ) {
+		$url      = 'https://wordpress.org/plugins/wp-json/wp/v2/plugin/?page=';
+		$url      .= $page;
+		$url      .= '&per_page=';
+		$url      .= $per_page;
+		$this->response = oik_remote::bw_remote_geth( $url );
+		//print_r( $response );
+		$this->plugins = $this->response[1];
+
+	}
+
+	function save_plugins_v2( $page ) {
+		$string = json_encode( $this->plugins );
+		//print_r( $this->plugins);
+		$file = $this->wporg_saved_plugins_v2 . $page . '.json';
+		$saved = file_put_contents( $file, $string );
+		$this->reset();
+		bw_trace2();
+	}
+
 	function wporg_saved_plugins( $wporg_saved_plugins="cache/wporg_saved.plugins." ) {
 		$this->wporg_saved_plugins = $wporg_saved_plugins;
+	}
+	function wporg_saved_plugins_v2( $wporg_saved_plugins="cache_v2/wporg_saved.plugins." ) {
+		$this->wporg_saved_plugins_v2 = $wporg_saved_plugins;
 	}
 	/**
 	 * Load the information from a local cache
@@ -148,7 +215,7 @@ class WP_org_downloads {
 	 * Note the each plugin is now stored as an array not an object.
 	 */
 	function load_plugins( $page ) {
-		$file = $this->wporg_saved_plugins . $page;
+		$file = $this->wporg_saved_plugins_v2 . $page . '.json';
 		echo "Loading file: $file " . PHP_EOL;
 		$loaded = file_exists( $file );
 		if ( $loaded ) {
@@ -156,7 +223,7 @@ class WP_org_downloads {
 			if ( false === $plugins_string ) {
 				$loaded = false;
 			} else {
-				$plugins = unserialize( $plugins_string );
+				$plugins = json_decode( $plugins_string );
 				$loaded = count( $plugins );
 				echo "Count: " . $loaded . PHP_EOL;
 				$this->add_plugins( $plugins );
@@ -169,11 +236,11 @@ class WP_org_downloads {
 	/**
 	 * Load all the plugins from the serialized results
 	 *
-	 * @TODO Will do 55,000 plugins
+	 * @TODO Will do 55,000 plugins. Need 545 pages for 54,500 - currently 54,498
 	 */
 	function load_all_plugins() {
 		$start = 1;
-		$max_pages = 1030;
+		$max_pages = 545;
 		for ( $page = $start ; $page <= $max_pages; $page++ ) {
 			echo "Loading page: $page " . PHP_EOL;
 			$loaded = $this->load_plugins( $page );
@@ -185,9 +252,24 @@ class WP_org_downloads {
 	 */
 	function add_plugins( $plugins ) {
 		//print_r( $this->plugins );
-		$this->plugins += $plugins;
+
+		echo count( $plugins );
+		echo ' ';
+		echo count( $this->plugins );
+		foreach ( $plugins as $key => $plugin ) {
+			$plugin->name = $plugin->meta->header_name;
+			$plugin->downloads = $plugin->meta->downloads;
+			$plugin->tested = $plugin->meta->tested;
+			$plugin->requires = $plugin->meta->requires;
+			$plugin->last_updated = $plugin->modified_gmt;
+
+			$this->plugins[] = $plugin;
+		}
+
+		//$this->plugins += $plugins;
 		$count = count( $this->plugins );
 		echo "Loaded: " . $count . PHP_EOL;
+		//gob();
 	}
 
 
@@ -289,17 +371,7 @@ class WP_org_downloads {
 		$this->store_plugins();
 	}
 
-	/**
-	Hey :slightly_smiling_face: Since it’s public data.. here’s an export from the plugin directory:
-	https://docs.google.com/spreadsheets/d/1Sfp3UzMAkXO_vTC1-7yvrrTdRdO9jeeSg8x0Ngqe9vI/edit#gid=0
-	0 Active Installs = Less than 10
-	I’d kind of like you not to share it, because I don’t want to have to provide the data reguarly to a bunch of people.
-	You can also hit this API - It’s not rate limited.. yet, please don’t hit it too hard otherwise we’ll have to block access entirely.
-	https://wordpress.org/plugins/wp-json/wp/v2/plugin/
-	https://wordpress.org/plugins/wp-json/wp/v2/plugin/110913
 
-https://wordpress.org/plugins/wp-json/wp/v2/plugin/?page=2
-	 */
 
 	/**
 	 * Store the results
@@ -361,23 +433,152 @@ https://wordpress.org/plugins/wp-json/wp/v2/plugin/?page=2
 
 	/**
 	 *
+	 * stdClass Object
+	(
+	[id] => 111839
+	[date] => 2019-11-05T15:48:06
+	[date_gmt] => 2019-11-05T15:48:06
+	[guid] => stdClass Object
+	(
+	[rendered] => https://wordpress.org/plugins/vestorly-contact-form-7-integration/
+	)
+
+	[modified] => 2019-11-05T15:48:06
+	[modified_gmt] => 2019-11-05T15:48:06
+	[slug] => vestorly-contact-form-7-integration
+	[status] => publish
+	[type] => plugin
+	[link] => https://wordpress.org/plugins/vestorly-contact-form-7-integration/
+	[author] => 17634286
+	[comment_status] => closed
+	[ping_status] => closed
+	[template] =>
+	[meta] => stdClass Object
+	(
+	[rating] => 0
+	[active_installs] => 0
+	[downloads] => 0
+	[tested] => 5.2.4
+	[requires] => 4.9
+	[requires_php] => 5.6.20
+	[stable_tag] => trunk
+	[donate_link] =>
+	[version] => 0.1.0
+	[header_name] => Vestorly Contact Form 7 Integration
+	[header_plugin_uri] =>
+	[header_author] => Vestorly
+	[header_author_uri] => https://www.vestorly.com
+	[header_description] => A plugin to integrate Vestorly with Contact Form 7
+	[assets_banners_color] =>
+	[support_threads] => 0
+	[support_threads_resolved] => 0
+	[spay_email] =>
+	)
+
+	[banners] =>
+	[icons] => stdClass Object
+	(
+	[svg] =>
+	[icon] => https://s.w.org/plugins/geopattern-icon/vestorly-contact-form-7-integration.svg
+	[icon_2x] =>
+	[generated] => 1
+	)
+
+	[rating] => 0
+	[ratings] => Array
+	(
+	)
+
+	[screenshots] => Array
+	(
+	)
+
+	[_links] => stdClass Object
+	(
+	[self] => Array
+	(
+	[0] => stdClass Object
+	(
+	[href] => https://wordpress.org/plugins/wp-json/wp/v2/plugin/111839
+	)
+
+	)
+
+	[collection] => Array
+	(
+	[0] => stdClass Object
+	(
+	[href] => https://wordpress.org/plugins/wp-json/wp/v2/plugin
+	)
+
+	)
+
+	[about] => Array
+	(
+	[0] => stdClass Object
+	(
+	[href] => https://wordpress.org/plugins/wp-json/wp/v2/types/plugin
+	)
+
+	)
+
+	[author] => Array
+	(
+	[0] => stdClass Object
+	(
+	[embeddable] => 1
+	[href] => https://wordpress.org/plugins/wp-json/wp/v2/users/17634286
+	)
+
+	)
+
+	[replies] => Array
+	(
+	[0] => stdClass Object
+	(
+	[embeddable] => 1
+	[href] => https://wordpress.org/plugins/wp-json/wp/v2/comments?post=111839
+	)
+
+	)
+
+	[wp:attachment] => Array
+	(
+	[0] => stdClass Object
+	(
+	[href] => https://wordpress.org/plugins/wp-json/wp/v2/media?parent=111839
+	)
+
+	)
+
+	[curies] => Array
+	(
+	[0] => stdClass Object
+	(
+	[name] => wp
+	[href] => https://api.w.org/{rel}
+	[templated] => 1
+	)
+
+	)
+
+	)
+
+	)
 	 */
 	function display( $plugin ) {
 		//print_r( $plugin );
-
-		//print_r( $plugin );
-		//gob();
 		$slug = $plugin->slug;
-		$name = str_replace( ",", "",  $plugin->name );
+		$name = str_replace( ",", "",  $plugin->meta->header_name );
 		$rating = $plugin->rating;
-		$downloaded = $plugin->downloaded;
-		$installed = $plugin->installed;
-		gob();
-		if ( isset( $plugin->tested ) ) {
-			$tested = $plugin->tested;
+		$downloaded = $plugin->meta->downloads;
+		$installed = $plugin->meta->active_installs;
+
+		if ( isset( $plugin->meta->tested ) ) {
+			$tested = $plugin->meta->tested;
 		} else {
 			$tested = " (null)";
-			$plugin->tested = null;
+			$plugin->meta->tested = null;
 		}
 
 		$this->csv .= "$slug,$name,$rating,$downloaded,$tested,$installed" . PHP_EOL;
@@ -393,8 +594,8 @@ https://wordpress.org/plugins/wp-json/wp/v2/plugin/?page=2
 		foreach ( $this->plugins as $slug => $plugin ) {
 
 			$plugin = ( object ) $plugin;
-			print_r( $plugin );
-			gob();
+			//print_r( $plugin );
+			//gob();
 			$downloaded = $this->display( $plugin );
 			$this->downloaded( $downloaded );
 		}
@@ -453,7 +654,7 @@ https://wordpress.org/plugins/wp-json/wp/v2/plugin/?page=2
 		$grouper->krsort();
 		$grouper->report_groups();
 
-		$grouper->groupby( "downloaded", array( $this, "tentothe" ) );
+		$grouper->groupby( "downloads", array( $this, "tentothe" ) );
 		$grouper->ksort();
 		$grouper->report_groups();
 
@@ -580,7 +781,7 @@ https://wordpress.org/plugins/wp-json/wp/v2/plugin/?page=2
 		//echo $rating;
 		//echo "£";
 
-		$rating = $rating / 20;
+		$rating = $rating;
 		$rating = number_format( $rating, 0 );
 		return( $rating );
 
@@ -651,7 +852,7 @@ https://wordpress.org/plugins/wp-json/wp/v2/plugin/?page=2
 
 		}
 		echo "Sorting: " . count( $this->plugins ) . PHP_EOL;
-		$sorted = $sorter->sortby( $this->plugins, "downloaded", "desc" );
+		$sorted = $sorter->sortby( $this->plugins, "downloads", "desc" );
 
 		$top1000 = $sorter->results( $limit );
 		return $top1000;
@@ -669,14 +870,16 @@ https://wordpress.org/plugins/wp-json/wp/v2/plugin/?page=2
 	 * Top 1000 by Install base - don't know about this.
 	 *
 	 */
-	function top1000() {
-		$top1000 = $this->sort_by_most_downloaded();
+	function top1000( $limit=null ) {
+		$top1000 = $this->sort_by_most_downloaded( $limit );
 		//echo $this->csv;
 		$this->report_top1000( $top1000 );
 
 		// List every single plugin sorted by plugin slug
 		// $top1000 = $sorter->resort( "slug", "asc" );
 		// $this->report_top1000( $top1000 );
+
+		$this->plugins = $top1000;
 
 	}
 
@@ -697,7 +900,7 @@ https://wordpress.org/plugins/wp-json/wp/v2/plugin/?page=2
 			echo ',';
 			echo $plugin->slug;
 			echo ",";
-			echo $plugin->downloaded;
+			echo $plugin->meta->downloads;
 			echo PHP_EOL;
 		}
 	}

@@ -1,4 +1,4 @@
-<?php // (C) Copyright Bobbing Wide 2015
+<?php // (C) Copyright Bobbing Wide 2015-2019
 
 /**
  * Class Object_Sorter
@@ -8,7 +8,12 @@
  * Allows resorting on different fields and returning a subset of the total array
  *
  * I'm surprised that this isn't a standard part of WordPress. 
- * Maybe it's part of the Walker classes
+ * Maybe it's part of the Walker classes.
+ *
+ * Note: This only sorts on top level properties of the object.
+ * If you have an object containing sub-objects you will need to copy this information into another property.
+ * e.g. The plugin data from WordPress.org's REST API provides total downloads as a field within the meta property.
+ * Prior to sorting we copy the value into the top level object.
  * 
  */
 

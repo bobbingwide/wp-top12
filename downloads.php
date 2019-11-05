@@ -13,7 +13,7 @@
  * Test output created during the coding of this routine are called wahay(n) where n starts from 2
  *
  */
-ini_set('memory_limit','512M');
+ini_set('memory_limit','1024M');
 
 require_once( ABSPATH . "wp-admin/includes/plugin-install.php" );
 oik_require( "includes/oik-remote.inc" );
@@ -25,9 +25,16 @@ oik_require( "class-object-grouper.php", "wp-top12" );
 
 
 /**
- * Comment out the logic you don't want to run and uncomment that which you do.
- * Downloads takes a long time. So normally it's commented out and we just run reports
- * from the downloaded files.
+ * Usage suggestions:
+ * - Pass the name of the process you want to run to the routine.
+ * - Only do the download once a month or so. It takes about 12-15 minutes to run.
+ * - Then run reports.
+ * - This creates a new wporg_plugins.csv
+ * oikwp downloads.php v2
+ * oikwp downloads.php reports
+ *
+ * oikwp downloads.php plugin
+
  */
 //query_my_plugins();
 
@@ -37,14 +44,23 @@ switch ( strtolower( trim ( $process ) ) ) {
 		downloads();
 		break;
 
+	case 'v2':
+		downloads_v2();
+		break;
+
 	case 'reports':
 		reports();
 		break;
 
+	case 'rv2':
+		reports();
+		break;
 
+	/* Blocks not available with v2 of the REST API
 	case 'blocks':
 		block_plugins();
 		break;
+	*/
 
 	default:
 		if ( $process ) {
@@ -84,15 +100,19 @@ function downloads() {
 
 }
 
+function downloads_v2() {
+	$wpod = new WP_org_downloads();
+	$wpod->query_all_plugins_v2();
+}
+
 function reports() {
 
 	$wpod = new WP_org_downloads();
 	$loaded = $wpod->load_all_plugins();
-
+	$wpod->top1000( null );
 	$wpod->summarise();
-	$wpod->top1000();
 	$wpod->count_things();
-	$wpod->list_block_plugins();
+	//$wpod->list_block_plugins();
 }
 
 function block_plugins() {
@@ -103,17 +123,33 @@ function block_plugins() {
 
 
 function plugin_info( $plugin ) {
+	/**
 	$wpod = new WP_org_downloads();
 	$loaded = $wpod->load_all_plugins();
 	$sorted = $wpod->sort_by_most_downloaded( null );
-	$wpod->report_top1000( $sorted );
+	//$wpod->report_top1000( $sorted );
+	 *
+	*/
+	$sorted = file( 'wporg_plugins.csv');
 	foreach ( $sorted as $key => $plugin_data ) {
-		if ( $plugin_data['slug'] == $plugin ) {
+		if ( $plugin_data->slug == $plugin ) {
 			echo $key;
-			gob();
+			echo ' ';
+			echo $plugin;
+			echo ' ';
+			echo $plugin_data->meta->header_name;
+			echo ' ';
+			echo $plugin_data->downloads;
+			echo PHP_EOL;
+
 		}
 	}
 	//print_r( $sorted );
+
+}
+
+function plugin_info_v2( $plugin ) {
+	$sorted = file( 'wporg_plugins.csv');
 
 }
 
