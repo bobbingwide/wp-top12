@@ -59,6 +59,10 @@ class Tests_list_block_plugins extends BW_UnitTestCase {
 			echo $plugin;
 		}
 	}
+
+	function test_something_then() {
+		$this->assertTrue( true  );
+	}
 	
 
 		
