@@ -173,7 +173,7 @@ class WP_org_downloads {
 	 */
 	function load_all_plugins() {
 		$start = 1;
-		$max_pages = 9;
+		$max_pages = 1030;
 		for ( $page = $start ; $page <= $max_pages; $page++ ) {
 			echo "Loading page: $page " . PHP_EOL;
 			$loaded = $this->load_plugins( $page );
@@ -284,8 +284,8 @@ class WP_org_downloads {
 		);
 		echo "Requesting: " . $page . PHP_EOL;
 		$this->response = plugins_api( "query_plugins", $args );
-		//print_r( $this->response );
-		//gob();
+		print_r( $this->response );
+		gob();
 		$this->store_plugins();
 	}
 
@@ -350,6 +350,13 @@ https://wordpress.org/plugins/wp-json/wp/v2/plugin/?page=2
 			echo "This response info not set";
 			//print_r( $this );
 		}
+	}
+
+	function get_plugin( $plugin ) {
+		$plugin = bw_array_get( $this->plugins, $plugin, null );
+		print_r( $plugin );
+		gob();
+		return $plugin;
 	}
 
 	/**
@@ -637,6 +644,20 @@ https://wordpress.org/plugins/wp-json/wp/v2/plugin/?page=2
 		return( $values );
 	}
 
+	function sort_by_most_downloaded( $limit=1000) {
+		$sorter = new Object_Sorter();
+		if ( null == $limit) {
+			$limit = count( $this->plugins );
+
+		}
+		echo "Sorting: " . count( $this->plugins ) . PHP_EOL;
+		$sorted = $sorter->sortby( $this->plugins, "downloaded", "desc" );
+
+		$top1000 = $sorter->results( $limit );
+		return $top1000;
+
+	}
+
 	/**
 	 * Produce a table of the top 1000 (or so )
 	 *
@@ -649,11 +670,7 @@ https://wordpress.org/plugins/wp-json/wp/v2/plugin/?page=2
 	 *
 	 */
 	function top1000() {
-		$sorter = new Object_Sorter();
-		echo "Sorting: " . count( $this->plugins ) . PHP_EOL;
-		$sorted = $sorter->sortby( $this->plugins, "downloaded", "desc" );
-
-		$top1000 = $sorter->results( 1000 );
+		$top1000 = $this->sort_by_most_downloaded();
 		//echo $this->csv;
 		$this->report_top1000( $top1000 );
 
@@ -674,8 +691,10 @@ https://wordpress.org/plugins/wp-json/wp/v2/plugin/?page=2
 	 */
 	function report_top1000( $top1000 ) {
 		echo "Displaying: " . count( $top1000 ) . PHP_EOL;
-		foreach ( $top1000 as $plugin ) {
+		foreach ( $top1000 as $key => $plugin ) {
 			$plugin = (object) $plugin;
+			echo $key;
+			echo ',';
 			echo $plugin->slug;
 			echo ",";
 			echo $plugin->downloaded;
