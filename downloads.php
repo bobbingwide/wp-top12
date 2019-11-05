@@ -31,9 +31,35 @@ oik_require( "class-object-grouper.php", "wp-top12" );
  */
 //query_my_plugins();
 
+$process = oik_batch_query_value_from_argv( 1, null );
+switch ( strtolower( trim ( $process ) ) ) {
+	case 'download':
+		downloads();
+		break;
+
+	case 'reports':
+		reports();
+		break;
+
+
+	case 'blocks':
+		block_plugins();
+		break;
+
+	default:
+		if ( $process ) {
+			plugin_info( $process );
+		} else {
+			echo "Syntax";
+		}
+}
+
+
 //downloads();
 
-reports();
+//reports();
+
+//block_plugins();
 
 
 
@@ -43,7 +69,9 @@ reports();
 function downloads() {
 
 	$wpod = new WP_org_downloads();
-	//$wpod->query_plugins( 1 );
+	$wpod->query_plugins( 1 );
+	print_r( $wpod );
+	gob();
 	//$wpod->save_plugins( 1 );
 	//gob();
 	$loaded = false;
@@ -64,6 +92,29 @@ function reports() {
 	$wpod->summarise();
 	$wpod->top1000();
 	$wpod->count_things();
+	$wpod->list_block_plugins();
+}
+
+function block_plugins() {
+	$wpod = new WP_org_downloads();
+	$loaded = $wpod->load_all_plugins();
+	$wpod->list_block_plugins();
+}
+
+
+function plugin_info( $plugin ) {
+	$wpod = new WP_org_downloads();
+	$loaded = $wpod->load_all_plugins();
+	$sorted = $wpod->sort_by_most_downloaded( null );
+	$wpod->report_top1000( $sorted );
+	foreach ( $sorted as $key => $plugin_data ) {
+		if ( $plugin_data['slug'] == $plugin ) {
+			echo $key;
+			gob();
+		}
+	}
+	//print_r( $sorted );
+
 }
 
 
