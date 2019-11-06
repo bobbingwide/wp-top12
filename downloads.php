@@ -39,7 +39,8 @@ oik_require( "class-object-grouper.php", "wp-top12" );
 //query_my_plugins();
 
 $process = oik_batch_query_value_from_argv( 1, null );
-switch ( strtolower( trim ( $process ) ) ) {
+$process = strtolower( trim( $process ));
+switch ( $process ) {
 	case 'download':
 		downloads();
 		break;
@@ -64,7 +65,7 @@ switch ( strtolower( trim ( $process ) ) ) {
 
 	default:
 		if ( $process ) {
-			plugin_info( $process );
+			plugin_info_v2( $process );
 		} else {
 			echo "Syntax";
 		}
@@ -123,14 +124,14 @@ function block_plugins() {
 
 
 function plugin_info( $plugin ) {
-	/**
+
 	$wpod = new WP_org_downloads();
 	$loaded = $wpod->load_all_plugins();
 	$sorted = $wpod->sort_by_most_downloaded( null );
 	//$wpod->report_top1000( $sorted );
-	 *
-	*/
-	$sorted = file( 'wporg_plugins.csv');
+
+
+	//$sorted = file( 'wporg_plugins.csv');
 	foreach ( $sorted as $key => $plugin_data ) {
 		if ( $plugin_data->slug == $plugin ) {
 			echo $key;
@@ -150,6 +151,24 @@ function plugin_info( $plugin ) {
 
 function plugin_info_v2( $plugin ) {
 	$sorted = file( 'wporg_plugins.csv');
+	$total = count( $sorted );
+	$total--;
+	echo $total;
+	echo PHP_EOL;
+
+	foreach ( $sorted as $key => $info ) {
+
+		$pos = stripos( $info, $plugin  );
+		if ( false !== $pos ) {
+			echo "$key,";
+			echo $info;
+			//echo PHP_EOL;
+
+		}
+	}
+
+
+
 
 }
 
