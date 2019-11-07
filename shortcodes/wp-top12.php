@@ -1,6 +1,4 @@
 <?php
-
-
 /**
  * @copyright (C) Copyright Bobbing Wide 2019
  * @package wp-top12
@@ -39,8 +37,13 @@ function wp_top12_sc( $atts=null, $content=null, $tag=null ) {
  * @return string - the result
  */
 function _wp_top12_static( $atts ) {
+	$limit = bw_array_get_from( $atts, 'limit,0', null );
+	$includes = bw_array_get( $atts, 'includes', null );
+	$excludes = bw_array_get( $atts, 'excludes', null );
     oik_require( 'class-wp-org-plugins.php', 'wp-top12');
     $top12 = new WP_org_plugins();
+    $top12->atts( $atts );
+    $top12->plugin_info_v2();
     return bw_ret();
 }
 
@@ -98,7 +101,7 @@ function _wp_top12_form( $text=null, $atts=null ) {
 }
 
 /** 
- * wp-top12 some text
+ * wp-top12 s
  * 
  * Note: In its first version this routine would transform "http://www.bobbingwide.com" to something pretty nasty
  * similarly it could ruin any HTML tags or anything with %1$s
@@ -132,7 +135,7 @@ function wp_top12__syntax( ) {
   	                'includes' => bw_skv( null, 'word,word2', 'Words to search for' ),
   	                'excludes' => bw_skv( null, 'word,word2', 'Words to exclude'),
   	                "form" => bw_skv( "N", "Y", "display form to allow changes" )
-                 , "both" => bw_skv( "N", "Y", "display both original and output text" )
+                 , "both" => bw_skv( "N", "Y", "display Excludes as well - separately" )
                  );
   return( $syntax );
 }

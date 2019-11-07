@@ -572,11 +572,14 @@ class WP_org_downloads {
 	)
 
 	)
+	 *
+	 * $this->csv = "Slug,Name,Rating,Downloads,Installed,Tested,Requires,LastUpdate" . PHP_EOL;
 	 */
 	function display( $plugin ) {
 		//print_r( $plugin );
 		$slug = $plugin->slug;
 		$name = str_replace( ",", "",  $plugin->meta->header_name );
+
 		$rating = $plugin->rating;
 		$downloaded = $plugin->meta->downloads;
 		$installed = $plugin->meta->active_installs;
@@ -587,16 +590,29 @@ class WP_org_downloads {
 			$tested = " (null)";
 			$plugin->meta->tested = null;
 		}
+		if ( isset( $plugin->meta->requires ) ) {
+			$requires = $plugin->meta->requires;
+		} else {
+			$requires = " (null)";
+			$plugin->meta->requires = null;
+		}
 
-		$this->csv .= "$slug,$name,$rating,$downloaded,$tested,$installed" . PHP_EOL;
-		return( $downloaded );
+		$last_update = $plugin->modified_gmt;
+
+		// Don't include description as it's not up to date and contains HTML
+		//$description = $plugin->meta->header_description;
+
+		$this->csv .= "$slug,$name,$rating,$downloaded,$installed,$tested,$requires,$last_update" . PHP_EOL;
+		return $downloaded ;
 	}
 
 	/**
+	 * Creates wporg_plugins.csv
 	 *
+	 * Assumes that $this->plugins contains the full list of plugins, ordered by downloads descending.
 	 */
 	function summarise( $file="wporg_plugins.csv" ) {
-		$this->csv = "Slug,Name,Rating,Downloaded,Tested,Installed" . PHP_EOL;
+		$this->csv = "Slug,Name,Rating,Downloaded,Installed,Tested,Requires,LastUpdate" . PHP_EOL;
 
 		foreach ( $this->plugins as $slug => $plugin ) {
 
@@ -880,7 +896,7 @@ class WP_org_downloads {
 	function top1000( $limit=null ) {
 		$top1000 = $this->sort_by_most_downloaded( $limit );
 		//echo $this->csv;
-		$this->report_top1000( $top1000 );
+		//$this->report_top1000( $top1000 );
 
 		// List every single plugin sorted by plugin slug
 		// $top1000 = $sorter->resort( "slug", "asc" );
@@ -899,11 +915,13 @@ class WP_org_downloads {
 	 * And automatically create the column headings based on the given field names
 	 *
 	 */
-	function report_top1000( $top1000 ) {
-		echo "Displaying: " . count( $top1000 ) . PHP_EOL;
-		foreach ( $top1000 as $key => $plugin ) {
+	function report_top1000( $limit=1000 ) {
+		echo 'Displaying: ' . $limit . ' of ' . count( $this->plugins ) . PHP_EOL;
+		$limit = min( $limit, count( $this->plugins ) );
+		for ( $index = 0; $index < $limit ; $index++ ) {
+			$plugin = $this->plugins[ $index ];
 			$plugin = (object) $plugin;
-			echo $key;
+			echo $index +1;
 			echo ',';
 			echo $plugin->slug;
 			echo ",";

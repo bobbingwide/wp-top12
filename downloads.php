@@ -5,7 +5,7 @@
  *
  * Count the downloads from wordpress.org for the given plugins
  *
- * Run this daily!
+ * Run this daily! or perhaps once a month
  *
  * {@link https://dd32.id.au/projects/wordpressorg-plugin-information-api-docs}
  * {@link http://code.tutsplus.com/tutorials/communicating-with-the-wordpress-org-plugin-api--wp-33069}
@@ -30,6 +30,7 @@ oik_require( "class-object-grouper.php", "wp-top12" );
  * - Only do the download once a month or so. It takes about 12-15 minutes to run.
  * - Then run reports.
  * - This creates a new wporg_plugins.csv
+ *
  * oikwp downloads.php v2
  * oikwp downloads.php reports
  *
@@ -42,17 +43,11 @@ $process = oik_batch_query_value_from_argv( 1, null );
 $process = strtolower( trim( $process ));
 switch ( $process ) {
 	case 'download':
-		downloads();
-		break;
-
 	case 'v2':
 		downloads_v2();
 		break;
 
 	case 'reports':
-		reports();
-		break;
-
 	case 'rv2':
 		reports();
 		break;
@@ -67,54 +62,37 @@ switch ( $process ) {
 		if ( $process ) {
 			plugin_info_v2( $process );
 		} else {
-			echo "Syntax";
+			echo "Syntax TBC";
 		}
 }
 
 
-//downloads();
-
-//reports();
-
-//block_plugins();
-
-
 
 /**
- * Do fancy things for top-10-wp-plugins.com
+ * Lists all plugins from wordpress.org
+ *
  */
-function downloads() {
-
-	$wpod = new WP_org_downloads();
-	$wpod->query_plugins( 1 );
-	print_r( $wpod );
-	gob();
-	//$wpod->save_plugins( 1 );
-	//gob();
-	$loaded = false;
-	if ( !$loaded ) {
-		//gob();
-		$wpod->query_all_plugins();
-		// $wpod->save_plugins();
-		$wpod->report_info();
-	}
-
-}
-
 function downloads_v2() {
 	$wpod = new WP_org_downloads();
 	$wpod->query_all_plugins_v2();
 }
 
+/**
+ * Produce reports for all plugins in wordpress.org
+ */
 function reports() {
-
 	$wpod = new WP_org_downloads();
 	$loaded = $wpod->load_all_plugins();
 	$wpod->top1000( null );
 	$wpod->summarise();
+	$wpod->report_top1000( 100 );
 	$wpod->count_things();
 	//$wpod->list_block_plugins();
 }
+
+/**
+ *
+ */
 
 function block_plugins() {
 	$wpod = new WP_org_downloads();
