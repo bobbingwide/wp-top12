@@ -3,3 +3,5 @@ fred*
 wporg_saved.plugins.*
 cache
 saved
+block_plugins-*
+wp-plugins-blocks-*
