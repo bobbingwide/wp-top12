@@ -3,13 +3,14 @@ Contributors: bobbingwide, vsgloik
 Donate link: https://www.oik-plugins.com/oik/oik-donate/
 Tags: shortcodes, smart, lazy
 Requires at least: 5.2
-Tested up to: 5.3-RC1
-Stable tag: 0.0.1
+Tested up to: 5.3-RC4
+Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 == Description ==
 Measuring effect on server response of the Top 12 WordPress plugins.
+And a Top 12 WordPress plugin analysis
 
 
 == Installation ==
@@ -27,6 +28,8 @@ wp-top12 provides mechanisms to post process daily trace summary report files
 * use as input to drive performance tests
 
 = What is provided? = 
+Version 1.0.0 provides the [wp-top12] shortcode in a new main plugin routine ( wp-top12.php )
+The downloads.php routine has been changed to use the WordPress REST API.
 
 In version 0.0.1 there are 5 routines:
 
@@ -77,8 +80,9 @@ There may be an admin interface, but unlikely to be a front-end.
 1. wp-top12 in action - no not really
 
 == Upgrade Notice ==
-= 0.1.0 =
+= 1.0.0-alpha-20191107 =
 Added downloads.php as a revamp for 2019.
+Added wp-top12.php to tabulate selected plugins by Total downloads
 
 = 0.0.1 =
 Now supports initial analysis by IP address
@@ -87,9 +91,13 @@ Now supports initial analysis by IP address
 New sample plugin, available from GitHub
 
 == Changelog ==
-= 0.1.0 =
+= 1.0.0-alpha-20191107 = 
+* Added: wp-top12.php for [wp-top12] shortcode,[github bobbingwide wp-top12 issues 7]
 * Added: downloads.php incl. class-wp-org-downloads.php,[github bobbingwide wp-top12 issues 6]
 * Changed: Downloads.php is no longer dependent upon play or wp-downloads
+* Tested: With WordPress 5.2.4 and WordPress Multi Site
+* Tested: With WordPress 5.3-RC4
+* Tested: With PHP 7.3
 
 
 = 0.0.1 = 

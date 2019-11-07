@@ -165,7 +165,7 @@ class WP_org_plugins {
 			bw_tablerow( $row  );
 		}
 
-		bw_tablerow( [ count( $this->included ), null, $this->total_downloads ]);
+		bw_tablerow( [ count( $this->included ), "TOTALS", $this->total_downloads ]);
 		etag( "table");
 
 	}
