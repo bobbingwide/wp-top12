@@ -94,6 +94,7 @@ New sample plugin, available from GitHub
 # 1.0.0-alpha-20191107 
 * Added: wp-top12.php for [wp-top12] shortcode,https://github.com/bobbingwide/wp-top12/issues/7
 * Added: downloads.php incl. class-wp-org-downloads.php,https://github.com/bobbingwide/wp-top12/issues/6
+* Changed: Moved a lot of files to working, so that they don't get zipped
 * Changed: Downloads.php is no longer dependent upon play or wp-downloads
 * Tested: With WordPress 5.2.4 and WordPress Multi Site
 * Tested: With WordPress 5.3-RC4
