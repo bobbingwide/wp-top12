@@ -39,9 +39,9 @@ function wp_top12_sc( $atts=null, $content=null, $tag=null ) {
  * @return string - the result
  */
 function _wp_top12_static( $atts ) {
-	e( "Top 12");
-
-  return bw_ret();
+    oik_require( 'class-wp-org-plugins.php', 'wp-top12');
+    $top12 = new WP_org_plugins();
+    return bw_ret();
 }
 
 
