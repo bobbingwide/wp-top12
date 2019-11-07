@@ -1,9 +1,17 @@
-<?php // (C) Copyright Bobbing Wide 2015-2017, 2019
+<?php
+
+/**
+ * @copyright (C) Copyright Bobbing Wide 2015-2017, 2019
+ * @package wp-top12
+ */
 
 
 /**
  * Class WP_org_downloads obtains information about all the plugins on WordPress.org
  * in order to make some sense of it for top-10-wp-plugins.com
+ *
+ * The information gets summarised into wporg_plugins.csv for offline post-processing.
+ * It should only be necessary to download the full list once a month.
  *
  *
  */
@@ -46,6 +54,10 @@ class WP_org_downloads {
 	/**
 	 * Get information for a specific plugin
 	 *
+	 * A long time ago the logic in this method used the WordPress API v1.0
+	 * It now uses the REST API to obtain similar information.
+	 * The data returned is a subset of what was available before.
+	 *
 	 * Store the results in $this->response
 	 *
 	 * Using https://api.wordpress.org/plugins/info/1.0/oik.info
@@ -53,17 +65,15 @@ class WP_org_downloads {
 	 *
 	 * Using https://api.wordpress.org/plugins/info/1.0/oik.json
 	 * gets the information as JSON
-
-	 * Turns out that the above information was incorrect
-
-
-	Essentially, you're using an endpoint which is not officially supported (and one which I've never actually seen before).
-	If you eliminate that weird .info thing, then you'll get the 1.0 endpoint proper, which gives serialized PHP data.
-
-	If you want json, then the correct endpoint would be more like this:
-	https://api.wordpress.org/plugins/info/1.1/?action=plugin_information&request[slug]=oik
-
-	The .info is likely some kind of side-effect that was never intended to be used as any form of official endpoint.
+	 *
+	 * Then it stopped working. I got told that the above information was incorrect.
+	 *
+	 * Essentially, you're using an endpoint which is not officially supported (and one which I've never actually seen before).
+	 * If you eliminate that weird .info thing, then you'll get the 1.0 endpoint proper, which gives serialized PHP data.
+	 * If you want json, then the correct endpoint would be more like this:
+	 * https://api.wordpress.org/plugins/info/1.1/?action=plugin_information&request[slug]=oik
+	 *
+	 * The .info is likely some kind of side-effect that was never intended to be used as any form of official endpoint.
 	 *
 	 * Here's the link to the API: https://codex.wordpress.org/WordPress.org_API
 	 *
@@ -76,13 +86,12 @@ class WP_org_downloads {
 	 *
 	 */
 	function get_download( $plugin_slug ) {
-		gob(); // Deprecated - i.e. intentionally broken
-		$request_url = "http://api.wordpress.org/plugins/info/1.0/$plugin_slug";
-		$this->response = bw_remote_get2( $request_url ); //, null );
-		//print_r( $response_xml );
-
-		//$try_again = unserialize( $this->response );
-		//print_r( $try_again );
+		$url  = 'https://wordpress.org/plugins/wp-json/wp/v2/plugin/';
+		$url .= '?slug=';
+		$url .= $plugin_slug;
+		$response = oik_remote::bw_remote_get( $url );
+		//print_r( $this->response );
+		$this->response = $response[0];
 	}
 
 	/**
@@ -91,10 +100,8 @@ class WP_org_downloads {
 	 * @return integer the total downloaded
 	 */
 	function get_download_count() {
-		//print_r( $this->response );
-		$count = $this->response->downloaded;
-		//gob();
-		return( $count );
+		$count = $this->response->meta->downloads;
+		return $count;
 	}
 
 	/**
