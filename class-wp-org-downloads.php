@@ -81,6 +81,9 @@ class WP_org_downloads {
 	 *
 	 * https://api.wordpress.org/plugins/info/1.2/?action=query_plugins&request
 	 *
+	 * If the plugin does not exist the response is an empty array []
+	 *
+	 *
 	 *
 	 * @param string $plugin_slug
 	 *
@@ -91,7 +94,13 @@ class WP_org_downloads {
 		$url .= $plugin_slug;
 		$response = oik_remote::bw_remote_get( $url );
 		//print_r( $this->response );
-		$this->response = $response[0];
+		if ( $response ) {
+			$this->response = $response[0];
+		} else {
+			//echo "Nothing returned";
+			return false;
+		}
+		return true;
 	}
 
 	/**
