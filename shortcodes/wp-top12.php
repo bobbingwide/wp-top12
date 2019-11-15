@@ -40,6 +40,7 @@ function _wp_top12_static( $atts ) {
 	$limit = bw_array_get_from( $atts, 'limit,0', null );
 	$includes = bw_array_get( $atts, 'includes', null );
 	$excludes = bw_array_get( $atts, 'excludes', null );
+	oik_require_lib( "bobbforms");
     oik_require( 'class-wp-org-plugins.php', 'wp-top12');
     $top12 = new WP_org_plugins();
     $top12->atts( $atts );
