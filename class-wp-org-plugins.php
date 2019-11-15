@@ -12,6 +12,7 @@ class WP_org_plugins {
 	private $file_or_url; // Source of information
 	private $includes; // CSV string of words to search for
 	private $excludes; // CSV string of words to exclude
+	private $matches; // CSV string or words to match exactly with a plugin name
 
 	private $included;
 	private $excluded;
@@ -22,6 +23,7 @@ class WP_org_plugins {
 		$this->limit = 12;
 		$this->includes = null;
 		$this->excludes = null;
+		$this->matches = null;
 		$this->both = false;
 		$this->total_downloads = 0;
 		//$this->plugin_info_v2( "oik" );
@@ -29,17 +31,34 @@ class WP_org_plugins {
 	}
 
 	function atts( $atts ) {
-		$this->limit = bw_array_get_from( $atts, 'limit,0', null );
+		$matches = bw_array_get_from( $atts, 'matches,0', null );
+		$this->limit = bw_array_get_from( $atts, 'limit,0', 12 );
+		$this->matches = [];
+		if ( null !== $matches ) {
+			if ( is_numeric( $matches ) ) {
+				//$this->limit = $matches;
+				$matches = null;
+
+			} else {
+				$this->matches = bw_as_array( $matches );
+				if ( is_numeric( $this->limit ) ) {
+					// go with that
+				} else {
+					$this->limit = count( $this->matches );
+				}
+			}
+		}
+
+
 		$includes = bw_array_get( $atts, 'includes', null );
 		$this->includes = bw_as_array( $includes );
 		$excludes = bw_array_get( $atts, 'excludes', null );
 		$this->excludes = bw_as_array( $excludes );
-		if ( null === $includes && null === $excludes && null === $this->limit ) {
-			$this->limit = 12;
+		if ( null === $includes && null === $excludes && null === $matches && null === $this->limit  ) {
+
 		}
-		if ( null === $this->limit ) {
-			$this->limit = 1000;
-		}
+		$this->limit = min( $this->limit, 1000 );
+
 		$both = bw_array_get( $atts, 'both', 'N' );
 		$this->both = bw_validate_torf( $both );
 	}
@@ -84,24 +103,46 @@ class WP_org_plugins {
 				continue;
 			}
 
-			if ( $this->include( $key, $info ) ) {
+			if ( $this->match( $key, $info )) {
+				$this->included[] = $this->build_include_or_exclude( $key, $info );
+				$count++;
+
+			} elseif ( $this->include( $key, $info ) ) {
 				if ( $this->exclude( $key, $info ) ) {
 					$this->excluded[] = $this->build_include_or_exclude( $key, $info );
 				} else {
 					$this->included[] = $this->build_include_or_exclude( $key, $info );
 					$count++;
-					if ( $count >= $this->limit ) {
-						//e( 'Limit reached');
-						break;
-
-					}
 				}
+			}
+			if ( $count >= $this->limit ) {
+				e( 'Limit reached: ' . $count . ' at ' . $key );
+				break;
+
 			}
 		}
 	}
 
+	/**
+	 * Find exact matches with the plugin name
+	 *
+	 */
+	function match( $key, $info ) {
+		if ( 0 === count( $this->matches ) ) {
+			return false;
+		}
+		$matched = false;
+		foreach ( $this->matches as $plugin ) {
+			$pos = stripos( $info, $plugin . ',' );
+			if ( 0 === $pos ) {
+				$matched = true;
+			}
+		}
+		return $matched;
+	}
+
 	function include( $key, $info ) {
-		if ( 0 === count( $this->includes ) ) {
+		if ( 0 === count( $this->includes ) && 0 === count( $this->matches ) ) {
 			return true;
 		}
 		$included = false;
