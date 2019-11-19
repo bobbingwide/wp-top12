@@ -80,6 +80,9 @@ There may be an admin interface, but unlikely to be a front-end.
 1. wp-top12 in action - no not really
 
 == Upgrade Notice ==
+= 1.0.0-alpha-20191119 = 
+Updated extract file. Improvements to the wp-top12 shortcode for top-10-wp-plugins.com
+
 = 1.0.0-alpha-20191107 =
 Added downloads.php as a revamp for 2019.
 Added wp-top12.php to tabulate selected plugins by Total downloads
@@ -91,6 +94,12 @@ Now supports initial analysis by IP address
 New sample plugin, available from GitHub
 
 == Changelog ==
+= 1.0.0-alpha-20191119 = 
+* Changed: Latest extract 2019-11-19. 54672 plugins,[github bobbingwide wp-top12 issues 6]
+* Changed: Improve wp-top12 shortcode,[github bobbingwide wp-top12 issues 7]
+* Fixed: Cater for plugin not being present on wordpress.org
+* Tested: With WordPress 5.3 and WordPress Multi Site
+
 = 1.0.0-alpha-20191107 = 
 * Added: wp-top12.php for [wp-top12] shortcode,[github bobbingwide wp-top12 issues 7]
 * Added: downloads.php incl. class-wp-org-downloads.php,[github bobbingwide wp-top12 issues 6]
@@ -99,7 +108,6 @@ New sample plugin, available from GitHub
 * Tested: With WordPress 5.2.4 and WordPress Multi Site
 * Tested: With WordPress 5.3-RC4
 * Tested: With PHP 7.3
-
 
 = 0.0.1 = 
 * Added: vt-ip.php to summarise requests by IP, showing total requests and elapsed time for high using IP addresses
