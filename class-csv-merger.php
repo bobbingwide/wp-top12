@@ -109,5 +109,10 @@ class CSV_merger {
 		return( $accum );
 	}
 
+	function report_groups() {
+		echo "Version,Requires,Tested\n";
+		$this->report();
+	}
+
 
 }

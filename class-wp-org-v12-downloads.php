@@ -1,7 +1,6 @@
 <?php
+
 /**
- * Information about all plugins on WordPress.org.
- *
  * @copyright (C) Copyright Bobbing Wide 2015-2017, 2019
  * @package wp-top12
  */
@@ -27,8 +26,6 @@ class WP_org_downloads {
 	public $downloaded;
 
 	public $preselection;
-
-	public $content; /* Output for the top-10-wp-plugins blog post */
 
 	/**
 	 * File name of saved plugins excluding the file extension, which is a number
@@ -235,7 +232,7 @@ class WP_org_downloads {
 	 */
 	function load_plugins( $page ) {
 		$file = $this->wporg_saved_plugins_v2 . $page . '.json';
-		//echo "Loading file: $file " . PHP_EOL;
+		echo "Loading file: $file " . PHP_EOL;
 		$loaded = file_exists( $file );
 		if ( $loaded ) {
 			$plugins_string = file_get_contents( $file );
@@ -244,7 +241,7 @@ class WP_org_downloads {
 			} else {
 				$plugins = json_decode( $plugins_string );
 				$loaded = count( $plugins );
-				//echo "Count: " . $loaded . PHP_EOL;
+				echo "Count: " . $loaded . PHP_EOL;
 				$this->add_plugins( $plugins );
 				//$this->plugins = $plugins;
 			}
@@ -257,14 +254,12 @@ class WP_org_downloads {
 	 *
 	 * @TODO Will do 55,000 plugins. Need 545 pages for 54,500 - currently 54,498
 	 *
-	 * @TODO Load the plugins from the wporg_plugins.csv file if it's more recent than the downloads!
-	 *
 	 */
 	function load_all_plugins() {
 		$start = 1;
 		$max_pages = 550;
 		for ( $page = $start ; $page <= $max_pages; $page++ ) {
-			//echo "Loading page: $page " . PHP_EOL;
+			echo "Loading page: $page " . PHP_EOL;
 			$loaded = $this->load_plugins( $page );
 		}
 	}
@@ -275,9 +270,9 @@ class WP_org_downloads {
 	function add_plugins( $plugins ) {
 		//print_r( $this->plugins );
 
-		//echo count( $plugins );
-		//echo ' ';
-		//echo count( $this->plugins );
+		echo count( $plugins );
+		echo ' ';
+		echo count( $this->plugins );
 		foreach ( $plugins as $key => $plugin ) {
 			$plugin->name = $plugin->meta->header_name;
 			$plugin->downloads = $plugin->meta->downloads;
@@ -289,8 +284,8 @@ class WP_org_downloads {
 		}
 
 		//$this->plugins += $plugins;
-		//$count = count( $this->plugins );
-		//echo "Loaded: " . $count . PHP_EOL;
+		$count = count( $this->plugins );
+		echo "Loaded: " . $count . PHP_EOL;
 		//gob();
 	}
 
@@ -384,7 +379,7 @@ class WP_org_downloads {
 		);
 		$args = array( "per_page" => 60
 		, "page" => $page
-		, "fields" => serialize( $fields )
+		, "fields" => $fields
 		);
 		echo "Requesting: " . $page . PHP_EOL;
 		$this->response = plugins_api( "query_plugins", $args );
@@ -639,7 +634,6 @@ class WP_org_downloads {
 		}
 		file_put_contents( $file, $this->csv );
 		echo "Total downloaded: " . $this->downloaded . PHP_EOL;
-		$this->block_writer( 'heading', null, '<h2>Total downloads: ' . number_format_i18n( $this->downloaded ) . '</h2>' );
 
 	}
 
@@ -675,43 +669,28 @@ class WP_org_downloads {
 		$grouper->groupby( "name", array( $this, "preselected" ) );
 		$grouper->ksort();
 		$grouper->report_groups();
-		$grouper->groupby( "downloads", array( $this, "tentothe" ) );
-		$grouper->ksort();
-		//$grouper->report_groups();
-		$this->block_writer( 'heading', null, '<h2>Grouped by total downloads</h2>');
-		$this->report_groups( $grouper );
-
-		$grouper->subset( array( $this, "year" ) );
-		$grouper->groupby( "last_updated" );
-		$grouper->krsort();
-		$grouper->report_groups();
-		$this->block_writer( 'heading', null, '<h2>Last updated</h2>');
-		$this->report_groups( $grouper );
 
 		$grouper->groupby( "requires", array( $this, "versionify" ) );
 		$grouper->ksort();
 		$grouper->report_groups();
 
-		$merger = new CSV_merger();
-		$merger->append( $grouper->groups );
-
 		$grouper->groupby( "tested", array( $this, "versionify" ) );
-		$grouper->ksort();
+		$grouper->krsort();
 		$grouper->report_groups();
-
-
-		$merger->append( $grouper->groups);
-
-		$this->block_writer( 'heading', null, '<h2>WordPress version compatibility</h2>');
-		//echo "Merged report:" . PHP_EOL;
-		$this->report_groups( $merger );
-
 
 		$grouper->groupby( "rating", array( $this, "stars" ) );
 		$grouper->krsort();
 		$grouper->report_groups();
-		$this->block_writer( 'heading', null, '<h2>Star ratings</h2>');
-		$this->report_groups( $grouper );
+
+		$grouper->subset( array( $this, "year" ) );
+		$grouper->groupby( "last_updated" );
+		$grouper->krsort();
+		$grouper->report_groups();
+
+		$grouper->groupby( "downloads", array( $this, "tentothe" ) );
+		$grouper->ksort();
+		$grouper->report_groups();
+
 
 
 		$grouper->groupby( "name", array( $this, "firstletter" ) );
@@ -724,8 +703,6 @@ class WP_org_downloads {
 		$grouper->groupby( "name", array( $this, "words" ) );
 		$grouper->arsort();
 		$grouper->report_groups();
-
-		$this->echo_content();
 
 
 	}
@@ -951,29 +928,16 @@ class WP_org_downloads {
 	function report_top1000( $limit=1000 ) {
 		echo 'Displaying: ' . $limit . ' of ' . count( $this->plugins ) . PHP_EOL;
 		$limit = min( $limit, count( $this->plugins ) );
-		$top12 = "Position|Plugin|Total downloads\n";
-		$top12 = null;
 		for ( $index = 0; $index < $limit ; $index++ ) {
 			$plugin = $this->plugins[ $index ];
 			$plugin = (object) $plugin;
-			$line   = $index + 1;
-			$line  .= '|';
-			$line  .= '<a href=https://wordpress.org/plugins/';
-			$line  .= $plugin->slug;
-			$line  .= '>';
-			$line  .= $plugin->slug;
-			$line  .= '</a>';
-			$line  .= '|';
-			$line  .= number_format_i18n( $plugin->meta->downloads );
-			$line  .= "\n";
-			echo $line;
-			if ( $index < 12 ) {
-				$top12 = $line . $top12;
-			}
+			echo $index +1;
+			echo ',';
+			echo $plugin->slug;
+			echo ",";
+			echo $plugin->meta->downloads;
+			echo PHP_EOL;
 		}
-		$top12 = "Position|Plugin|Total downloads\n" . $top12;
-		$atts = [ 'content' => $top12 ];
-		$this->block_writer( 'oik-block/csv', $atts, null );
 	}
 
 
@@ -1056,24 +1020,6 @@ class WP_org_downloads {
 
 
 	 */
-
-	function block_writer( $block_type_name, $atts = null, $content = null ) {
-		$attributes = \oik\oik_blocks\oik_blocks_atts_encode( $atts );
-		$this->content .= \oik\oik_blocks\oik_blocks_generate_block( $block_type_name, $attributes, $content );
-		//echo $this->content;
-	}
-
-	function report_groups( $grouper ) {
-		ob_start();
-		$grouper->report_groups();
-		$output = ob_get_clean();
-		$atts = [ 'content' => $output ];
-		$this->block_writer( 'oik-block/csv', $atts, null );
-	}
-
-	function echo_content() {
-		echo $this->content;
-	}
 
 
 }
