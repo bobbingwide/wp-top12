@@ -7,15 +7,15 @@
 
 
 /**
- * Class WP_org_downloads obtains information about all the plugins on WordPress.org
- * in order to make some sense of it for top-10-wp-plugins.com
+ * Class WP_org_v12_downloads obtains information about all the block plugins on WordPress.org
+ * So that I can populate the catalogue of blocks blocks.wp-a2z.org
  *
- * The information gets summarised into wporg_plugins.csv for offline post-processing.
+ * The information gets summarised into wporg_block_plugins.csv for offline post-processing.
  * It should only be necessary to download the full list once a month.
  *
  *
  */
-class WP_org_downloads {
+class WP_org_v12_downloads {
 
 	public $response;
 
@@ -54,53 +54,86 @@ class WP_org_downloads {
 	/**
 	 * Get information for a specific plugin
 	 *
-	 * A long time ago the logic in this method used the WordPress API v1.0
-	 * It now uses the REST API to obtain similar information.
-	 * The data returned is a subset of what was available before.
-	 *
-	 * Store the results in $this->response
-	 *
-	 * Using https://api.wordpress.org/plugins/info/1.0/oik.info
-	 * gets the information as serialized data which we convert into an object
-	 *
-	 * Using https://api.wordpress.org/plugins/info/1.0/oik.json
-	 * gets the information as JSON
-	 *
-	 * Then it stopped working. I got told that the above information was incorrect.
-	 *
-	 * Essentially, you're using an endpoint which is not officially supported (and one which I've never actually seen before).
-	 * If you eliminate that weird .info thing, then you'll get the 1.0 endpoint proper, which gives serialized PHP data.
-	 * If you want json, then the correct endpoint would be more like this:
-	 * https://api.wordpress.org/plugins/info/1.1/?action=plugin_information&request[slug]=oik
-	 *
-	 * The .info is likely some kind of side-effect that was never intended to be used as any form of official endpoint.
-	 *
-	 * Here's the link to the API: https://codex.wordpress.org/WordPress.org_API
-	 *
+	 * We don't yet use this for block plugins
+
 	 * there's a 1.2 request as well
 	 *
 	 * https://api.wordpress.org/plugins/info/1.2/?action=query_plugins&request
 	 *
 	 * If the plugin does not exist the response is an empty array []
 	 *
-	 *
+	 *https://api.wordpress.org/plugins/info/1.2/?action=plugin_information&request[slug]=embed-block-for-github
 	 *
 	 * @param string $plugin_slug
 	 *
 	 */
 	function get_download( $plugin_slug ) {
-		$url  = 'https://wordpress.org/plugins/wp-json/wp/v2/plugin/';
-		$url .= '?slug=';
-		$url .= $plugin_slug;
-		$response = oik_remote::bw_remote_get( $url );
-		//print_r( $this->response );
+		$url      = 'https://api.wordpress.org/plugins/info/1.2/?action=plugin_information';
+		$url      .= '&request[slug]=';
+		$url      .= $plugin_slug;
+		$url        .= '&request[block]=1';
+
+		//$url        .= '&request[sections]=none';
+
+		/**
+		 * I don't know how to control what it returns but adding request[block] seems to help.
+
+		$url        .= '&request[sections]=0';
+
+		$url        .= '&request[screenshots]=0';
+		$url        .= '&fields[screenshots]=0';
+
+
+		$fields = array( 'description' => false
+		, 'sections' => false
+		, 'tested' => true
+		, 'requires' => true
+		, 'rating' => true
+		, 'downloaded' => true
+		, 'downloadlink' => false
+		, 'last_updated' => true
+		, 'homepage' => true
+		, 'tags' => false
+		, 'block' => true
+		);
+
+		$args = [ 'timeout' => 15, 'fields' => serialize( $fields ) ];
+*/
+	$args = [ 'timeout' => 15];
+
+
+		$response = oik_remote::bw_remote_geth( $url, $args );
+		//print_r( $response );
+
+		// Forget about the first entry. just save the plugin object that's been returned
 		if ( $response ) {
-			$this->response = $response[0];
+			$this->response = $response[1];
 		} else {
-			//echo "Nothing returned";
+			echo "Nothing returned";
 			return false;
 		}
+
 		return true;
+	}
+
+	function get_block_prefix() {
+		$prefix = null;
+		if ( $this->response) {
+			//print_r( $this->response );
+			if (   $this->response->blocks ) {
+				print_r( $this->response->blocks);
+				$blocks = ( array ) $this->response->blocks;
+				print_r( $blocks );
+				$block = key( $blocks );
+				$name = explode( '/', $block);
+				$prefix = $name[0];
+			} else {
+				echo "No blocks?";
+			}
+
+
+		}
+		return $prefix;
 	}
 
 	/**
@@ -124,11 +157,9 @@ class WP_org_downloads {
 	}
 
 	/**
-	 * query information about all 5x,xxx plugins
+	 * query information about all the block plugins
 	 *
-	 * We work our way backwards through the list
-	 * having first requested page 1 to find out how many pages there should be
-	 * If the number has changed from last time then what do we know?
+	 * We work our way through all block plugins a-z
 	 *
 	 *
 	 */
@@ -151,20 +182,12 @@ class WP_org_downloads {
 	}
 
 	/**
-	Hey :slightly_smiling_face: Since it’s public data.. here’s an export from the plugin directory:
-	https://docs.google.com/spreadsheets/d/1Sfp3UzMAkXO_vTC1-7yvrrTdRdO9jeeSg8x0Ngqe9vI/edit#gid=0
-	0 Active Installs = Less than 10
-	I’d kind of like you not to share it, because I don’t want to have to provide the data reguarly to a bunch of people.
-	You can also hit this API - It’s not rate limited.. yet, please don’t hit it too hard otherwise we’ll have to block access entirely.
-	https://wordpress.org/plugins/wp-json/wp/v2/plugin/
-	https://wordpress.org/plugins/wp-json/wp/v2/plugin/110913
 
-	https://wordpress.org/plugins/wp-json/wp/v2/plugin/?page=2
 	 */
-	function query_all_plugins_v2( $page=1, $per_page=100) {
-		$this->query_plugins_v2( $page, $per_page );
+	function query_all_plugins_v12( $page=1, $per_page=30, $letter='a' ) {
+		$this->query_plugins_v12( $page, $per_page, $letter );
 
-		//if ( 1 === $page) {
+		if ( false && 1 === $page) {
 			$headers    = wp_remote_retrieve_headers( $this->response[0] );
 			$headers    = new Requests_Response_Headers( $headers->getAll() );
 			$x_wp_total = $headers->getValues( 'x-wp-total' );
@@ -176,62 +199,78 @@ class WP_org_downloads {
 			echo "Total pages: ";
 			echo $total_pages;
 			echo PHP_EOL;
-		//}
-
-		$this->save_plugins_v2( $page );
-
-		for ( $page = 2; $page <= $total_pages; $page++  ) {
-			$this->query_plugins_v2( $page, $per_page );
-			$this->save_plugins_v2( $page );
 		}
+
+		$this->save_plugins_v12( $page, $letter );
+		/*
+		$pages = 1 ;
+		for ( $page = 2; $page <= $total_pages; $page++  ) {
+			$this->query_plugins_v12( $page, $per_page, $letter );
+			$this->save_plugins_v12( $page, $letter );
+		}
+		*/
 	}
 
-	function query_plugins_v2( $page, $per_page ) {
-		$url      = 'https://wordpress.org/plugins/wp-json/wp/v2/plugin/?page=';
-		$url      .= $page;
-		$url      .= '&per_page=';
+	/**
+	 * https://api.wordpress.org/plugins/info/1.2/?action=query_plugins&request[block]=b&request[wp_version]=5.3&request[per_page]=6
+	 * @param $page
+	 * @param $per_page
+	 */
+
+	function query_plugins_v12( $page, $per_page, $letter='a' ) {
+		$url      = 'https://api.wordpress.org/plugins/info/1.2/?action=query_plugins';
+		//$url      .= '&request[wp_version]=5.3';
+		$url      .= '&request[block]=';
+		$url      .= $letter;
+		$url      .= '&request[per_page]=';
 		$url      .= $per_page;
-		$this->response = oik_remote::bw_remote_geth( $url );
-		//print_r( $response );
+
+		$args = [ 'timeout' => 15 ];
+
+		$this->response = oik_remote::bw_remote_geth( $url, $args );
+		//print_r( $this->response );
 		$this->plugins = $this->response[1];
 
 	}
 
-	function save_plugins_v2( $page ) {
+	function save_plugins_v12( $page, $letter ) {
 		$string = json_encode( $this->plugins );
 		//print_r( $this->plugins);
-		$file = $this->wporg_saved_plugins_v2 . $page . '.json';
+		$file = $this->wporg_saved_plugins_v2 . $letter . $page . '.json';
 		$saved = file_put_contents( $file, $string );
 		$this->reset();
 		bw_trace2();
 	}
 
-	function wporg_saved_plugins( $wporg_saved_plugins="cache/wporg_saved.plugins." ) {
+	function wporg_saved_plugins( $wporg_saved_plugins="cache/wporg_saved_block.plugins." ) {
 		$this->wporg_saved_plugins = $wporg_saved_plugins;
 	}
-	function wporg_saved_plugins_v2( $wporg_saved_plugins="cache_v2/wporg_saved.plugins." ) {
+	function wporg_saved_plugins_v2( $wporg_saved_plugins="cache_v2/wporg_saved_block.plugins." ) {
 		$this->wporg_saved_plugins_v2 = $wporg_saved_plugins;
 	}
+
 	/**
-	 * Load the information from a local cache
+	 * Load the information from a local cache - JSON version
+	 * Note that each plugin is now stored as an array not an object.
 	 *
+	 * * The result is expected to be a JSON Object of two arrays: info and plugins
+	 *
+	 * - 'info' contains 'page', 'pages' and 'results'
+	 * - 'plugins' contains an array of plugin Objects
+	 *
+	 * `stdClass Object
+	 * (
+	 *	 [info] => Array
+	 *			 (
+	 * 				 [page] => 1
+	 *				 [pages] => 418
+	 *				 [results] => 41777
+	 *			 )
+	 *
+	 *  [plugins] => Array
 	 */
-	function load() {
-		gob();
-		$plugins = file_get_contents( "wporg_saved.plugins" );
-		$saved = file( "wporg_saved.plugins" );
-
-		echo "Count: " . count( $plugins ) . PHP_EOL;
-		echo "Count saved:" . count( $saved ) . PHP_EOL;
-		//$this->plugins = file( "wporg_load.plugins" );
-	}
-
-	/**
-	 * Load the information from a local cache - serialized version
-	 * Note the each plugin is now stored as an array not an object.
-	 */
-	function load_plugins( $page ) {
-		$file = $this->wporg_saved_plugins_v2 . $page . '.json';
+	function load_plugins( $page, $letter ) {
+		$file = $this->wporg_saved_plugins_v2 . $letter . $page . '.json';
 		echo "Loading file: $file " . PHP_EOL;
 		$loaded = file_exists( $file );
 		if ( $loaded ) {
@@ -239,7 +278,18 @@ class WP_org_downloads {
 			if ( false === $plugins_string ) {
 				$loaded = false;
 			} else {
-				$plugins = json_decode( $plugins_string );
+				//echo $plugins_string;
+				$json = json_decode( $plugins_string );
+				$info = $json->info;
+				echo $info->results;
+				if ( $info->pages > 1 ) {
+					echo "More than one page!" . PHP_EOL;
+					echo $plugins_string;
+					gob();
+				}
+				echo PHP_EOL;
+				$plugins = $json->plugins;
+
 				$loaded = count( $plugins );
 				echo "Count: " . $loaded . PHP_EOL;
 				$this->add_plugins( $plugins );
@@ -250,22 +300,21 @@ class WP_org_downloads {
 	}
 
 	/**
-	 * Load all the plugins from the serialized results
-	 *
-	 * @TODO Will do 55,000 plugins. Need 545 pages for 54,500 - currently 54,498
-	 *
+	 * Loads all the plugins from the serialized results
 	 */
 	function load_all_plugins() {
-		$start = 1;
-		$max_pages = 550;
-		for ( $page = $start ; $page <= $max_pages; $page++ ) {
-			echo "Loading page: $page " . PHP_EOL;
-			$loaded = $this->load_plugins( $page );
+		$letters = 'abcdefghijklmnopqrstuvwxyz';
+		$page = 1;
+		for  ( $i = 0; $i < 26; $i++ ) {
+			$letter = $letters[ $i ];
+			echo "Loading page: $letter $page " . PHP_EOL;
+			$loaded = $this->load_plugins( $page, $letter );
 		}
 	}
 
 	/**
 	 * Add the latest set to the total list
+	 *
 	 */
 	function add_plugins( $plugins ) {
 		//print_r( $this->plugins );
@@ -273,14 +322,27 @@ class WP_org_downloads {
 		echo count( $plugins );
 		echo ' ';
 		echo count( $this->plugins );
+		echo PHP_EOL;
 		foreach ( $plugins as $key => $plugin ) {
-			$plugin->name = $plugin->meta->header_name;
-			$plugin->downloads = $plugin->meta->downloads;
-			$plugin->tested = $plugin->meta->tested;
-			$plugin->requires = $plugin->meta->requires;
-			$plugin->last_updated = $plugin->modified_gmt;
+			//echo "Name: " . $plugin->name . PHP_EOL;
+			//echo "Slug: " . $plugin->slug . PHP_EOL;
+			//$plugin->name = $plugin->meta->header_name;
+			//$plugin->downloads = $plugin->meta->downloads;
+			//$plugin->tested = $plugin->meta->tested;
+			//$plugin->requires = $plugin->meta->requires;
+			//$plugin->last_updated = $plugin->modified_gmt;
 
-			$this->plugins[] = $plugin;
+			foreach ( $plugin->blocks as $blockname => $block ) {
+				$data   = [];
+				$data[] = $plugin->name;
+				$data[] = $plugin->slug;
+				//$data[] = count( $plugin->blocks );
+				$data[] = $blockname;
+				$data[] = $block->name;
+				$data[] = $block->title;
+				$line   = implode( ',', $data );
+				echo $line . PHP_EOL;
+			}
 		}
 
 		//$this->plugins += $plugins;
@@ -325,69 +387,6 @@ class WP_org_downloads {
 		unset( $this->plugins );
 		$this->plugins = array();
 	}
-
-	/**
-	 * Query plugins on WordPress.org
-	 *
-	 *
-	 * The result is expected to be a stdClass Object of two arrays: info and plugins
-	 *
-	 * - 'info' contains 'page', 'pages' and 'results'
-	 * - 'plugins' contains an array of plugin Objects
-	 *
-	 * `stdClass Object
-	 * (
-	 *	 [info] => Array
-	 *			 (
-	 * 				 [page] => 1
-	 *				 [pages] => 418
-	 *				 [results] => 41777
-	 *			 )
-	 *
-	 *  [plugins] => Array
-	 *
-	 * Freaky. Today (17th October 2019) the results are:
-	 * pages 618, results 61778
-	 *
-	 * `
-	 *
-	 * We can control the fields in the plugins array using the "fields" parameter.
-	 * Don't yet know where on wp.org the code is to implement the back end.
-	 *
-	 *
-	 * We know we can handle 100 plugins per page, and 1000 is too many for 15 seconds
-	 * so lets stick with 100 for the time being.
-	 *
-	 * OK. There was a problem with 100, we were'nt getting 100 returned
-	 * But it we ask for fewer than 60 something and we're limited to 999 pages
-	 * then we don't get all of them.
-	 *
-	 * The plugins are returned on most recently updated order
-	 *
-	 */
-	function query_plugins( $page=1 ) {
-		$fields = array( 'description' => false
-		, 'sections' => false
-		, 'tested' => true
-		, 'requires' => true
-		, 'rating' => true
-		, 'downloaded' => true
-		, 'downloadlink' => false
-		, 'last_updated' => true
-		, 'homepage' => true
-		, 'tags' => false
-		);
-		$args = array( "per_page" => 60
-		, "page" => $page
-		, "fields" => $fields
-		);
-		echo "Requesting: " . $page . PHP_EOL;
-		$this->response = plugins_api( "query_plugins", $args );
-		print_r( $this->response );
-		gob();
-		$this->store_plugins();
-	}
-
 
 
 	/**

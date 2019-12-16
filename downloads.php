@@ -16,12 +16,15 @@
 ini_set('memory_limit','1024M');
 
 require_once( ABSPATH . "wp-admin/includes/plugin-install.php" );
-oik_require( "includes/oik-remote.inc" );
+//oik_require( "includes/oik-remote.inc" );
+oik_require_lib( "class-oik-remote" );
+oik_require_lib( 'oik-blocks');
 
 oik_require( "class-wp-org-downloads.php", "wp-top12" );
 oik_require( "class-object-sorter.php", "wp-top12" );
 oik_require( "class-object.php", "wp-top12" );
 oik_require( "class-object-grouper.php", "wp-top12" );
+oik_require( 'class-csv-merger.php', 'wp-top12');
 
 
 /**
@@ -52,15 +55,19 @@ switch ( $process ) {
 		reports();
 		break;
 
-	/* Blocks not available with v2 of the REST API
+	// Blocks not available with v2 of the REST API but they are with the WordPress blocks API v1.2.
 	case 'blocks':
 		block_plugins();
 		break;
-	*/
+
+	case 'rb':
+		report_blocks();
+		break;
 
 	default:
 		if ( $process ) {
 			plugin_info_v2( $process );
+			plugin_info_v12( $process );
 		} else {
 			echo "Syntax TBC";
 		}
@@ -93,37 +100,21 @@ function reports() {
 /**
  *
  */
-
 function block_plugins() {
-	$wpod = new WP_org_downloads();
-	$loaded = $wpod->load_all_plugins();
-	$wpod->list_block_plugins();
+	oik_require( "class-wp-org-v12-downloads.php", "wp-top12" );
+	$wpod = new WP_org_v12_downloads();
+	$letters = 'abcdefghijklmnopqrstuvwxyz';
+	for  ( $i = 0; $i < strlen( $letters); $i++ ) {
+		$wpod->query_all_plugins_v12( 1, 100, $letters[$i] );
+	}
+	//$loaded = $wpod->load_all_plugins();
+	//$wpod->list_block_plugins();
 }
 
-
-function plugin_info( $plugin ) {
-
-	$wpod = new WP_org_downloads();
-	$loaded = $wpod->load_all_plugins();
-	$sorted = $wpod->sort_by_most_downloaded( null );
-	//$wpod->report_top1000( $sorted );
-
-
-	//$sorted = file( 'wporg_plugins.csv');
-	foreach ( $sorted as $key => $plugin_data ) {
-		if ( $plugin_data->slug == $plugin ) {
-			echo $key;
-			echo ' ';
-			echo $plugin;
-			echo ' ';
-			echo $plugin_data->meta->header_name;
-			echo ' ';
-			echo $plugin_data->downloads;
-			echo PHP_EOL;
-
-		}
-	}
-	//print_r( $sorted );
+function report_blocks() {
+	oik_require( "class-wp-org-v12-downloads.php", "wp-top12" );
+	$wpod = new WP_org_v12_downloads();
+	$wpod->load_all_plugins();
 
 }
 
@@ -144,9 +135,22 @@ function plugin_info_v2( $plugin ) {
 
 		}
 	}
+}
 
 
+/**
+ * Returns the prefix used for blocks created by this plugin.
+ * To be used in blocker.
+ * @param $plugin
+ */
 
+function plugin_info_v12( $plugin ) {
+	oik_require( "class-wp-org-v12-downloads.php", "wp-top12" );
+	$wpod = new WP_org_v12_downloads();
+	$wpod->get_download( $plugin );
+	$prefix = $wpod->get_block_prefix();
+	echo "Prefix: " . $prefix;
+	echo PHP_EOL;
 
 }
 
