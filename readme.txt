@@ -3,8 +3,8 @@ Contributors: bobbingwide, vsgloik
 Donate link: https://www.oik-plugins.com/oik/oik-donate/
 Tags: shortcodes, smart, lazy
 Requires at least: 5.2
-Tested up to: 5.3-RC4
-Stable tag: 1.0.0
+Tested up to: 5.3.1
+Stable tag: 1.0.0-alpha-20191216
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -80,6 +80,12 @@ There may be an admin interface, but unlikely to be a front-end.
 1. wp-top12 in action - no not really
 
 == Upgrade Notice ==
+= 1.0.0-alpha-20191216 = 
+Updated to make it easier to generate the Top 12 blog post
+
+= 1.0.0-alpha-20191213 = 
+Needs admin/oik-activation.php in order to report dependency on oik
+
 = 1.0.0-alpha-20191119 = 
 Updated extract file. Improvements to the wp-top12 shortcode for top-10-wp-plugins.com
 
@@ -94,6 +100,15 @@ Now supports initial analysis by IP address
 New sample plugin, available from GitHub
 
 == Changelog ==
+= 1.0.0-alpha-20191216 = 
+* Changed: More improvements to reporting,[github bobbingwide wp-top12 issues 6]
+* Changed: Generated new version of wporg_plugins.csv from 2019/12/15. 54924 plugins
+* Tested: With WordPress 5.3.1 and WordPress Multi Site
+* Tested: With PHP 7.3 and PHP 7.4
+
+= 1.0.0-alpha-20191213 = 
+* Fixed: Copied admin/oik-activation.php
+
 = 1.0.0-alpha-20191119 = 
 * Changed: Latest extract 2019-11-19. 54672 plugins,[github bobbingwide wp-top12 issues 6]
 * Changed: Improve wp-top12 shortcode,[github bobbingwide wp-top12 issues 7]
