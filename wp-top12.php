@@ -4,7 +4,7 @@ Plugin Name: wp-top12
 Depends: oik
 Plugin URI: https://www.oik-plugins.com/oik-plugins/wp-top12
 Description: Display selected plugins by most downloaded from WordPress.org
-Version: 1.0.0-alpha-20191216
+Version: 1.0.0-beta-20191226
 Author: bobbingwide
 Author URI: https://www.bobbingwide.com/about-bobbing-wide
 Text Domain: wp-top12

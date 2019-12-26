@@ -4,8 +4,8 @@
 * Donate link: https://www.oik-plugins.com/oik/oik-donate/
 * Tags: shortcodes, smart, lazy
 * Requires at least: 5.2
-* Tested up to: 5.3.1
-* Stable tag: 1.0.0-alpha-20191216
+* Tested up to: 5.3.2
+* Stable tag: 1.0.0-beta-20191226
 * License: GPLv2 or later
 * License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -81,6 +81,9 @@ There may be an admin interface, but unlikely to be a front-end.
 1. wp-top12 in action - no not really
 
 ## Upgrade Notice 
+# 1.0.0-beta-20191226 
+Update for latest figures - Boxing Day 2019
+
 # 1.0.0-alpha-20191216 
 Updated to make it easier to generate the Top 12 blog post
 
@@ -101,6 +104,10 @@ Now supports initial analysis by IP address
 New sample plugin, available from GitHub
 
 ## Changelog 
+# 1.0.0-beta-20191226 
+* Changed: Generatated new version of wporg_plugins.csv from 2019/12/26. 55062 plugins
+* Tested: With WordPress 5.3.2
+
 # 1.0.0-alpha-20191216 
 * Changed: More improvements to reporting,https://github.com/bobbingwide/wp-top12/issues/6
 * Changed: Generated new version of wporg_plugins.csv from 2019/12/15. 54924 plugins
