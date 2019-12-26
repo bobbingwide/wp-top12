@@ -256,13 +256,14 @@ class WP_org_downloads {
 	 * Load all the plugins from the serialized results
 	 *
 	 * @TODO Will do 55,000 plugins. Need 545 pages for 54,500 - currently 54,498
+	 * Latest (26 Dec 2019) 50,062
 	 *
 	 * @TODO Load the plugins from the wporg_plugins.csv file if it's more recent than the downloads!
 	 *
 	 */
 	function load_all_plugins() {
 		$start = 1;
-		$max_pages = 550;
+		$max_pages = 551;
 		for ( $page = $start ; $page <= $max_pages; $page++ ) {
 			//echo "Loading page: $page " . PHP_EOL;
 			$loaded = $this->load_plugins( $page );
