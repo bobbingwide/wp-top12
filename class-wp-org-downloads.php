@@ -263,7 +263,7 @@ class WP_org_downloads {
 	 */
 	function load_all_plugins() {
 		$start = 1;
-		$max_pages = 552;
+		$max_pages = 554;
 		for ( $page = $start ; $page <= $max_pages; $page++ ) {
 			//echo "Loading page: $page " . PHP_EOL;
 			$loaded = $this->load_plugins( $page );
