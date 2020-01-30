@@ -154,11 +154,8 @@ class WP_org_downloads {
 	}
 
 	/**
-	Hey :slightly_smiling_face: Since it’s public data.. here’s an export from the plugin directory:
-	https://docs.google.com/spreadsheets/d/1Sfp3UzMAkXO_vTC1-7yvrrTdRdO9jeeSg8x0Ngqe9vI/edit#gid=0
-	0 Active Installs = Less than 10
-	I’d kind of like you not to share it, because I don’t want to have to provide the data reguarly to a bunch of people.
-	You can also hit this API - It’s not rate limited.. yet, please don’t hit it too hard otherwise we’ll have to block access entirely.
+
+	please don’t hit it too hard otherwise we’ll have to block access entirely.
 	https://wordpress.org/plugins/wp-json/wp/v2/plugin/
 	https://wordpress.org/plugins/wp-json/wp/v2/plugin/110913
 
@@ -255,15 +252,18 @@ class WP_org_downloads {
 	/**
 	 * Load all the plugins from the serialized results
 	 *
-	 * @TODO Will do 55,000 plugins. Need 545 pages for 54,500 - currently 54,498
-	 * Latest (26 Dec 2019) 50,062
+	 * @TODO Will do 55,500 plugins.
+	 * Need 545 pages for 54,500 - currently 54,498
+	 *
+	 * - 26 Dec 2019 - 50062
+	 * - 30 Jan 2020 - 55481
 	 *
 	 * @TODO Load the plugins from the wporg_plugins.csv file if it's more recent than the downloads!
 	 *
 	 */
 	function load_all_plugins() {
 		$start = 1;
-		$max_pages = 554;
+		$max_pages = 555;
 		for ( $page = $start ; $page <= $max_pages; $page++ ) {
 			//echo "Loading page: $page " . PHP_EOL;
 			$loaded = $this->load_plugins( $page );
