@@ -54,7 +54,7 @@ class CSV_merger {
 				}
 				 
 			}
-			$line = implode( $oline, "," );
+			$line = implode( ",", $oline );
 			echo $line . PHP_EOL;
 		}
 	
