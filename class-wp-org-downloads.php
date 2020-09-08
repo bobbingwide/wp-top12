@@ -806,7 +806,7 @@ class WP_org_downloads {
 				$ver = "3.0 to 3.9";
 			} elseif ( $ver3 <= 4.9 ) {
 				$ver = "4.0 to 4.9";
-			} elseif ( $ver3 > 5.5 )	{
+			} elseif ( $ver3 > 5.9 )	{
 				$ver = "Other+" ;
 			} else {
 				$ver = $ver3;
