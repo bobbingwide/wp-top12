@@ -2,9 +2,9 @@
 /**
 Plugin Name: wp-top12
 Depends: oik
-Plugin URI: https://www.oik-plugins.com/oik-plugins/wp-top12
+Plugin URI: https://bobbingwide.com/blog/oik-plugins/wp-top12/
 Description: Display selected plugins by most downloaded from WordPress.org
-Version: 1.0.0-beta-20191226
+Version: 1.0.0
 Author: bobbingwide
 Author URI: https://www.bobbingwide.com/about-bobbing-wide
 Text Domain: wp-top12
@@ -12,7 +12,7 @@ Domain Path: /languages/
 License: GPL2v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
-    Copyright 2019 Bobbing Wide (email : herb@bobbingwide.com )
+    Copyright 2019,2020 Bobbing Wide (email : herb@bobbingwide.com )
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License version 2,

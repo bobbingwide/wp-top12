@@ -4,14 +4,13 @@
 * Donate link: https://www.oik-plugins.com/oik/oik-donate/
 * Tags: shortcodes, smart, lazy
 * Requires at least: 5.2
-* Tested up to: 5.3.2
-* Stable tag: 1.0.0-beta-20191226
+* Tested up to: 5.6-beta4
+* Stable tag: 1.0.0
 * License: GPLv2 or later
 * License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 ## Description 
-Measuring effect on server response of the Top 12 WordPress plugins.
-And a Top 12 WordPress plugin analysis
+Display selected plugins by most downloaded from WordPress.org
 
 
 ## Installation 
@@ -20,19 +19,24 @@ And a Top 12 WordPress plugin analysis
 
 ## Frequently Asked Questions 
 
-# What is this for? 
 
-wp-top12 provides mechanisms to post process daily trace summary report files
+# What is provided? 
+Version 1.0.0 provides the [wp-top12] shortcode in a new main plugin routine ( wp-top12.php ).
+
+The downloads.php routine has been changed to use the WordPress REST API.
+
+
+# What was this plugin's original use? 
+
+Back in 2012 this plugin provided mechanisms to post process daily trace summary report files
 
 * download for analysis and comparison
 * produce summary reports
 * use as input to drive performance tests
 
-# What is provided? 
-Version 1.0.0 provides the [wp-top12] shortcode in a new main plugin routine ( wp-top12.php )
-The downloads.php routine has been changed to use the WordPress REST API.
+It's been a long time since I did this.
 
-In version 0.0.1 there are 5 routines:
+In version 0.0.1 there were 5 routines:
 
 - vt.php -
 - vt-stats.php - Count the requests over a period of time ( from 2015/10/01 to ... )
@@ -43,7 +47,6 @@ In version 0.0.1 there are 5 routines:
 
 * Note: vt originally came from the bwtrace.vt.mmdd filename which is so named since it records
 value text pairs ( see bw_trace_vt() ).
-
 
 Other routines:
 
@@ -81,6 +84,9 @@ There may be an admin interface, but unlikely to be a front-end.
 1. wp-top12 in action - no not really
 
 ## Upgrade Notice 
+# 1.0.0 
+Update for the latest figures - 18 Nov 2020
+
 # 1.0.0-beta-20191226 
 Update for latest figures - Boxing Day 2019
 
@@ -104,6 +110,16 @@ Now supports initial analysis by IP address
 New sample plugin, available from GitHub
 
 ## Changelog 
+# 1.0.0 
+* Changed: Updated wporg_plugins.csv a few times: Nov 18, Oct 21, Sep 07, Aug 19, Jul xx, May 15, Apr 15, Feb 08
+* Changed: Caters for WordPress versions up to 5.9
+* Fixed: Change order of parameter for implode. glue first,https://github.com/bobbingwide/wp-top12/issues/5
+* Fixed: Cater for WordPress 5.5,https://github.com/bobbingwode/wp-top12/issues/11
+* Fixed: Cater for WordPress 5.4
+* Fixed: Keep going until there are no more files. Well... up to 1000
+* Tested: With WordPress 5.6-beta4
+* Tested: With PHP 7.4
+
 # 1.0.0-beta-20191226 
 * Changed: Generatated new version of wporg_plugins.csv from 2019/12/26. 55062 plugins
 * Tested: With WordPress 5.3.2
