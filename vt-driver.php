@@ -71,6 +71,7 @@ function vt_driver() {
 function build_url( $uri ) {
 	$url = "http://qw/oikcouk";
 	$url = "http://qw/oikcom";
+	$url = 'https://s.b/ebps';
 	$url .= $uri;
 	return( $url );
 }
@@ -208,7 +209,7 @@ class VT_driver {
     $output[] = $this->extract_elapsed( $result );  //* 17 | elapsed   | 0.309793,
 		$output[] = date( 'c' );
 	
-		$line = implode( $output, "," );
+		$line = implode( ',', $output );
 		$line .= PHP_EOL;
 		
 		$this->write_ct( $line );
