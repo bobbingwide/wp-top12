@@ -243,7 +243,7 @@ class Object_Grouper extends Object_base {
 	function report_groups() {
 		//$this->start_report();
 		//print_r( $this->groups );
-		echo "Groups:," . $this->key . PHP_EOL;
+		//echo "Groups:," . $this->key . PHP_EOL;
 		foreach ( $this->groups as $key => $field ) {
 			if ( $this->having ) { 
 				$having = call_user_func( $this->having, $key, $field );
