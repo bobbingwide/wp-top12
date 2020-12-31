@@ -14,15 +14,23 @@ oik_require( "class-object.php", $plugin );
 oik_require( "class-object-grouper.php", $plugin );
 oik_require( "class-CSV-merger.php", $plugin );
 
+oik_require( 'class-narrator.php', 'oik-i18n');
+
+
 
 //query_my_plugins();
 
 //downloads();
 $stats = new VT_stats();
 
-$stats->from_date( "2015-10-01" ); 
+$stats->from_date( "2020-12-29" );
+//$stats->to_date( '2020-12-30');
+$stats->set_host( 'C:/backups-SB/oik-plugins.com/bwtrace');
 //$stats->from_date( "2015-12-29" );
 $stats->populate();
+$stats->populate_grouper();
+
+$stats->count_request_types();
 
 $stats->count_things();
 
