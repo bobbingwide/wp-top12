@@ -315,7 +315,7 @@ class VT_row_basic {
 	 * @return mixed
 	 */
 	function spam_or_admin( $indicates ) {
-		$feoa = '';
+		$feoa = $indicates;
 		// @TODO - write the code that goes here.
 		return $feoa[0];
 	}

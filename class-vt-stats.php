@@ -187,7 +187,7 @@
 
 
 		 $grouper->time_field();
-		 $grouper->groupby( "final", array( $this, "elapsed" ) );
+		 $grouper->groupby( "final", array( $this, "tenthsecond" ) );
 		 $grouper->ksort();
 		 $grouper->report_percentages();
 
@@ -263,7 +263,10 @@
 	  */
 	 function elapsed( $elapsed ) {
 		 $elapsed      =$elapsed * 1.0;
-		 $elapsed_range=number_format( $elapsed, 2 );
+		 // Use two decimal places when you want accuravy to 100th of a second
+		 // 1 when you want accuracy to a tenth of a second.
+
+		 $elapsed_range=number_format( $elapsed, 1);
 		 if ( $elapsed_range < 0.30 ) {
 			 $elapsed_range="<" . number_format( $elapsed, 1, ".", "" );
 		 } elseif ( $elapsed_range <= 0.60 ) {
@@ -282,6 +285,33 @@
 		 return ( $elapsed_range );
 	 }
 
+	 function nthsecond( $elapsed, $denominator=10 ) {
+		 $elapsed_range=$this->roundToFraction( $elapsed, $denominator );
+		 if ( $elapsed_range > 5) {
+			 $elapsed_range = '>5';
+		 } else {
+			 $elapsed_range = '<' . $elapsed_range;
+		 }
+		 return $elapsed_range;
+	 }
+
+	 function tenthsecond( $elapsed ) {
+		 $elapsed_range = $this->nthsecond( $elapsed, 10);
+		 return $elapsed_range;
+	 }
+
+	 function fifthsecond( $elapsed ) {
+		 return $this->nthsecond( $elapsed, 5 );
+	 }
+
+
+	 function roundToFraction($number, $denominator = 5)  {
+		 $x = $number * $denominator;
+		 $x = round($x);
+		 $x = $x / $denominator;
+		 return $x;
+	 }
+
 	 function count_request_types() {
 		 //$grouper=new Object_Grouper();
 		//
@@ -295,9 +325,24 @@
 		 $grouper->arsort();
 		 //$this->having = 100;
 		 //$grouper->having( array( $this, "having_filter_value_ge" ) );
-		 echo "<h3>Categorised requests</h3>;
+		 echo "<h3>Categorised requests</h3>";
 		 echo '[chart type=Bar]Type,Count' . PHP_EOL;
 		 $grouper->report_groups();
+		 echo '[/chart]' . PHP_EOL;
+	 }
+
+	 function time_request_types() {
+		 $grouper = $this->populate_grouper();
+		$grouper->time_field();
+		 $grouper->subset( null );
+		 $grouper->groupby( "request_type" ); // Stripped URI
+		 $grouper->arsort();
+		 //$this->having = 100;
+		 //$grouper->having( array( $this, "having_filter_value_ge" ) );
+		 echo ' ' . PHP_EOL;
+		 echo "<h3>Categorised request time</h3>";
+		 echo '[chart type=Bar]Type,Elapsed' . PHP_EOL;
+		 $grouper->report_percentages();
 		 echo '[/chart]' . PHP_EOL;
 	 }
 

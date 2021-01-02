@@ -31,6 +31,8 @@ $stats->populate();
 $stats->populate_grouper();
 
 $stats->count_request_types();
+$stats->time_request_types();
+
 
 $stats->count_things();
 
