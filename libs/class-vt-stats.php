@@ -1,19 +1,21 @@
-<?php // (C) Copyright Bobbing Wide 2015
+<?php
 
 /**
- * Statistics for ddmm.vt files
+ * @copyright (C) Copyright Bobbing Wide 2015-2021
+
+ * @package wp-top12 / slog
+ *
+ * Statistics for ccyymmdd.vt files
  *
  * Implements 
- 
- * 
+  *
  */
  class VT_stats {
 
 	 /**
-	  * Array of VT_row objects loaded from mmdd.vt files
+	  * Array of VT_row objects loaded from ccyymmdd.vt files
 	  */
 	 public $rows;
-
 
 	 /**
 	  * from date to load
@@ -21,15 +23,39 @@
 	 public $from_date;
 
 	 /**
-	  *
+	  * to date to load
 	  */
 	 public $to_date;
 
+	 /**
+	  * @var string $date date to process. format ccyymmdd
+	  */
+	 public $date;
+
 	 public $month;
 
+	 /**
+	  * @var string name of the report to run.
+	  */
+	 public $report;
+
+	 /**
+	  * @var string $display Information to display in the report
+	  */
+	 public $display;
+
+	 /**
+	  * @var string filter criteria callback method name or value?
+	  */
 	 public $having;
 
+
 	 public $host;
+
+	 /**
+	  * @var string $file  Filename rather than using $host and $date
+	  */
+	 public $file;
 
 	 public $grouper=null;
 
@@ -37,6 +63,7 @@
 	  * Construct the source information for VT_stats
 	  */
 	 function __construct() {
+	 	 $this->set_file();
 		 $this->from_date();
 		 $this->to_date();
 		 $this->rows=array();
@@ -44,6 +71,60 @@
 		 $this->narrator=Narrator::instance();
 
 
+	 }
+
+	 /**
+	  * Allows the file to be fully specified.
+	  *
+	  * Alternatively use set_host() and set_date().
+	  *
+	  * @param null $file
+	  */
+
+	 function set_file( $file=null ) {
+	 	$this->file = $file;
+	 }
+
+	 /**
+	  * Returns a trace summary file name
+	  *  @TODO This should cater for Multi Site sites.
+	  */
+	 function get_trace_summary_file_name() {
+	 	$file_name = $this->host . '/bwtrace.vt.' . $this->date;
+	 	//if ( $this->suffix ) {
+	 	//
+	    //}
+	 	return $file_name;
+	 }
+
+	 function set_report( $report ) {
+	 	$this->report = $report;
+	 }
+
+	/**
+    * Sets the display value.
+
+    * Option | Meaning
+    * ------ | --------
+    * count | Count of the requests in this grouping
+    * elapsed | Total elapsed time of the requests in this grouping
+    * percentage | Percentage of elapsed time of the requests in this grouping
+    * accum | Accumulated percentage of the requests
+    */
+function set_display( $display ) {
+	$this->display = $display;
+}
+
+	 /**
+	  * Returns the file to process.
+	  *
+	  * @return string
+	  */
+	 function get_file() {
+	 	if ( null === $this->file ) {
+		    $this->set_file( $this->get_trace_summary_file_name() );
+	    }
+	 	return $this->file;
 	 }
 
 	 function from_date( $from_date=null ) {
@@ -83,7 +164,8 @@
 		 //print_r( $dates );
 
 		 foreach ( $dates as $date ) {
-			 $this->load_file( $date );
+		 	 $this->date = $date;
+			 $this->load_file();
 		 }
 
 		 echo 'Count rows:' . count( $this->rows ) . PHP_EOL;
@@ -99,13 +181,14 @@
 	 }
 
 	 /**
-	  * Populate rows for the given date
+	  * Populate rows for the given date.
 	  */
-	 function load_file( $date ) {
+	 function load_file() {
+	 	$date = $this->date;
+		$file = $this->get_file();
 
-		 $file    =$this->host . "/bwtrace.vt.$date";
 		 $contents=file( $file );
-		 echo "Date: $date Count: " . count( $contents ) . PHP_EOL;
+		 $this->narrator->narrate( "Date: $date Count: ", count( $contents ) );
 		 foreach ( $contents as $line ) {
 			 $this->rows[]=new VT_row_basic( $line );
 		 }
@@ -360,12 +443,51 @@
 		 return $this->grouper;
     }
 
+    function get_report_method() {
+	 	$reports = [ 'request_types' => 'run_request_types_report'
+		        , 'suri' => 'run_suri_report'
+	    ];
+		$report_method = $reports[ $this->report ];
+		return $report_method;
+    }
 
+	 /**
+	  * Runs the selected report.
+	  *
+	  * The output is saved in $this->grouper
+	  */
+    function run_report() {
+	    $this->load_file();
+	    $this->populate_grouper();
+    	$report_method = $this->get_report_method();
+    	if ( method_exists( $this, $report_method ) ) {
+    		$content = $this->$report_method();
+	    } else {
+    		$this->narrator->narrate( 'Invalid report. Method not yet supported', $this->report );
+    		$content = null;
+	    }
+    	return $content;
+    }
 
-
-
-
-
+	 /**
+	  * Runs the request_types report.
+	  *
+	  */
+	 function run_request_types_report() {
+		 $this->grouper->subset( null );
+		 $this->grouper->groupby( "request_type" );
+		 $this->grouper->arsort();
+		 //$this->having = 100;
+		 //$this->grouper->having( array( $this, "having_filter_value_ge" ) );
+		 //echo "<h3>Categorised requests</h3>";
+		 //echo '[chart type=Bar]Type,Count' . PHP_EOL;
+		 //$this->grouper->report_groups();
+		 //echo '[/chart]' . PHP_EOL;
+		 $content = "Request type,Count\n";
+		 $content .= $this->grouper->asCSV();
+		 return $content;
 	 }
+
+ }
 
 
