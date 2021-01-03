@@ -263,7 +263,7 @@
 	  */
 	 function elapsed( $elapsed ) {
 		 $elapsed      =$elapsed * 1.0;
-		 // Use two decimal places when you want accuravy to 100th of a second
+		 // Use two decimal places when you want accuracy to 100th of a second
 		 // 1 when you want accuracy to a tenth of a second.
 
 		 $elapsed_range=number_format( $elapsed, 1);

@@ -1,5 +1,8 @@
-<?php // (C) Copyright Bobbingwide 2015, 2016
+<?php
 /**
+ * @copyright (C) Copyright Bobbingwide 2015, 2016, 2020, 2021
+ * @package wp-top12
+ *
  * Syntax: oikwp vt-stats.php process
  * 
  * 
@@ -7,12 +10,12 @@
 ini_set('memory_limit','1572M');
 
 $plugin = "wp-top12";
-oik_require( "class-vt-stats.php", $plugin );
-oik_require( "class-vt-row-basic.php", $plugin );
-oik_require( "class-object-sorter.php", $plugin );
-oik_require( "class-object.php", $plugin );
-oik_require( "class-object-grouper.php", $plugin );
-oik_require( "class-CSV-merger.php", $plugin );
+oik_require( "libs/class-vt-stats.php", $plugin );
+oik_require( "libs/class-vt-row-basic.php", $plugin );
+oik_require( "libs/class-object-sorter.php", $plugin );
+oik_require( "libs/class-object.php", $plugin );
+oik_require( "libs/class-object-grouper.php", $plugin );
+oik_require( "libs/class-csv-merger.php", $plugin );
 
 oik_require( 'class-narrator.php', 'oik-i18n');
 

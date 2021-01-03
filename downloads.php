@@ -1,11 +1,12 @@
-<?php // (C) Copyright Bobbing Wide 2015, 2016, 2019
-
+<?php
 /**
+ * @copyright (C) Copyright Bobbing Wide 2015-2021
+ * @package wp-top12
  * Syntax: oikwp downloads.php process
  *
  * Count the downloads from wordpress.org for the given plugins
  *
- * Run this daily! or perhaps once a month
+ * Run this once a month before the WordPress Portsmouth Meetup.
  *
  * {@link https://dd32.id.au/projects/wordpressorg-plugin-information-api-docs}
  * {@link http://code.tutsplus.com/tutorials/communicating-with-the-wordpress-org-plugin-api--wp-33069}
@@ -20,11 +21,11 @@ require_once( ABSPATH . "wp-admin/includes/plugin-install.php" );
 oik_require_lib( "class-oik-remote" );
 oik_require_lib( 'oik-blocks');
 
-oik_require( "class-wp-org-downloads.php", "wp-top12" );
-oik_require( "class-object-sorter.php", "wp-top12" );
-oik_require( "class-object.php", "wp-top12" );
-oik_require( "class-object-grouper.php", "wp-top12" );
-oik_require( 'class-csv-merger.php', 'wp-top12');
+oik_require( "libs/class-wp-org-downloads.php", "wp-top12" );
+oik_require( "libs/class-object-sorter.php", "wp-top12" );
+oik_require( "libs/class-object.php", "wp-top12" );
+oik_require( "libs/class-object-grouper.php", "wp-top12" );
+oik_require( 'libs/class-csv-merger.php', 'wp-top12');
 
 
 /**

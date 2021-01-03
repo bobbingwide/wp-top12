@@ -13,7 +13,7 @@
  * ```
  */
 
-oik_require( "class-CSV-merger.php", "wp-top12" );
+oik_require( "libs/class-csv-merger.php", "wp-top12" );
 
 $file1 = "words-2015.csv";
 $file2 = "words-2016.csv";
