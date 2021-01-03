@@ -233,6 +233,44 @@ class Object_Grouper extends Object_base {
 		$this->total_time += $time;
 	
 	}
+
+	function asCSV() {
+		$results = '';
+		foreach ( $this->groups as $key => $field ) {
+			if ( $this->having ) {
+				$having = call_user_func( $this->having, $key, $field );
+			} else {
+				$having = true;
+			}
+			if ( $having ) {
+				$results .= $this->asCSV_field( $key, $field );
+			}
+		}
+		return $results;
+
+	}
+
+	function asCSV_field( $key, $field ) {
+		//print_r( $field );
+		$string = '';
+		if ( is_array( $field ) ) {
+			$item = implode( " ", $field );
+		} else {
+			$item = $field;
+		}
+
+		//li( "$key $item" );
+		$string .= "$key,$item";
+		if ( $this->time_field ) {
+			$elapsed = $this->elapsed[ $key ] ;
+			$average = $elapsed / $item;
+			$string .=  ",$average";
+		} else {
+
+		}
+		$string .= "\n";
+		return $string;
+	}
 	
 	
 	/**
