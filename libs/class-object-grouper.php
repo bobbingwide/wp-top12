@@ -1,10 +1,10 @@
-<?php // (C) Copyright Bobbing Wide 2015-2017
-
+<?php
 /**
+ * @copyright (C) Copyright Bobbing Wide 2015-2021
+ * @package wp-top12
  * Class: Object_Grouper
  *
  * Groups objects by key values
- *
  *
  * Count all the things we want to count by grouping on key values. 
  * 
@@ -25,6 +25,9 @@
  */
 class Object_Grouper extends Object_base {
 
+	/**
+	 * @var $groups Array of items for this group.
+	 */
 	public $groups;
 	
 	public $key;
@@ -32,13 +35,13 @@ class Object_Grouper extends Object_base {
 	public $subset;
 	
 	/**
-	 * Name of the field that holds the elapsed time to accumulate by group
-	 * Leave null if you don't want this accumulated
+	 * Name of the field that holds the elapsed time to accumulate by group.
+	 * Leave null if you don't want this accumulated.
 	 */									 
 	public $time_field; 
 	
 	/**
-	 * Array of elapsed time by group
+	 * Array of elapsed time by group. Same key as for $groups.
 	 */
 	public $elapsed;
 	
@@ -53,10 +56,13 @@ class Object_Grouper extends Object_base {
 	public $total_time;
 	
 	/**
-	 * Array of percentages rather than counts
+	 * Array of percentages rather than counts. Same key as for $groups.
 	 *
 	 */
 	public $percentages;
+
+	public $asCSV_field_percentage_count_accumulative = 0;
+	public $asCSV_field_percentage_elapsed_accumulative = 0;
 	
 	/**
 	 * Filter function to perform 'where' like logic
@@ -114,6 +120,8 @@ class Object_Grouper extends Object_base {
 		$this->elapsed = null;
 		$this->total = 0;
 		$this->total_time = 0;
+		$this->asCSV_field_percentage_count_accumulative = 0;
+		$this->asCSV_field_percentage_elapsed_accumulative = 0;
 	}
 	
 	/**
@@ -234,6 +242,118 @@ class Object_Grouper extends Object_base {
 	
 	}
 
+	/**
+	 * Returns the results for a particular display
+	 * @return string
+	 */
+
+	function asCSV_fields( $display ) {
+		$results = '';
+		foreach ( $this->groups as $key => $field ) {
+			if ( $this->having ) {
+				$having = call_user_func( $this->having, $key, $field );
+			} else {
+				$having = true;
+			}
+			if ( $having ) {
+				$results .= $this->asCSV_field( $key, $field, $display );
+			}
+		}
+		return $results;
+
+	}
+
+	/**
+	 * Returns the display field requested.
+	 * @param $key
+	 * @param $field
+	 *
+	 * @return string
+	 */
+	function asCSV_field( $key, $field, $display ) {
+		$result=$key;
+		$result.=',';
+		$method='asCSV_field_' . $display;
+		if ( method_exists( $this, $method ) ) {
+			$result.=$this->$method( $key, $field );
+		} else {
+			gob();
+		}
+		$result .= "\n";
+		return $result;
+	}
+
+	function asCSV_field_count( $key, $field ) {
+		return $field;
+	}
+
+	function asCSV_field_elapsed( $key, $field ) {
+		return $this->elapsed[ $key];
+	}
+
+	/**
+	 * Returns the average elapsed time.
+	 *
+	 * @param $key
+	 * @param $field
+	 *
+	 * @return float|int
+	 */
+	function asCSV_field_average( $key, $field ) {
+		if ( is_array( $field ) ) {
+			$item=implode( " ", $field );
+		} else {
+			$item=$field;
+		}
+		$elapsed = $this->elapsed[ $key ];
+		$average = $elapsed / $item;
+		return $average;
+	}
+
+	function asCSV_field_percentage_count( $key, $field ) {
+		if ( is_array( $field ) ) {
+				gob(); // Not catered for
+		} else {
+			$percentage = ( $field * 100) / $this->total;
+		}
+		//$this->asCSV_field_percentage_count_accumulative += $percentage;
+		return $percentage;
+	}
+
+	function asCSV_field_percentage_elapsed( $key, $field ) {
+		$percentage = ( $this->elapsed[ $key ] * 100) / $this->total_time;
+		//$this->asCSV_field_percentage_elapsed_accumulative += $percentage;
+		return $percentage;
+	}
+
+	function asCSV_field_percentage_count_accumulative( $key, $field ) {
+		$percentage = ( $field * 100) / $this->total;
+		$this->asCSV_field_percentage_count_accumulative += $percentage;
+		return $this->asCSV_field_percentage_count_accumulative;
+	}
+
+	function asCSV_field_percentage_elapsed_accumulative( $key, $field ) {
+		$percentage = ( $this->elapsed[ $key ] * 100) / $this->total_time;
+		$this->asCSV_field_percentage_elapsed_accumulative += $percentage;
+		return $this->asCSV_field_percentage_elapsed_accumulative;
+	}
+
+
+	/*
+		switch ( $this->display ) {
+			case 'count':
+				$result .=
+			case 'elapsed':
+			case 'average':
+			case 'percentage_count';
+			case 'percentage_elapsed';
+			case 'percentage_count_accumulative':
+			case 'percentage_elapsed_accumulative':
+
+		}
+		return $value;
+	}
+ */
 	function asCSV_count() {
 		$results = '';
 		foreach ( $this->groups as $key => $field ) {
@@ -281,7 +401,9 @@ class Object_Grouper extends Object_base {
 		return $results;
 	}
 
-	function asCSV_field( $key, $field ) {
+
+
+	function asCSV_field_v1( $key, $field ) {
 		//print_r( $field );
 		$string = '';
 		if ( is_array( $field ) ) {
