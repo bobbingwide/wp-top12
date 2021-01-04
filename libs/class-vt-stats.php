@@ -111,9 +111,20 @@
     * percentage | Percentage of elapsed time of the requests in this grouping
     * accum | Accumulated percentage of the requests
     */
-function set_display( $display ) {
-	$this->display = $display;
-}
+	function set_display( $display ) {
+		$this->display = $display;
+	}
+
+	 /**
+	  * Sets the having filter which is applied during report generation.
+	  *
+	  * This is the comparison value, not the comparison method.
+	  *
+	  * @param string|int $having
+	  */
+	function set_having( $having ) {
+		$this->having = $having;
+	}
 
 	 /**
 	  * Returns the file to process.
@@ -463,7 +474,7 @@ function set_display( $display ) {
     	if ( method_exists( $this, $report_method ) ) {
     		$content = $this->$report_method();
 	    } else {
-    		$this->narrator->narrate( 'Invalid report. Method not yet supported', $this->report );
+    		$this->narrator->narrate( '<p>Invalid report. Method not yet supported</p>', $this->report );
     		$content = null;
 	    }
     	return $content;
@@ -483,21 +494,54 @@ function set_display( $display ) {
 		 //echo '[chart type=Bar]Type,Count' . PHP_EOL;
 		 //$this->grouper->report_groups();
 		 //echo '[/chart]' . PHP_EOL;
-		$this->narrator->narrate( 'Display', $this->display );
+		 $content = $this->fetch_content();
+		 return $content;
+	 }
+
+	 /**
+	  * Runs the Stripped URI report.
+	  *
+	  * Finds the most popular queries with more than $having requests.
+	  *
+	  * @return string
+	  */
+
+	 function run_suri_report( ) {
+	    $this->grouper->subset( null );
+		$this->grouper->time_field( "final" );
+		$this->grouper->groupby( "suri" ); // Stripped URI
+		$this->grouper->arsort();
+		// The having value has already been set.
+		//$this->having=100;
+		$this->grouper->having( array( $this, "having_filter_value_ge" ) );
+		$content = $this->fetch_content();
+		return $content;
+	 }
+
+	 /**
+	  * Fetches the Group report for the selected Display.
+	  *
+	  * @return string
+	  */
+	 function fetch_content() {
+		 $this->narrator->narrate( 'Display', $this->display );
 		 $content = "Request type," . $this->display . "\n";
 		 switch ( $this->display) {
 			 case 'count':
 				 //$content="Request type,Count\n";
 				 $content.=$this->grouper->asCSV_count();
 				 break;
+			 case 'elapsed':
+			 	$content.= $this->grouper->asCSV_elapsed();
+			 	break;
 			 case 'percentage':
 				 $content.=$this->grouper->asCSV_percentages();
 				 break;
 
 			 default:
-			 	$content .= "All,100\n";
+				 $content .= "All,100\n";
 		 }
-		 return $content;
+	 	return $content;
 	 }
 
  }

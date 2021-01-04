@@ -249,6 +249,10 @@ class Object_Grouper extends Object_base {
 		return $results;
 
 	}
+
+	function asCSV_elapsed() {
+
+	}
 	/**
 	 * Report the grouped percentages
 	 */
