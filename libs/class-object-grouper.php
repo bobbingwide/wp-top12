@@ -234,7 +234,7 @@ class Object_Grouper extends Object_base {
 	
 	}
 
-	function asCSV() {
+	function asCSV_count() {
 		$results = '';
 		foreach ( $this->groups as $key => $field ) {
 			if ( $this->having ) {
@@ -248,6 +248,33 @@ class Object_Grouper extends Object_base {
 		}
 		return $results;
 
+	}
+	/**
+	 * Report the grouped percentages
+	 */
+	function asCSV_percentages() {
+		if ( !$this->percentages ) {
+			$this->percentages();
+		}
+
+		//$this->start_report();
+		//print_r( $this->groups );
+		echo "Groups: " . $this->key . PHP_EOL;
+		$results = '';
+		foreach ( $this->percentages as $key => $field ) {
+
+			if ( $this->having ) {
+				$having = call_user_func( $this->having, $key, $field );
+			} else {
+				$having = true;
+			}
+			if ( $having ) {
+				//$this->report_field( $key, $field );
+				$results .= $this->asCSV_percentage( $key, $field );
+			}
+		}
+		//$this->end_report();
+		return $results;
 	}
 
 	function asCSV_field( $key, $field ) {
@@ -269,6 +296,25 @@ class Object_Grouper extends Object_base {
 
 		}
 		$string .= "\n";
+		return $string;
+	}
+
+
+	function asCSV_percentage( $key, $field ) {
+
+		//li( "$key $item" );
+		$string = "$key,$field";
+		if ( $this->time_field ) {
+			$item = $this->groups[ $key ];
+			$elapsed = $this->elapsed[ $key ] ;
+			$average = $elapsed / $item;
+			//echo ",$elapsed";
+			$string .= ",$average";
+		} else {
+			$string .= "";
+		}
+		$string .= "\n";
+		//echo PHP_EOL;
 		return $string;
 	}
 	

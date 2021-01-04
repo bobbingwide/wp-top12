@@ -483,8 +483,20 @@ function set_display( $display ) {
 		 //echo '[chart type=Bar]Type,Count' . PHP_EOL;
 		 //$this->grouper->report_groups();
 		 //echo '[/chart]' . PHP_EOL;
-		 $content = "Request type,Count\n";
-		 $content .= $this->grouper->asCSV();
+		$this->narrator->narrate( 'Display', $this->display );
+		 $content = "Request type," . $this->display . "\n";
+		 switch ( $this->display) {
+			 case 'count':
+				 //$content="Request type,Count\n";
+				 $content.=$this->grouper->asCSV_count();
+				 break;
+			 case 'percentage':
+				 $content.=$this->grouper->asCSV_percentages();
+				 break;
+
+			 default:
+			 	$content .= "All,100\n";
+		 }
 		 return $content;
 	 }
 
