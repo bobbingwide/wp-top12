@@ -1,83 +1,33 @@
-<?php // (C) Copyright Bobbing Wide 2015
+<?php
+/**
+ * @copyright (C) Copyright Bobbing Wide 2015-2021
+ * @package wp-top12
+ *
+ * VT_row implements a row from a bwtrace.vt.ccyymmdd file
+ * 
+
+ * This class is / was also implemented as Trans in vt.php
+ */
+
+
 
 /**
- * VT_row implements a row from a bwtrace.vt.mmdd file
- * 
- * Note: There could be multiple versions of the contents of this row.
- * In early versions of this routine we won't attempt to cater for this unless it's absolutely necessary
+ * Note: There could be multiple versions of the structure of the row.
+ *
+ * In early versions of this routine (2015) we won't attempt to cater for this unless it's absolutely necessary.
  * There was also a problem with some unexpected commas in the URL and/or AJAX admin parms.
  * We may need to cater for this as well.
  *
- * 
- * This class is also implemented as Trans in vt.php
- */
- 
- 
-
-
-
-
-
-
-/**
- * 
- Array
-(
-    [0] => /oik-plugins/oik/?bwscid1=4&bwscid2=8&bwscid4=3&bwscid5=7
-    [1] =>
-    [2] => 13.834431
-    [3] => 5.3.29
-    [4] => 3160
-    [5] => 4041
-    [6] => 483
-    [7] => 44
-    [8] => 398
-    [9] => 57
-    [10] => 28
-    [11] => 14
-    [12] => 129
-    [13] => 1.07188820839
-    [14] =>
-    [15] => 13.830200
-    [16] => 2015-03-14T00:00:01+00:00
-)
-
-/**
- * Original version 
- *  
- * 0- request URI
- * 1 - AJAX action
- * 2 - elapsed ( final figure )
- * 3 - PHP version
- * 4 - PHP functions
- * 5 - User functions
- * 6 - Classes
- * 7 - Plugins
- * 8 - Files
- * 9 - Registered Widgets
- * 10 - Post types
- * 11 - Taxonomies
- * 12 - Queries
- * 13 - Query time
- * 14 - Trace records
- * 15 - Elapsed
- * 16 - Date - ISO 8601 date 
+ * This class ( originally)  supported trace summary records with varying numbers of fields
  *
- * OR it may end
- * 
- * 14 - Trace records
- * 15 - Remote address ( IP address )
- * 16 - Elapsed
- * 17 - Date - ISO 8601 date 
- 
- * OR it may end
- * 
- * 14 tracefile - which may be null
- * 15 trace records - a number
- * 16 - Remote address ( IP address ) 
- * 17 - Elapsed
- * 18 - Date - ISO 8601 date
-*/
+ * 0-16 - Original version: request URI to ISO 8601 date
+ * 0-17 - with remote address ( IP address ) at index 15
+ * 0-18 - inserted tracefile (which may be null ) before trace records
+ *
+ * VT_row_basic now supports more fields than VT_row.
+ * @TODO Eliminate VT_row_basic and just use VT_row.
+ *
+ */
 
 
 class VT_row { 

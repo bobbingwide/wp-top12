@@ -1,22 +1,13 @@
-<?php // (C) Copyright Bobbing Wide 2015-2020
+<?php
 
 /**
- * VT_row_basic implements a subset of the information for a row from a bwtrace.vt.mmdd file
- * 
- * Note: There could be multiple versions of the contents of this row.
- * In early versions of this routine we won't attempt to cater for this unless it's absolutely necessary
- * There was also a problem with some unexpected commas in the URL and/or AJAX admin parms.
- * We may need to cater for this as well.
+ * @copyright (C) Copyright Bobbing Wide 2015-2021
+ * @package wp-top12
  *
- * 
- * This class is also implemented as Trans in vt.php
+ * VT_row_basic implements a subset of the information for a row from a bwtrace.vt.ccyymmdd file
+ * Actually, it implements a superset!
+ * Silly name for a class therefore.
  */
- 
- 
-
-
-
-
 
 
 /**
@@ -217,11 +208,16 @@ class VT_row_basic {
 	 * It could be more efficient.
 	 */
 	function set_request_type() {
-		$request_type = $this->method;
+		if ( empty( $this->remote_IP ) ) {
+			$request_type = $this->method . '-CLI';
+		} else {
+			$request_type=$this->method;
+		}
 		$request_type .= $this->is_bot_maybe();
-
 		$request_type .= $this->front_end_or_admin();
 		$this->request_type = $request_type;
+
+
 
 	}
 
@@ -290,9 +286,9 @@ class VT_row_basic {
 		//$this->narrator->narrate( 'suril', $this->suri );
 		foreach ( $checks as $search => $indicates ) {
 			if ( false !== strpos( $this->suri, $search ) ) {
-				$this->narrator->narrate( "suri", $this->suri );
+				$this->narrator->narrate_batch( "suri", $this->suri );
 				$feoa=$indicates;
-				$this->narrator->narrate( 'FEOA', $feoa );
+				$this->narrator->narrate_batch( 'FEOA', $feoa );
 				break;
 			}
 		}
