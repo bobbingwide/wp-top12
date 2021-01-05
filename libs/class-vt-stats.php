@@ -199,7 +199,8 @@
 		$file = $this->get_file();
 
 		 $contents=file( $file );
-		 $this->narrator->narrate( "Date: $date Count: ", count( $contents ) );
+		 $this->narrator->narrate( 'Date', $date );
+		 $this->narrator->narrate( "Count", count( $contents ) );
 		 foreach ( $contents as $line ) {
 			 $this->rows[]=new VT_row_basic( $line );
 		 }
@@ -486,8 +487,10 @@
 	  */
 	 function run_request_types_report() {
 		 $this->grouper->subset( null );
+		 $this->grouper->time_field( "final" );
 		 $this->grouper->groupby( "request_type" );
 		 $this->grouper->arsort();
+		 $this->grouper->percentages();
 		 //$this->having = 100;
 		 //$this->grouper->having( array( $this, "having_filter_value_ge" ) );
 		 //echo "<h3>Categorised requests</h3>";
@@ -511,6 +514,7 @@
 		$this->grouper->time_field( "final" );
 		$this->grouper->groupby( "suri" ); // Stripped URI
 		$this->grouper->arsort();
+		// $this->grouper->percentages();
 		// The having value has already been set.
 		//$this->having=100;
 		$this->grouper->having( array( $this, "having_filter_value_ge" ) );
@@ -518,32 +522,35 @@
 		return $content;
 	 }
 
+	/**
+	 * Fetches the Group report for the selected chart Display.
+	 *
+	 * @return string
+	 */
+	function fetch_content() {
+		$this->narrator->narrate( 'Display', $this->display );
+		$content = slog_admin_report_options()[ $this->report];
+		$content .= ',';
+		$content .= $this->display;
+		$content .= "\n";
+		$content .= $this->grouper->asCSV_fields( $this->display );
+	 	return $content;
+	}
+
 	 /**
-	  * Fetches the Group report for the selected Display.
+	  * Fetches the Group report for the tabular display.
 	  *
 	  * @return string
 	  */
-	 function fetch_content() {
-		 $this->narrator->narrate( 'Display', $this->display );
-		 $content = "Request type," . $this->display . "\n";
-		 switch ( $this->display) {
-			 case 'count':
-				 //$content="Request type,Count\n";
-				 $content.=$this->grouper->asCSV_count();
-				 break;
-			 case 'elapsed':
-			 	$content.= $this->grouper->asCSV_elapsed();
-			 	break;
-			 case 'percentage':
-				 $content.=$this->grouper->asCSV_percentages();
-				 break;
 
-			 default:
-				 $content .= "All,100\n";
-		 }
-	 	return $content;
-	 }
-
- }
+	function fetch_table() {
+		$this->narrator->narrate( 'Report', $this->report );
+		$content = slog_admin_report_options()[ $this->report];
+		$content .= ',Count,Total elapsed,Average,Percentage count,Percentage elapsed,Accumulated count,Accumulated percentage';
+		$content .= "\n";
+		$content .= $this->grouper->asCSV_table();
+		return $content;
+	}
+}
 
 

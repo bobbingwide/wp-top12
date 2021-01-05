@@ -264,6 +264,38 @@ class Object_Grouper extends Object_base {
 	}
 
 	/**
+	 * Returns the results for the table.
+	 *
+	 * That's all the possible sets of values: Count, Elapsed, etc.
+	 * @return string
+	 */
+	function asCSV_table() {
+		$results = '';
+		foreach ( $this->groups as $key => $field ) {
+			if ( $this->having ) {
+				$having = call_user_func( $this->having, $key, $field );
+			} else {
+				$having = true;
+			}
+			if ( $having ) {
+				$record = [];
+				$record[] = $key;
+				$record[] = $this->asCSV_field_count( $key, $field );
+				$record[] = $this->asCSV_field_elapsed( $key, $field );
+				$record[] = $this->asCSV_field_average( $key, $field );
+				$record[] = $this->asCSV_field_percentage_count( $key, $field );
+				$record[] = $this->asCSV_field_percentage_elapsed( $key, $field );
+				$record[] = $this->asCSV_field_percentage_count_accumulative( $key, $field );
+				$record[] = $this->asCSV_field_percentage_elapsed_accumulative( $key, $field );
+				$results .= implode( ',', $record);
+				$results .= "\n";
+			}
+		}
+		return $results;
+
+	}
+
+	/**
 	 * Returns the display field requested.
 	 * @param $key
 	 * @param $field
@@ -338,22 +370,6 @@ class Object_Grouper extends Object_base {
 		return $this->asCSV_field_percentage_elapsed_accumulative;
 	}
 
-
-	/*
-		switch ( $this->display ) {
-			case 'count':
-				$result .=
-			case 'elapsed':
-			case 'average':
-			case 'percentage_count';
-			case 'percentage_elapsed';
-			case 'percentage_count_accumulative':
-			case 'percentage_elapsed_accumulative':
-
-		}
-		return $value;
-	}
- */
 	function asCSV_count() {
 		$results = '';
 		foreach ( $this->groups as $key => $field ) {
