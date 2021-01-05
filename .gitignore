@@ -6,3 +6,4 @@ saved
 block_plugins-*
 wp-plugins-blocks-*
 .phpunit.result.cache
+cache_v2/
