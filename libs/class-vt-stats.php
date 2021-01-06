@@ -544,7 +544,7 @@
 		 $this->grouper->arsort();
 		 //$this->grouper->percentages();
 		 //$this->having = 100;
-		 //$this->grouper->having( array( $this, "having_filter_value_ge" ) );
+		 $this->grouper->having( array( $this, "having_filter_value_ge" ) );
 		 //echo "<h3>Categorised requests</h3>";
 		 //echo '[chart type=Bar]Type,Count' . PHP_EOL;
 		 //$this->grouper->report_groups();
