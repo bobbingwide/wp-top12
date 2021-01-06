@@ -7,8 +7,8 @@
  *
  * Statistics for ccyymmdd.vt files
  *
- * Implements 
-  *
+ *
+ *
  */
  class VT_stats {
 
@@ -229,14 +229,30 @@
 		 //echo "Grouping: " . count( $this->rows ) . PHP_EOL;
 		 //$grouper->populate( $this->rows );
 
-		 $grouper = $this->populate_grouper();
-
+		 $this->grouper = $this->populate_grouper();
+		/*
 		 $grouper->subset( null );
 		 $grouper->groupby( "suri" ); // Stripped URI
 		 $grouper->arsort();
 		 $this->having=100;
 		 $grouper->having( array( $this, "having_filter_value_ge" ) );
-		 $grouper->report_groups();
+		 */
+
+		 $this->set_report( 'suri' );
+		 $this->set_display( 'count');
+		 $content = $this->run_suri_report();
+		 echo $content;
+
+		 // The 'tl' part of suritl stands for top level not term last!
+		 $this->set_report( 'suritl');
+		 $this->set_display( 'elapsed');
+		 $this->having=count( $this->rows ) / 100;
+		 $this->grouper->having( array( $this, "having_filter_value_ge" ) );
+
+		 $content = $this->run_generic_report();
+		 echo $content;
+
+		/*
 
 
 		 // The 'tl' part of suritl stands for top level not term last!
@@ -253,9 +269,16 @@
 		 $grouper->having( array( $this, "having_filter_value_ge" ) );
 		 $this->having=count( $this->rows ) / 100;
 		 $grouper->report_groups();
+		*/
+
 
 		 $this->having=0.05;
-		 $grouper->report_percentages();
+		 $this->set_display( 'percentage_count' );
+		 //$grouper->report_percentages();
+		 $content = $this->run_generic_report();
+		 echo $content;
+
+		 gob();
 
 
 		 /**
@@ -399,6 +422,10 @@
 		 return $this->nthsecond( $elapsed, 5 );
 	 }
 
+	 function twentiethsecond( $elapsed ) {
+		 return $this->nthsecond( $elapsed, 20 );
+	 }
+
 
 	 function roundToFraction($number, $denominator = 5)  {
 		 $x = $number * $denominator;
@@ -455,11 +482,20 @@
 		 return $this->grouper;
     }
 
+
+	 /**
+	  * Returns the method to run the report.
+	  *
+	  * This may be a generic method.
+	  *
+	  * @return string
+	  */
     function get_report_method() {
 	 	$reports = [ 'request_types' => 'run_request_types_report'
 		        , 'suri' => 'run_suri_report'
+		        , 'elapsed' => 'run_elapsed_report'
 	    ];
-		$report_method = $reports[ $this->report ];
+		$report_method = isset( $reports[ $this->report ]) ? $reports[ $this->report ] : 'run_generic_report' ;
 		return $report_method;
     }
 
@@ -475,9 +511,25 @@
     	if ( method_exists( $this, $report_method ) ) {
     		$content = $this->$report_method();
 	    } else {
-    		$this->narrator->narrate( '<p>Invalid report. Method not yet supported</p>', $this->report );
-    		$content = null;
+    		$this->narrator->narrate( '<p>Running generic report</p>', $this->report );
+    		$content = $this->run_generic_report();
 	    }
+    	return $content;
+    }
+
+	 /**
+	  * Runs a generic report knowing the field name.
+	  *
+	  * The field name ( $this->report ) is used for the groupby field.
+	  *
+	  */
+    function run_generic_report() {
+    	$this->grouper->subset( null );
+    	$this->grouper->time_field( 'final' );
+    	$this->grouper->groupby( $this->report );
+    	$this->grouper->arsort();
+	    $this->grouper->having( array( $this, "having_filter_value_ge" ) );
+    	$content = $this->fetch_content();
     	return $content;
     }
 
@@ -487,10 +539,10 @@
 	  */
 	 function run_request_types_report() {
 		 $this->grouper->subset( null );
-		 $this->grouper->time_field( "final" );
+		 $this->grouper->time_field( 'final' );
 		 $this->grouper->groupby( "request_type" );
 		 $this->grouper->arsort();
-		 $this->grouper->percentages();
+		 //$this->grouper->percentages();
 		 //$this->having = 100;
 		 //$this->grouper->having( array( $this, "having_filter_value_ge" ) );
 		 //echo "<h3>Categorised requests</h3>";
@@ -502,13 +554,29 @@
 	 }
 
 	 /**
+	  * Runs the elapsed report that groups requests by elapsed time ranges of a tenth of a second.
+	  *
+	  * We either need to set the time field... or change the logic that produces the table.
+	  *
+	  * @return string
+	  */
+	 function run_elapsed_report() {
+		 $this->grouper->time_field('final');
+		 $this->grouper->groupby( "final", array( $this, "twentiethsecond" ) );
+		 $this->grouper->ksort();
+		 $this->grouper->having( array( $this, "having_filter_value_ge" ) );
+		 //	 $grouper->report_percentages();
+		 $content = $this->fetch_content();
+		 return $content;
+	 }
+
+	 /**
 	  * Runs the Stripped URI report.
 	  *
 	  * Finds the most popular queries with more than $having requests.
 	  *
 	  * @return string
 	  */
-
 	 function run_suri_report( ) {
 	    $this->grouper->subset( null );
 		$this->grouper->time_field( "final" );
