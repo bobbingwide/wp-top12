@@ -2,7 +2,7 @@
 
 /**
  * @package wp-top12
- * @copyright (C) Copyright Bobbing Wide 2020
+ * @copyright (C) Copyright Bobbing Wide 2020, 2021
  *
  * Scrapes the block plugins listed on https://wordpress.org/plugins/browse/blocks/page/n
  * where n goes up to 25 or so, with 20 block plugins per page.
@@ -15,7 +15,7 @@
  * The Block Counter's extraction logic is not optimised.
  */
 
-oik_require( 'class-narrator.php', 'oik-i18n');
+oik_require( 'libs/class-narrator.php', 'oik-i18n');
 oik_require( 'class-plugin-extractor.php', 'wp-top12');
 oik_require( 'wp-block-counter.php', 'wp-top12');
 

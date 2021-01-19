@@ -17,7 +17,7 @@ oik_require( "libs/class-object.php", $plugin );
 oik_require( "libs/class-object-grouper.php", $plugin );
 oik_require( "libs/class-csv-merger.php", $plugin );
 
-oik_require( 'class-narrator.php', 'oik-i18n');
+oik_require( 'libs/class-narrator.php', 'oik-i18n');
 
 
 
