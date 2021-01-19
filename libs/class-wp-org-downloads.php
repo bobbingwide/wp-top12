@@ -2,7 +2,7 @@
 /**
  * Information about all plugins on WordPress.org.
  *
- * @copyright (C) Copyright Bobbing Wide 2015-2017, 2019
+ * @copyright (C) Copyright Bobbing Wide 2015-2021
  * @package wp-top12
  */
 
@@ -250,13 +250,13 @@ class WP_org_downloads {
 	}
 
 	/**
-	 * Load all the plugins from the serialized results
+	 * Loads all the plugins from the serialized results.
 	 *
-	 * @TODO Will do 55,500 plugins.
-	 * Need 545 pages for 54,500 - currently 54,498
+     * Some stats...
 	 *
 	 * - 26 Dec 2019 - 50062
 	 * - 30 Jan 2020 - 55481
+	 * - 19 Jan 2021 - 58281
 	 *
 	 * @TODO Load the plugins from the wporg_plugins.csv file if it's more recent than the downloads!
 	 *
@@ -274,7 +274,7 @@ class WP_org_downloads {
 	}
 
 	/**
-	 * Add the latest set to the total list
+	 * Adds the latest set to the total list.
 	 */
 	function add_plugins( $plugins ) {
 		//print_r( $this->plugins );
@@ -644,7 +644,7 @@ class WP_org_downloads {
 		file_put_contents( $file, $this->csv );
 		echo "Total downloaded: " . $this->downloaded . PHP_EOL;
 		$this->block_writer( 'heading', null, '<h2>Total downloads: ' . number_format_i18n( $this->downloaded ) . '</h2>' );
-
+		$this->block_writer( 'paragraph', null, '<p>Plugins: ' . count( $this->plugins ) . '</p>' );
 	}
 
 	function downloaded( $downloaded ) {
@@ -667,6 +667,7 @@ class WP_org_downloads {
 
 	function count_things() {
 		$grouper = new Object_Grouper();
+
 		echo "Grouping: " . count( $this->plugins ) . PHP_EOL;
 		$grouper->populate( $this->plugins );
 
@@ -682,15 +683,18 @@ class WP_org_downloads {
 		$grouper->groupby( "downloads", array( $this, "tentothe" ) );
 		$grouper->ksort();
 		//$grouper->report_groups();
+
 		$this->block_writer( 'heading', null, '<h2>Grouped by total downloads</h2>');
-		$this->report_groups( $grouper );
+
+		$this->chart_groups( $grouper, 'bar', 'Downloads,Count');
+	//	$this->report_groups( $grouper );
 
 		$grouper->subset( array( $this, "year" ) );
 		$grouper->groupby( "last_updated" );
 		$grouper->krsort();
 		$grouper->report_groups();
 		$this->block_writer( 'heading', null, '<h2>Last updated</h2>');
-		$this->report_groups( $grouper );
+		$this->chart_groups( $grouper, 'bar', 'Year,Count', 'Visualizer' );
 
 		$grouper->groupby( "requires", array( $this, "versionify" ) );
 		$grouper->ksort();
@@ -708,14 +712,17 @@ class WP_org_downloads {
 
 		$this->block_writer( 'heading', null, '<h2>WordPress version compatibility</h2>');
 		//echo "Merged report:" . PHP_EOL;
-		$this->report_groups( $merger );
+		$this->chart_groups( $merger, 'bar', 'Version,Requires,Tested');
+	//	$this->report_groups( $merger );
+
 
 
 		$grouper->groupby( "rating", array( $this, "stars" ) );
 		$grouper->krsort();
 		$grouper->report_groups();
 		$this->block_writer( 'heading', null, '<h2>Star ratings</h2>');
-		$this->report_groups( $grouper );
+	//	$this->report_groups( $grouper );
+		$this->chart_groups( $grouper, 'pie', 'Stars,# plugins' );
 
 
 		$grouper->groupby( "name", array( $this, "firstletter" ) );
@@ -944,7 +951,7 @@ class WP_org_downloads {
 	}
 
 	/**
-	 * Produce a simple report of the selected items
+	 * Produce a simple report of the selected items.
 	 *
 	 * @TODO Allow selection of the fields to be shown using
 	 * a fields string/array
@@ -957,6 +964,7 @@ class WP_org_downloads {
 		$limit = min( $limit, count( $this->plugins ) );
 		$top12 = "Position|Plugin|Total downloads\n";
 		$top12 = null;
+		$top12chart = null;
 		for ( $index = 0; $index < $limit ; $index++ ) {
 			$plugin = $this->plugins[ $index ];
 			$plugin = (object) $plugin;
@@ -974,10 +982,24 @@ class WP_org_downloads {
 			if ( $index < 12 ) {
 				$top12 = $line . $top12;
 			}
+
+			if ( $index < 12 ) {
+				$line = "\n";
+				$line .=$plugin->slug;
+				$line .=',';
+				$line .=$plugin->meta->downloads / 1000000;
+				$line .= ',';
+				$line .= $plugin->meta->active_installs / 1000000;
+				$top12chart.=$line;
+			}
 		}
+		$this->block_writer( 'heading', null, '<h2>Top 12 plugins - total downloads and active</h2>' );
+
+		$top12chart = "Plugins,Downloads (M),Active (M)" . $top12chart;
+		$this->chart_writer( 'horizontalBar', $top12chart, 'Visualizer' );
 		$top12 = "Position|Plugin|Total downloads\n" . $top12;
 		$atts = [ 'content' => $top12 ];
-		$this->block_writer( 'oik-block/csv', $atts, null );
+		$this->block_writer( 'oik-bbw/csv', $atts, null );
 	}
 
 
@@ -1067,13 +1089,56 @@ class WP_org_downloads {
 		//echo $this->content;
 	}
 
+	/**
+	 * Writes the output as a Chart block.
+	 *
+	 * @param $type
+	 * @param $content - CSV content containing the heading
+	 * @param null $theme
+	 */
+
+	function chart_writer( $type, $content, $theme=null ) {
+		static $ID = 0;
+		$ID++;
+		$myChartID = 'myChart-' . $ID;
+		$atts = [ 'type' => $type, 'content' => $content, 'myChartId' => $myChartID];
+		if ( $theme ) {
+			$atts['theme'] = $theme;
+		}
+		$html = '<div class="wp-block-oik-sb-chart chartjs">';
+		$html .= '<canvas id="' . $myChartID . '"></canvas></div>';
+		$this->block_writer( 'oik-sb/chart', $atts, $html);
+
+	}
+
 	function report_groups( $grouper ) {
 		ob_start();
 		$grouper->report_groups();
 		$output = ob_get_clean();
 		$atts = [ 'content' => $output ];
-		$this->block_writer( 'oik-block/csv', $atts, null );
+		$this->block_writer( 'oik-bbw/csv', $atts, null );
 	}
+
+	/**
+	 * Outputs the group to a chart.
+	 *
+	 * @param $grouper
+	 * @param $type
+	 * @param $heading
+	 * @param null $theme
+	 */
+
+	function chart_groups( $grouper, $type, $heading, $theme=null ) {
+		ob_start();
+		$grouper->report_groups();
+		$output = ob_get_clean();
+		//$atts = [ 'content' => $output ];
+		$output = rtrim( $output );
+		$output = $heading . "\n" . $output;
+		$this->chart_writer( $type, $output, $theme );
+	}
+
+
 
 	function echo_content() {
 		echo $this->content;

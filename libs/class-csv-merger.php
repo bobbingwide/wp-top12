@@ -110,7 +110,7 @@ class CSV_merger {
 	}
 
 	function report_groups() {
-		echo "Version,Requires,Tested\n";
+		//echo "Version,Requires,Tested\n";
 		$this->report();
 	}
 
