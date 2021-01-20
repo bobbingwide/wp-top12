@@ -996,7 +996,7 @@ class WP_org_downloads {
 		$this->block_writer( 'heading', null, '<h2>Top 12 plugins - total downloads and active</h2>' );
 
 		$top12chart = "Plugins,Downloads (M),Active (M)" . $top12chart;
-		$this->chart_writer( 'horizontalBar', $top12chart, 'Visualizer' );
+		$this->chart_writer( 'bar', $top12chart, 'Visualizer' );
 		$top12 = "Position|Plugin|Total downloads\n" . $top12;
 		$atts = [ 'content' => $top12 ];
 		$this->block_writer( 'oik-bbw/csv', $atts, null );
