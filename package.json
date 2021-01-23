@@ -1,0 +1,23 @@
+{
+	"name": "wp-top12",
+	"version": "0.0.0",
+	"description": "Displays top nn downloaded plugins.",
+	"author": "bobbingwide",
+	"license": "GPL-2.0-or-later",
+	"main": "build/index.js",
+	"scripts": {
+		"build": "wp-scripts build",
+		"format:js": "wp-scripts format-js",
+		"lint:css": "wp-scripts lint-style",
+		"lint:js": "wp-scripts lint-js",
+		"start": "wp-scripts start",
+		"dev": "wp-scripts start",
+		"packages-update": "wp-scripts packages-update",
+		"makepot": "wp i18n make-pot . languages/wp-top12.pot --exclude=node_modules,vendor,src",
+		"makejson": "wp i18n make-json languages --no-purge",
+		"l10n": "l10n wp-top12"
+	},
+	"devDependencies": {
+		"@wordpress/scripts": "^12.1.1"
+	}
+}

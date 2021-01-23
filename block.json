@@ -1,0 +1,14 @@
+{
+	"name": "wp-top12/wp-top12",
+	"title": "Top 12",
+	"category": "widgets",
+	"icon": "plugin",
+	"description": "Displays top n plugins.",
+	"textdomain": "wp-top12",
+	"supports": {
+		"html": false
+	},
+	"editorScript": "file:./build/index.js",
+	"editorStyle": "file:./build/index.css",
+	"style": "file:./build/style-index.css"
+}
