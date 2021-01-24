@@ -5,7 +5,7 @@
 * Tags: shortcodes, smart, lazy
 * Requires at least: 5.2
 * Tested up to: 5.6
-* Stable tag: 1.1.0
+* Stable tag: 1.1.1
 * License: GPLv2 or later
 * License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -88,6 +88,9 @@ There may be an admin interface, but unlikely to be a front-end.
 1. wp-top12 in action - no not really
 
 ## Upgrade Notice 
+# 1.1.1 
+Removed some unnecessary files after cloning to slog-bloat.
+
 # 1.1.0 
 Upgrade for the Top12 plugins block ( wp-top12/wp-top12 ).
 
@@ -117,11 +120,15 @@ Now supports initial analysis by IP address
 New sample plugin, available from GitHub
 
 ## Changelog 
+# 1.1.1 
+* Changed: wporg_plugins.csv 2021/01/21 12:00 5000078534 downloads, 58370 plugins
+* Deleted: Remove cache and working directories, https://github.com/bobbingwide/wp-top12/issues/14
+
 # 1.1.0 
+* Changed: wporg_plugins.csv 2021/01/24 11:00 downloads 49999984748 plugins 58370
 * Changed: Updated wporg_plugins.csv quite a few times... as total downloads approached 5 billion
 * Added: Top 12 plugins block ( wp-top12/wp-top12 ),https://github.com/bobbingwide/wp-top12/issues/8
 * Added: lots more
-
 
 # 1.0.0 
 * Changed: Updated wporg_plugins.csv a few times: Nov 18, Oct 21, Sep 07, Aug 19, Jul xx, May 15, Apr 15, Feb 08
