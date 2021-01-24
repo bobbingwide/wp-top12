@@ -3,8 +3,8 @@ Contributors: bobbingwide, vsgloik
 Donate link: https://www.oik-plugins.com/oik/oik-donate/
 Tags: shortcodes, smart, lazy
 Requires at least: 5.2
-Tested up to: 5.6-beta4
-Stable tag: 1.0.0
+Tested up to: 5.6
+Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -20,9 +20,13 @@ Display selected plugins by most downloaded from WordPress.org
 
 
 = What is provided? = 
+Version 1.1.0 provides the wp-top12/wp-top12 block.
+
 Version 1.0.0 provides the [wp-top12] shortcode in a new main plugin routine ( wp-top12.php ).
 
 The downloads.php routine has been changed to use the WordPress REST API.
+
+Other batch routines associated with performance analysis will be transferred to slog-bloat. 
 
 
 = What was this plugin's original use? = 
@@ -60,7 +64,7 @@ downloads.php - Extracts information about plugins from wordpress.org
 * oik-bwtrace to produce the files in the first place
 * oik-batch ( an alternative to WP-cli ) to drive the routines
 * oik-lib, oik and other libraries used by wp-top12
-* a charting routine such as visualizer
+* sb-chart-block 
 
 = How has it been used? =
 
@@ -83,6 +87,9 @@ There may be an admin interface, but unlikely to be a front-end.
 1. wp-top12 in action - no not really
 
 == Upgrade Notice ==
+= 1.1.0 = 
+Upgrade for the Top12 plugins block ( wp-top12/wp-top12 ).
+
 = 1.0.0 = 
 Update for the latest figures - 18 Nov 2020
 
@@ -109,11 +116,17 @@ Now supports initial analysis by IP address
 New sample plugin, available from GitHub
 
 == Changelog ==
+= 1.1.0 = 
+* Changed: Updated wporg_plugins.csv quite a few times... as total downloads approached 5 billion
+* Added: Top 12 plugins block ( wp-top12/wp-top12 ),[github bobbingwide wp-top12 issues 8]
+* Added: lots more
+
+
 = 1.0.0 = 
 * Changed: Updated wporg_plugins.csv a few times: Nov 18, Oct 21, Sep 07, Aug 19, Jul xx, May 15, Apr 15, Feb 08
 * Changed: Caters for WordPress versions up to 5.9
 * Fixed: Change order of parameter for implode. glue first,[github bobbingwide wp-top12 issues 5]
-* Fixed: Cater for WordPress 5.5,[github bobbingwode wp-top12 issues 11]
+* Fixed: Cater for WordPress 5.5,[github bobbingwide wp-top12 issues 11]
 * Fixed: Cater for WordPress 5.4
 * Fixed: Keep going until there are no more files. Well... up to 1000
 * Tested: With WordPress 5.6-beta4
