@@ -6,22 +6,22 @@
  *
  * Groups objects by key values
  *
- * Count all the things we want to count by grouping on key values. 
- * 
+ * Count all the things we want to count by grouping on key values.
+ *
  * If we need to convert the actual value of a field into a subset for the grouping
- * then this should either be done prior to calling the object grouper or it 
+ * then this should either be done prior to calling the object grouper or it
  * can be done using a callback function set using subset() ( var $subset ).
- * 
+ *
  * Examples below
- * 
- * 
+ *
+ *
  * Key        | Subset | What this shows
  * ---------- | ------ | ---------------------------------------
  * downloaded | 10**n  | Grouped by total downloads range
  * updated    | year   | Grouped by last updated year
  * slug / name | A-Z   | Grouped by first letter
- * 
- * 
+ *
+ *
  */
 class Object_Grouper extends Object_base {
 
@@ -29,32 +29,32 @@ class Object_Grouper extends Object_base {
 	 * @var $groups Array of items for this group.
 	 */
 	public $groups;
-	
+
 	public $key;
-	
+
 	public $subset;
-	
+
 	/**
 	 * Name of the field that holds the elapsed time to accumulate by group.
 	 * Leave null if you don't want this accumulated.
-	 */									 
-	public $time_field; 
-	
+	 */
+	public $time_field;
+
 	/**
 	 * Array of elapsed time by group. Same key as for $groups.
 	 */
 	public $elapsed;
-	
+
 	/**
 	 * Total number of things counted
-	 */							
+	 */
 	public $total;
-	
+
 	/**
 	 * Total time - when counting time
 	 */
 	public $total_time;
-	
+
 	/**
 	 * Array of percentages rather than counts. Same key as for $groups.
 	 *
@@ -63,14 +63,14 @@ class Object_Grouper extends Object_base {
 
 	public $asCSV_field_percentage_count_accumulative = 0;
 	public $asCSV_field_percentage_elapsed_accumulative = 0;
-	
+
 	/**
 	 * Filter function to perform 'where' like logic
 	 *
 	 * returns true if the object is to be grouped
-	 */							
+	 */
 	public $where;
-	
+
 	public function __construct() {
 		//$this->objects = null;
 		parent::__construct();
@@ -78,28 +78,28 @@ class Object_Grouper extends Object_base {
 		$this->subset();
 		$this->where();
 		$this->having();
-		$this->time_field(); 
+		$this->time_field();
 		$this->reset();
 	}
-	
-	
+
+
 	public function key( $key=null ) {
 		$this->key = $key;
 	}
-	
+
 	public function subset( $subset=null ) {
 		$this->subset = $subset;
 	}
-	
+
 	public function where( $where=null ) {
-		$this->where = $where; 
+		$this->where = $where;
 	}
-	
+
 	public function having( $having=null ) {
 		$this->having = $having;
 	}
 
-	
+
 	/**
 	 * Set the field used for determining elapsed time
 	 */
@@ -109,8 +109,8 @@ class Object_Grouper extends Object_base {
 			//echo $this->time_field;
 		}
 	}
-	
-	
+
+
 	public function reset() {
 		unset( $this->groups );
 		unset( $this->percentages );
@@ -120,15 +120,22 @@ class Object_Grouper extends Object_base {
 		$this->elapsed = null;
 		$this->total = 0;
 		$this->total_time = 0;
+		$this->reset_percentage_accumulatives();
+		//$this->asCSV_field_percentage_count_accumulative = 0;
+		//$this->asCSV_field_percentage_elapsed_accumulative = 0;
+	}
+
+
+	function reset_percentage_accumulatives() {
 		$this->asCSV_field_percentage_count_accumulative = 0;
 		$this->asCSV_field_percentage_elapsed_accumulative = 0;
 	}
-	
+
 	/**
-	 * 
+	 *
 	 */
 	public function groupby( $key, $subset=null ) {
-		$this->reset();
+		//$this->reset();
 		$this->key( $key );
 		if ( $subset ) {
 			$this->subset( $subset );
@@ -136,7 +143,7 @@ class Object_Grouper extends Object_base {
 		foreach ( $this->objects as $slug => $object ) {
 			$object = ( object ) $object;
 			if ( $this->where ) {
-				$group = call_user_func( $this->where, $object ); 
+				$group = call_user_func( $this->where, $object );
 			} else {
 				$group = true;
 			}
@@ -145,15 +152,15 @@ class Object_Grouper extends Object_base {
 			}
 		}
 	}
-	
+
 	/**
 	 * Group this object by its group key value
 	 *
 	 * Allow for there being multiple values returned from the subset method
 	 */
 	public function group( $object ) {
-		//bw_trace2( null, null, true, BW_TRACE_DEBUG ); 
-		if ( isset( $object->{$this->key} ) ) { 
+		//bw_trace2( null, null, true, BW_TRACE_DEBUG );
+		if ( isset( $object->{$this->key} ) ) {
 			$this->field_value = $object->{$this->key};
 		} else {
 			$this->field_value = " ";
@@ -161,23 +168,23 @@ class Object_Grouper extends Object_base {
 		if ( $this->subset ) {
 			$this->field_value = call_user_func( $this->subset, $this->field_value );
 		}
-		
+
 		if ( is_array( $this->field_value ) ) {
 			$this->count_values();
 		} else {
 			$this->count_value();
 		}
-		
+
 		if ( $this->time_field ) {
 			$this->accumulate_time( $object );
-		}  
-		
+		}
+
 	}
-	
+
 	/**
 	 * Report the total values for this group
 	 */
-	
+
 	public function report_total() {
 		echo "Total: " . $this->total . PHP_EOL;
 		if ( $this->time_field ) {
@@ -187,13 +194,23 @@ class Object_Grouper extends Object_base {
 			}
 		}
 	}
-	
-	
-		
-		
+
+	/**
+	 * Initialise groups so that we don't get gaps in the x-axis.
+	 *
+	 */
+	function init_groups( $callback, $low=0, $increment=0.05, $high=6 ) {
+		for ( $elapsed = $low; $elapsed <= $high; $elapsed += $increment ) {
+			$index = call_user_func( $callback, $elapsed );
+			$this->groups[ $index ] = 0;
+		}
+	}
+
+
+
 	/**
 	 * Count this instance
-	 * 
+	 *
 	 */
 	function count_value() {
 		//print_r( $this->field_value );
@@ -204,7 +221,7 @@ class Object_Grouper extends Object_base {
 		}
 		$this->total++;
 	}
-	
+
 	/**
 	 * Count these instances
 	 */
@@ -215,23 +232,23 @@ class Object_Grouper extends Object_base {
 			$this->count_value();
 		}
 	}
-	
+
 	/**
 	 * Accumulate the elapsed time for the group
 	 *
 	 * If there is more than one value in the field_value then we accumulate the first value only
-	 * We assume that the time field is set for the $object 
-	 * 
+	 * We assume that the time field is set for the $object
+	 *
 	 * @param object $object object which must contain the $time_field property
 	 */
 	function accumulate_time( $object ) {
-	
+
 		if ( is_array( $this->field_value ) ) {
 			$field_value = $this->field_value[0];
     } else {
 			$field_value = $this->field_value;
 		}
-		
+
 		$time = $object->{$this->time_field};
 		if ( !isset( $this->elapsed[ $field_value ] ) ) {
 			$this->elapsed[ $field_value ] = $time;
@@ -239,7 +256,7 @@ class Object_Grouper extends Object_base {
 			$this->elapsed[ $field_value] += $time;
 		}
 		$this->total_time += $time;
-	
+
 	}
 
 	/**
@@ -270,6 +287,7 @@ class Object_Grouper extends Object_base {
 	 * @return string
 	 */
 	function asCSV_table() {
+		$this->reset_percentage_accumulatives();
 		$results = '';
 		foreach ( $this->groups as $key => $field ) {
 			if ( $this->having ) {
@@ -320,7 +338,11 @@ class Object_Grouper extends Object_base {
 	}
 
 	function asCSV_field_elapsed( $key, $field ) {
-		return $this->elapsed[ $key];
+		if ( isset( $this->elapsed[ $key] ) ) {
+			return $this->elapsed[ $key ];
+		} else {
+			return 0;
+		}
 	}
 
 	/**
@@ -337,8 +359,12 @@ class Object_Grouper extends Object_base {
 		} else {
 			$item=$field;
 		}
-		$elapsed = $this->elapsed[ $key ];
-		$average = $elapsed / $item;
+		$elapsed = isset( $this->elapsed[ $key ] ) ? $this->elapsed[ $key ] : 0;
+		if ( $item ) {
+			$average=$elapsed / $item;
+		} else {
+			$average = 0;
+		}
 		return $average;
 	}
 
@@ -353,7 +379,13 @@ class Object_Grouper extends Object_base {
 	}
 
 	function asCSV_field_percentage_elapsed( $key, $field ) {
-		$percentage = ( $this->elapsed[ $key ] * 100) / $this->total_time;
+		if ( $this->total_time ) {
+			$elapsed = isset( $this->elapsed[ $key ] ) ? $this->elapsed[ $key ] : 0;
+			$percentage = ( $elapsed * 100) / $this->total_time;
+		} else {
+			$percentage = 0;
+		}
+
 		//$this->asCSV_field_percentage_elapsed_accumulative += $percentage;
 		return $percentage;
 	}
@@ -365,8 +397,11 @@ class Object_Grouper extends Object_base {
 	}
 
 	function asCSV_field_percentage_elapsed_accumulative( $key, $field ) {
-		$percentage = ( $this->elapsed[ $key ] * 100) / $this->total_time;
-		$this->asCSV_field_percentage_elapsed_accumulative += $percentage;
+		if ( $this->total_time ) {
+			$elapsed =isset( $this->elapsed[ $key ] ) ? $this->elapsed[ $key ] : 0;
+			$percentage =( $elapsed * 100 ) / $this->total_time;
+			$this->asCSV_field_percentage_elapsed_accumulative+=$percentage;
+		}
 		return $this->asCSV_field_percentage_elapsed_accumulative;
 	}
 
@@ -459,19 +494,19 @@ class Object_Grouper extends Object_base {
 		//echo PHP_EOL;
 		return $string;
 	}
-	
-	
+
+
 	/**
 	 * Report the grouped counts
 	 *
-	 * 
+	 *
 	 */
 	function report_groups() {
 		//$this->start_report();
 		//print_r( $this->groups );
 		//echo "Groups:," . $this->key . PHP_EOL;
 		foreach ( $this->groups as $key => $field ) {
-			if ( $this->having ) { 
+			if ( $this->having ) {
 				$having = call_user_func( $this->having, $key, $field );
 			} else {
 				$having = true;
@@ -482,40 +517,40 @@ class Object_Grouper extends Object_base {
 		}
 		//$this->end_report();
 	}
-	
+
 	function start_report() {
 		oik_require( "shortcodes/oik-list.php" );
 		$this->uo = bw_sl( $this->atts );
 	}
-	
+
 	function end_report() {
 		bw_el( $this->uo );
-	
+
 	}
-	
+
 	function report_field( $key, $field ) {
 		//print_r( $field );
 		if ( is_array( $field ) ) {
-			
+
 			$item = implode( " ", $field );
 		} else {
 			$item = $field;
 		}
-		
+
 		//li( "$key $item" );
 		echo "$key,$item";
 		if ( $this->time_field ) {
 			$elapsed = $this->elapsed[ $key ] ;
 			$average = $elapsed / $item;
 			//echo ",$elapsed";
-			echo ",$average"; 
+			echo ",$average";
 		} else {
 			echo "";
 		}
 		echo PHP_EOL;
 	}
-	
-	
+
+
 	/**
 	 * Report the grouped percentages
 	 */
@@ -523,13 +558,13 @@ class Object_Grouper extends Object_base {
 		if ( !$this->percentages ) {
 			$this->percentages();
 		}
-		
+
 		//$this->start_report();
 		//print_r( $this->groups );
 		echo "Groups: " . $this->key . PHP_EOL;
 		foreach ( $this->percentages as $key => $field ) {
-			
-			if ( $this->having ) { 
+
+			if ( $this->having ) {
 				$having = call_user_func( $this->having, $key, $field );
 			} else {
 				$having = true;
@@ -541,10 +576,10 @@ class Object_Grouper extends Object_base {
 		}
 		//$this->end_report();
 	}
-	
-	
+
+
 	function report_percentage( $key, $field ) {
-		
+
 		//li( "$key $item" );
 		echo "$key,$field";
 		if ( $this->time_field ) {
@@ -552,14 +587,14 @@ class Object_Grouper extends Object_base {
 			$elapsed = $this->elapsed[ $key ] ;
 			$average = $elapsed / $item;
 			//echo ",$elapsed";
-			echo ",$average"; 
+			echo ",$average";
 		} else {
 			echo "";
 		}
 		echo PHP_EOL;
 	}
-	
-	
+
+
 	/**
 	 * Create a group of percentages
 	 */
@@ -569,7 +604,7 @@ class Object_Grouper extends Object_base {
 			$this->percentage( $key, $field );
 		}
 	}
-	
+
 	/**
 	 * Calculate a single percentage
 	 */
@@ -581,7 +616,7 @@ class Object_Grouper extends Object_base {
 		}
 		$this->percentages[ $key ] = $percentage;
 	}
-		
+
 	/**
 	 * Sort the groups array
 	 *
@@ -595,15 +630,15 @@ class Object_Grouper extends Object_base {
 	function krsort() {
 		krsort( $this->groups );
 	}
-	
+
 	function ksort() {
 		ksort( $this->groups );
 	}
-	
+
 	function arsort() {
 		arsort( $this->groups );
 	}
 
 
 }
- 
+

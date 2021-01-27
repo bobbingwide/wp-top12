@@ -46,23 +46,24 @@ ultimate-addons-for-gutenberg,block-default,Gutenberg Blocks – Ultimate Addons
 ultimate-addons-for-gutenberg,block-default,Gutenberg Blocks – Ultimate Addons for Gutenberg
 ultimate-addons-for-gutenberg,block-default,Gutenberg Blocks – Ultimate Addons for Gutenberg
 ultimate-addons-for-gutenberg,block-default,Gutenberg Blocks – Ultimate Addons for Gutenberg
+ultimate-addons-for-gutenberg,block-default,Gutenberg Blocks – Ultimate Addons for Gutenberg
 popup-builder,,,YGIAGAM
 woo-gutenberg-products-block,block-default,Filter Products by Attribute
-woo-gutenberg-products-block,block-default,Product Search
-woo-gutenberg-products-block,block-default,Hand-picked Products
-woo-gutenberg-products-block,block-default,Product Categories List
-woo-gutenberg-products-block,block-default,Products by Category
-woo-gutenberg-products-block,block-default,Featured Product
+woo-gutenberg-products-block,block-default,On Sale Products
 woo-gutenberg-products-block,block-default,Reviews by Product
 woo-gutenberg-products-block,block-default,All Reviews
 woo-gutenberg-products-block,block-default,Reviews by Category
-woo-gutenberg-products-block,block-default,Products by Tag
-woo-gutenberg-products-block,block-default,Newest Products
-woo-gutenberg-products-block,block-default,On Sale Products
-woo-gutenberg-products-block,block-default,Featured Category
 woo-gutenberg-products-block,block-default,Active Product Filters
-woo-gutenberg-products-block,block-default,Best Selling Products
+woo-gutenberg-products-block,block-default,Hand-picked Products
+woo-gutenberg-products-block,block-default,Products by Category
+woo-gutenberg-products-block,block-default,Featured Product
+woo-gutenberg-products-block,block-default,Product Search
 woo-gutenberg-products-block,block-default,Filter Products by Price
+woo-gutenberg-products-block,block-default,Product Categories List
+woo-gutenberg-products-block,block-default,Featured Category
+woo-gutenberg-products-block,block-default,Newest Products
+woo-gutenberg-products-block,block-default,Best Selling Products
+woo-gutenberg-products-block,block-default,Products by Tag
 caldera-forms,block-default,Caldera Forms - More Than Contact Forms
 youtube-embed-plus,block-default,YouTube Wizard
 foogallery,block-default,Best Image Gallery & Responsive Photo Gallery - FooGallery
@@ -75,29 +76,29 @@ wp-seopress,block-default,SEOPress, on-site SEO
 yikes-inc-easy-mailchimp-extender,,,YGIAGAM
 complianz-gdpr,block-default,Legal document - Complianz
 forminator,,,YGIAGAM
-give,block-default,Progress Bar
 give,block-default,Multi-Form Goal
+give,block-default,Progress Bar
 give,block-default,Donation Form
-give,block-default,Donation Form Grid
+give,block-default,GiveWP - Donation Plugin and Fundraising Platform
 give,block-default,GiveWP - Donation Plugin and Fundraising Platform
 form-maker,,,YGIAGAM
 wordpress-popup,,,YGIAGAM
 kadence-blocks,block-default,Table of Contents
-kadence-blocks,block-default,Spacer/Divider
-kadence-blocks,block-default,Advanced Button
-kadence-blocks,block-default,Row Layout
-kadence-blocks,block-default,Column
-kadence-blocks,block-default,Icon
-kadence-blocks,block-default,Advanced Heading
-kadence-blocks,block-default,Tabs
+kadence-blocks,block-default,Gutenberg Blocks by Kadence Blocks – Page Builder Features
+kadence-blocks,block-default,Gutenberg Blocks by Kadence Blocks – Page Builder Features
+kadence-blocks,block-default,Gutenberg Blocks by Kadence Blocks – Page Builder Features
+kadence-blocks,block-default,Gutenberg Blocks by Kadence Blocks – Page Builder Features
+kadence-blocks,block-default,Gutenberg Blocks by Kadence Blocks – Page Builder Features
+kadence-blocks,block-default,Gutenberg Blocks by Kadence Blocks – Page Builder Features
+kadence-blocks,block-default,Gutenberg Blocks by Kadence Blocks – Page Builder Features
 kadence-blocks,block-default,Tab
-kadence-blocks,block-default,Info Box
-kadence-blocks,block-default,Accordion
+kadence-blocks,block-default,Gutenberg Blocks by Kadence Blocks – Page Builder Features
+kadence-blocks,block-default,Gutenberg Blocks by Kadence Blocks – Page Builder Features
 kadence-blocks,block-default,Pane
-kadence-blocks,block-default,Icon List
-kadence-blocks,block-default,Testimonials
-kadence-blocks,block-default,Form
-kadence-blocks,block-default,Advanced Gallery
+kadence-blocks,block-default,Gutenberg Blocks by Kadence Blocks – Page Builder Features
+kadence-blocks,block-default,Gutenberg Blocks by Kadence Blocks – Page Builder Features
+kadence-blocks,block-default,Gutenberg Blocks by Kadence Blocks – Page Builder Features
+kadence-blocks,block-default,Gutenberg Blocks by Kadence Blocks – Page Builder Features
 custom-twitter-feeds,block-default,Custom Twitter Feeds (Tweets Widget)
 otter-blocks,block-default,Section
 otter-blocks,block-default,Button Group
@@ -114,7 +115,9 @@ otter-blocks,block-default,Posts
 otter-blocks,block-default,Lottie Animation
 otter-blocks,block-default,Progress Bar
 otter-blocks,block-default,Sharing Icons
+otter-blocks,block-default,Icon List
 otter-blocks,block-default,Plugin Card
+otter-blocks,block-default,Icon List Item
 otter-blocks,block-default,About Author
 soliloquy-lite,,,YGIAGAM
 layout-grid,block-default,Layout Grid Block
@@ -148,7 +151,7 @@ atomic-blocks,block-default,Product Title
 atomic-blocks,block-default,Product Features
 atomic-blocks,block-default,Product Button
 atomic-blocks,block-default,Atomic Blocks - Gutenberg Blocks Collection
-advanced-responsive-video-embedder,block-default,ARVE Advanced Responsive Video Embedder (YouTube, Vimeo, HTML5 Video ...)
+advanced-responsive-video-embedder,block-default,Video Embed (ARVE)
 slider-wd,,,YGIAGAM
 robo-gallery,block-default,Image Gallery by Robo – Responsive Photo Gallery
 feedzy-rss-feeds,block-default,RSS Aggregator by Feedzy - Powerful WP Autoblogging and News Aggregator
@@ -166,7 +169,7 @@ event-tickets,,,YGIAGAM
 wd-facebook-feed,,,YGIAGAM
 syntaxhighlighter,block-default,SyntaxHighlighter Evolved
 final-tiles-grid-gallery-lite,block-default,Final Tiles Gallery
-stripe-payments,block-default,Stripe Payments
+stripe-payments,block-default,Accept Stripe Payments
 gutentor,block-default,Post Module Footer
 gutentor,block-default,Simple Text
 gutentor,block-default,Advanced Text
@@ -207,43 +210,43 @@ gutentor,block-default,Post (Type) Carousel
 gutentor,block-default,Term Category Carousel
 happyforms,block-default,Contact Form to Manage and respond to conversations with customers — HappyForms
 mp-timetable,block-default,Timetable
-ecwid-shopping-cart,block-default,Shopping Cart Icon
+ecwid-shopping-cart,block-default,Store Home Page
 ecwid-shopping-cart,block-default,Cart and Checkout
+ecwid-shopping-cart,block-default,Product Card Large
 ecwid-shopping-cart,block-default,Product Card Small
 ecwid-shopping-cart,block-default,Buy Now Button
-ecwid-shopping-cart,block-default,Product Search and filters
-ecwid-shopping-cart,block-default,Store Home Page
 ecwid-shopping-cart,block-default,Product Search Box
 ecwid-shopping-cart,block-default,Store Categories Menu
+ecwid-shopping-cart,block-default,Shopping Cart Icon
 ecwid-shopping-cart,block-default,Store Category Page
-ecwid-shopping-cart,block-default,Product Card Large
-advanced-gutenberg,block-default,Search Bar
-advanced-gutenberg,block-default,Columns Manager
+ecwid-shopping-cart,block-default,Product Search and filters
+advanced-gutenberg,block-default,Recent Posts
 advanced-gutenberg,block-default,Adv. Column
-advanced-gutenberg,block-default,Testimonial
-advanced-gutenberg,block-default,Accordion
-advanced-gutenberg,block-default,Accordion Item
-advanced-gutenberg,block-default,Advanced Accordion
-advanced-gutenberg,block-default,Advanced Button
-advanced-gutenberg,block-default,Advanced Icon
+advanced-gutenberg,block-default,Columns Manager
 advanced-gutenberg,block-default,Advanced Image
-advanced-gutenberg,block-default,Advanced List
-advanced-gutenberg,block-default,Advanced Table
+advanced-gutenberg,block-default,Search Bar
+advanced-gutenberg,block-default,Advanced Icon
+advanced-gutenberg,block-default,Map
 advanced-gutenberg,block-default,Advanced Tabs
 advanced-gutenberg,block-default,Tab Item
-advanced-gutenberg,block-default,Advanced Video
-advanced-gutenberg,block-default,Contact Form
-advanced-gutenberg,block-default,Container
+advanced-gutenberg,block-default,Accordion
 advanced-gutenberg,block-default,Count Up
-advanced-gutenberg,block-default,Images Slider
-advanced-gutenberg,block-default,Info Box
-advanced-gutenberg,block-default,Login/Register Form
-advanced-gutenberg,block-default,Map
-advanced-gutenberg,block-default,Newsletter
-advanced-gutenberg,block-default,PublishPress Blocks – Advanced Gutenberg Blocks, Permissions, Layouts, Forms
+advanced-gutenberg,block-default,Advanced Accordion
+advanced-gutenberg,block-default,Accordion Item
+advanced-gutenberg,block-default,Contact Form
+advanced-gutenberg,block-default,Advanced Table
 advanced-gutenberg,block-default,Social Links
-advanced-gutenberg,block-default,Tabs
+advanced-gutenberg,block-default,Login/Register Form
+advanced-gutenberg,block-default,Advanced List
+advanced-gutenberg,block-default,Testimonial
 advanced-gutenberg,block-default,Woo Products
+advanced-gutenberg,block-default,Advanced Video
+advanced-gutenberg,block-default,Newsletter
+advanced-gutenberg,block-default,Tabs
+advanced-gutenberg,block-default,Container
+advanced-gutenberg,block-default,Info Box
+advanced-gutenberg,block-default,Advanced Button
+advanced-gutenberg,block-default,Images Slider
 wp-meta-seo,,,YGIAGAM
 contact-form-maker,,,YGIAGAM
 wp-user-frontend,block-default,WPUF Forms
@@ -346,29 +349,29 @@ web-stories,,,YGIAGAM
 page-views-count,block-default,Page Views
 page-views-count,block-default,Page View Count
 better-click-to-tweet,block-default,Better Click To Tweet
-appointment-hour-booking,block-default,Appointment Hour Booking
+appointment-hour-booking,block-default,Appointment Hour Booking - WordPress Booking Plugin
 timeline-express,block-default,Timeline
-cool-timeline,block-default,Cool Timeline
 cool-timeline,block-default,Cool Timeline - Instant Builder
+cool-timeline,block-default,Cool Timeline
 all-in-one-video-gallery,block-default,All-in-One Video Gallery
 all-in-one-video-gallery,block-default,All-in-One Video Gallery
 all-in-one-video-gallery,block-default,All-in-One Video Gallery
 all-in-one-video-gallery,block-default,All-in-One Video Gallery
 photonic,block-default,Photonic Gallery
 widget-countdown,block-default,Countdown Timer - Widget Countdown
-embedpress,block-default,Youtube
-embedpress,block-default,Wistia
-embedpress,block-default,Twitch
-embedpress,block-default,Google Slides
-embedpress,block-default,Google Sheets
-embedpress,block-default,Google Maps
-embedpress,block-default,Google Forms
-embedpress,block-default,Google Drawings
-embedpress,block-default,Google Docs
+embedpress,block-default,EmbedPress – Embed Google Docs, YouTube, Maps, Vimeo, Wistia Videos & Upload PDF, PPT etc.
+embedpress,block-default,EmbedPress – Embed Google Docs, YouTube, Maps, Vimeo, Wistia Videos & Upload PDF, PPT etc.
+embedpress,block-default,EmbedPress – Embed Google Docs, YouTube, Maps, Vimeo, Wistia Videos & Upload PDF, PPT etc.
+embedpress,block-default,EmbedPress – Embed Google Docs, YouTube, Maps, Vimeo, Wistia Videos & Upload PDF, PPT etc.
+embedpress,block-default,EmbedPress – Embed Google Docs, YouTube, Maps, Vimeo, Wistia Videos & Upload PDF, PPT etc.
+embedpress,block-default,EmbedPress – Embed Google Docs, YouTube, Maps, Vimeo, Wistia Videos & Upload PDF, PPT etc.
+embedpress,block-default,EmbedPress – Embed Google Docs, YouTube, Maps, Vimeo, Wistia Videos & Upload PDF, PPT etc.
+embedpress,block-default,EmbedPress – Embed Google Docs, YouTube, Maps, Vimeo, Wistia Videos & Upload PDF, PPT etc.
+embedpress,block-default,EmbedPress – Embed Google Docs, YouTube, Maps, Vimeo, Wistia Videos & Upload PDF, PPT etc.
 embedpress,block-default,Document
 google-analytics-opt-out,block-default,Google Analytics Opt-Out
 business-profile,block-default,Contact Card
-portfolio-wp,block-default,GridKit
+portfolio-wp,block-default,WordPress Portfolio Plugin - Grid Kit Portfolio Gallery
 geodirectory,,,YGIAGAM
 genesis-blocks,block-default,Container
 genesis-blocks,block-default,Accordion
@@ -432,9 +435,9 @@ connections,block-default,Team
 template-events-calendar,block-default,Events Shortcodes & Templates Addon For The Events Calendar
 block-builder,,,YGIAGAM
 gamipress,,,YGIAGAM
-food-and-drink-menu,block-default,Menu
-food-and-drink-menu,block-default,Menu Section
-food-and-drink-menu,block-default,Menu Item
+food-and-drink-menu,block-default,Five Star Restaurant Menu - WordPress Ordering Plugin
+food-and-drink-menu,block-default,Five Star Restaurant Menu - WordPress Ordering Plugin
+food-and-drink-menu,block-default,Five Star Restaurant Menu - WordPress Ordering Plugin
 codepeople-post-map,block-default,CP Google Maps
 motopress-hotel-booking-lite,block-default,Availability Search Form
 motopress-hotel-booking-lite,block-default,Availability Calendar
@@ -446,24 +449,24 @@ motopress-hotel-booking-lite,block-default,Checkout Form
 motopress-hotel-booking-lite,block-default,Booking Form
 motopress-hotel-booking-lite,block-default,Accommodation Rates List
 motopress-hotel-booking-lite,block-default,Booking Confirmation
-ultimate-post,block-default,Gutenberg Post Blocks
-ultimate-post,block-default,Gutenberg Post Blocks
-ultimate-post,block-default,Gutenberg Post Blocks
-ultimate-post,block-default,Gutenberg Post Blocks
-ultimate-post,block-default,Gutenberg Post Blocks
-ultimate-post,block-default,Gutenberg Post Blocks
-ultimate-post,block-default,Gutenberg Post Blocks
-ultimate-post,block-default,Gutenberg Post Blocks
-ultimate-post,block-default,Gutenberg Post Blocks
-ultimate-post,block-default,Gutenberg Post Blocks
-ultimate-post,block-default,Gutenberg Post Blocks
-ultimate-post,block-default,Gutenberg Post Blocks
-ultimate-post,block-default,Gutenberg Post Blocks
+ultimate-post,block-default,PostX - Gutenberg Post Blocks
+ultimate-post,block-default,Post Grid #3
+ultimate-post,block-default,Post List #1
+ultimate-post,block-default,Post Grid #7
+ultimate-post,block-default,PostX - Gutenberg Post Blocks
+ultimate-post,block-default,Heading
+ultimate-post,block-default,Post List #2
+ultimate-post,block-default,Image
+ultimate-post,block-default,Post Slider #1
+ultimate-post,block-default,Post Grid #1
+ultimate-post,block-default,Post Grid #5
+ultimate-post,block-default,Post Module #1
+ultimate-post,block-default,Post Module #2
+ultimate-post,block-default,Post Grid #6
+ultimate-post,block-default,Post List #4
+ultimate-post,block-default,Post Grid #4
+ultimate-post,block-default,Post List #3
 ultimate-post,block-default,Wrapper
-ultimate-post,block-default,Gutenberg Post Blocks
-ultimate-post,block-default,Gutenberg Post Blocks
-ultimate-post,block-default,Gutenberg Post Blocks
-ultimate-post,block-default,Gutenberg Post Blocks
 wp-user-manager,,,YGIAGAM
 countdown-builder,,,YGIAGAM
 block-gallery,block-default,Block Gallery - Photo Gallery Gutenberg Blocks
@@ -473,8 +476,8 @@ liquid-speech-balloon,block-default,Speech Balloon
 author-avatars,businessman,Avatar Lists,This plugin makes it easy to *display lists of user avatars*, grouped by user roles, on your (multiuser) site. It also allows you to *insert single avatars* for blog users or any email address into a post or page - great for displaying an image of someone you're talking about.
 block-lab,,,YGIAGAM
 embed-pdf-viewer,block-default,Embed PDF Viewer
-mailchimp-wp,block-default,Optin Cat Form
-mailchimp-wp,block-default,Optin Cat Two-Step Optin
+mailchimp-wp,block-default,Forms for Mailchimp by Optin Cat - Grow Your MailChimp List
+mailchimp-wp,block-default,Forms for Mailchimp by Optin Cat - Grow Your MailChimp List
 wpvr,block-default,WP VR - 360 Panorama and Virtual Tour Creator For WordPress
 drop-shadow-boxes,,,YGIAGAM
 qodeblock,block-default,Call To Action
@@ -598,44 +601,46 @@ cp-contact-form-with-paypal,block-default,CP Contact Form with PayPal
 print-my-blog,block-default,Print My Blog
 wd-youtube,,,YGIAGAM
 helpie-faq,block-default,Helpie FAQ - WordPress FAQ Accordion Plugin
-helpie-faq,block-default,Helpie FAQ Block
+helpie-faq,block-default,Helpie FAQ - WordPress FAQ Accordion Plugin
 superb-blocks,block-default,Superb Author Box
 superb-blocks,block-default,Superb Rating Block
 superb-blocks,block-default,Superb Table of Content
 superb-blocks,block-default,superb-blocks/superb-blocks
 premium-blocks-for-gutenberg,,,YGIAGAM
 creative-blocks,,,YGIAGAM
-gutenbee,block-default,GutenBee Button
-gutenbee,block-default,GutenBee Food Menu Item
+gutenbee,block-default,GutenBee Slideshow
+gutenbee,block-default,GutenBee Icon List
+gutenbee,block-default,GutenBee Icon List Item
+gutenbee,block-default,GutenBee Google Maps
+gutenbee,block-default,GutenBee Spacer
+gutenbee,block-default,GutenBee Countup
+gutenbee,block-default,GutenBee Image Box
+gutenbee,block-default,GutenBee Tabs
+gutenbee,block-default,GutenBee Progress Bar
+gutenbee,block-default,GutenBee Paragraph
+gutenbee,block-default,GutenBee Video Embed
+gutenbee,block-default,GutenBee Accordion
+gutenbee,block-default,GutenBee Gallery
 gutenbee,block-default,GutenBee Food Menu Group
 gutenbee,block-default,GutenBee Food Menu
-gutenbee,block-default,GutenBee Image
-gutenbee,block-default,GutenBee Google Maps
-gutenbee,block-default,GutenBee Countup
-gutenbee,block-default,GutenBee Image Comparison
-gutenbee,block-default,GutenBee Image Box
-gutenbee,block-default,GutenBee Progress Bar
-gutenbee,block-default,GutenBee Accordion
-gutenbee,block-default,GutenBee Icon Box
+gutenbee,block-default,GutenBee Food Menu Item
+gutenbee,block-default,GutenBee Heading
 gutenbee,block-default,GutenBee Countdown
-gutenbee,block-default,GutenBee Gallery
+gutenbee,block-default,GutenBee Post Types
 gutenbee,block-default,GutenBee Divider
 gutenbee,block-default,GutenBee Button Group
-gutenbee,block-default,GutenBee Spacer
-gutenbee,block-default,GutenBee Heading
+gutenbee,block-default,GutenBee Banner
+gutenbee,block-default,GutenBee Button
+gutenbee,block-default,GutenBee Icon Box
+gutenbee,block-default,GutenBee Video
+gutenbee,block-default,GutenBee Image Comparison
 gutenbee,block-default,GutenBee Testimonial
-gutenbee,block-default,GutenBee Tabs
-gutenbee,block-default,GutenBee Paragraph
-gutenbee,block-default,GutenBee Post Types
-gutenbee,block-default,GutenBee Video Embed
+gutenbee,block-default,GutenBee Image
+gutenbee,block-default,GutenBee Icon
 gutenbee,block-default,GutenBee Container
 gutenbee,block-default,GutenBee Column
-gutenbee,block-default,GutenBee Icon
-gutenbee,block-default,GutenBee Slideshow
-gutenbee,block-default,GutenBee Video
-gutenbee,block-default,GutenBee Icon List Item
-gutenbee,block-default,GutenBee Icon List
-gutenbee,block-default,GutenBee Banner
+gutenbee,block-default,GutenBee Review Item
+gutenbee,block-default,GutenBee Review
 custom-related-posts,block-default,Custom Related Posts
 custom-related-posts,block-default,Custom Related Posts
 simple-iframe,block-default,Simple Iframe
@@ -656,10 +661,10 @@ wp-fusion-lite,block-default,Inner
 abc-pricing-table,,,YGIAGAM
 newsletter-optin-box,block-default,WordPress Newsletter Plugin - Noptin
 wp-codemirror-block,block-default,CodeMirror Blocks
-calendar-booking,block-default,Classes
 calendar-booking,block-default,Services
-calendar-booking,block-default,Single Service
+calendar-booking,block-default,Classes
 calendar-booking,block-default,Call to Action Button
+calendar-booking,block-default,Single Service
 ebay-feeds-for-wordpress,block-default,WP eBay Product Feed,Embed eBay Feeds from services such as Auction Request into your WordPress blog
 hivepress,,,YGIAGAM
 reusable-blocks-extended,,,YGIAGAM
@@ -755,17 +760,17 @@ gosign-text-with-image-block,block-default,Gosign - Text with Image Block
 countdown-wpdevart-extended,block-default,Countdown and CountUp, WooCommerce Sales Timer
 wp-time-slots-booking-form,block-default,WP Time Slots Booking Form
 gosign-gallery-box-block,block-default,Gosign - Gallery Box
+rsvpmaker,block-default,RSVPMaker
+rsvpmaker,block-default,RSVPMaker
+rsvpmaker,block-default,RSVPMaker
 rsvpmaker,block-default,Limited Time Content (RSVPMaker)
-rsvpmaker,block-default,RSVPMaker
-rsvpmaker,block-default,Stripe Form Wrapper
-rsvpmaker,block-default,RSVPMaker
-rsvpmaker,block-default,RSVPMaker
-rsvpmaker,block-default,RSVPMaker
+rsvpmaker,block-default,RSVPField Text
 rsvpmaker,block-default,RSVPMaker
 rsvpmaker,block-default,RSVPMaker
 rsvpmaker,block-default,RSVPMaker
 rsvpmaker,block-default,RSVPMaker
 rsvpmaker,block-default,RSVPField Guests
+rsvpmaker,block-default,Stripe Form Wrapper
 rsvpmaker,block-default,RSVPMaker
 rsvpmaker,block-default,RSVPMaker
 rsvpmaker,block-default,RSVPMaker
@@ -773,7 +778,8 @@ rsvpmaker,block-default,RSVPMaker
 rsvpmaker,block-default,RSVPMaker Schedule
 rsvpmaker,block-default,RSVPMaker
 rsvpmaker,block-default,RSVPMaker
-mihanpanel-lite,,,YGIAGAM
+rsvpmaker,block-default,RSVPMaker
+mihanpanel-lite,block-default,MihanPanel - User Profile, User Registration, Login & Membership Plugin
 k2-blocks,block-default,Magic Image
 k2-blocks,block-default,Premium Section
 k2-blocks,block-default,Timer
@@ -801,9 +807,9 @@ edd-blocks,block-default,Easy Digital Downloads - Blocks
 maz-loader,block-default,MAZ Loader – Preloader Builder for WordPress
 sell-downloads,block-default,Sell Downloads
 post-layouts,block-default,Post Layouts
-otfm-gutenberg-spoiler,block-default,OtFm Gutenberg Spoiler - (or FAQ) collapse block
-otfm-gutenberg-spoiler,block-default,OtFm Gutenberg Spoiler - (or FAQ) collapse block
-otfm-gutenberg-spoiler,block-default,OtFm Gutenberg Spoiler - (or FAQ) collapse block
+otfm-gutenberg-spoiler,block-default,Little Spoiler
+otfm-gutenberg-spoiler,block-default,Box Spoiler Start
+otfm-gutenberg-spoiler,block-default,Box Spoiler End
 360-video,block-default,360 Video,Add interactive 360° videos to your WordPress website with ease
 we-blocks,block-default,WE - Slider Block
 we-blocks,block-default,WE - Testimonials Block
@@ -825,32 +831,32 @@ sogrid,block-default,Bordered Grid - Sogrid
 sogrid,block-default,Pinterest Masonry - Sogrid
 sogrid,block-default,One & Others - Style 1 - Sogrid
 sogrid,block-default,Pinterest Grid - Sogrid
+wp-toolbelt,block-default,TB Breadcumbs
+wp-toolbelt,block-default,TB Sitemap
+wp-toolbelt,block-default,TB Related Posts
+wp-toolbelt,block-default,TB Post Category
+wp-toolbelt,block-default,TB Markdown
+wp-toolbelt,block-default,TB Gist
+wp-toolbelt,block-default,TB Column
+wp-toolbelt,block-default,TB Layout Grid
+wp-toolbelt,block-default,TB Portfolio
+wp-toolbelt,block-default,Toolbelt
+wp-toolbelt,block-default,Toolbelt
+wp-toolbelt,block-default,Toolbelt
+wp-toolbelt,block-default,Toolbelt
+wp-toolbelt,block-default,Toolbelt
+wp-toolbelt,block-default,Toolbelt
+wp-toolbelt,block-default,Toolbelt
+wp-toolbelt,block-default,Toolbelt
 wp-toolbelt,block-default,Toolbelt
 wp-toolbelt,block-default,Toolbelt
 wp-toolbelt,block-default,Toolbelt
 wp-toolbelt,block-default,Toolbelt
 wp-toolbelt,block-default,Toolbelt
 wp-toolbelt,block-default,TB Slide
-wp-toolbelt,block-default,Toolbelt
-wp-toolbelt,block-default,Toolbelt
-wp-toolbelt,block-default,TB Layout Grid
-wp-toolbelt,block-default,TB Column
-wp-toolbelt,block-default,Toolbelt
-wp-toolbelt,block-default,Toolbelt
-wp-toolbelt,block-default,Toolbelt
-wp-toolbelt,block-default,Toolbelt
-wp-toolbelt,block-default,Toolbelt
-wp-toolbelt,block-default,Toolbelt
-wp-toolbelt,block-default,Toolbelt
-wp-toolbelt,block-default,Toolbelt
-wp-toolbelt,block-default,Toolbelt
-wp-toolbelt,block-default,Toolbelt
-wp-toolbelt,block-default,Toolbelt
-wp-toolbelt,block-default,Toolbelt
-wp-toolbelt,block-default,Toolbelt
-wp-toolbelt,block-default,Toolbelt
-wp-toolbelt,block-default,Toolbelt
-wp-toolbelt,block-default,Toolbelt
+wp-toolbelt,block-default,TB Slider
+wp-toolbelt,block-default,TB Testimonials
+wp-toolbelt,block-default,TB Star Rating
 sticky-block,block-default,Sticky
 cp-polls,block-default,Polls CP
 faq-block,block-default,meow/faq-block
@@ -993,21 +999,21 @@ call-to-action-customizable-block,block-default,Call To Action Block
 multipurpose-block,block-default,Multipurpose Gutenberg Block
 nelio-compare-images,,,YGIAGAM
 gosign-readmore-toggle-text-block,,,YGIAGAM
-lsx-blocks,block-default,LSX Accordion
-lsx-blocks,block-default,LSX Call To Action
-lsx-blocks,block-default,LSX Banner (Hero Image)
+lsx-blocks,block-default,LSX Blocks
+lsx-blocks,block-default,LSX Blocks
+lsx-blocks,block-default,LSX Blocks
+lsx-blocks,block-default,LSX Blocks
 lsx-blocks,block-default,LSX Container
+lsx-blocks,block-default,LSX Accordion
 lsx-blocks,block-default,LSX Button
-lsx-blocks,block-default,LSX Team
-lsx-blocks,block-default,LSX Author Profile Box
 lsx-blocks,block-default,LSX Card Box
-lsx-blocks,block-default,LSX Testimonials
-lsx-blocks,block-default,LSX Post Grid
-lsx-blocks,block-default,LSX Post Carousel
+lsx-blocks,block-default,LSX Author Profile Box
+lsx-blocks,block-default,LSX Call To Action
 lsx-blocks,block-default,LSX Divider
+lsx-blocks,block-default,LSX Banner (Hero Image)
 gosign-advanced-separator-block,block-default,Gosign - Advanced Separator Block
 abcsubmit,block-default,Easy to use Drag and Drop Form Builder - Pop-Up Forms - Workflow Management
-block-for-woo-product-table,block-default,Gutenberg Block for WooCommerce Product Table
+block-for-woo-product-table,block-default,WooCommerce Product Table
 countdown-timer-block,block-default,Countdown Timer for WordPress Block Editor
 hayyabuild,block-default,HayyaBuild - The Most Advanced Gutenberg Blocks
 hayyabuild,block-default,HayyaBuild - The Most Advanced Gutenberg Blocks
@@ -1216,7 +1222,7 @@ recent-posts-block,block-default,Recent Posts block
 pricing-tables-block,block-default,Pricing Table
 double-image,,,YGIAGAM
 fd-buttons-gutenberg,,,YGIAGAM
-shortcode-with-preview-block,,,YGIAGAM
+shortcode-with-preview-block,shortcode,Shortcode Preview,Shows preview of any shortcode on editor side. It renders shortcode in the editor side so editor does not need to visit front side.
 social-media-block,,,YGIAGAM
 gosign-vimeo-video-player-block,,,YGIAGAM
 gosign-post-teaser-block,block-default,Gosign - Post Teaser Block
@@ -1312,8 +1318,8 @@ blocks-post-grid,block-default,blocks-post-grid/postgrid
 blocks-post-grid,block-default,blocks-post-grid/postlist
 gecko-section,block-default,gecko/section
 rsvpmaker-for-toastmasters,block-default,RSVPMaker for Toastmasters
-rsvpmaker-for-toastmasters,block-default,RSVPMaker for Toastmasters
 rsvpmaker-for-toastmasters,block-default,Agenda Layout Wrapper
+rsvpmaker-for-toastmasters,block-default,RSVPMaker for Toastmasters
 rsvpmaker-for-toastmasters,block-default,RSVPMaker for Toastmasters
 rsvpmaker-for-toastmasters,block-default,RSVPMaker for Toastmasters
 rsvpmaker-for-toastmasters,block-default,RSVPMaker for Toastmasters

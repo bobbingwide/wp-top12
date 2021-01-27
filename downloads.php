@@ -23,7 +23,7 @@ oik_require_lib( 'oik-blocks');
 
 oik_require( "libs/class-wp-org-downloads.php", "wp-top12" );
 oik_require( "libs/class-object-sorter.php", "wp-top12" );
-oik_require( "libs/class-object.php", "wp-top12" );
+oik_require( "libs/class-object-base.php", "wp-top12" );
 oik_require( "libs/class-object-grouper.php", "wp-top12" );
 oik_require( 'libs/class-csv-merger.php', 'wp-top12');
 
