@@ -677,9 +677,11 @@ class WP_org_downloads {
 		$this->preselect( "Chart,Graph,Backup,SEO,Security,Shortcode,Tooltip,User,Map,Slideshow,Audio,Pop,Chat,Contact,Commerce,Advert,Learning" );
 
 		$this->preselect( "block,SEO,shortcode,security,backup");
+		$grouper->reset();
 		$grouper->groupby( "name", array( $this, "preselected" ) );
 		$grouper->ksort();
 		$grouper->report_groups();
+		$grouper->reset();
 		$grouper->groupby( "downloads", array( $this, "tentothe" ) );
 		$grouper->ksort();
 		//$grouper->report_groups();
@@ -690,19 +692,20 @@ class WP_org_downloads {
 	//	$this->report_groups( $grouper );
 
 		$grouper->subset( array( $this, "year" ) );
+		$grouper->reset();
 		$grouper->groupby( "last_updated" );
 		$grouper->krsort();
 		$grouper->report_groups();
 		$this->block_writer( 'heading', null, '<h2>Last updated</h2>');
 		$this->chart_groups( $grouper, 'bar', 'Year,Count', 'Visualizer' );
-
+		$grouper->reset();
 		$grouper->groupby( "requires", array( $this, "versionify" ) );
 		$grouper->ksort();
 		$grouper->report_groups();
 
 		$merger = new CSV_merger();
 		$merger->append( $grouper->groups );
-
+		$grouper->reset();
 		$grouper->groupby( "tested", array( $this, "versionify" ) );
 		$grouper->ksort();
 		$grouper->report_groups();
@@ -716,7 +719,7 @@ class WP_org_downloads {
 	//	$this->report_groups( $merger );
 
 
-
+		$grouper->reset();
 		$grouper->groupby( "rating", array( $this, "stars" ) );
 		$grouper->krsort();
 		$grouper->report_groups();
@@ -724,7 +727,7 @@ class WP_org_downloads {
 	//	$this->report_groups( $grouper );
 		$this->chart_groups( $grouper, 'pie', 'Stars,# plugins' );
 
-
+		$grouper->reset();
 		$grouper->groupby( "name", array( $this, "firstletter" ) );
 		$grouper->ksort();
 		$grouper->report_groups();
@@ -732,6 +735,7 @@ class WP_org_downloads {
 		//$grouper->groupby( "slug", array( $this, "firstletter" ) );
 		//$grouper->ksort();
 		//$grouper->report_groups();
+		$grouper->reset();
 		$grouper->groupby( "name", array( $this, "words" ) );
 		$grouper->arsort();
 		$grouper->report_groups();
