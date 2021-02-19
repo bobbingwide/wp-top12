@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites>
+  <testsuite name="" tests="9" assertions="10" errors="0" warnings="0" failures="0" skipped="0" time="0.175143">
+    <testsuite name="wp-top12" tests="9" assertions="10" errors="0" warnings="0" failures="0" skipped="0" time="0.175143">
+      <testsuite name="Tests_list_block_plugins" file="C:\apache\htdocs\wordpress\wp-content\plugins\wp-top12\tests\test-list-block-plugins.php" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="0.083777">
+        <testcase name="test_something_then" class="Tests_list_block_plugins" classname="Tests_list_block_plugins" file="C:\apache\htdocs\wordpress\wp-content\plugins\wp-top12\tests\test-list-block-plugins.php" line="63" assertions="1" time="0.083777"/>
+      </testsuite>
+      <testsuite name="Tests_query_plugins_blocks" file="C:\apache\htdocs\wordpress\wp-content\plugins\wp-top12\tests\test-query-plugins-blocks.php" tests="1" assertions="1" errors="0" warnings="0" failures="0" skipped="0" time="0.029134">
+        <testcase name="test_fetch_between" class="Tests_query_plugins_blocks" classname="Tests_query_plugins_blocks" file="C:\apache\htdocs\wordpress\wp-content\plugins\wp-top12\tests\test-query-plugins-blocks.php" line="150" assertions="1" time="0.029134"/>
+      </testsuite>
+      <testsuite name="Tests_translate" file="C:\apache\htdocs\wordpress\wp-content\plugins\wp-top12\tests\test-translate.php" tests="7" assertions="8" errors="0" warnings="0" failures="0" skipped="0" time="0.062232">
+        <testcase name="test_locale" class="Tests_translate" classname="Tests_translate" file="C:\apache\htdocs\wordpress\wp-content\plugins\wp-top12\tests\test-translate.php" line="24" assertions="2" time="0.003395"/>
+        <testcase name="test_translate_null_default" class="Tests_translate" classname="Tests_translate" file="C:\apache\htdocs\wordpress\wp-content\plugins\wp-top12\tests\test-translate.php" line="35" assertions="1" time="0.003428"/>
+        <testcase name="test_translate_null_not_default" class="Tests_translate" classname="Tests_translate" file="C:\apache\htdocs\wordpress\wp-content\plugins\wp-top12\tests\test-translate.php" line="49" assertions="1" time="0.017586"/>
+        <testcase name="test_translate_null_string_not_default" class="Tests_translate" classname="Tests_translate" file="C:\apache\htdocs\wordpress\wp-content\plugins\wp-top12\tests\test-translate.php" line="59" assertions="1" time="0.005438"/>
+        <testcase name="test_translate_blank_string_not_default" class="Tests_translate" classname="Tests_translate" file="C:\apache\htdocs\wordpress\wp-content\plugins\wp-top12\tests\test-translate.php" line="65" assertions="1" time="0.024605"/>
+        <testcase name="test_translate_zero_not_default" class="Tests_translate" classname="Tests_translate" file="C:\apache\htdocs\wordpress\wp-content\plugins\wp-top12\tests\test-translate.php" line="71" assertions="1" time="0.003884"/>
+        <testcase name="test_translate_one_not_default" class="Tests_translate" classname="Tests_translate" file="C:\apache\htdocs\wordpress\wp-content\plugins\wp-top12\tests\test-translate.php" line="78" assertions="1" time="0.003896"/>
+      </testsuite>
+    </testsuite>
+  </testsuite>
+</testsuites>
