@@ -232,7 +232,7 @@ class WP_org_downloads {
 	 */
 	function load_plugins( $page ) {
 		$file = $this->wporg_saved_plugins_v2 . $page . '.json';
-		//echo "Loading file: $file " . PHP_EOL;
+		echo "Loading file: $file " . PHP_EOL;
 		$loaded = file_exists( $file );
 		if ( $loaded ) {
 			$plugins_string = file_get_contents( $file );
