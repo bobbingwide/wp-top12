@@ -27,6 +27,8 @@ oik_require( "libs/class-object-base.php", "wp-top12" );
 oik_require( "libs/class-object-grouper.php", "wp-top12" );
 oik_require( 'libs/class-csv-merger.php', 'wp-top12');
 
+oik_require( 'libs/class-wp-org-downloads-themes.php', 'wp-top12');
+
 
 /**
  * Usage suggestions:
@@ -63,6 +65,14 @@ switch ( $process ) {
 
 	case 'rb':
 		report_blocks();
+		break;
+
+	case 'themes':
+		downloads_themes();
+		break;
+
+	case 'fse':
+		fse_theme_reports();
 		break;
 
 	default:
@@ -182,4 +192,17 @@ function get_plugin_stats( $plugin_slug ) {
 	gobang();
 }
 
+/**
+ * Lists all FSE and bundled themes on wordpress.org
+ *
+ */
+function downloads_themes() {
+	$wpodt = new WP_org_downloads_themes();
+	$wpodt->query_all_themes();
+	$wpodt->query_bundled_themes();
+}
 
+function fse_theme_reports() {
+	$wpodt = new WP_org_downloads_themes();
+	$wpodt->fse_theme_reports();
+}

@@ -8,3 +8,4 @@ wp-plugins-blocks-*
 .phpunit.result.cache
 cache_v2/
 node_modules/
+cache_t2/
