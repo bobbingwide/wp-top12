@@ -68,6 +68,7 @@ switch ( $process ) {
 		break;
 
 	case 'themes':
+	case 't2':
 		downloads_themes();
 		break;
 

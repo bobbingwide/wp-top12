@@ -100,6 +100,7 @@ class WP_org_downloads_themes {
 	 *
 	 */
 	function get_download( $theme_slug ) {
+		oik_require( 'includes/themes_api_v10.php', 'wp-top12');
 		/*
 		$url  = 'https://wordpress.org/themes/wp-json/wp/v2/theme/';
 		$url .= '?slug=';
@@ -240,7 +241,8 @@ class WP_org_downloads_themes {
 		$string = json_encode( $info );
 		//print_r( $this->themes);
 		$file = $this->wporg_saved_themes_v2 . $slug . '.json';
-		$saved = file_put_contents( $file, $string );
+		$path = oik_path( $file, 'wp-top12');
+		$saved = file_put_contents( $path, $string );
 
 	}
 
@@ -269,7 +271,7 @@ class WP_org_downloads_themes {
 	 */
 	function load_themes( $file ) {
 		$parts = explode( '.', $file);
-		print_r( $parts );
+		//print_r( $parts );
 		if ( is_numeric( $parts[ 2] )) {
 			return;
 		}
@@ -305,8 +307,10 @@ class WP_org_downloads_themes {
 	 * - WordPress default / bundled themes ie TwentySomething themes.
 	 */
 	function load_all_themes() {
-		$files = glob( $this->wporg_saved_themes_v2 . '*' );
-		//print_r( $files );
+		$path = oik_path( $this->wporg_saved_themes_v2 . '*', 'wp-top12');
+		$files = glob( $path );
+		echo "Loaded files for : " . $this->wporg_saved_themes_v2;
+		print_r( $files );
 
 		foreach ( $files as $file ) {
 			$loaded = $this->load_themes( $file );
@@ -317,8 +321,8 @@ class WP_org_downloads_themes {
 	 * Adds the current theme to the total list.
 	 */
 	function add_theme( $theme ) {
-		print_r( $theme );
-		$this->themes[] = $theme;
+		//print_r( $theme );
+		$this->themes[ $theme->slug ] = $theme;
 	}
 
 
@@ -468,11 +472,17 @@ class WP_org_downloads_themes {
 		}
 	}
 
+	/**
+	 * Returns the cached theme info for the chosen theme.
+	 *
+	 * @param string $theme The theme's slug eg twentytwentytwo
+	 * @return mixed|null
+	 */
 	function get_theme( $theme ) {
-		$theme = bw_array_get( $this->themes, $theme, null );
-		print_r( $theme );
-		gob();
-		return $theme;
+		//print_r( $this->themes );
+		$theme_info = bw_array_get( $this->themes, $theme, null );
+		//print_r( $theme_info );
+		return $theme_info;
 	}
 
 	/**
