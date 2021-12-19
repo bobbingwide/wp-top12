@@ -1,11 +1,11 @@
 # wp-top12 
-![banner](https://raw.githubusercontent.com/bobbingwide/wp-top12/master/assets/wp-top12-banner-772x250.jpg)
+![banner](assets/wp-top12-banner-772x250.jpg)
 * Contributors: bobbingwide, vsgloik
 * Donate link: https://www.oik-plugins.com/oik/oik-donate/
 * Tags: shortcodes, smart, lazy
 * Requires at least: 5.2
-* Tested up to: 5.6
-* Stable tag: 1.1.1
+* Tested up to: 5.9-beta3
+* Stable tag: 1.2.0
 * License: GPLv2 or later
 * License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -88,6 +88,9 @@ There may be an admin interface, but unlikely to be a front-end.
 1. wp-top12 in action - no not really
 
 ## Upgrade Notice 
+# 1.2.0 
+Upgrade for logic to extract information for selected themes.
+
 # 1.1.1 
 Removed some unnecessary files after cloning to slog-bloat.
 
@@ -120,6 +123,15 @@ Now supports initial analysis by IP address
 New sample plugin, available from GitHub
 
 ## Changelog 
+# 1.2.0 
+* Added: Add logic to extract information for selected themes #17
+* Changed: Updated wporg_plugins.csv each month
+* Changed: Enable the echo for the  'Loading file:' message
+* Deleted: Delete the working directory -now in slog-bloat
+* Changed: Update tests for PHP 8 with PHPUnit 9
+* Fixed: Call reset() before groupby() #14
+* Changed: Implement changes required in slog-bloat #14
+
 # 1.1.1 
 * Changed: wporg_plugins.csv 2021/01/21 12:00 5000078534 downloads, 58370 plugins
 * Deleted: Remove cache and working directories, https://github.com/bobbingwide/wp-top12/issues/14
