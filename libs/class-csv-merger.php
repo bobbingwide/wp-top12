@@ -2,7 +2,7 @@
 
 /**
  * @copyright (C) Copyright Bobbing Wide 2015-2021
- * @package wp-top12 / slog-bloat
+ * @package wp-top12 / slog
  * CSV_merger
  *
  * Allows you to merge multiple associative arrays
@@ -54,6 +54,7 @@ class CSV_merger {
 	 */
 	function append_csv( $csv ) {
 		$csv = trim( $csv );
+		$csv = str_replace( "\r\n", "\n", $csv );
 		$lines = explode( "\n",$csv );
 		$appendages = [];
 		$heading = array_shift( $lines );
