@@ -2,7 +2,7 @@
 /**
  * Information about all plugins on WordPress.org.
  *
- * @copyright (C) Copyright Bobbing Wide 2015-2021
+ * @copyright (C) Copyright Bobbing Wide 2015-2022
  * @package wp-top12
  */
 
@@ -802,11 +802,11 @@ class WP_org_downloads {
 	 * Other
 	 * 0.70 to 2.9
 	 * 3.0 to 3.9
-	 * 4.0
-	 * 4.1
-	 * 4.2
-	 * 4.3
-	 * 4.4
+	 * 4.0 to 4.9
+	 * 5.0 through 6.0
+	 * Other+ for > 6.0
+	 * Other for non-numeric
+	 *
 	 */
 	function versionify( $version ) {
 		$ver3 = $this->npointm( $version );
@@ -816,8 +816,8 @@ class WP_org_downloads {
 			} elseif ( $ver3 <= 3.9 ) {
 				$ver = "3.0 to 3.9";
 			} elseif ( $ver3 <= 4.9 ) {
-				$ver = "4.0 to 4.9";
-			} elseif ( $ver3 > 5.9 )	{
+				$ver="4.0 to 4.9";
+			} elseif ( $ver3 > 6.0 )	{
 				$ver = "Other+" ;
 			} else {
 				$ver = $ver3;
