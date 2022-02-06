@@ -116,6 +116,7 @@ class CSV_merger {
 	}
 
 	function report_accum() {
+		//echo "Reporting accum";
 		$output = $this->report_csv( $this->accum );
 		return $output;
 	}
@@ -170,9 +171,13 @@ class CSV_merger {
 		return( $accum );
 	}
 
-	function report_groups() {
+	function report_groups( $accum=false) {
 		//echo "Version,Requires,Tested\n";
-		$this->report();
+		if ( $accum ) {
+			$this->report_accum();
+		} else {
+			$this->report();
+		}
 	}
 
 

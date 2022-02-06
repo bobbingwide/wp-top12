@@ -27,6 +27,8 @@ class WP_org_downloads_themes {
 	 */
 	public $themes;
 
+	public $fse_themes;
+
 	public $csv;
 
 	public $downloaded;
@@ -309,8 +311,8 @@ class WP_org_downloads_themes {
 	function load_all_themes() {
 		$path = oik_path( $this->wporg_saved_themes_v2 . '*', 'wp-top12');
 		$files = glob( $path );
-		echo "Loaded files for : " . $this->wporg_saved_themes_v2;
-		print_r( $files );
+		//echo "Loaded files for : " . $this->wporg_saved_themes_v2;
+		//print_r( $files );
 
 		foreach ( $files as $file ) {
 			$loaded = $this->load_themes( $file );
@@ -359,7 +361,9 @@ class WP_org_downloads_themes {
 
 	function reset() {
 		unset( $this->themes );
+		unset( $this->fse_themes );
 		$this->themes = array();
+		$this->fse_themes = array();
 	}
 
 	/**
@@ -696,36 +700,63 @@ class WP_org_downloads_themes {
 	function count_things() {
 		$grouper = new Object_Grouper();
 
-		echo "Grouping: " . count( $this->themes ) . PHP_EOL;
-		$grouper->populate( $this->themes );
+		$this->fse_themes = $this->get_fse_themes();
 
-		/**
-		 * Graph, Chart, Backup, SEO, Security, Shortcode, Tooltip, User, Map, Slideshow, Audio, Pop, Chat, Contact, commerce, Ad, Learning
-		 */
-		$this->preselect( "Chart,Graph,Backup,SEO,Security,Shortcode,Tooltip,User,Map,Slideshow,Audio,Pop,Chat,Contact,Commerce,Advert,Learning" );
+		echo "Grouping: " . count( $this->fse_themes ) . PHP_EOL;
+		$grouper->populate( $this->fse_themes );
 
-		$this->preselect( "block,SEO,shortcode,security,backup");
+		$this->block_writer( 'heading', null, '<h2>Total downloads: ' . number_format_i18n( $this->downloaded ) . '</h2>' );
+		$this->block_writer( 'paragraph', null, '<p>FSE themes: ' . count( $this->fse_themes ) . '</p>' );
+
+		//$this->report_grouped_by_total_downloads();
+		$this->top1000( null );
+		$this->report_top1000( 100 );
+
 		$grouper->reset();
-		$grouper->groupby( "name", array( $this, "preselected" ) );
-		$grouper->ksort();
-		$grouper->report_groups();
-		$grouper->reset();
-		$grouper->groupby( "downloads", array( $this, "tentothe" ) );
+		$grouper->groupby( "downloaded", array( $this, "tentothe" ) );
 		$grouper->ksort();
 		//$grouper->report_groups();
 
 		$this->block_writer( 'heading', null, '<h2>Grouped by total downloads</h2>');
 
 		$this->chart_groups( $grouper, 'bar', 'Downloads,Count');
-		//	$this->report_groups( $grouper );
+		//$this->report_groups( $grouper );
 
-		$grouper->subset( array( $this, "year" ) );
+		//$this->echo_content();
+
+		$grouper->subset( array( $this, "month" ) );
+
+		$grouper->reset();
+		$grouper->groupby( "creation_time" );
+		$grouper->ksort();
+		$grouper->report_groups();
+
+		$merger = new CSV_merger();
+		$merger->append( $grouper->groups );
+		$merger->accum();
+		//$merger->report_accum();
+
+		//$accum = $merger->accum;
+		//$grouper->reset();
+		//$grouper->populate( $accum );
+
+		$this->block_writer( 'heading', null, '<h2>FSE theme count</h2>');
+		$this->chart_groups( $merger, 'bar', 'Month,Total', 'Visualizer', true );
+
 		$grouper->reset();
 		$grouper->groupby( "last_updated" );
-		$grouper->krsort();
+		$grouper->ksort();
 		$grouper->report_groups();
-		$this->block_writer( 'heading', null, '<h2>Last updated</h2>');
-		$this->chart_groups( $grouper, 'bar', 'Year,Count', 'Visualizer' );
+		$merger->append( $grouper->groups);
+
+
+		$this->block_writer( 'heading', null, '<h2>Last updated / created</h2>');
+		$this->chart_groups( $merger, 'bar', 'Month,Created,Updated', 'Visualizer' );
+
+		$this->echo_content();
+
+		echo "Ending here" . PHP_EOL;
+		return;
 		$grouper->reset();
 		$grouper->groupby( "requires", array( $this, "versionify" ) );
 		$grouper->ksort();
@@ -773,22 +804,20 @@ class WP_org_downloads_themes {
 
 	}
 
-	function list_block_themes() {
-		$block_themes = array();
+	/**
+	 * Filters FSE themes.
+	 *
+	 * @return array
+	 */
+	function get_fse_themes() {
+		$fse_themes = array();
 		foreach ( $this->themes as $key => $theme ) {
-			echo $key . PHP_EOL;
-			print_r( $theme );
-			//if ( $theme->keyword)
-			gob();
-
+			if ( property_exists( $theme->tags, 'full-site-editing')) {
+				$fse_themes[ $key ] = $theme;
+				$this->downloaded( $theme->downloaded );
+			}
 		}
-
-		$grouper = new Object_Grouper();
-		echo "Grouping: " . count( $this->themes ) . PHP_EOL;
-		$grouper->populate( $this->themes );
-		$this->preselect( "block,blocks");
-		$grouper->groupby( "keyword", array( $this, "preselected_keyword" ) );
-		$grouper->report_groups();
+		return $fse_themes;
 	}
 
 	function preselected_keyword( $value ) {
@@ -890,6 +919,14 @@ class WP_org_downloads_themes {
 		return( substr( $date, 0, 4 ) );
 	}
 
+	function month( $date ) {
+		$year = substr( $date, 0, 4 );
+		if ( $year < 2021) {
+			return( "2020-12");
+		}
+		return( substr( $date, 0, 7 ) );
+	}
+
 
 	function tentothe( $value ) {
 		$value = strlen( $value );
@@ -947,11 +984,11 @@ class WP_org_downloads_themes {
 	function sort_by_most_downloaded( $limit=1000) {
 		$sorter = new Object_Sorter();
 		if ( null == $limit) {
-			$limit = count( $this->themes );
+			$limit = count( $this->fse_themes );
 
 		}
-		echo "Sorting: " . count( $this->themes ) . PHP_EOL;
-		$sorted = $sorter->sortby( $this->themes, "downloads", "desc" );
+		echo "Sorting: " . count( $this->fse_themes ) . PHP_EOL;
+		$sorted = $sorter->sortby( $this->fse_themes, "downloaded", "desc" );
 
 		$top1000 = $sorter->results( $limit );
 		return $top1000;
@@ -970,6 +1007,7 @@ class WP_org_downloads_themes {
 	 *
 	 */
 	function top1000( $limit=null ) {
+
 		$top1000 = $this->sort_by_most_downloaded( $limit );
 		//echo $this->csv;
 		//$this->report_top1000( $top1000 );
@@ -978,7 +1016,7 @@ class WP_org_downloads_themes {
 		// $top1000 = $sorter->resort( "slug", "asc" );
 		// $this->report_top1000( $top1000 );
 
-		$this->themes = $top1000;
+		$this->fse_themes = $top1000;
 
 	}
 
@@ -991,14 +1029,15 @@ class WP_org_downloads_themes {
 	 * And automatically create the column headings based on the given field names
 	 *
 	 */
-	function report_top1000( $limit=1000 ) {
-		echo 'Displaying: ' . $limit . ' of ' . count( $this->themes ) . PHP_EOL;
-		$limit = min( $limit, count( $this->themes ) );
-		$top12 = "Position|theme|Total downloads\n";
+	function report_top1000( $limit=1000, $topn=50 ) {
+		echo 'Displaying: ' . $limit . ' of ' . count( $this->fse_themes ) . PHP_EOL;
+		$limit = min( $limit, count( $this->fse_themes ) );
+		$top12 = "Position|Theme|Total downloads|Created\n";
 		$top12 = null;
 		$top12chart = null;
+
 		for ( $index = 0; $index < $limit ; $index++ ) {
-			$theme = $this->themes[ $index ];
+			$theme = $this->fse_themes[ $index ];
 			$theme = (object) $theme;
 			$line   = $index + 1;
 			$line  .= '|';
@@ -1008,28 +1047,28 @@ class WP_org_downloads_themes {
 			$line  .= $theme->slug;
 			$line  .= '</a>';
 			$line  .= '|';
-			$line  .= number_format_i18n( $theme->meta->downloads );
+			$line  .= number_format_i18n( $theme->downloaded );
+			$line  .= '|';
+			$line  .= substr( $theme->creation_time, 0, 7 );
 			$line  .= "\n";
 			echo $line;
-			if ( $index < 12 ) {
+			if ( $index < $topn ) {
 				$top12 = $line . $top12;
 			}
 
-			if ( $index < 12 ) {
+			if ( $index < $topn ) {
 				$line = "\n";
 				$line .=$theme->slug;
 				$line .=',';
-				$line .=$theme->meta->downloads / 1000000;
-				$line .= ',';
-				$line .= $theme->meta->active_installs / 1000000;
+				$line .=$theme->downloaded / 1000;
 				$top12chart.=$line;
 			}
 		}
-		$this->block_writer( 'heading', null, '<h2>Top 12 themes - total downloads and active</h2>' );
+		$this->block_writer( 'heading', null, "<h2>Top $topn themes - total downloads</h2>" );
 
-		$top12chart = "themes,Downloads (M),Active (M)" . $top12chart;
+		$top12chart = "Theme,Downloads (K)" . $top12chart;
 		$this->chart_writer( 'bar', $top12chart, 'Visualizer' );
-		$top12 = "Position|theme|Total downloads\n" . $top12;
+		$top12 = "Position|Theme|Total downloads|Created\n" . $top12;
 		$atts = [ 'content' => $top12 ];
 		$this->block_writer( 'oik-bbw/csv', $atts, null );
 	}
@@ -1065,53 +1104,48 @@ class WP_org_downloads_themes {
 
 
 	/**
-	 * This is what a theme Object contains
-	C:\apache\htdocs\wordpress\wp-content\themes\play\class-object-grouper.php(69:32) Object_Grouper::group(1) 378 2015-12-11T11:55:15+00:00 2.697747 0.149402 cf! 10 0 51883376/52066064 F=450 1 stdClass Object
-	(
-	[name] => Responsive WordPress Slider - Soliloquy Lite
-	[slug] => soliloquy-lite
-	[version] => 2.4.0.5
-	[author] => <a href="http://thomasgriffinmedia.com">Thomas Griffin</a>
-	[author_profile] => //profiles.wordpress.org/griffinjt
-	[contributors] => Array
-	(
-	[griffinjt] => //profiles.wordpress.org/griffinjt
-	)
-
-	[requires] => 3.5.1
-	[tested] => 4.3.1
-	[compatibility] => Array
-	(
-	[4.3.1] => Array
-	(
-	[2.4.0.4] => Array
-	(
-	[0] => 100
-	[1] => 1
-	[2] => 1
-	)
-
-	)
-
-	)
-
-	[rating] => 70
-	[num_ratings] => 104
-	[ratings] => Array
-	(
-	[5] => 60
-	[4] => 2
-	[3] => 7
-	[2] => 5
-	[1] => 30
-	)
-
-	[downloaded] => 788949
-	[last_updated] => 2015-12-10 7:39pm GMT
-	[homepage] => http://soliloquywp.com
-	[short_description] => The best responsive WordPress slider theme. Made lite and free.
-	)
-
+	 * {
+	"name": "Twenty Twenty-Two",
+	"slug": "twentytwentytwo",
+	"version": "1.0",
+	"preview_url": "https:\/\/wp-themes.com\/twentytwentytwo\/",
+	"author": {
+	"user_nicename": "wordpressdotorg",
+	"profile": "https:\/\/profiles.wordpress.org\/wordpressdotorg\/",
+	"avatar": "https:\/\/secure.gravatar.com\/avatar\/61ee2579b8905e62b4b4045bdc92c11a?s=96&d=monsterid&r=g",
+	"display_name": "WordPress.org",
+	"author": "the WordPress team",
+	"author_url": "https:\/\/wordpress.org\/"
+	},
+	"screenshot_url": "\/\/ts.w.org\/wp-content\/themes\/twentytwentytwo\/screenshot.png?ver=1.0",
+	"rating": 82,
+	"num_ratings": 8,
+	"reviews_url": "https:\/\/wordpress.org\/support\/theme\/twentytwentytwo\/reviews\/",
+	"downloaded": 5318,
+	"last_updated": "2022-01-25",
+	"last_updated_time": "2022-01-25 22:25:39",
+	"creation_time": "2022-01-25 22:25:39",
+	"homepage": "https:\/\/wordpress.org\/themes\/twentytwentytwo\/",
+	"sections": {
+	"description": "Built on a solidly designed foundation, Twenty Twenty-Two embraces the idea that everyone deserves a truly unique website. The theme\u2019s subtle styles are inspired by the diversity and versatility of birds: its typography is lightweight yet strong, its color palette is drawn from nature, and its layout elements sit gently on the page. The true richness of Twenty Twenty-Two lies in its opportunity for customization. The theme is built to take advantage of the Full Site Editing features introduced in WordPress 5.9, which means that colors, typography, and the layout of every single page on your site can be customized to suit your vision. It also includes dozens of block patterns, opening the door to a wide range of professionally designed layouts in just a few clicks. Whether you\u2019re building a single-page website, a blog, a business website, or a portfolio, Twenty Twenty-Two will help you create a site that is uniquely yours."
+	},
+	"download_link": "https:\/\/downloads.wordpress.org\/theme\/twentytwentytwo.1.0.zip",
+	"tags": {
+	"block-patterns": "Block Editor Patterns",
+	"custom-colors": "Custom Colors",
+	"custom-logo": "Custom Logo",
+	"custom-menu": "Custom Menu",
+	"editor-style": "Editor Style",
+	"featured-images": "Featured Images",
+	"full-site-editing": "Full Site Editing",
+	"one-column": "One Column",
+	"rtl-language-support": "RTL Language Support",
+	"sticky-post": "Sticky Post",
+	"threaded-comments": "Threaded Comments"
+	},
+	"requires": "5.9",
+	"requires_php": "5.6"
+	}
 
 	 */
 
@@ -1158,11 +1192,12 @@ class WP_org_downloads_themes {
 	 * @param $type
 	 * @param $heading
 	 * @param null $theme
+	 * @param false $accum
 	 */
 
-	function chart_groups( $grouper, $type, $heading, $theme=null ) {
+	function chart_groups( $grouper, $type, $heading, $theme=null, $accum=false ) {
 		ob_start();
-		$grouper->report_groups();
+		$grouper->report_groups( $accum );
 		$output = ob_get_clean();
 		//$atts = [ 'content' => $output ];
 		$output = rtrim( $output );
@@ -1174,20 +1209,30 @@ class WP_org_downloads_themes {
 
 	function echo_content() {
 		echo $this->content;
+		$this->content = null;
 	}
 
 	function fse_theme_reports() {
 		$this->load_all_themes();
 		$this->report_downloaded();
+		//$this->report_created();
 
 	}
 
 	function report_downloaded() {
-		foreach ( $this->themes as $key => $theme ) {
+		foreach ( $this->fse_themes as $key => $theme ) {
 			echo $theme->slug;
 			echo ',';
 			echo $theme->downloaded;
+			echo ',';
+			echo $theme->creation_time;
 			echo PHP_EOL;
+		}
+	}
+
+	function report_created() {
+		foreach ( $this->themes as $key => $theme ) {
+
 		}
 	}
 
