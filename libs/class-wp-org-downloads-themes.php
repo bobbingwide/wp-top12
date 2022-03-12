@@ -324,7 +324,12 @@ class WP_org_downloads_themes {
 	 */
 	function add_theme( $theme ) {
 		//print_r( $theme );
-		$this->themes[ $theme->slug ] = $theme;
+		if ( $theme && property_exists( $theme, 'slug') ){
+			$this->themes[ $theme->slug ]=$theme;
+		} else {
+			print_r( $theme);
+
+		}
 	}
 
 
