@@ -721,10 +721,14 @@ class WP_org_downloads_themes {
 		$grouper->groupby( "downloaded", array( $this, "tentothe" ) );
 		$grouper->ksort();
 		//$grouper->report_groups();
+		$this->columns_start();
+		$this->column_start('33.34%');
 
-		$this->block_writer( 'heading', null, '<h2>Grouped by total downloads</h2>');
+		$this->block_writer( 'heading', null, '<h2 id="grouped-by-total-downloads">Grouped by total downloads</h2>');
 
-		$this->chart_groups( $grouper, 'bar', 'Downloads,Count');
+		$this->chart_groups( $grouper, 'bar', 'Downloads,Count', null, false,250);
+		$this->column_end();
+
 		//$this->report_groups( $grouper );
 
 		//$this->echo_content();
@@ -744,9 +748,11 @@ class WP_org_downloads_themes {
 		//$accum = $merger->accum;
 		//$grouper->reset();
 		//$grouper->populate( $accum );
+		$this->column_start('33.34%');
 
-		$this->block_writer( 'heading', null, '<h2>FSE theme count</h2>');
-		$this->chart_groups( $merger, 'bar', 'Month,Total', 'Visualizer', true );
+		$this->block_writer( 'heading', null, '<h2 id="fse-theme-count">FSE theme count</h2>');
+		$this->chart_groups( $merger, 'bar', 'Month,Total', 'Visualizer', true, 250 );
+		$this->column_end();
 
 		$grouper->reset();
 		$grouper->groupby( "last_updated" );
@@ -754,14 +760,16 @@ class WP_org_downloads_themes {
 		$grouper->report_groups();
 		$merger->append( $grouper->groups);
 
-
-		$this->block_writer( 'heading', null, '<h2>Last updated / created</h2>');
-		$this->chart_groups( $merger, 'bar', 'Month,Created,Updated', 'Visualizer' );
-
+		$this->column_start('33.33%');
+		$this->block_writer( 'heading', null, '<h2 id="last-updated-created">Last updated / created</h2>');
+		$this->chart_groups( $merger, 'bar', 'Month,Created,Updated', 'Visualizer', false, 250 );
+		$this->column_end();
+		$this->columns_end();
 		$this->echo_content();
 
 		echo "Ending here" . PHP_EOL;
 		return;
+		// Notice the return above this code!
 		$grouper->reset();
 		$grouper->groupby( "requires", array( $this, "versionify" ) );
 		$grouper->ksort();
@@ -779,7 +787,7 @@ class WP_org_downloads_themes {
 
 		$this->block_writer( 'heading', null, '<h2>WordPress version compatibility</h2>');
 		//echo "Merged report:" . PHP_EOL;
-		$this->chart_groups( $merger, 'bar', 'Version,Requires,Tested');
+		$this->chart_groups( $merger, 'bar', 'Version,Requires,Tested', false,250);
 		//	$this->report_groups( $merger );
 
 
@@ -787,9 +795,10 @@ class WP_org_downloads_themes {
 		$grouper->groupby( "rating", array( $this, "stars" ) );
 		$grouper->krsort();
 		$grouper->report_groups();
+
 		$this->block_writer( 'heading', null, '<h2>Star ratings</h2>');
 		//	$this->report_groups( $grouper );
-		$this->chart_groups( $grouper, 'pie', 'Stars,# themes' );
+		$this->chart_groups( $grouper, 'pie', 'Stars,# themes', false,250 );
 
 		$grouper->reset();
 		$grouper->groupby( "name", array( $this, "firstletter" ) );
@@ -805,8 +814,6 @@ class WP_org_downloads_themes {
 		$grouper->report_groups();
 
 		$this->echo_content();
-
-
 	}
 
 	/**
@@ -1069,7 +1076,7 @@ class WP_org_downloads_themes {
 				$top12chart.=$line;
 			}
 		}
-		$this->block_writer( 'heading', null, "<h2>Top $topn themes - total downloads</h2>" );
+		$this->block_writer( 'heading', null, "<h2 id=\"top-50-themes-total-downloads\">Top $topn themes - total downloads</h2>" );
 
 		$top12chart = "Theme,Downloads (K)" . $top12chart;
 		$this->chart_writer( 'bar', $top12chart, 'Visualizer' );
@@ -1166,18 +1173,26 @@ class WP_org_downloads_themes {
 	 * @param $type
 	 * @param $content - CSV content containing the heading
 	 * @param null $theme
+	 * @param numeric $height - default height for the chart block.
 	 */
-
-	function chart_writer( $type, $content, $theme=null ) {
+	function chart_writer( $type, $content, $theme=null, $height=450 ) {
 		static $ID = 0;
 		$ID++;
 		$myChartID = 'myChart-' . $ID;
-		$atts = [ 'type' => $type, 'content' => $content, 'myChartId' => $myChartID];
+		$atts = [ 'type' => $type, 'content' => $content, 'myChartId' => $myChartID ];
+
 		if ( $theme ) {
 			$atts['theme'] = $theme;
 		}
-		$html = '<div class="wp-block-oik-sb-chart chartjs">';
-		$html .= '<canvas id="' . $myChartID . '"></canvas></div>';
+		$html = '<div class="wp-block-oik-sb-chart chartjs"';
+		if ( $height <> 450 ) {
+			$html .= ' style="height:' . $height . 'px"';
+			$atts['height'] = $height;
+		}
+		$html .= '>';
+		$html .= '<canvas id="' . $myChartID . '"';
+
+		$html .= '></canvas></div>';
 		$this->block_writer( 'oik-sb/chart', $atts, $html);
 
 	}
@@ -1200,17 +1215,45 @@ class WP_org_downloads_themes {
 	 * @param false $accum
 	 */
 
-	function chart_groups( $grouper, $type, $heading, $theme=null, $accum=false ) {
+	function chart_groups( $grouper, $type, $heading, $theme=null, $accum=false, $height=450 ) {
 		ob_start();
 		$grouper->report_groups( $accum );
 		$output = ob_get_clean();
 		//$atts = [ 'content' => $output ];
 		$output = rtrim( $output );
 		$output = $heading . "\n" . $output;
-		$this->chart_writer( $type, $output, $theme );
+		$this->chart_writer( $type, $output, $theme , $height);
 	}
 
+	function columns_start() {
+	//$attributes = \oik\oik_blocks\oik_blocks_atts_encode( $atts );
+		$content = '<div class="wp-block-columns">';
+		$this->content .= \oik\oik_blocks\oik_blocks_generate_block_start( 'columns', null, $content );
+	}
 
+	function columns_end() {
+		$this->content .= '</div>';
+		$this->content .= "\n";
+		$this->content .= \oik\oik_blocks\oik_blocks_generate_block_end( 'columns' );
+	}
+
+	function column_start( $width=null ) {
+		$atts = null;
+		$content = '<div class="wp-block-column"';
+		if ( $width ) {
+			$content .= ' style="flex-basis:' . $width . '"';
+			$atts = ['width' => $width] ;
+		}
+		$content .= '>';
+		$attributes = \oik\oik_blocks\oik_blocks_atts_encode( $atts );
+		$this->content .= \oik\oik_blocks\oik_blocks_generate_block_start( 'column', $attributes, $content );
+	}
+
+	function column_end() {
+		$this->content .= '</div>';
+		$this->content .= "\n";
+		$this->content .= \oik\oik_blocks\oik_blocks_generate_block_end( 'column' );
+	}
 
 	function echo_content() {
 		echo $this->content;
