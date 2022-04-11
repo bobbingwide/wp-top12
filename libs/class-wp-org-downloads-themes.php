@@ -136,6 +136,34 @@ class WP_org_downloads_themes {
 	}
 
 	/**
+	 * Checks if query_all_themes is needed.
+	 *
+	 * Find the timestamp of the cached file for the Twenty Twenty-Two theme.
+	 * If it's not today's then return true.
+	 *
+	 * @return bool
+	 */
+	function is_query_all_needed() {
+		$query_all_needed = true;
+		$slug = 'twentytwentytwo';
+		$file = $this->wporg_saved_themes_v2 . $slug . '.json';
+		$path = oik_path( $file, 'wp-top12');
+		if ( file_exists( $path ) ) {
+			$filemtime = filemtime( $path );
+			//echo $filemtime;
+			$query_all_needed = $filemtime < strtotime('today');
+		}
+		return $query_all_needed;
+	}
+
+	function maybe_query_all_themes() {
+		$query_all_needed = $this->is_query_all_needed();
+		if ( $query_all_needed ) {
+			$this->query_all_themes();
+		}
+	}
+
+	/**
 	 * query information about a
 	 *
 	 * We work our way backwards through the list
