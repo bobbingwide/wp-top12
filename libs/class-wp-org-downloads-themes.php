@@ -3,7 +3,7 @@
 /**
  * Information about all themes on WordPress.org.
  *
- * @copyright (C) Copyright Bobbing Wide 2021
+ * @copyright (C) Copyright Bobbing Wide 2021, 2022
  * @package wp-top12
  */
 
@@ -355,8 +355,8 @@ class WP_org_downloads_themes {
 		if ( $theme && property_exists( $theme, 'slug') ){
 			$this->themes[ $theme->slug ]=$theme;
 		} else {
+			// The cached file could contain an error such as themes_api_failed Theme not found
 			print_r( $theme);
-
 		}
 	}
 
@@ -1312,6 +1312,64 @@ class WP_org_downloads_themes {
 		}
 	}
 
+	/**
+	 * Report the latest plugins.
+	 *
+	 * Ordered by date desc where the plugin->date >= limit
+	 * @param $limit
+	 * @return void
+	 */
+	function latest_themes( $limit ) {
+		// @TODO Filter by date before sorting
+		$this->fse_themes = $this->sort_by_date_created( $limit );
+		$this->report_latest( $limit );
+
+	}
+
+	function sort_by_date_created( $limit=1000) {
+		$sorter = new Object_Sorter();
+		if ( null == $limit) {
+			$limit = count( $this->fse_themes );
+		}
+		echo "Sorting: " . count( $this->fse_themes ) . PHP_EOL;
+		$sorted = $sorter->sortby( $this->fse_themes, "creation_time", "desc" );
+		$top1000 = $sorter->results( $limit );
+		return $top1000;
+	}
+
+	function report_latest( $limit ) {
+		echo 'Displaying: ' . $limit . ' of ' . count( $this->fse_themes ) . PHP_EOL;
+		$limit = min( $limit, count( $this->fse_themes ) );
+		$recent = "Date|Theme|Name|Total downloads\n";
+		for ( $index = 0; $index < $limit ; $index++ ) {
+			$theme = $this->fse_themes[ $index ];
+			$theme = (object) $theme;
+
+			//$line   = $index + 1;
+			$line = substr( $theme->creation_time, 0, 10 );
+			$line  .= '|';
+			$line  .= '<a href=https://wordpress.org/themes/';
+			$line  .= $theme->slug;
+			$line  .= '>';
+			$line  .= $theme->slug;
+			$line  .= '</a>';
+			$line .= '|';
+			$line .= $theme->name;
+			$line  .= '|';
+			$line  .= number_format_i18n( $theme->downloaded );
+			$line .= '|';
+			$line  .= "\n";
+			echo $line;
+			$recent .= $line;
+
+		}
+		$atts = [ 'content' => $recent ];
+		$this->block_writer( 'oik-bbw/csv', $atts, null );
+		$this->echo_content();
+
+	}
+
+
 
 }
 
@@ -1375,5 +1433,7 @@ class WP_org_downloads_themes {
     [requires_php] => 5.7
 )
  */
+
+
 
 

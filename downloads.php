@@ -217,4 +217,5 @@ function fse_theme_reports() {
 	$wpodt = new WP_org_downloads_themes();
 	$wpodt->fse_theme_reports();
 	$wpodt->count_things();
+	$wpodt->latest_themes( 20 );
 }
