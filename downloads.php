@@ -55,8 +55,12 @@ switch ( $process ) {
 
 	case 'reports':
 	case 'rv2':
+	case 'latest':
 		reports();
 		break;
+
+
+
 
 	// Blocks not available with v2 of the REST API but they are with the WordPress blocks API v1.2.
 	case 'blocks':
@@ -102,11 +106,17 @@ function downloads_v2() {
 function reports() {
 	$wpod = new WP_org_downloads();
 	$loaded = $wpod->load_all_plugins();
+
+
 	$wpod->top1000( null );
 	$wpod->summarise();
 	$wpod->report_top1000( 100 );
 	$wpod->count_things();
 	//$wpod->list_block_plugins();
+	$wpod->latest_plugins( 100 );
+	//	gob();
+
+
 }
 
 /**

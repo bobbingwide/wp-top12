@@ -283,6 +283,7 @@ class WP_org_downloads {
 		//echo ' ';
 		//echo count( $this->plugins );
 		foreach ( $plugins as $key => $plugin ) {
+			//print_r( $plugin );
 			$plugin->name = $plugin->meta->header_name;
 			$plugin->downloads = $plugin->meta->downloads;
 			$plugin->tested = $plugin->meta->tested;
@@ -930,6 +931,17 @@ class WP_org_downloads {
 
 	}
 
+	function sort_by_date_created( $limit=1000) {
+		$sorter = new Object_Sorter();
+		if ( null == $limit) {
+			$limit = count( $this->plugins );
+		}
+		echo "Sorting: " . count( $this->plugins ) . PHP_EOL;
+		$sorted = $sorter->sortby( $this->plugins, "date", "desc" );
+		$top1000 = $sorter->results( $limit );
+		return $top1000;
+	}
+
 	/**
 	 * Produce a table of the top 1000 (or so )
 	 *
@@ -1147,6 +1159,54 @@ class WP_org_downloads {
 	function echo_content() {
 		echo $this->content;
 	}
+
+	/**
+	 * Report the latest plugins.
+	 *
+	 * Ordered by date desc where the plugin->date >= limit
+	 * @param $limit
+	 * @return void
+	 */
+	function latest_plugins( $limit ) {
+		// @TODO Filter by date before sorting
+		$this->plugins = $this->sort_by_date_created( $limit );
+		$this->report_latest( $limit );
+
+	}
+
+	function report_latest( $limit ) {
+		echo 'Displaying: ' . $limit . ' of ' . count( $this->plugins ) . PHP_EOL;
+		$limit = min( $limit, count( $this->plugins ) );
+		$recent = "Date|Plugin|Total downloads\n";
+		for ( $index = 0; $index < $limit ; $index++ ) {
+			$plugin = $this->plugins[ $index ];
+			$plugin = (object) $plugin;
+
+			//$line   = $index + 1;
+			$line = substr( $plugin->date, 0, 10 );
+			$line  .= '|';
+			$line  .= '<a href=https://wordpress.org/plugins/';
+			$line  .= $plugin->slug;
+			$line  .= '>';
+			$line  .= $plugin->slug;
+			$line  .= '</a>';
+			$line .= '|';
+			$line .= $plugin->name;
+			$line  .= '|';
+			$line  .= number_format_i18n( $plugin->meta->downloads );
+			$line .= '|';
+			$line  .= "\n";
+			echo $line;
+			$recent .= $line;
+
+		}
+		$atts = [ 'content' => $recent ];
+		$this->block_writer( 'oik-bbw/csv', $atts, null );
+		$this->echo_content();
+
+	}
+
+
 
 
 }
