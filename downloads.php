@@ -1,6 +1,6 @@
 <?php
 /**
- * @copyright (C) Copyright Bobbing Wide 2015-2021
+ * @copyright (C) Copyright Bobbing Wide 2015-2022
  * @package wp-top12
  * Syntax: oikwp downloads.php process
  *
@@ -38,9 +38,13 @@ oik_require( 'libs/class-wp-org-downloads-themes.php', 'wp-top12');
  * - This creates a new wporg_plugins.csv
  *
  * oikwp downloads.php v2
- * oikwp downloads.php reports
+ * oikwp downloads.php reports > fred
  *
  * oikwp downloads.php plugin
+ *
+ * For FSE themes
+ * oikwp downloads.php themes
+ * oikwp downloads.php fse > fredfse
 
  */
 //query_my_plugins();
