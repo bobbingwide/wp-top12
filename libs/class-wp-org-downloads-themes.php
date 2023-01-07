@@ -262,7 +262,8 @@ class WP_org_downloads_themes {
 		$string = json_encode( $this->response->themes );
 		//print_r( $this->themes);
 		$file = $this->wporg_saved_themes_v2 . $page . '.json';
-		$saved = file_put_contents( $file, $string );
+		$path = oik_path( $file, 'wp-top12');
+		$saved = file_put_contents( $path, $string );
 		$this->reset();
 		bw_trace2();
 	}
@@ -1317,12 +1318,13 @@ class WP_org_downloads_themes {
 	 *
 	 * Ordered by date desc where the plugin->date >= limit
 	 * @param $limit
+	 * @param $since The previous report date ccyy-mm-dd
 	 * @return void
 	 */
-	function latest_themes( $limit ) {
+	function latest_themes( $limit, $since=null ) {
 		// @TODO Filter by date before sorting
 		$this->fse_themes = $this->sort_by_date_created( $limit );
-		$this->report_latest( $limit );
+		$this->report_latest( $limit, $since );
 
 	}
 
@@ -1337,16 +1339,22 @@ class WP_org_downloads_themes {
 		return $top1000;
 	}
 
-	function report_latest( $limit ) {
+	function report_latest( $limit, $since=null ) {
 		echo 'Displaying: ' . $limit . ' of ' . count( $this->fse_themes ) . PHP_EOL;
 		$limit = min( $limit, count( $this->fse_themes ) );
 		$recent = "Date|Theme|Name|Total downloads\n";
 		for ( $index = 0; $index < $limit ; $index++ ) {
 			$theme = $this->fse_themes[ $index ];
 			$theme = (object) $theme;
+			$create_date = substr( $theme->creation_time, 0, 10 );
+			if ( $since > $create_date ) {
+				break;
+			}
+
+
 
 			//$line   = $index + 1;
-			$line = substr( $theme->creation_time, 0, 10 );
+			$line = $create_date;
 			$line  .= '|';
 			$line  .= '<a href=https://wordpress.org/themes/';
 			$line  .= $theme->slug;
@@ -1367,6 +1375,39 @@ class WP_org_downloads_themes {
 		$this->block_writer( 'oik-bbw/csv', $atts, null );
 		$this->echo_content();
 
+	}
+
+	/**
+	 * Get the date that the reports were last run.
+	 *
+	 *
+	 *
+	 * @return string|null
+	 */
+	function get_since_date() {
+		$since = oik_batch_query_value_from_argv( 2, null );
+		if ( null === $since ) {
+
+			$file = $this->wporg_saved_themes_v2 . 'since';
+			$path = oik_path( $file, 'wp-top12');
+			$timestamp = filemtime( $path );
+
+			//$since =
+			$since = bw_format_date( $timestamp, 'Y-m-d' );
+			//echo  "$path:$timestamp:$since";
+
+		}
+		return $since;
+
+	}
+
+	function set_since_date() {
+		$file = $this->wporg_saved_themes_v2 . 'since';
+		$path = oik_path( $file, 'wp-top12');
+		$contents = file_get_contents( $path );
+		$contents .= bw_format_date( null, 'Y-m-d');
+		$contents .= PHP_EOL;
+		file_put_contents( $path, $contents);
 	}
 
 
