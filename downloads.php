@@ -51,6 +51,7 @@ oik_require( 'libs/class-wp-org-downloads-themes.php', 'wp-top12');
 
 $process = oik_batch_query_value_from_argv( 1, null );
 $process = strtolower( trim( $process ));
+// $since = oik_batch_query_value_from_argv( 2, null );
 switch ( $process ) {
 	case 'download':
 	case 'v2':
@@ -221,5 +222,9 @@ function fse_theme_reports() {
 	$wpodt = new WP_org_downloads_themes();
 	$wpodt->fse_theme_reports();
 	$wpodt->count_things();
-	$wpodt->latest_themes( 20 );
+	$since = $wpodt->get_since_date();
+	$wpodt->latest_themes( 20, $since );
+	//$wpodt->set_since_date();
 }
+
+
