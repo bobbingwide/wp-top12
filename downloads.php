@@ -1,6 +1,6 @@
 <?php
 /**
- * @copyright (C) Copyright Bobbing Wide 2015-2022
+ * @copyright (C) Copyright Bobbing Wide 2015-2023
  * @package wp-top12
  * Syntax: oikwp downloads.php process
  *
@@ -14,7 +14,7 @@
  * Test output created during the coding of this routine are called wahay(n) where n starts from 2
  *
  */
-ini_set('memory_limit','1024M');
+ini_set('memory_limit','1536M');
 
 require_once( ABSPATH . "wp-admin/includes/plugin-install.php" );
 //oik_require( "includes/oik-remote.inc" );
@@ -85,6 +85,10 @@ switch ( $process ) {
 		fse_theme_reports();
 		break;
 
+	case 'oldest':
+		oldest();
+		break;
+
 	default:
 		if ( $process ) {
 			plugin_info_v2( $process );
@@ -120,6 +124,16 @@ function reports() {
 	//$wpod->list_block_plugins();
 	$wpod->latest_plugins( 100 );
 	//	gob();
+
+
+
+
+}
+
+function oldest() {
+	$wpod = new WP_org_downloads();
+	$loaded = $wpod->load_all_plugins();
+	$wpod->oldest_plugins( 30 );
 
 
 }
