@@ -2,7 +2,7 @@
 /**
  * Information about all plugins on WordPress.org.
  *
- * @copyright (C) Copyright Bobbing Wide 2015-2022
+ * @copyright (C) Copyright Bobbing Wide 2015-2023
  * @package wp-top12
  */
 
@@ -804,8 +804,8 @@ class WP_org_downloads {
 	 * 0.70 to 2.9
 	 * 3.0 to 3.9
 	 * 4.0 to 4.9
-	 * 5.0 through 6.1
-	 * Other+ for > 6.1
+	 * 5.0 through 6.2
+	 * Other+ for > 6.2
 	 * Other for non-numeric
 	 *
 	 */
@@ -818,7 +818,7 @@ class WP_org_downloads {
 				$ver = "3.0 to 3.9";
 			} elseif ( $ver3 <= 4.9 ) {
 				$ver="4.0 to 4.9";
-			} elseif ( $ver3 > 6.1 )	{
+			} elseif ( $ver3 > 6.2 )	{
 				$ver = "Other+" ;
 			} else {
 				$ver = $ver3;
@@ -931,13 +931,13 @@ class WP_org_downloads {
 
 	}
 
-	function sort_by_date_created( $limit=1000) {
+	function sort_by_date_created( $limit=1000, $order="desc") {
 		$sorter = new Object_Sorter();
 		if ( null == $limit) {
 			$limit = count( $this->plugins );
 		}
 		echo "Sorting: " . count( $this->plugins ) . PHP_EOL;
-		$sorted = $sorter->sortby( $this->plugins, "date", "desc" );
+		$sorted = $sorter->sortby( $this->plugins, "date", $order );
 		$top1000 = $sorter->results( $limit );
 		return $top1000;
 	}
@@ -1203,6 +1203,14 @@ class WP_org_downloads {
 		$atts = [ 'content' => $recent ];
 		$this->block_writer( 'oik-bbw/csv', $atts, null );
 		$this->echo_content();
+
+	}
+
+	function oldest_plugins( $limit=30) {
+
+		// @TODO Filter by date before sorting
+		$this->plugins = $this->sort_by_date_created( $limit, 'asc' );
+		$this->report_latest( $limit );
 
 	}
 
