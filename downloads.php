@@ -237,7 +237,7 @@ function fse_theme_reports() {
 	$wpodt->fse_theme_reports();
 	$wpodt->count_things();
 	$since = $wpodt->get_since_date();
-	$wpodt->latest_themes( 20, $since );
+	$wpodt->latest_themes( 32, $since );
 	//$wpodt->set_since_date();
 }
 
