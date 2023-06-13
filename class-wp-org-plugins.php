@@ -142,12 +142,15 @@ class WP_org_plugins {
 	}
 
 	function include( $key, $info ) {
+		//bw_trace2();
 		if ( 0 === count( $this->includes ) && 0 === count( $this->matches ) ) {
 			return true;
 		}
 		$included = false;
+
 		foreach ( $this->includes as $plugin ) {
-			$pos = stripos( $info, $plugin );
+			//$pos = stripos( $info, $plugin );
+			$pos = $this->check_word_match( $info, $plugin);
 			if ( false !== $pos ) {
 				$included = true;
 			}
@@ -156,13 +159,27 @@ class WP_org_plugins {
 
 	}
 
+	function check_word_match( $haystack, $needle ) {
+		$matched = false;
+		$haystack = str_replace( ',', ' ', $haystack);
+		$words = explode( ' ', $haystack);
+
+		foreach ( $words as $word ) {
+			if ( 0 === strcasecmp( $word, $needle)) {
+				$matched = true;
+			}
+		}
+		return $matched;
+	}
+
 	function exclude( $key, $info ) {
 		if ( 0 === count( $this->excludes ) ) {
 			return false;
 		}
 		$excluded = false;
 		foreach ( $this->excludes as $plugin ) {
-			$pos = stripos( $info, $plugin );
+			//$pos = stripos( $info, $plugin );
+			$pos = $this->check_word_match( $info, $plugin);
 			if ( false !== $pos ) {
 				$excluded = true;
 			}
