@@ -804,8 +804,8 @@ class WP_org_downloads {
 	 * 0.70 to 2.9
 	 * 3.0 to 3.9
 	 * 4.0 to 4.9
-	 * 5.0 through 6.2
-	 * Other+ for > 6.2
+	 * 5.0 through 6.3
+	 * Other+ for > 6.3
 	 * Other for non-numeric
 	 *
 	 */
@@ -818,7 +818,7 @@ class WP_org_downloads {
 				$ver = "3.0 to 3.9";
 			} elseif ( $ver3 <= 4.9 ) {
 				$ver="4.0 to 4.9";
-			} elseif ( $ver3 > 6.2 )	{
+			} elseif ( $ver3 > 6.3 )	{
 				$ver = "Other+" ;
 			} else {
 				$ver = $ver3;
