@@ -166,7 +166,7 @@ class WP_org_downloads {
 
 		//if ( 1 === $page) {
 			$headers    = wp_remote_retrieve_headers( $this->response[0] );
-			$headers    = new Requests_Response_Headers( $headers->getAll() );
+			$headers    = new WpOrg\Requests\Response\Headers( $headers->getAll() );
 			$x_wp_total = $headers->getValues( 'x-wp-total' );
 			echo "Total plugins: ";
 			echo $x_wp_total[0];
@@ -177,6 +177,7 @@ class WP_org_downloads {
 			echo $total_pages;
 			echo PHP_EOL;
 		//}
+
 
 		$this->save_plugins_v2( $page );
 
