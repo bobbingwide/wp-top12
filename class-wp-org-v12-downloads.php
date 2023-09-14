@@ -1021,5 +1021,29 @@ class WP_org_v12_downloads {
 	 */
 
 
+	function list_versions( $from_version ) {
+		$versions = ( array ) $this->response->versions;
+		print_r( $versions );
+		$new_versions = [];
+		foreach ( $versions as $new_version => $new_zip ) {
+			if ( version_compare( $from_version, $new_version, '<' ) ) {
+				if ( $this->is_major_minor_patch( $new_version ) ) {
+					$new_versions[] = $new_version;
+				}
+			}
+		}
+		print_r( $new_versions );
+		return $new_versions;
+
+	}
+
+	function is_major_minor_patch( $version ) {
+		//$parts = explode( $version );
+		//print_r( $parts );
+		$is_mmp = false === strpos( $version, '-' );
+		return $is_mmp;
+	}
+
+
 }
 
