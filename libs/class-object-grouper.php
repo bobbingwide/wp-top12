@@ -71,6 +71,9 @@ class Object_Grouper extends Object_base {
 	 */
 	public $where;
 
+	public $having;
+	public $field_value;
+
 	public function __construct() {
 		//$this->objects = null;
 		parent::__construct();
