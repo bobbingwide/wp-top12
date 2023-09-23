@@ -4,8 +4,8 @@
 * Donate link: https://www.oik-plugins.com/oik/oik-donate/
 * Tags: shortcodes, smart, lazy
 * Requires at least: 5.2
-* Tested up to: 5.9.3
-* Stable tag: 1.3.0
+* Tested up to: 6.3.1
+* Stable tag: 1.4.0
 * License: GPLv2 or later
 * License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -94,21 +94,20 @@ There may be an admin interface, but unlikely to be a front-end.
 1. wp-top12 in action - no not really
 
 ## Upgrade Notice 
-# 1.3.0 
-Upgrade for logic to extract information for selected themes.
+# 1.4.0 
+Upgrade for support for PHP 8.2
 
 ## Changelog 
-# 1.3.0 
-* Changed: Update wporg_plugins.csv to latest extract
-* Changed: Add maybe_query_all_themes()
-* Changed: Improve layout of the FSE statistics #17
-* Changed: Only add themes with slugs #17
-* Changed: Update wporg_plugins.csv for Yoast SEO reaching 400 million
-* Changed: Update wporg_plugins.csv to 2022/02/15
-* Changed: Implement logic to produce charts for FSE themes #17
-* Changed: Start considering WordPress 6.0
-* Changed: Reduce CRLF to LF
-* Changed: Update wporg_plugins.csv to 2022/01/23
-* Changed: Update wporg_plugins.csv to 2021/12/31
-* Tested: With WordPress 5.9.3 and WordPress Multi Site
-* Tested: With PHP 8.0
+# 1.4.0 
+* Changed: Update wporg_plugins.csv to latest extract ( 23 Sep 2023 )
+* Changed: Add support for WordPress 6.1, 6.2, 6.3 & 6.4
+* Changed: Avoid dynamic property deprecation messages for PHP 8.2 #25
+* Changed: Add list_versions() method
+* Changed: Switch to PSR-4 requests #23
+* Changed: Change matching logic to cater for AI #22
+* Changed: Add oldest_plugins to list the oldest plugins.
+* Changed: Increase memory limit.
+* Changed: List themes added since the last report's date
+* Changed: Display the 100 most recently created plugins using oik-bbw/csv block #19
+* Tested: With WordPress 6.3.1 and WordPress Multisite
+* Tested: With PHP 8.1 and PHP 8.2

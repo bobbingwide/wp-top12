@@ -1,4 +1,7 @@
 == Upgrade Notice ==
+= 1.3.0 = 
+Upgrade for logic to extract information for selected themes.
+
 = 1.2.0 = 
 Upgrade for logic to extract information for selected themes.
 
@@ -34,6 +37,21 @@ Now supports initial analysis by IP address
 New sample plugin, available from GitHub
 
 == Changelog ==
+= 1.3.0 =
+* Changed: Update wporg_plugins.csv to latest extract 
+* Changed: Add maybe_query_all_themes()
+* Changed: Improve layout of the FSE statistics #17
+* Changed: Only add themes with slugs #17
+* Changed: Update wporg_plugins.csv for Yoast SEO reaching 400 million
+* Changed: Update wporg_plugins.csv to 2022/02/15
+* Changed: Implement logic to produce charts for FSE themes #17
+* Changed: Start considering WordPress 6.0
+* Changed: Reduce CRLF to LF
+* Changed: Update wporg_plugins.csv to 2022/01/23
+* Changed: Update wporg_plugins.csv to 2021/12/31
+* Tested: With WordPress 5.9.3 and WordPress Multi Site
+* Tested: With PHP 8.0
+
 = 1.2.0 =
 * Added: Add logic to extract information for selected themes #17
 * Changed: Updated wporg_plugins.csv each month 
