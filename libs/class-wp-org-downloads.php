@@ -241,10 +241,14 @@ class WP_org_downloads {
 				$loaded = false;
 			} else {
 				$plugins = json_decode( $plugins_string );
-				$loaded = count( $plugins );
-				//echo "Count: " . $loaded . PHP_EOL;
-				$this->add_plugins( $plugins );
-				//$this->plugins = $plugins;
+				if ( $plugins ) {
+					$loaded=count( $plugins );
+					//echo "Count: " . $loaded . PHP_EOL;
+					$this->add_plugins( $plugins );
+					//$this->plugins = $plugins;
+				} else {
+					echo "File empty?" . PHP_EOL;
+				}
 			}
 		}
 		return( $loaded );
