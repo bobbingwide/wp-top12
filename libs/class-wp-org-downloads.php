@@ -390,7 +390,7 @@ class WP_org_downloads {
 		, 'downloadlink' => false
 		, 'last_updated' => true
 		, 'homepage' => true
-		, 'tags' => false
+		, 'tags' => true
 		);
 		$args = array( "per_page" => 60
 		, "page" => $page
@@ -682,7 +682,7 @@ class WP_org_downloads {
 		 */
 		$this->preselect( "Chart,Graph,Backup,SEO,Security,Shortcode,Tooltip,User,Map,Slideshow,Audio,Pop,Chat,Contact,Commerce,Advert,Learning" );
 
-		$this->preselect( "block,SEO,shortcode,security,backup");
+		$this->preselect( "block,SEO,shortcode,security,backup,AI");
 		$grouper->reset();
 		$grouper->groupby( "name", array( $this, "preselected" ) );
 		$grouper->ksort();
@@ -809,8 +809,8 @@ class WP_org_downloads {
 	 * 0.70 to 2.9
 	 * 3.0 to 3.9
 	 * 4.0 to 4.9
-	 * 5.0 through 6.4
-	 * Other+ for > 6.4
+	 * 5.0 through 6.5
+	 * Other+ for > 6.5
 	 * Other for non-numeric
 	 *
 	 */
@@ -823,7 +823,7 @@ class WP_org_downloads {
 				$ver = "3.0 to 3.9";
 			} elseif ( $ver3 <= 4.9 ) {
 				$ver="4.0 to 4.9";
-			} elseif ( $ver3 > 6.4 )	{
+			} elseif ( $ver3 > 6.5 )	{
 				$ver = "Other+" ;
 			} else {
 				$ver = $ver3;
