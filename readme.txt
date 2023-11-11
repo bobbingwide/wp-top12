@@ -3,8 +3,8 @@ Contributors: bobbingwide, vsgloik
 Donate link: https://www.oik-plugins.com/oik/oik-donate/
 Tags: shortcodes, smart, lazy
 Requires at least: 5.2
-Tested up to: 6.3.1
-Stable tag: 1.4.0
+Tested up to: 6.4.1
+Stable tag: 1.4.1
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -93,20 +93,13 @@ There may be an admin interface, but unlikely to be a front-end.
 1. wp-top12 in action - no not really
 
 == Upgrade Notice ==
-= 1.4.0 = 
-Upgrade for support for PHP 8.2
+= 1.4.1 = 
+Upgrade for support for WordPress 6.5
 
 == Changelog ==
-= 1.4.0 =
-* Changed: Update wporg_plugins.csv to latest extract ( 23 Sep 2023 )
-* Changed: Add support for WordPress 6.1, 6.2, 6.3 & 6.4
-* Changed: Avoid dynamic property deprecation messages for PHP 8.2 #25
-* Changed: Add list_versions() method
-* Changed: Switch to PSR-4 requests #23
-* Changed: Change matching logic to cater for AI #22
-* Changed: Add oldest_plugins to list the oldest plugins. 
-* Changed: Increase memory limit. 
-* Changed: List themes added since the last report's date
-* Changed: Display the 100 most recently created plugins using oik-bbw/csv block #19
-* Tested: With WordPress 6.3.1 and WordPress Multisite
+= 1.4.1 =
+* Changed: Update wporg_plugins.csv to latest extract ( 11 Nov 2023 )
+* Changed: Add support for WordPress 6.5
+* Tested: With WordPress 6.4.1 and WordPress Multisite
 * Tested: With PHP 8.1 and PHP 8.2
+* Tested: With PHPUnit 9.6
