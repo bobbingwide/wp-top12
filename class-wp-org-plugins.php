@@ -1,6 +1,6 @@
 <?php
 /**
- * @copyright (C) Copyright Bobbing Wide 2019
+ * @copyright (C) Copyright Bobbing Wide 2019-2023
  * @package wp-top12
  *
  */
@@ -17,6 +17,7 @@ class WP_org_plugins {
 	private $included;
 	private $excluded;
 	private $total_downloads;
+	private $both;
 
 	function __construct() {
 		$this->file_or_url = 'wporg_plugins.csv';
