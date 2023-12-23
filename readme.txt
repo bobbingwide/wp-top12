@@ -3,8 +3,8 @@ Contributors: bobbingwide, vsgloik
 Donate link: https://www.oik-plugins.com/oik/oik-donate/
 Tags: shortcodes, smart, lazy
 Requires at least: 5.2
-Tested up to: 6.4.1
-Stable tag: 1.4.1
+Tested up to: 6.4.2
+Stable tag: 1.4.2
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -93,13 +93,14 @@ There may be an admin interface, but unlikely to be a front-end.
 1. wp-top12 in action - no not really
 
 == Upgrade Notice ==
-= 1.4.1 = 
-Upgrade for support for WordPress 6.5
+= 1.4.2 = 
+Upgrade to enable better styling of the plugin table.
 
 == Changelog ==
-= 1.4.1 =
-* Changed: Update wporg_plugins.csv to latest extract ( 11 Nov 2023 )
-* Changed: Add support for WordPress 6.5
-* Tested: With WordPress 6.4.1 and WordPress Multisite
-* Tested: With PHP 8.1 and PHP 8.2
+= 1.4.2 =
+* Changed: Update wporg_plugins.csv to latest extract ( 22 Dec 2023 )
+* Changed: Replace &nbsp; by blank when producing table.
+* Changed: Show count of plugin versions
+* Tested: With WordPress 6.4.2 and WordPress Multisite
+* Tested: With PHP 8.1, PHP 8.2 and PHP 8.3
 * Tested: With PHPUnit 9.6
