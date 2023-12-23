@@ -1023,6 +1023,7 @@ class WP_org_v12_downloads {
 
 	function list_versions( $from_version ) {
 		$versions = ( array ) $this->response->versions;
+		print_r( count( $versions ));
 		print_r( $versions );
 		$new_versions = [];
 		foreach ( $versions as $new_version => $new_zip ) {

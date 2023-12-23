@@ -245,7 +245,7 @@ class WP_org_plugins {
 	function plugin_link( $plugin ) {
 		$url = 'https://wordpress.org/plugins/';
 		$url .= $plugin[1];
-		return retlink( null, $url, $plugin[2]);
+		return retlink( null, $url, str_replace( '&nbsp;', ' ', $plugin[2] ));
 	}
 
 	function plugin_total_downloads( $plugin ) {
