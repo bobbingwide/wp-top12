@@ -649,8 +649,12 @@ class WP_org_downloads {
 		}
 		file_put_contents( $file, $this->csv );
 		echo "Total downloaded: " . $this->downloaded . PHP_EOL;
-		$this->block_writer( 'heading', null, '<h2>Total downloads: ' . number_format_i18n( $this->downloaded ) . '</h2>' );
-		$this->block_writer( 'paragraph', null, '<p>Plugins: ' . count( $this->plugins ) . '</p>' );
+		$this->block_writer( 'paragraph', null, '<p>The top 12 WordPress plugins by total downloads for ' . bw_format_date( null, 'jS F Y') . ' follows:</p>' );
+		$this->countups();
+		$this->block_writer( 'more', null, '<!--more-->' );
+
+		//$this->block_writer( 'heading', null, '<h2>Total downloads: ' . number_format_i18n( $this->downloaded ) . '</h2>' );
+		//$this->block_writer( 'paragraph', null, '<p>Plugins: ' . count( $this->plugins ) . '</p>' );
 	}
 
 	function downloaded( $downloaded ) {
@@ -1105,11 +1109,14 @@ class WP_org_downloads {
 	 */
 
 	function block_writer( $block_type_name, $atts = null, $content = null ) {
-		$attributes = \oik\oik_blocks\oik_blocks_atts_encode( $atts );
-		$this->content .= \oik\oik_blocks\oik_blocks_generate_block( $block_type_name, $attributes, $content );
-		//echo $this->content;
+		$this->content .= $this->block_getter( $block_type_name, $atts, $content );
 	}
 
+	function block_getter( $block_type_name, $atts = null, $content = null, $prefix = null, $suffix=null ) {
+		$attributes=\oik\oik_blocks\oik_blocks_atts_encode( $atts );
+		$block =\oik\oik_blocks\oik_blocks_generate_block( $block_type_name, $attributes, $prefix . $content . $suffix );
+		return $block;
+	}
 	/**
 	 * Writes the output as a Chart block.
 	 *
@@ -1217,6 +1224,40 @@ class WP_org_downloads {
 		$this->plugins = $this->sort_by_date_created( $limit, 'asc' );
 		$this->report_latest( $limit );
 
+	}
+
+	function countups( ) {
+		//$countups = '';
+
+		//$column2 =
+
+		$dashicon = $this->block_getter( 'oik-bbw/dashicon', ['dashicon' => 'download-icon', 'size' => 32]);
+		$paragraph = $this->block_getter( 'paragraph', ['align' => 'center'], '<p class="has-text-align-center">Total downloads to date</p>');
+		$group_atts = json_decode( '{"layout":{"type":"flex","allowOrientation":false,"justifyContent":"center"}}', true );
+		$column1 = $this->block_getter( 'group', $group_atts, $dashicon,'<div class="wp-block-group">', '</div>' );
+		$column1 .= $this->countupblock(  $this->downloaded  );
+		$column1 .= $paragraph;
+		$column1 = $this->block_getter( 'column', null, $column1, '<div class="wp-block-column">', '</div>' );
+		$dashicon = $this->block_getter( 'oik-bbw/dashicon', ['dashicon' => 'admin-plugins', 'size' => 32]);
+		$column2 = $this->block_getter( 'group', $group_atts, $dashicon,'<div class="wp-block-group">', '</div>' );
+		$column2 .= $this->countupblock(  count( $this->plugins ) );
+		$column2 .= $this->block_getter( 'paragraph', ['align' => 'center'], '<p class="has-text-align-center">Plugins</p>');
+		$column2 = $this->block_getter( 'column',  null, $column2,'<div class="wp-block-column">', '</div>' );
+
+		$this->content .= $this->block_getter( 'columns', null, $column1 . $column2, '<div class="wp-block-columns">', '</div>'  );
+		//echo $this->content;
+
+
+	}
+
+	function countupblock( $end ) {
+		$block = '<!-- wp:roelmagdaleno/wp-countup-js {"end":$end,"fontSize":32,"scroll":true,"start":$start} -->
+<div class="wp-block-roelmagdaleno-wp-countup-js"><div data-start="$start" data-duration="2" data-delay="0" data-decimal="." data-decimals="0" data-separator="," data-suffix=" " data-prefix=" " data-grouping="true" data-easing="false" data-scroll="true" data-reset="true" data-end="$end" class="counter" style="text-align: center; font-size: 32px;">$start</div></div>
+<!-- /wp:roelmagdaleno/wp-countup-js -->';
+		$block = str_replace( '$end', $end, $block );
+		$start = intval( $end * 0.9 );
+		$block = str_replace( '$start', $start, $block );
+return $block;
 	}
 
 
