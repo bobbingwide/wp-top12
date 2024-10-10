@@ -87,6 +87,7 @@ function wp_top12_plugin_loaded() {
 	add_action( "oik_loaded", "wp_top12_oik_loaded" );
 	add_action( "oik_add_shortcodes", "wp_top12_oik_add_shortcodes" );
 	add_action( "admin_notices", "wp_top12_activation" );
+	add_action( 'oik_fields_loaded', 'wp_top12_oik_fields_loaded');
 }
 
 
@@ -172,12 +173,66 @@ function wp_top12_dynamic_block( $attributes ) {
 	return $html;
 }
 
+/**
+ * Registers our fields against posts.
+ *
+ * @return void
+ */
+function wp_top12_oik_fields_loaded() {
+	bw_register_field( '_plugins', 'text', '# plugins' );
+	bw_register_field( '_total_downloads', 'text', 'Total downloads' );
+	bw_register_field_for_object_type( '_plugins', 'post');
+	bw_register_field_for_object_type( '_total_downloads', 'post' );
+	add_filter( 'render_block_data', 'wp_top12_render_block_data', 10, 3 );
+	add_filter( 'render_block_roelmagdaleno/wp-countup-js', 'wp_top12_render_block_wpcountupjs', 10, 3 );
+}
+
+function wp_top12_render_block_data( $parsed_block, $source_block, $parent_block ) {
+
+	switch ( $parsed_block['blockName'] ) {
+		case 'roelmagdaleno/wp-countup-js':
+		case 'oik-sb/chart':
+			if ( wp_top12_className_matches_field( $parsed_block)) {
+				$wp_top12_block_data_renderer = wp_top12_block_data_renderer();
+				$parsed_block = $wp_top12_block_data_renderer->render_block_data( $parsed_block, $source_block, $parent_block );
+			}
+			break;
+
+			bw_trace2();
+			break;
+		default;
+	}
+	return $parsed_block;
+}
+
+/**
+ * Returns the previously modified innerHTML.
+ *
+ * @param $block_content
+ * @param $parsed_block
+ * @param $block
+ *
+ * @return mixed
+ */
+function wp_top12_render_block_wpcountupjs( $block_content, $parsed_block, $block ) {
+	$block_content = $parsed_block['innerHTML'];
+	//bw_trace2();
+	return $block_content;
+}
 
 
+function wp_top12_block_data_renderer() {
+	static $wp_top12_block_data_renderer = null;
+	if ( !$wp_top12_block_data_renderer ) {
+		oik_require( 'libs/class-wp-top12-block-data-renderer.php', 'wp-top12');
+		$wp_top12_block_data_renderer = new WP_top12_block_data_renderer();
+	}
+	return $wp_top12_block_data_renderer;
 
+}
 
-
-
-
-
-
+function wp_top12_className_matches_field( $parsed_block ) {
+	$className = bw_array_get( $parsed_block['attrs'], 'className', '' );
+	$match = str_contains( $className, '_total_downloads' ) || str_contains( $className, '_plugins' );
+	return $match;
+}
