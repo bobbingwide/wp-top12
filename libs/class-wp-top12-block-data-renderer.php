@@ -72,7 +72,7 @@ class WP_top12_block_data_renderer {
 	 * @return null
 	 */
 	function get_render_method( $parsed_block ) {
-		bw_trace2();
+		//bw_trace2();
 		$className = bw_array_get( $parsed_block['attrs'], 'className', '' );
 		$render_method = null;
 		$block_field_methods = $this->get_block_field_methods();
@@ -92,15 +92,15 @@ class WP_top12_block_data_renderer {
 		return $render_method;
 	}
 
-
 	/**
 	 * Updates the parsed block with the required values.
 	 *
 	 * Note: For the wp-countup-js block we need to hook into the post rendering filter as well.
-	 * @TODO Find out why this is necessary.
+	 * This is because the updates to innerHTML and innerContent are not reflected
+	 * in WP_Block's properties inner_html and inner_content.
+	 * See also wp_top12_render_block_wpcountupjs()
 	 *
 	 * @param $parsed_block
-	 *
 	 * @return mixed
 	 */
 	function wp_top12_fiddle_parsed_block( $parsed_block, $new_data_end, $new_data_start ) {
@@ -133,13 +133,13 @@ class WP_top12_block_data_renderer {
 
 	function chart_plugins( $parsed_block ) {
 		$parsed_block['attrs']['content'] = $this->plugins_chart_content;
-		bw_trace2();
+		//bw_trace2();
 		return $parsed_block;
 	}
 
 	function chart_total_downloads( $parsed_block ) {
 		$parsed_block['attrs']['content'] = $this->total_downloads_chart_content;
-		bw_trace2();
+		//bw_trace2();
 		return $parsed_block;
 	}
 
@@ -172,9 +172,6 @@ class WP_top12_block_data_renderer {
 		$total_downloads_array[] = 'Date,Total downloads (M)';
 		arsort( $total_downloads_array );
 		$this->total_downloads_chart_content = implode( "\n", $total_downloads_array );
-		//print_r( $plugins_array );
-		//arsort( $total_downloads_array );
-
-}
+	}
 
 }

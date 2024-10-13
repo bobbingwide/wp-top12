@@ -90,7 +90,6 @@ function wp_top12_plugin_loaded() {
 	add_action( 'oik_fields_loaded', 'wp_top12_oik_fields_loaded');
 }
 
-
 /**
  * Registers all block assets so that they can be enqueued through the block editor
  * in the corresponding context.
@@ -110,7 +109,7 @@ function wp_top12_block_init() {
 	$script_asset = require( $script_asset_path );
 	//bw_trace2( $script_asset );
 	//wp_top12_register_scripts();
-	//$script_asset['dependencies'][] = 'chartjs-script';
+	//$script_asset['dependencies'][] = 'dashicons';
 	wp_register_script(
 		'wp-top12-block-editor',
 		plugins_url( $index_js, __FILE__ ),
@@ -185,10 +184,11 @@ function wp_top12_oik_fields_loaded() {
 	bw_register_field_for_object_type( '_total_downloads', 'post' );
 	add_filter( 'render_block_data', 'wp_top12_render_block_data', 10, 3 );
 	add_filter( 'render_block_roelmagdaleno/wp-countup-js', 'wp_top12_render_block_wpcountupjs', 10, 3 );
+	add_filter( 'render_block_core/navigation-link', 'wp_top12_render_block_core_navigation_link', 10, 3 );
 }
 
 function wp_top12_render_block_data( $parsed_block, $source_block, $parent_block ) {
-
+	//bw_trace2( $parsed_block, "parsed_block", false );
 	switch ( $parsed_block['blockName'] ) {
 		case 'roelmagdaleno/wp-countup-js':
 		case 'oik-sb/chart':
@@ -220,6 +220,25 @@ function wp_top12_render_block_wpcountupjs( $block_content, $parsed_block, $bloc
 	return $block_content;
 }
 
+/**
+ * Renders any dynamic label.
+ *
+ * We use the className attr to indicate that the label should be replaced by the post's post_title.
+ *
+ * @param $block_content
+ * @param $parsed_block
+ * @param $block
+ * @return mixed
+ */
+function wp_top12_render_block_core_navigation_link( $block_content, $parsed_block, $block ) {
+		bw_trace2();
+		$className = bw_array_get( $parsed_block['attrs'], 'className', '' );
+		if (  '_title' === $className) {
+			$post = get_post( $parsed_block['attrs']['id'] );
+			$block_content = str_replace( $parsed_block['attrs']['label'], $post->post_title, $block_content );
+		}
+		return $block_content;
+}
 
 function wp_top12_block_data_renderer() {
 	static $wp_top12_block_data_renderer = null;
