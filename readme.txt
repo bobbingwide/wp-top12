@@ -3,8 +3,8 @@ Contributors: bobbingwide, vsgloik
 Donate link: https://www.oik-plugins.com/oik/oik-donate/
 Tags: shortcodes, smart, lazy
 Requires at least: 5.2
-Tested up to: 6.4.2
-Stable tag: 1.4.2
+Tested up to: 6.7-RC1
+Stable tag: 1.5.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -22,6 +22,8 @@ Similar for FSE themes.
 
 
 = What is provided? = 
+Version 1.5.0 supports the new oobit-2025 theme 
+
 Version 1.3.0 improves the support for cataloguing FSE themes.
 
 Version 1.2.0 provides support for oik-update's oik-themer routine to automatically update FSE themes.
@@ -93,14 +95,18 @@ There may be an admin interface, but unlikely to be a front-end.
 1. wp-top12 in action - no not really
 
 == Upgrade Notice ==
-= 1.4.2 = 
-Upgrade to enable better styling of the plugin table.
+= 1.5.0 = 
+Upgrade to support the new theme oobit-2025
 
 == Changelog ==
-= 1.4.2 =
-* Changed: Update wporg_plugins.csv to latest extract ( 22 Dec 2023 )
-* Changed: Replace &nbsp; by blank when producing table.
+= 1.5.0 =
+* Changed: Updated wporg_plugins.csv regularly - most recent 2024/10/22
+* Changed: Dynamically render the title for navigation-link blocks with className _title #28
+* Added: Implement block data renderer logic for new fields _plugins and _total_downloads #27
+* Added: Dynamic countup logic for total downloads and plugins #27
+* Changed: Cater for WordPress 6.6 and WordPress 6.7
+* Changed: Improve display of total plugins and total downloads #26
 * Changed: Show count of plugin versions
-* Tested: With WordPress 6.4.2 and WordPress Multisite
-* Tested: With PHP 8.1, PHP 8.2 and PHP 8.3
+* Tested: With WordPress 6.7-RC1 and WordPress Multisite
+* Tested: With PHP 8.3
 * Tested: With PHPUnit 9.6

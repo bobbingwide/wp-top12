@@ -1,4 +1,7 @@
 == Upgrade Notice ==
+= 1.4.2 = 
+Upgrade to enable better styling of the plugin table.
+
 = 1.4.1 = 
 Upgrade for support for WordPress 6.5
 
@@ -43,6 +46,14 @@ Now supports initial analysis by IP address
 New sample plugin, available from GitHub
 
 == Changelog ==
+= 1.4.2 =
+* Changed: Update wporg_plugins.csv to latest extract ( 22 Dec 2023 )
+* Changed: Replace &nbsp; by blank when producing table.
+* Changed: Show count of plugin versions
+* Tested: With WordPress 6.4.2 and WordPress Multisite
+* Tested: With PHP 8.1, PHP 8.2 and PHP 8.3
+* Tested: With PHPUnit 9.6
+
 = 1.4.1 =
 * Changed: Update wporg_plugins.csv to latest extract ( 11 Nov 2023 )
 * Changed: Add support for WordPress 6.5
