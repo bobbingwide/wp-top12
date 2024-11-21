@@ -1124,17 +1124,17 @@ class WP_org_downloads {
 	 * @param $content - CSV content containing the heading
 	 * @param null $theme
 	 */
-
 	function chart_writer( $type, $content, $theme=null ) {
-		static $ID = 0;
-		$ID++;
-		$myChartID = 'myChart-' . $ID;
-		$atts = [ 'type' => $type, 'content' => $content, 'myChartId' => $myChartID];
+		//static $ID = 0;
+		//$ID++;
+		//$myChartID = 'myChart-' . $ID;
+		$atts = [ 'type' => $type, 'content' => $content];
 		if ( $theme ) {
 			$atts['theme'] = $theme;
 		}
-		$html = '<div class="wp-block-oik-sb-chart chartjs">';
-		$html .= '<canvas id="' . $myChartID . '"></canvas></div>';
+		$html = '<div class="wp-block-oik-sb-chart">';
+		//$html .= '<canvas id="' . $myChartID . '"></canvas></div>';
+		$html .= '<div class="chartjs"><canvas></canvas></div></div>';
 		$this->block_writer( 'oik-sb/chart', $atts, $html);
 
 	}
@@ -1250,18 +1250,21 @@ class WP_org_downloads {
 
 	}
 
+	/**
+	 * Displays the countup block.
+	 *
+	 * @param $end
+	 * @return array|string|string[]
+	 */
 	function countupblock( $end ) {
 		$block = '<!-- wp:roelmagdaleno/wp-countup-js {"end":$end,"fontSize":32,"scroll":true,"start":$start} -->
-<div class="wp-block-roelmagdaleno-wp-countup-js"><div data-start="$start" data-duration="2" data-delay="0" data-decimal="." data-decimals="0" data-separator="," data-suffix=" " data-prefix=" " data-grouping="true" data-easing="false" data-scroll="true" data-reset="true" data-end="$end" class="counter" style="text-align: center; font-size: 32px;">$start</div></div>
+<div class="wp-block-roelmagdaleno-wp-countup-js"><div data-start="$start" data-duration="2" data-delay="0" data-decimal="." data-decimals="0" data-separator="," data-suffix="" data-prefix="" data-grouping="true" data-easing="true" data-scroll="true" data-reset="false" data-end="$end" class="counter" style="text-align: center; font-size: 32px;">$start</div></div>
 <!-- /wp:roelmagdaleno/wp-countup-js -->';
+
 		$block = str_replace( '$end', $end, $block );
 		$start = intval( $end * 0.9 );
 		$block = str_replace( '$start', $start, $block );
-return $block;
+	return $block;
 	}
 
-
-
-
 }
-
