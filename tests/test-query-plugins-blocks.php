@@ -146,7 +146,6 @@ class Tests_query_plugins_blocks extends BW_UnitTestCase {
 
 	}
 
-
 	function test_fetch_between( ) {
 		$string = $this->get_test_string();
 		$between = $this->extract_blocks( $string );
@@ -155,7 +154,6 @@ class Tests_query_plugins_blocks extends BW_UnitTestCase {
 		//$this->assertFalse( true );
 
 	}
-
 
 	/**
 	 * Here we try to find the blocks that are associated with WordPress.org plugins
@@ -172,17 +170,12 @@ class Tests_query_plugins_blocks extends BW_UnitTestCase {
 	function is_it_a_block_plugin( $plugin) {
 		$slug = null;
 		if ( 0 === strpos( $plugin, '1,' )) {
-			$csv = str_getcsv( $plugin );
+			$csv = str_getcsv( $plugin, ',', '"', '' );
 
 			$slug = $csv[2];
 
 		}
 		return $slug;
  	}
-
-
-
-
-
 
 }

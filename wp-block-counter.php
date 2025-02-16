@@ -319,7 +319,7 @@ class wp_block_counter {
 	function is_it_a_block_plugin( $plugin) {
 		$slug = null;
 		if ( 0 === strpos( $plugin, '1,' )) {
-			$csv = str_getcsv( $plugin );
+			$csv = str_getcsv( $plugin, ',', '"', '' );
 
 			$slug = $csv[2];
 

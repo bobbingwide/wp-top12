@@ -4,7 +4,7 @@
  * @package wp-top12
  *
  * VT_row implements a row from a bwtrace.vt.ccyymmdd file
- * 
+ *
 
  * This class is / was also implemented as Trans in vt.php
  */
@@ -30,7 +30,7 @@
  */
 
 
-class VT_row { 
+class VT_row {
 
 //class Trans {
   //private $trans = null;
@@ -48,22 +48,22 @@ class VT_row {
   public $taxons; // $this->trans[11];
   public $queries; // $this->trans[12];
   public $qelapsed; // $this->trans[13];
-	public $tracefile; // $this->trans[14]; or not at all 
+	public $tracefile; // $this->trans[14]; or not at all
   public $traces; // $this->trans[15] or 14;
 	public $remote_IP; // $this->trans[16] or 15 or 14;
   public $elapsed; // $this->trans[17] or 16 or 15;
   public $isodate; //$this->trans[18] or 17 or 16;
-  
+
   public $suri;   // Stripped URI
 	public $suritl; // Top level part of stripped URI
 	public $suril;  // Last part of stripped URI
   public $qparms; // Query parameters
 	public $surisl; // Second level part of stripped URI - when run in a subdirectory install
-	
+
 	/**
 	 *
      # | name | sample value
-     - | ---- | ------------	 
+     - | ---- | ------------
      0 | uri | /examples/how-to-create-a-contact-page-using-oik-and-jetpack/jetpack-contact-field-shortcode-country-select-list,
      1 | action | ,
      2 | final |0.309858,
@@ -91,7 +91,7 @@ class VT_row {
 		 `
 	*/
   public function __construct( $transline ) {
-    $this_trans = str_getcsv( $transline );
+	$this_trans = str_getcsv( $transline, ',', '"', '' );
     $this->uri = $this_trans[0];
     $this->action = $this_trans[1];
     $this->final  = $this_trans[2];
@@ -108,7 +108,7 @@ class VT_row {
     $this->qelapsed = $this_trans[13];
 		$this->tracefile = $this_trans[14];
     $this->traces = $this_trans[15];
-		
+
 		/**
 		 * remote_IP is now 16, was 15, was 14 - not catered for
 		 */
@@ -123,39 +123,39 @@ class VT_row {
 			$this->isodate = $this_trans[18];
 		}
 		$this->uri_parser();
-		
-    
-    
-     
+
+
+
+
   }
-	
+
 	/**
 	 * Parse the URI
-	 * 
-	 * 
+	 *
+	 *
 	 * Create separate fields
-	 * - stripped URI ( suri ) 
+	 * - stripped URI ( suri )
 	 * - top level ( suritl)
 	 * - bottom level ( suril )
-	 * 
-	 */ 
-	
+	 *
+	 */
+
 	function uri_parser() {
 		//echo $this->uri . PHP_EOL;
-		
+
     list( $this->suri, $this->qparms, $blah ) = explode( "?", $this->uri . "???" , 3 );
-		$suri = trim( $this->suri, "/" ); 
-    $blah = explode( "/", $suri ); 
-		if ( isset( $blah[0] ) ) { 
+		$suri = trim( $this->suri, "/" );
+    $blah = explode( "/", $suri );
+		if ( isset( $blah[0] ) ) {
 			$this->suritl = $blah[0];
-		} 
+		}
 		if ( isset( $blah[1] ) ) {
       $this->surisl = $blah[1];
 		}
 		$this->suril = end( $blah );
 		//echo $this->suritl . PHP_EOL;
 		//echo $this->suril . PHP_EOL;
-		
+
 		//gob();
 	}
 
