@@ -18,6 +18,6 @@
 		"l10n": "l10n wp-top12"
 	},
 	"devDependencies": {
-		"@wordpress/scripts": "^12.1.1"
+		"@wordpress/scripts": "^31.2.0"
 	}
 }
